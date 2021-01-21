@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 12:53:13 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/23 11:18:12 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/21 16:41:45 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "../include/get_next_line.h"
+#include "../include/libft.h"
 
 /*
 ** Returns the position of '\n' in the string, -1 otherwise
@@ -96,8 +97,10 @@ static int		ft_copy_from_remainer(char **rem, char **line, size_t *line_s)
 
 /*
 ** Checks if there is a remainer left from the previous call of get_next_line.
-** If there's a remainer, uses ft_copy_from_remainer and returns its value
-** If there is no remainer, returns 0
+** If yes, 2 possible cases: there is a '\n' in the remainer or there isn't
+** If there is a '\n', copies it to *line and returns 1
+** If there is no '\n', copies everything and proceeds to gnl. Returns 0.
+** Also returns 0 if there is no remainer left from previous call of gnl
 ** Returns -1 in case of error
 */
 
@@ -118,29 +121,29 @@ ssize_t			ft_remainer(char **rem, char **line, size_t *l_s, char **s_buff)
 
 int				get_next_line(int fd, char **line)
 {
-	static char	*remainer[OPEN_MAX];
+	static char	*remainer = 0;
 	char		*str_buff;
 	ssize_t		read_ret;
 	size_t		line_size;
 
 	if (!(str_buff = malloc(sizeof(*str_buff) * (BUFFER_SIZE + 1)))
 		|| fd <= -1 || fd > OPEN_MAX || line == 0 || BUFFER_SIZE <= 0)
-		return (ft_free(str_buff, remainer[fd], 1, 1) - 1);
+		return (ft_free(str_buff, remainer, 1, 1) - 1);
 	*line = 0;
-	if ((read_ret = ft_remainer(&(remainer[fd]), line, &line_size, &str_buff)))
+	if ((read_ret = ft_remainer(&remainer, line, &line_size, &str_buff)) != 0)
 		return ((int)read_ret);
 	while ((read_ret = read(fd, str_buff, BUFFER_SIZE)) >= 0)
 	{
 		str_buff[read_ret] = 0;
 		line_size += read_ret;
 		if (!ft_save_to_line(line, str_buff, line_size))
-			return (ft_free(str_buff, remainer[fd], 1, 1) - 1);
+			return (ft_free(str_buff, remainer, 1, 1) - 1);
 		if (ret_in_str(*line) >= 0 || read_ret == 0)
 			break ;
 	}
 	if (read_ret == -1 || read_ret == 0)
-		return (ft_free(str_buff, remainer[fd], 1, 1) + read_ret);
-	if (!(remainer[fd] = save_remainer(line, ret_in_str(*line))))
-		return (ft_free(str_buff, remainer[fd], 1, 1) - 1);
-	return (ft_free(str_buff, remainer[fd], 1, 0) + 1);
+		return (ft_free(str_buff, remainer, 1, 1) + read_ret);
+	if (!(remainer = save_remainer(line, ret_in_str(*line))))
+		return (ft_free(str_buff, remainer, 1, 1) - 1);
+	return (ft_free(str_buff, remainer, 1, 0) + 1);
 }

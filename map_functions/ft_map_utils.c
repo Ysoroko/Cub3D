@@ -6,11 +6,12 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:03:16 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/21 13:53:28 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/21 16:41:24 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_map_functions.h"
+#include "../include/ft_map_functions.h"
+#include "../include/libft.h"
 
 /*
 ** FT_NEW_T_MAP
@@ -83,23 +84,25 @@ void	ft_triple_atoi(char *str, int *a, int *b, int *c)
 	int	i;
 
 	i = 1;
-	if (!str)
-		return ;
 	if (a)
+	{
+		while (str[i] && !ft_isdigit(str[i]))
+			i++;
 		*a = ft_atoi(&(str[1]));
+	}
 	if (b)
 	{
-		while (str[i] && !(ft_isdigit(str[i])))
-			i++;
 		while (str[i] && ft_isdigit(str[i]))
+			i++;
+		while (str[i] && !(ft_isdigit(str[i])))
 			i++;
 		*b = ft_atoi(&(str[i]));
 	}
 	if (c)
 	{
-		while (str[i] && !(ft_isdigit(str[i])))
-			i++;
 		while (str[i] && ft_isdigit(str[i]))
+			i++;
+		while (str[i] && !(ft_isdigit(str[i])))
 			i++;
 		*c = ft_atoi(&(str[i]));
 	}
@@ -117,7 +120,6 @@ void	ft_triple_atoi(char *str, int *a, int *b, int *c)
 int		ft_extract_path(char *str, t_map *map)
 {
 	int		i;
-	char	*path;
 
 	i = 0;
 	while (str[i] != ' ' && str[i])

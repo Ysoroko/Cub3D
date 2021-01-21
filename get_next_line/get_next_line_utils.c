@@ -1,28 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 14:58:51 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/22 18:52:45 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/21 16:41:46 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
-
-size_t		ft_strlen(char *str)
-{
-	size_t i;
-
-	if (str == 0)
-		return (0);
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
+#include "../include/get_next_line.h"
+#include "../include/libft.h"
 
 /*
 ** It's actually strdup with a different name (uses malloc)

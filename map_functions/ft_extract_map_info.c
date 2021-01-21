@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exract_map_info.c                               :+:      :+:    :+:   */
+/*   ft_extract_map_info.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 10:51:31 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/21 13:36:45 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/21 16:40:25 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_map_functions.h"
+#include "../include/ft_map_functions.h"
+#include "../include/libft.h"
+#include "../include/get_next_line.h"
 
 /*
 ** FT_EXTRACT_RGB
@@ -38,12 +40,7 @@ static int		ft_extract_rgb(char *str, t_map *map)
 
 static int		ft_extract_resolution(char *str, t_map *map)
 {
-	int	res_width;
-	int	res_height;
-
-	res_width = 0;
-	res_height = 0;
-	ft_triple_atoi(str, &res_width, &res_height, 0);
+	ft_triple_atoi(str, &map->res_width, &map->res_height, 0);
 	return (1);
 }
 
@@ -88,5 +85,6 @@ t_map			*ft_extract_map_info(char *file_name)
 	}
 	if (gnl_ret < 0 || close(fd) < 0)
 		return (ft_free_map(map));
+	free(line);
 	return (map);
 }

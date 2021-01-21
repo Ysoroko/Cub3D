@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/21 14:10:24 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/21 16:28:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 
 typedef struct	s_map
 {
-	int				*res_width;
-	int				*res_height;
+	int				res_width;
+	int				res_height;
 	char			*north_path;
 	char			*south_path;
 	char			*west_path;
@@ -55,8 +55,5 @@ t_map				*ft_free_map(t_map *map);
 void				ft_triple_atoi(char *str, int *a, int *b, int *c);
 int					ft_extract_path(char *str, t_map *map);
 int					ft_path_line(char *str);
-
-char				*ft_strtrim(char const *str, char const *except);
-
 
 #endif
