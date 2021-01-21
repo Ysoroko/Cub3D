@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/19 17:10:59 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/21 14:10:24 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 /*
 ** T_MAP
@@ -30,20 +31,32 @@ typedef struct	s_map
 	char			*west_path;
 	char			*east_path;
 	char			*sprite_path;
-	int				floor_red;
-	int				floor_green;
-	int				floor_blue;
-	int				ceiling_red;
-	int				ceiling_green;
-	int				ceiling_blue;
+	int				f_red;
+	int				f_green;
+	int				f_blue;
+	int				c_red;
+	int				c_green;
+	int				c_blue;
 	char			*map_str;
 }				t_map;
 
 /*
-** FT_MAP_FUNCTIONS
+** FT_MAP_FUNCTIONS.C
 */
 
-t_map	ft_new_t_map(void);
-int		ft_store_info_in_t_map(char *str, t_map *map);
+t_map				*ft_extract_map_info(char *file_name);
+
+/*
+** FT_MAP_UTILS.C
+*/
+
+t_map				*ft_new_t_map(void);
+t_map				*ft_free_map(t_map *map);
+void				ft_triple_atoi(char *str, int *a, int *b, int *c);
+int					ft_extract_path(char *str, t_map *map);
+int					ft_path_line(char *str);
+
+char				*ft_strtrim(char const *str, char const *except);
+
 
 #endif
