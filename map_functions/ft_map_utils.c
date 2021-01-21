@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:03:16 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/21 16:41:24 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/21 17:32:22 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,29 @@ t_map	*ft_new_t_map(void)
 ** in future
 */
 
-t_map	*ft_free_map(t_map *map)
+t_map	*ft_free_map(t_map **map, int error_number, char **str)
 {
-	if (map)
+	if (map && *map)
 	{
-		free(map->north_path);
-		map->north_path = 0;
-		free(map->south_path);
-		map->south_path = 0;
-		free(map->east_path);
-		map->east_path = 0;
-		free(map->west_path);
-		map->west_path = 0;
-		free(map->sprite_path);
-		map->sprite_path = 0;
-		free(map);
-		map = 0;
+		free((*map)->north_path);
+		(*map)->north_path = 0;
+		free((*map)->south_path);
+		(*map)->south_path = 0;
+		free((*map)->east_path);
+		(*map)->east_path = 0;
+		free((*map)->west_path);
+		(*map)->west_path = 0;
+		free((*map)->sprite_path);
+		(*map)->sprite_path = 0;
+		free(*map);
+		*map = 0;
+	}
+	if (error_number)
+		ft_print_related_error(error_number);
+	if (str && *str)
+	{
+		free(*str);
+		*str = 0;
 	}
 	return (0);
 }

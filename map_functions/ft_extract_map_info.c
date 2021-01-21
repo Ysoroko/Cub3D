@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 10:51:31 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/21 16:40:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/21 17:40:54 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,17 @@ t_map			*ft_extract_map_info(char *file_name)
 	char	*line;
 
 	if (!file_name || ((fd = open(file_name, O_RDONLY)) < 0))
-		return (0);
+		return (ft_print_related_error(1));
 	if (!(map = ft_new_t_map()))
-		return (0);
+		return (ft_print_related_error(2));
 	while ((gnl_ret = get_next_line(fd, &line)) > 0)
 	{
 		ft_store_info_in_t_map(line, map);
 	}
-	if (gnl_ret < 0 || close(fd) < 0)
-		return (ft_free_map(map));
+	if (gnl_ret < 0)
+		return (ft_free_map(&map, 3, &line));
+	if (close(fd) < 0)
+		return (ft_free_map(&map, 4, &line));
 	free(line);
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 14:54:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/21 16:31:36 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/21 17:40:33 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	ft_print_t_map(t_map *map)
 	printf("------------------------------------------------\n");
 	printf("		CONTENTS OF THE MAP				\n");
 	printf("------------------------------------------------\n");
+	if(!map)
+	{
+		printf("The resulting t_map is a NULL pointer\n");
+		return ;
+	}
 	printf("res_width: %d\n", map->res_width);
 	printf("res_height: %d\n", map->res_height);
 	printf("north_path: %s\n", map->north_path);
