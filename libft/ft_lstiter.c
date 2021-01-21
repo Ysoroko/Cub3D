@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_libft_extra_utils.c                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/19 16:38:17 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/19 16:39:31 by ysoroko          ###   ########.fr       */
+/*   Created: 2020/11/22 16:10:39 by ysoroko           #+#    #+#             */
+/*   Updated: 2020/11/23 17:31:47 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
-{
-	int		i;
-	int		j;
+#include "libft.h"
 
-	if (!str || !to_find)
-		return (0);
-	i = -1;
-	if (to_find[0] == '\0')
-		return (str);
-	while (str[++i] != '\0')
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	if (lst == 0 || f == 0)
+		return ;
+	while (lst != 0)
 	{
-		j = 0;
-		while (to_find[j] == str[i + j - 1] && str[i + j - 1] != 0
-				&& to_find[j] != 0)
-		{
-			j++;
-		}
-		if (to_find[j] == 0 && j != 0)
-			return (&(str[i - 1]));
+		f(lst->content);
+		lst = lst->next;
 	}
-	return (0);
 }
