@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/21 17:36:57 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 09:25:02 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,16 @@ int					ft_path_line(char *str);
 */
 
 t_map				*ft_print_related_error(int n);
+int					ft_already_defined(char *str, int a, int b, int c);
 
+/*
+** ERROR MACROS
+*/
 
-# define ERROR_1 "Error\n [1]: Couldn't open the \".cub\" file\n"
+# define ERROR_1 "Error\n [1]: Couldn't open the provided \".cub\" file\n"
 # define ERROR_2 "Error\n [2]: Couldn't allocate heap memory\n"
 # define ERROR_3 "Error\n [3]: Get_next_line returned -1\n"
-# define ERROR_4 "Error\n [4]: Couldn't close the \".cub\"\n"
+# define ERROR_4 "Error\n [4]: Couldn't close the \".cub\" file\n"
 
 
 #endif
