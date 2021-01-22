@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/22 14:51:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 16:51:53 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,19 @@ int					ft_path_line(char *str);
 
 t_map				*ft_print_related_error(int n);
 int					ft_defined(char *str, int a, int b, int c);
+int					ft_after_params(t_map *map);
 
 /*
 ** FT_MAP_ERRORS.C
 */
 
 int					ft_check_line_for_errors(char *str, t_map *map);
+
+/*
+** FT_MAP_LINES.C
+*/
+
+int					ft_check_map_line_for_errors(char *str, t_map *map);
 
 /*
 ** ERROR MACROS
@@ -92,6 +99,7 @@ int					ft_check_line_for_errors(char *str, t_map *map);
 # define FORBIDDEN_CHARS_ERROR 7
 # define WRONG_NUMBER_OF_INTS_ERROR 8
 # define RESOLUTION_ERROR 9
+# define MAP_LINE_ERROR 10
 
 # define ERROR_1 "Error\n [1] Couldn't open the provided \".cub\" file"
 # define ERROR_2 "Error\n [2] Couldn't allocate heap memory"
@@ -102,5 +110,6 @@ int					ft_check_line_for_errors(char *str, t_map *map);
 # define ERROR_7 "Error\n [7] A line in \".cub\" contains forbidden characters"
 # define ERROR_8 "Error\n [8] Wrong number of int arguments in line"
 # define ERROR_9 "Error\n [9] Wrong resolution width/height parameters"
+# define ERROR_10 "Error\n [10] Error encountered in a map line"
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/22 14:50:01 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/22 16:14:54 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,13 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					libft/ft_has_other_chars.c \
 					libft/ft_n_ints_in_line.c \
 					libft/ft_strchr.c \
+					libft/ft_n_chars_in_str.c \
 					\
 					map_functions/ft_map_utils.c \
 					map_functions/ft_extract_map_info.c \
 					map_functions/ft_errors_utils.c \
-					map_functions/ft_map_errors.c
+					map_functions/ft_map_errors.c \
+					map_functions/ft_map_lines.c
 
 OBJS			=	$(SRC:.c=.o)
 

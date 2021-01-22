@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 10:51:31 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/22 14:57:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 16:57:13 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** FT_EXTRACT_RGB
 ** This function is used when the line starts with 'F' or 'C'
 ** It extracts the related rgb data and stores it in the t_map structure
-** Returns 1
+** Returns 0
 */
 
 static int		ft_extract_rgb(char *str, t_map *map)
@@ -35,7 +35,7 @@ static int		ft_extract_rgb(char *str, t_map *map)
 ** This function is used when the first character of the line is 'R'.
 ** It extracts the resolution and stores it in the corresponding elements
 ** of the t_map argument
-** Returns 1
+** Returns 0
 */
 
 static int		ft_extract_resolution(char *str, t_map *map)
@@ -56,19 +56,26 @@ static int		ft_extract_resolution(char *str, t_map *map)
 static int		ft_store_info_in_t_map(char *str, t_map *map)
 {
 	int	error;
+	int after_params;
 
-	if ((error = ft_check_line_for_errors(str, map)) != 0)
-		return (error);
-	if (str[0] == 'R')
-		return (ft_extract_resolution(str, map));
-	if (ft_path_line(str))
-		return (ft_extract_path(str, map));
-	if (str[0] == 'F' || str[0] == 'C')
-		return (ft_extract_rgb(str, map));
-	//extract the map here
-	/*if (str[0])
-		return (WRONG_EMPTY_LINE_ERROR);
-	*/
+	after_params = ft_after_params(map);
+
+	if (!after_params)
+	{
+		if ((error = ft_check_line_for_errors(str, map)) != 0)
+			return (error);
+		if (str[0] == 'R')
+			return (ft_extract_resolution(str, map));
+		if (ft_path_line(str))
+			return (ft_extract_path(str, map));
+		if (str[0] == 'F' || str[0] == 'C')
+			return (ft_extract_rgb(str, map));
+	}
+	else if (after_params)
+	{
+		if ((error = ft_check_map_line_for_errors(str, map)) != 0)
+			return (error);
+	}
 	return (0);
 }
 
@@ -93,7 +100,6 @@ t_map			*ft_extract_map_info(char *file_name)
 		return (ft_print_related_error(MALLOC_ERROR));
 	while ((gnl_ret = get_next_line(fd, &line)) > 0)
 	{
-		//Adjust this to detect errors inside this function
 		if ((error = ft_store_info_in_t_map(line, map)) != 0)
 		{
 			close(fd);
