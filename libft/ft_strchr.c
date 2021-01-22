@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 09:40:09 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/11/25 16:05:47 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:52:00 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 char	*ft_strchr(const char *str, int c)
 {

@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_has_other_chars.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/22 15:00:08 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/22 14:52:19 by ysoroko          ###   ########.fr       */
+/*   Created: 2021/01/22 11:21:10 by ysoroko           #+#    #+#             */
+/*   Updated: 2021/01/22 14:46:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_has_other_chars(char *str, const char *allowed_charset)
 {
-	t_list *current;
+	int i;
 
-	if (lst == 0 || new == 0)
+	i = -1;
+	while (str[++i])
 	{
-		return ;
+		if (!ft_strchr(allowed_charset, str[i]))
+			return (1);
 	}
-	current = *lst;
-	if (current == 0)
-		*lst = new;
-	else
-	{
-		while (current->next != 0)
-		{
-			current = current->next;
-		}
-		current->next = new;
-		new->next = 0;
-	}
+	return (0);
 }

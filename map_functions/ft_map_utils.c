@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:03:16 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/21 17:32:22 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 10:46:12 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,7 @@ void	ft_triple_atoi(char *str, int *a, int *b, int *c)
 ** This function is applied when the first 1/2 characters of the line
 ** are "NO/SO/EA/WE/S"
 ** It extracts the path from the line and mallocs a copy of it.
-** Returns 0 if the malloc fails or the line is invalid
-** If multiple paths one after the other, the path will be overwritten
+** Returns 1 if the malloc fails or the line is invalid, 0 otherwise
 */
 
 int		ft_extract_path(char *str, t_map *map)
@@ -134,15 +133,15 @@ int		ft_extract_path(char *str, t_map *map)
 	while (str[i] == ' ')
 		i++;
 	if (str[0] == 'N' && str[1] == 'O')
-		return ((map->north_path = ft_strtrim(&(str[i]), " ")) != 0);
+		return ((map->north_path = ft_strtrim(&(str[i]), " ")) == 0);
 	if (str[0] == 'S' && str[1] == 'O')
-		return ((map->south_path = ft_strtrim(&(str[i]), " ")) != 0);
+		return ((map->south_path = ft_strtrim(&(str[i]), " ")) == 0);
 	if (str[0] == 'E' && str[1] == 'A')
-		return ((map->east_path = ft_strtrim(&(str[i]), " ")) != 0);
+		return ((map->east_path = ft_strtrim(&(str[i]), " ")) == 0);
 	if (str[0] == 'W' && str[1] == 'E')
-		return ((map->west_path = ft_strtrim(&(str[i]), " ")) != 0);
+		return ((map->west_path = ft_strtrim(&(str[i]), " ")) == 0);
 	if (str[0] == 'S' && str[1] != 'O')
-		return ((map->sprite_path = ft_strtrim(&(str[i]), " ")) != 0);
+		return ((map->sprite_path = ft_strtrim(&(str[i]), " ")) == 0);
 	return (0);
 }
 

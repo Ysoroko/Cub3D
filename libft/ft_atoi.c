@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 11:23:49 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/11/30 18:18:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:48:02 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 static int		my_isspace(char c)
 {

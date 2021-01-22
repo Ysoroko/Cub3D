@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 13:04:42 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/11/22 13:19:45 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:52:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 char	*ft_strjoin(char const *pref, char const *suff)
 {

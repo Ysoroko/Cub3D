@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 09:39:58 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/11/30 18:36:36 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:47:33 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {

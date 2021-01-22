@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 09:38:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/11/30 18:36:37 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:52:04 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {

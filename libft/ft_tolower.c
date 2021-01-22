@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 09:39:06 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/11/25 16:05:52 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:52:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_tolower(int c)
 {

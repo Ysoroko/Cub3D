@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 13:11:12 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/11/24 13:34:52 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:52:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 static char	*ft_strcpy(char *dest, const char *src)
 {

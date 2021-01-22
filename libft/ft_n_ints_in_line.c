@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_n_ints_in_line.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/22 15:00:08 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/22 14:52:19 by ysoroko          ###   ########.fr       */
+/*   Created: 2021/01/22 14:48:52 by ysoroko           #+#    #+#             */
+/*   Updated: 2021/01/22 14:49:02 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list *current;
+/*
+** FT_N_INTS_IN_LINE
+** Returns the number of separate integers represented with digits in str,
+** separated by anything but a digit
+*/
 
-	if (lst == 0 || new == 0)
+int		ft_n_ints_in_line(char *str)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (str[i])
 	{
-		return ;
+		while (str[i] && !ft_isdigit(str[i]))
+			i++;
+		if (ft_isdigit(str[i]))
+			count++;
+		while (str[i] && ft_isdigit(str[i]))
+			i++;
 	}
-	current = *lst;
-	if (current == 0)
-		*lst = new;
-	else
-	{
-		while (current->next != 0)
-		{
-			current = current->next;
-		}
-		current->next = new;
-		new->next = 0;
-	}
+	return (count);
 }

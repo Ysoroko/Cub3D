@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 13:42:23 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/11/23 13:17:48 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:51:51 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 static void			ft_putnbr_base(unsigned int nbr, char *str, int i)
 {

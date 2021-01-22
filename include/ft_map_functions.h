@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/22 09:25:02 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:51:35 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+
+/*
+** COLOR MACROS
+*/
+
+# define COLOR_RED "\x1b[31m"
+# define BOLD_RED "\033[1m\033[31m"
+# define COLOR_RESET "\x1b[0m"
+
 
 /*
 ** T_MAP
@@ -58,20 +67,40 @@ int					ft_extract_path(char *str, t_map *map);
 int					ft_path_line(char *str);
 
 /*
-** FT_MAP_ERRORS.C
+** FT_ERRORS_UTILS.C
 */
 
 t_map				*ft_print_related_error(int n);
-int					ft_already_defined(char *str, int a, int b, int c);
+int					ft_defined(char *str, int a, int b, int c);
+
+/*
+** FT_MAP_ERRORS.C
+*/
+
+int					ft_check_line_for_errors(char *str, t_map *map);
 
 /*
 ** ERROR MACROS
 */
 
-# define ERROR_1 "Error\n [1]: Couldn't open the provided \".cub\" file\n"
-# define ERROR_2 "Error\n [2]: Couldn't allocate heap memory\n"
-# define ERROR_3 "Error\n [3]: Get_next_line returned -1\n"
-# define ERROR_4 "Error\n [4]: Couldn't close the \".cub\" file\n"
+# define OPEN_ERROR 1
+# define MALLOC_ERROR 2
+# define GNL_OR_CLOSE_ERROR 3
+# define WRONG_EMPTY_LINE_ERROR 4
+# define ALREADY_DEFINED_ERROR 5
+# define EMPTY_LINE_IN_MAP_ERROR 6
+# define FORBIDDEN_CHARS_ERROR 7
+# define WRONG_NUMBER_OF_INTS_ERROR 8
+# define RESOLUTION_ERROR 9
 
+# define ERROR_1 "Error\n [1] Couldn't open the provided \".cub\" file"
+# define ERROR_2 "Error\n [2] Couldn't allocate heap memory"
+# define ERROR_3 "Error\n [3] GNL returned -1 / Couldn't close the \".cub\""
+# define ERROR_4 "Error\n [4] Lines between params in \".cub\" must be empty"
+# define ERROR_5 "Error\n [5] Multiple lines define same parameter in \".cub\""
+# define ERROR_6 "Error\n [6] Empty line in the middle of a map in \".cub\""
+# define ERROR_7 "Error\n [7] A line in \".cub\" contains forbidden characters"
+# define ERROR_8 "Error\n [8] Wrong number of int arguments in line"
+# define ERROR_9 "Error\n [9] Wrong resolution width/height parameters"
 
 #endif

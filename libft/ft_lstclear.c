@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 15:43:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/11/23 17:34:34 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:52:16 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {

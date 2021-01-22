@@ -6,12 +6,12 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 14:54:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/21 17:40:33 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:54:37 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/ft_map_functions.h"
-#include <stdio.h>
+#include "./include/libft.h"
 
 void	ft_print_t_map(t_map *map)
 {
@@ -41,7 +41,6 @@ void	ft_print_t_map(t_map *map)
 	printf("------------------------------------------------\n");
 	printf ("\n\n\n\n\n");
 }
-
 
 int main(void)
 {

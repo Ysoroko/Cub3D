@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 09:37:38 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/11/30 18:36:42 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/22 14:47:20 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 void	ft_bzero(void *str, size_t n)
 {
