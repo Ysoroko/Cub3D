@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:53:13 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 15:40:47 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 18:28:52 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,6 @@ int			ft_check_map_line_for_errors(char *line, t_map *map)
 		ft_invalid_first_char_after_space(line))
 		return (NO_WALLS_ERROR);
 	if (ft_multiple_player_chars_in_line(line))
-		return (MAP_LINE_ERROR);
+		return (MULTIPLE_PLAYERS_ERROR);
 	return (0);
 }

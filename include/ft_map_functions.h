@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 17:47:34 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 18:21:46 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,12 @@ int					ft_process_map_str(t_map *map);
 t_map				*ft_free_map(t_map **map, int error, char **str, int *fd);
 char				**ft_free_str_tab(char ***str_tab);
 
+/*
+** FT_CHECK_STR_TAB_ERRORS
+*/
+
+int					ft_check_str_tab_errors(char **str_tab);
+
 
 /*
 ** ERROR MACROS
@@ -115,6 +121,9 @@ char				**ft_free_str_tab(char ***str_tab);
 # define RESOLUTION_ERROR 8
 # define MAP_LINE_ERROR 9
 # define NO_WALLS_ERROR 10
+# define INCOMPLETE_ERROR 11
+# define MULTIPLE_PLAYERS_ERROR 12
+# define NO_PLAYER_ERROR 13
 
 # define ERROR_1 "Error\n [1] Couldn't open the provided \".cub\" file"
 # define ERROR_2 "Error\n [2] Couldn't allocate heap memory"
@@ -126,5 +135,9 @@ char				**ft_free_str_tab(char ***str_tab);
 # define ERROR_8 "Error\n [8] Wrong resolution width/height parameters"
 # define ERROR_9 "Error\n [9] Error encountered in a map line"
 # define ERROR_10 "Error\n [10] The map is not properly surrounded by walls"
+# define ERROR_11 "Error\n [11] The \".cub\" file appears to be incomplete"
+# define ERROR_12 "Error\n [12] Player has multiple positions in \".cub\" file"
+# define ERROR_13 "Error\n [13] No player position found in \".cub\" file"
+
 
 #endif

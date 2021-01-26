@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/26 17:53:15 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/26 18:27:19 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					libft/ft_str_tab_len.c \
 					libft/ft_calloc.c \
 					libft/ft_bzero.c \
+					libft/ft_n_chars_in_str_tab.c \
 					\
 					extract_t_map/ft_errors_utils.c \
 					extract_t_map/ft_extract_t_map.c \
@@ -46,7 +47,8 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					extract_t_map/ft_map_to_list.c \
 					extract_t_map/ft_parameters_errors.c \
 					extract_t_map/ft_parameters_utils.c \
-					extract_t_map/ft_free_and_new_functions.c
+					extract_t_map/ft_free_and_new_functions.c \
+					extract_t_map/ft_check_str_tab_errors.c \
 
 OBJS			=	$(SRC:.c=.o)
 

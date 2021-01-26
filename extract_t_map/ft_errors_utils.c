@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 11:11:52 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 14:49:36 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 18:22:04 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,34 @@
 #include "../include/libft.h"
 
 /*
+** FT_PRINT_RELATED_ERROR_TWO
+*/
+
+static t_map	*ft_print_related_error_two(int n)
+{
+	printf(BOLD_RED);
+	if (n == 10)
+		printf("%s\n", ERROR_10);
+	else if (n == 11)
+		printf("%s\n", ERROR_11);
+	else if (n == 12)
+		printf("%s\n", ERROR_12);
+	else if (n == 13)
+		printf("%s\n", ERROR_13);
+	printf(COLOR_RESET);
+	return (0);
+}
+
+/*
 ** FT_PRINT_RELATED_ERROR
 ** This function will take an error number as an argument and print the related
 ** error string defined in "ft_map_functions.h" header
 */
 
-t_map	*ft_print_related_error(int n)
+t_map			*ft_print_related_error(int n)
 {
+	if (n > 9)
+		return (ft_print_related_error_two(n));
 	printf(BOLD_RED);
 	if (n == 1)
 		printf("%s\n", ERROR_1);
@@ -40,8 +61,6 @@ t_map	*ft_print_related_error(int n)
 		printf("%s\n", ERROR_8);
 	else if (n == 9)
 		printf("%s\n", ERROR_9);
-	else if (n == 10)
-		printf("%s\n", ERROR_10);
 	printf(COLOR_RESET);
 	return (0);
 }
@@ -54,7 +73,7 @@ t_map	*ft_print_related_error(int n)
 ** It will return 1 if any is defined, 0 otherwise
 */
 
-int		ft_defined(char *str, int a, int b, int c)
+int				ft_defined(char *str, int a, int b, int c)
 {
 	if (str || a >= 0 || b >= 0 || c >= 0)
 		return (ALREADY_DEFINED_ERROR);
@@ -71,7 +90,7 @@ int		ft_defined(char *str, int a, int b, int c)
 ** 0 if it's not the case
 */
 
-int		ft_after_params(t_map *map)
+int				ft_after_params(t_map *map)
 {
 	if (map->res_width >= 0 && map->res_height >= 0
 		&& map->north_path && map->south_path
@@ -89,7 +108,7 @@ int		ft_after_params(t_map *map)
 ** Checks if the line contains "N/S/W/E" chars and returns 1 if so, 0 otherwise
 */
 
-int		ft_line_has_player_position(char *line)
+int				ft_line_has_player_position(char *line)
 {
 	if (ft_strchr(line, 'S') || ft_strchr(line, 'N') || ft_strchr(line, 'E')
 		|| ft_strchr(line, 'W'))

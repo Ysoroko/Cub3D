@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:08:41 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 17:54:16 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 18:26:40 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,11 @@ static char	**ft_transform_str_tab(char **str_tab)
 
 int			ft_process_map_str(t_map *map)
 {
-	char **temp;
+	char	**temp;
+	int		error;
 
+	if (!ft_after_params(map) || !map->map_str)
+		return (INCOMPLETE_ERROR);
 	if (!(temp = ft_split(map->map_str, '|')))
 		return (MALLOC_ERROR);
 	if (!(map->map_str_tab = ft_transform_str_tab(temp)))
@@ -97,5 +100,7 @@ int			ft_process_map_str(t_map *map)
 		return (MALLOC_ERROR);
 	}
 	ft_free_str_tab(&temp);
+	if ((error = ft_check_str_tab_errors(map->map_str_tab)) != 0)
+		return (error);
 	return (0);
 }

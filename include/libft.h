@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 15:32:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 17:31:46 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 18:06:38 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void				*ft_memcpy(void *dest, const void *src, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memset(void *str, int c, size_t len);
 int					ft_n_chars_in_str(char *str, char c);
+int					ft_n_chars_in_str_tab(char **str_tab, char c);
 int					ft_n_ints_in_line(char *str);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char *s, int fd);
