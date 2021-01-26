@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 09:48:32 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/22 14:52:01 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 16:01:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,6 @@ static char		**ft_malloc(char const *str, char sep)
 
 	len = ft_wordcount(str, sep);
 	tab_str = malloc(sizeof(*tab_str) * (len + 1));
-	if (tab_str == 0)
-	{
-		return (0);
-	}
 	return (tab_str);
 }
 

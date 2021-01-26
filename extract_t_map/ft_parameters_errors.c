@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 10:53:58 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 12:32:46 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 14:51:58 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_check_resolution_errors(char *str, t_map *map)
 	int	res_width;
 	int	res_height;
 
-	if (ft_defined(0, map->res_width, map->res_height, 0))
+	if (ft_defined(0, map->res_width, map->res_height, -1))
 		return (ALREADY_DEFINED_ERROR);
 	if (ft_has_other_chars(str, "R 0123456789\t"))
 		return (FORBIDDEN_CHARS_ERROR);
@@ -54,15 +54,15 @@ static int	ft_check_rgb_errors(char *str, t_map *map)
 static int	ft_check_path_errors(char *str, t_map *map)
 {
 	if (str[0] == 'N' && str[1] == 'O')
-		return (ft_defined(map->north_path, 0, 0, 0));
+		return (ft_defined(map->north_path, -1, -1, -1));
 	if (str[0] == 'S' && str[1] == 'O')
-		return (ft_defined(map->south_path, 0, 0, 0));
+		return (ft_defined(map->south_path, -1, -1, -1));
 	if (str[0] == 'E' && str[1] == 'A')
-		return (ft_defined(map->east_path, 0, 0, 0));
+		return (ft_defined(map->east_path, -1, -1, -1));
 	if (str[0] == 'W' && str[1] == 'E')
-		return (ft_defined(map->west_path, 0, 0, 0));
+		return (ft_defined(map->west_path, -1, -1, -1));
 	if (str[0] == 'S' && str[1] != 'O')
-		return (ft_defined(map->sprite_path, 0, 0, 0));
+		return (ft_defined(map->sprite_path, -1, -1, -1));
 	return (0);
 }
 
@@ -78,8 +78,5 @@ int			ft_check_line_for_errors(char *str, t_map *map)
 		return (ft_check_path_errors(str, map));
 	if (str[0] == 'C' || str[0] == 'F')
 		return (ft_check_rgb_errors(str, map));
-	/*if (!(map->map_str) && !ft_is_a_map_line(str))
-		return (ft_check_empty_line_errors(str));
-		*/
 	return (0);
 }

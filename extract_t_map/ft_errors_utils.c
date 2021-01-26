@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 11:11:52 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 12:40:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 14:49:36 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_map	*ft_print_related_error(int n)
 
 int		ft_defined(char *str, int a, int b, int c)
 {
-	if (str || a || b || c)
+	if (str || a >= 0 || b >= 0 || c >= 0)
 		return (ALREADY_DEFINED_ERROR);
 	return (0);
 }
@@ -73,10 +73,11 @@ int		ft_defined(char *str, int a, int b, int c)
 
 int		ft_after_params(t_map *map)
 {
-	if (map->res_width && map->res_height && map->north_path && map->south_path
+	if (map->res_width >= 0 && map->res_height >= 0
+		&& map->north_path && map->south_path
 		&& map->east_path && map->west_path && map->sprite_path
-		&& (map->f_red || map->f_green || map->f_blue)
-		&& (map->c_red || map->c_green || map->c_blue))
+		&& map->f_red >= 0 && map->f_green >= 0 && map->f_blue >= 0
+		&& map->c_red >= 0 && map->c_green >= 0 && map->c_blue >= 0)
 	{
 		return (1);
 	}

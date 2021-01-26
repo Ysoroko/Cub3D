@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/26 12:13:35 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/26 15:47:01 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,21 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					libft/ft_n_ints_in_line.c \
 					libft/ft_strchr.c \
 					libft/ft_n_chars_in_str.c \
+					libft/ft_strdup.c \
+					libft/ft_strjoin.c \
+					libft/ft_split.c \
+					libft/ft_putchar_fd.c \
+					libft/ft_putstr_fd.c \
+					libft/ft_putendl_fd.c \
+					libft/ft_putstr_tab.c \
 					\
-					extract_t_map/ft_parameters_utils.c \
-					extract_t_map/ft_extract_t_map.c \
 					extract_t_map/ft_errors_utils.c \
-					extract_t_map/ft_map_utils.c \
-					extract_t_map/ft_parameters_errors.c
+					extract_t_map/ft_extract_t_map.c \
+					extract_t_map/ft_map_errors_utils.c \
+					extract_t_map/ft_map_to_list.c \
+					extract_t_map/ft_parameters_errors.c \
+					extract_t_map/ft_parameters_utils.c \
+					extract_t_map/ft_free_and_new_functions.c
 
 OBJS			=	$(SRC:.c=.o)
 

@@ -6,17 +6,17 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 12:50:13 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 15:48:48 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_FUNCTIONS_H
-# define MAP_FUNCTIONS_H
+#ifndef FT_MAP_FUNCTIONS_H
+# define FT_MAP_FUNCTIONS_H
 
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 /*
 ** COLOR MACROS
@@ -26,45 +26,50 @@
 # define BOLD_RED "\033[1m\033[31m"
 # define COLOR_RESET "\x1b[0m"
 
-
 /*
 ** T_MAP
 ** This structure is used to store all the data provided by the .cub map file
 */
 
-typedef struct	s_map
+typedef struct		s_map
 {
-	int				res_width;
-	int				res_height;
-	char			*north_path;
-	char			*south_path;
-	char			*west_path;
-	char			*east_path;
-	char			*sprite_path;
-	int				f_red;
-	int				f_green;
-	int				f_blue;
-	int				c_red;
-	int				c_green;
-	int				c_blue;
-	char			*map_str;
-}				t_map;
+	int		res_width;
+	int		res_height;
+	char	*north_path;
+	char	*south_path;
+	char	*west_path;
+	char	*east_path;
+	char	*sprite_path;
+	int		f_red;
+	int		f_green;
+	int		f_blue;
+	int		c_red;
+	int		c_green;
+	int		c_blue;
+	char	*map_str;
+	char	**map_str_tab;
+}					t_map;
 
 /*
-** FT_MAP_FUNCTIONS.C
+** FT_EXTRACT_T_MAP.C
 */
 
 t_map				*ft_extract_map_info(char *file_name);
 
 /*
-** FT_MAP_UTILS.C
+** FT_PARAMETERS_UTILS.C
 */
 
 t_map				*ft_new_t_map(void);
-t_map				*ft_free_map(t_map **map, int error_number, char **str);
 void				ft_triple_atoi(char *str, int *a, int *b, int *c);
 int					ft_extract_path(char *str, t_map *map);
 int					ft_path_line(char *str);
+
+/*
+** FT_PARAMETERS_ERRORS.C
+*/
+
+int					ft_check_line_for_errors(char *str, t_map *map);
 
 /*
 ** FT_ERRORS_UTILS.C
@@ -75,16 +80,24 @@ int					ft_defined(char *str, int a, int b, int c);
 int					ft_after_params(t_map *map);
 
 /*
-** FT_MAP_ERRORS.C
-*/
-
-int					ft_check_line_for_errors(char *str, t_map *map);
-
-/*
-** FT_MAP_LINES.C
+** FT_MAP_ERRORS_UTILS.C
 */
 
 int					ft_check_map_line_for_errors(char *str, t_map *map);
+
+
+/*
+** FT_MAP_TO_LIST.C
+*/
+
+int					ft_extract_map_from_line(char *line, t_map *map);
+
+/*
+** FT_FREE_AND_NEW_FUNCTIONS.C
+*/
+
+t_map				*ft_free_map(t_map **map, int error_number, char **str);
+
 
 /*
 ** ERROR MACROS

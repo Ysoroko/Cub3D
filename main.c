@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 14:54:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 11:10:39 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 16:01:47 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ void	ft_print_t_map(t_map *map)
 	printf("c_green: %d\n", map->c_green);
 	printf("c_blue: %d\n", map->c_blue);
 	printf("map_str: %s\n", map->map_str);
+	printf ("\n\n");
+	ft_putstr_tab(map->map_str_tab, 1);
+	printf ("\n\n");
 	printf("------------------------------------------------\n");
 	printf ("\n\n\n\n\n");
 }
@@ -45,13 +48,15 @@ void	ft_print_t_map(t_map *map)
 int main(void)
 {
 	t_map *map;
-
-	//while (1)
-	//{
+	
 	map = ft_extract_map_info("test_map.cub");
 	ft_print_t_map(map);
 	ft_free_map(&map, 0, 0);
-	//}
+	while (1)
+	{
+		
+		
+	}
 	
 	return (0);
 }
