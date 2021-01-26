@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:40:01 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 16:04:49 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 16:43:41 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,13 @@ static void		ft_free_str_tab(char ***str_tab)
 ** It always returns a NULL t_map pointer
 */
 
-t_map	*ft_free_map(t_map **map, int error_number, char **str)
+t_map	*ft_free_map(t_map **map, int error, char **str, int *fd)
 {
+	if (fd && *fd >= 0)
+	{
+		if (close(*fd) < 0)
+			error = GNL_OR_CLOSE_ERROR;
+	}
 	if (map && *map)
 	{
 		ft_free_str(&((*map)->north_path));
@@ -102,8 +107,8 @@ t_map	*ft_free_map(t_map **map, int error_number, char **str)
 		free(*map);
 		*map = 0;
 	}
-	if (error_number)
-		ft_print_related_error(error_number);
+	if (error)
+		ft_print_related_error(error);
 	if (str)
 		ft_free_str(str);
 	return (0);

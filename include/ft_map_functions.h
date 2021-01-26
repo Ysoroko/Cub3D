@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 15:48:48 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 16:24:23 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct		s_map
 ** FT_EXTRACT_T_MAP.C
 */
 
-t_map				*ft_extract_map_info(char *file_name);
+t_map				*ft_extract_t_map(char *file_name);
 
 /*
 ** FT_PARAMETERS_UTILS.C
@@ -91,12 +91,13 @@ int					ft_check_map_line_for_errors(char *str, t_map *map);
 */
 
 int					ft_extract_map_from_line(char *line, t_map *map);
+int					ft_process_map_str(t_map *map);
 
 /*
 ** FT_FREE_AND_NEW_FUNCTIONS.C
 */
 
-t_map				*ft_free_map(t_map **map, int error_number, char **str);
+t_map				*ft_free_map(t_map **map, int error, char **str, int *fd);
 
 
 /*

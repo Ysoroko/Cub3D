@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 10:51:31 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 15:50:16 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 16:44:06 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ static int		ft_store_info_in_t_map(char *str, t_map *map)
 }
 
 /*
-** FT_EXTRACT_MAP_INFO
+** FT_EXTRACT_T_MAP
 ** This function is the central hub of translating the .cub map file in a t_map
 ** It returns the results of this translation or a NULL pointer
 ** if an error was encountered
 */
 
-t_map			*ft_extract_map_info(char *file_name)
+t_map			*ft_extract_t_map(char *file_name)
 {
 	int		fd;
 	int		gnl_ret;
@@ -98,19 +98,18 @@ t_map			*ft_extract_map_info(char *file_name)
 	if (!file_name || ((fd = open(file_name, O_RDONLY)) < 0))
 		return (ft_print_related_error(OPEN_ERROR));
 	if (!(map = ft_new_t_map()))
-		return (ft_print_related_error(MALLOC_ERROR));
+		return (ft_free_map(0, MALLOC_ERROR, 0, &fd));
 	while ((gnl_ret = get_next_line(fd, &line)) >= 0)
 	{
 		if ((error = ft_store_info_in_t_map(line, map)) != 0)
-		{
-			close(fd);
-			return (ft_free_map(&map, error, &line));
-		}
+			return (ft_free_map(&map, error, &line, &fd));
 		free(line);
 		if (!gnl_ret)
 			break ;
 	}
-	if (close(fd) < 0 || gnl_ret < 0 || !(map->map_str_tab = ft_split(map->map_str, '|')))
-		return (ft_free_map(&map, GNL_OR_CLOSE_ERROR, &line));
+	if (close(fd) < 0 || gnl_ret < 0)
+		return (ft_free_map(&map, GNL_OR_CLOSE_ERROR, &line, 0));
+	if ((error = ft_process_map_str(map)) != 0)
+		return (ft_free_map(&map, error, &line, 0));
 	return (map);
 }
