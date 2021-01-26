@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 10:51:31 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/22 16:57:13 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 10:10:51 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ t_map			*ft_extract_map_info(char *file_name)
 			close(fd);
 			return (ft_free_map(&map, error, &line));
 		}
+		free(line);
 	}
 	if (close(fd) < 0 || gnl_ret < 0)
 		return (ft_free_map(&map, GNL_OR_CLOSE_ERROR, &line));
