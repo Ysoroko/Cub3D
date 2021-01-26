@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/26 15:47:01 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/26 17:53:15 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,11 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					libft/ft_putstr_fd.c \
 					libft/ft_putendl_fd.c \
 					libft/ft_putstr_tab.c \
+					libft/ft_longest_strlen_in_strtab.c \
+					libft/ft_char_alloc.c \
+					libft/ft_str_tab_len.c \
+					libft/ft_calloc.c \
+					libft/ft_bzero.c \
 					\
 					extract_t_map/ft_errors_utils.c \
 					extract_t_map/ft_extract_t_map.c \

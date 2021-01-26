@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:40:01 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 16:43:41 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 17:52:46 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ void		ft_free_str(char **str)
 ** Has no return value
 */
 
-static void		ft_free_str_tab(char ***str_tab)
+char	**ft_free_str_tab(char ***str_tab)
 {
 	int	i;
 
 	i = -1;
 	if (!(*str_tab))
-		return ;
+		return (0);
 	while ((*str_tab)[++i])
 	{
 		free((*str_tab)[i]);
@@ -79,6 +79,7 @@ static void		ft_free_str_tab(char ***str_tab)
 	}
 	free(*str_tab);
 	*str_tab = 0;
+	return (0);
 }
 
 /*

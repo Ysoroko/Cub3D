@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 14:54:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 16:44:11 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 17:55:04 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int main(void)
 {
 	t_map *map;
 	
-	map = ft_extract_t_map("test_map.cub");
+	map = ft_extract_t_map("map3.cub");
 	ft_print_t_map(map);
 	ft_free_map(&map, 0, 0, 0);
 	/*while (1)

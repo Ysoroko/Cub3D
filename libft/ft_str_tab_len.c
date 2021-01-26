@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_tab.c                                    :+:      :+:    :+:   */
+/*   ft_str_tab_len.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 15:16:11 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 17:04:48 by ysoroko          ###   ########.fr       */
+/*   Created: 2021/01/26 17:30:28 by ysoroko           #+#    #+#             */
+/*   Updated: 2021/01/26 17:31:29 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-void	ft_putstr_tab(char **str_tab, int fd)
+int	ft_str_tab_len(char **str_tab)
 {
-	int	i;
+	int i;
 
+	i = 0;
 	if (!str_tab)
-	{
-		ft_putstr_fd("(null) str_tab\n", fd);
-		return ;
-	}
-	i = -1;
-	while (str_tab[++i])
-		ft_putendl_fd(str_tab[i], fd);
+		return (0);
+	while (str_tab[i])
+		i++;
+	return (i);
 }

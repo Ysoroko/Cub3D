@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 16:24:23 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 17:47:34 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int					ft_process_map_str(t_map *map);
 */
 
 t_map				*ft_free_map(t_map **map, int error, char **str, int *fd);
+char				**ft_free_str_tab(char ***str_tab);
 
 
 /*
