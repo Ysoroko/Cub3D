@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 14:54:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 10:11:27 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/26 11:10:39 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_print_t_map(t_map *map)
 	printf("------------------------------------------------\n");
 	if(!map)
 	{
-		printf("The resulting t_map is a NULL pointer\n");
+		printf("The resulting t_map is a NULL pointer\n\n");
 		return ;
 	}
 	printf("res_width: %d\n", map->res_width);
@@ -46,9 +46,12 @@ int main(void)
 {
 	t_map *map;
 
+	//while (1)
+	//{
 	map = ft_extract_map_info("test_map.cub");
 	ft_print_t_map(map);
 	ft_free_map(&map, 0, 0);
+	//}
 	
 	return (0);
 }

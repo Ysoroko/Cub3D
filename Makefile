@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/22 16:14:54 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/26 12:13:35 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,11 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					libft/ft_strchr.c \
 					libft/ft_n_chars_in_str.c \
 					\
-					map_functions/ft_map_utils.c \
-					map_functions/ft_extract_map_info.c \
-					map_functions/ft_errors_utils.c \
-					map_functions/ft_map_errors.c \
-					map_functions/ft_map_lines.c
+					extract_t_map/ft_parameters_utils.c \
+					extract_t_map/ft_extract_t_map.c \
+					extract_t_map/ft_errors_utils.c \
+					extract_t_map/ft_map_utils.c \
+					extract_t_map/ft_parameters_errors.c
 
 OBJS			=	$(SRC:.c=.o)
 
@@ -53,6 +53,9 @@ re:			fclean all
 
 run:		
 			$(CC) $(CFLAGS) $(SRC) main.c $(INCLUDE) -o $(NAME) && ./$(NAME)
+
+frun:
+			$(CC) $(SRC) main.c $(INCLUDE) -o $(NAME) && ./$(NAME)
 
 aclean:
 			rm -f $(NAME)
