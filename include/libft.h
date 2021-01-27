@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 15:32:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 18:06:38 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 10:52:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char				*ft_strchr(const char *str, int c);
 char				*ft_strdup(const char *src);
 char				*ft_strjoin(char const *pref, char const *suff);
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
+int					ft_strlcmp(char *s1, char *s2);
 size_t				ft_strlcpy(char *dest, const char *src, size_t dstsize);
 size_t				ft_strlen(const char *str);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
@@ -75,5 +76,6 @@ char				*ft_strtrim(char const *str, char const *except);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+int					ft_wrong_extension(char *file_name, char *expected_extension);
 
 #endif

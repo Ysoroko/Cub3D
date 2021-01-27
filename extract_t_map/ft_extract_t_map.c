@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 10:51:31 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 16:44:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 11:24:50 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ t_map			*ft_extract_t_map(char *file_name)
 	t_map	*map;
 	char	*line;
 
-	if (!file_name || ((fd = open(file_name, O_RDONLY)) < 0))
+	if (!file_name || ((fd = open(file_name, O_RDONLY)) < 0)
+		|| ft_wrong_extension(file_name, "cub"))
 		return (ft_print_related_error(OPEN_ERROR));
 	if (!(map = ft_new_t_map()))
 		return (ft_free_map(0, MALLOC_ERROR, 0, &fd));
@@ -108,8 +109,8 @@ t_map			*ft_extract_t_map(char *file_name)
 			break ;
 	}
 	if (close(fd) < 0 || gnl_ret < 0)
-		return (ft_free_map(&map, GNL_OR_CLOSE_ERROR, &line, 0));
+		return (ft_free_map(&map, GNL_OR_CLOSE_ERROR, 0, 0));
 	if ((error = ft_process_map_str(map)) != 0)
-		return (ft_free_map(&map, error, &line, 0));
+		return (ft_free_map(&map, error, 0, 0));
 	return (map);
 }

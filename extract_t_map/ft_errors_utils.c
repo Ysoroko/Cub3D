@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 11:11:52 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 18:22:04 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 10:59:20 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static t_map	*ft_print_related_error_two(int n)
 {
 	printf(BOLD_RED);
 	if (n == 10)
-		printf("%s\n", ERROR_10);
+		printf("Error\n %s\n", ERROR_10);
 	else if (n == 11)
-		printf("%s\n", ERROR_11);
+		printf("Error\n %s\n", ERROR_11);
 	else if (n == 12)
-		printf("%s\n", ERROR_12);
+		printf("Error\n %s\n", ERROR_12);
 	else if (n == 13)
-		printf("%s\n", ERROR_13);
+		printf("Error\n %s\n", ERROR_13);
 	printf(COLOR_RESET);
 	return (0);
 }
@@ -44,23 +44,23 @@ t_map			*ft_print_related_error(int n)
 		return (ft_print_related_error_two(n));
 	printf(BOLD_RED);
 	if (n == 1)
-		printf("%s\n", ERROR_1);
+		printf("Error\n %s\n", ERROR_1);
 	else if (n == 2)
-		printf("%s\n", ERROR_2);
+		printf("Error\n %s\n", ERROR_2);
 	else if (n == 3)
-		printf("%s\n", ERROR_3);
+		printf("Error\n %s\n", ERROR_3);
 	else if (n == 4)
-		printf("%s\n", ERROR_4);
+		printf("Error\n %s\n", ERROR_4);
 	else if (n == 5)
-		printf("%s\n", ERROR_5);
+		printf("Error\n %s\n", ERROR_5);
 	else if (n == 6)
-		printf("%s\n", ERROR_6);
+		printf("Error\n %s\n", ERROR_6);
 	else if (n == 7)
-		printf("%s\n", ERROR_7);
+		printf("Error\n %s\n", ERROR_7);
 	else if (n == 8)
-		printf("%s\n", ERROR_8);
+		printf("Error\n %s\n", ERROR_8);
 	else if (n == 9)
-		printf("%s\n", ERROR_9);
+		printf("Error\n %s\n", ERROR_9);
 	printf(COLOR_RESET);
 	return (0);
 }

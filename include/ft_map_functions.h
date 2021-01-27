@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 18:21:46 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 11:26:46 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,19 +125,18 @@ int					ft_check_str_tab_errors(char **str_tab);
 # define MULTIPLE_PLAYERS_ERROR 12
 # define NO_PLAYER_ERROR 13
 
-# define ERROR_1 "Error\n [1] Couldn't open the provided \".cub\" file"
-# define ERROR_2 "Error\n [2] Couldn't allocate heap memory"
-# define ERROR_3 "Error\n [3] GNL returned -1 / Couldn't close the \".cub\""
-# define ERROR_4 "Error\n [4] Lines between params in \".cub\" must be empty"
-# define ERROR_5 "Error\n [5] Multiple lines define same parameter in \".cub\""
-# define ERROR_6 "Error\n [6] A line in \".cub\" contains forbidden characters"
-# define ERROR_7 "Error\n [7] Wrong number of int arguments in line"
-# define ERROR_8 "Error\n [8] Wrong resolution width/height parameters"
-# define ERROR_9 "Error\n [9] Error encountered in a map line"
-# define ERROR_10 "Error\n [10] The map is not properly surrounded by walls"
-# define ERROR_11 "Error\n [11] The \".cub\" file appears to be incomplete"
-# define ERROR_12 "Error\n [12] Player has multiple positions in \".cub\" file"
-# define ERROR_13 "Error\n [13] No player position found in \".cub\" file"
-
+# define ERROR_1 "[1] Couldn't open the given file. Check the name/extension"
+# define ERROR_2 "[2] Couldn't allocate heap memory/malloc failure"
+# define ERROR_3 "[3] GNL returned -1 / Couldn't close the \".cub\" file"
+# define ERROR_4 "[4] Lines between parameters in \".cub\" must be empty"
+# define ERROR_5 "[5] Multiple lines define same parameter in \".cub\""
+# define ERROR_6 "[6] A line in \".cub\" contains forbidden characters"
+# define ERROR_7 "[7] Wrong number of int arguments in line"
+# define ERROR_8 "[8] Wrong resolution width/height parameters"
+# define ERROR_9 "[9] Error encountered in a map line"
+# define ERROR_10 "[10] The map is not properly surrounded by walls"
+# define ERROR_11 "[11] The \".cub\" file appears to be incomplete"
+# define ERROR_12 "[12] Player has multiple positions in \".cub\" file"
+# define ERROR_13 "[13] No player position found in \".cub\" file"
 
 #endif
