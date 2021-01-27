@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 18:16:33 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 14:58:36 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 16:43:11 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,6 @@
 
 static int	ft_check_surroundings(char **str_tab, int i, int j)
 {
-	int add_i;
-	int add_j;
-	int sub_i;
-	int sub_j;
-
-	add_i = 1;
-	add_j = add_i;
-	sub_i = add_i;
-	sub_j = add_i;
 	if (i == 0 || i == ft_str_tab_len(str_tab))
 		return (1);
 	if (j == 0 || j == (int)ft_strlen(str_tab[0]))
@@ -54,9 +45,9 @@ static int	ft_not_surrounded_by_walls(char **str_tab)
 	int j;
 
 	i = -1;
-	j = -1;
 	while (str_tab[++i])
 	{
+		j = -1;
 		while (str_tab[i][++j])
 		{
 			if (ft_strchr("0NSEW2", str_tab[i][j]))

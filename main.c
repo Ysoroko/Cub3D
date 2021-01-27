@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 14:54:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 16:17:45 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 16:47:23 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,13 @@ void	ft_print_t_map(t_map *map)
 	printf ("\n\n\n\n\n");
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	t_map *map;
 	
-	map = ft_extract_t_map("map.cub");
+	if (argc < 2 || argc > 3)
+		return (-1);
+	map = ft_extract_t_map(argv[1]);
 	ft_print_t_map(map);
 	ft_free_map(&map, 0, 0, 0);
 	//while (1)

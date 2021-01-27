@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/27 11:55:46 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/27 16:59:05 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
 
 INCLUDE			=	-I include
+
+MAP				=	"cubs/map2.cub"
 
 SRC				=	get_next_line/get_next_line_utils.c \
 					get_next_line/get_next_line.c \
@@ -52,18 +54,22 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					extract_t_map/ft_parameters_utils.c \
 					extract_t_map/ft_free_and_new_functions.c \
 					extract_t_map/ft_check_str_tab_errors.c \
+					\
+					main.c
 
 OBJS			=	$(SRC:.c=.o)
 
 NAME			=	cub3D
 
+
+
 all: 		$(NAME)
 
 $(NAME):	
-			$(CC) $(CFLAGS) $(SRC) main.c && ./a.out
+			$(CC) $(CFLAGS) $(SRC) $(INCLUDE) -o $(NAME)
 
 clean:
-			rm -f $(OBJS)
+			rm -f $(NAME)
 
 fclean:		clean
 			rm -f $(NAME)
@@ -71,15 +77,10 @@ fclean:		clean
 re:			fclean all
 
 run:		
-			$(CC) $(CFLAGS) $(SRC) main.c $(INCLUDE) -o $(NAME) && ./$(NAME)
+			$(CC) $(CFLAGS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
 
 frun:
-			$(CC) $(SRC) main.c $(INCLUDE) -o $(NAME) && ./$(NAME)
-
-aclean:
-			rm -f $(NAME)
+			$(CC) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
 
 
-
-
-.PHONY:		all clean fclean re bonus
+.PHONY:		all clean fclean re run frun
