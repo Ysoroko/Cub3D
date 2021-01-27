@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/27 10:52:42 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/27 11:55:46 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					libft/ft_n_chars_in_str_tab.c \
 					libft/ft_wrong_extension.c \
 					libft/ft_strlcmp.c \
+					libft/ft_strchrset.c \
 					\
 					extract_t_map/ft_errors_utils.c \
 					extract_t_map/ft_extract_t_map.c \

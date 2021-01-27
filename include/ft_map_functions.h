@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 11:26:46 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 12:05:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct		s_map
 	int		c_blue;
 	char	*map_str;
 	char	**map_str_tab;
+	int		player_x;
+	int		player_y;
 }					t_map;
 
 /*
@@ -104,7 +106,7 @@ char				**ft_free_str_tab(char ***str_tab);
 ** FT_CHECK_STR_TAB_ERRORS
 */
 
-int					ft_check_str_tab_errors(char **str_tab);
+int					ft_check_str_tab_errors(char **str_tab, t_map *map);
 
 
 /*

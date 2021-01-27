@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 14:54:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 11:25:32 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 12:02:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	ft_print_t_map(t_map *map)
 	printf("c_red: %d\n", map->c_red);
 	printf("c_green: %d\n", map->c_green);
 	printf("c_blue: %d\n", map->c_blue);
+	printf("player X: %d\n", map->player_x);
+	printf("player Y: %d\n", map->player_y);
 	printf("map_str: %s\n", map->map_str);
 	printf ("\n\n");
 	printf("-----------------------\n");

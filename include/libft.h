@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 15:32:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 10:52:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 11:55:25 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putstr_tab(char **str_tab, int fd);
 char				**ft_split(const char *str, char charset);
 char				*ft_strchr(const char *str, int c);
+char				*ft_strchrset(char *str, char *charset);
 char				*ft_strdup(const char *src);
 char				*ft_strjoin(char const *pref, char const *suff);
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);

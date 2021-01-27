@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:40:01 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 17:52:46 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 12:01:43 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ t_map	*ft_new_t_map(void)
 	new_map->c_blue = -1;
 	new_map->map_str = 0;
 	new_map->map_str_tab = 0;
+	new_map->player_x = -1;
+	new_map->player_y = -1;
 	return (new_map);
 }
 

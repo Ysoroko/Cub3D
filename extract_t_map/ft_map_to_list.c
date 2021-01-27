@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:08:41 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 18:26:40 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 12:05:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int			ft_process_map_str(t_map *map)
 		return (MALLOC_ERROR);
 	}
 	ft_free_str_tab(&temp);
-	if ((error = ft_check_str_tab_errors(map->map_str_tab)) != 0)
+	if ((error = ft_check_str_tab_errors(map->map_str_tab, map)) != 0)
 		return (error);
 	return (0);
 }
