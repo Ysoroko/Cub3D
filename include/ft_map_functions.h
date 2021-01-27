@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 12:05:01 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 14:47:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,15 @@ char				**ft_free_str_tab(char ***str_tab);
 ** FT_CHECK_STR_TAB_ERRORS
 */
 
-int					ft_check_str_tab_errors(char **str_tab, t_map *map);
+int					ft_check_str_tab_errors(char **str_tab);
 
 
 /*
 ** ERROR MACROS
 */
+
+# define MAX_MAP_HEIGHT 1000
+# define MAX_MAP_WIDTH 1000
 
 # define OPEN_ERROR 1
 # define MALLOC_ERROR 2
@@ -126,6 +129,7 @@ int					ft_check_str_tab_errors(char **str_tab, t_map *map);
 # define INCOMPLETE_ERROR 11
 # define MULTIPLE_PLAYERS_ERROR 12
 # define NO_PLAYER_ERROR 13
+# define MAP_LIMITS_ERROR 14
 
 # define ERROR_1 "[1] Couldn't open the given file. Check the name/extension"
 # define ERROR_2 "[2] Couldn't allocate heap memory/malloc failure"
@@ -140,5 +144,6 @@ int					ft_check_str_tab_errors(char **str_tab, t_map *map);
 # define ERROR_11 "[11] The \".cub\" file appears to be incomplete"
 # define ERROR_12 "[12] Player has multiple positions in \".cub\" file"
 # define ERROR_13 "[13] No player position found in \".cub\" file"
+# define ERROR_14 "[14] Map limits (1000x1000) exceeded. Please change the map"
 
 #endif

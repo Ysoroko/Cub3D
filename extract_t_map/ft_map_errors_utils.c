@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:53:13 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 18:28:52 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 14:56:24 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,10 @@ int			ft_check_map_line_for_errors(char *line, t_map *map)
 	if (ft_has_other_chars(line, "NSEW 012"))
 		return (FORBIDDEN_CHARS_ERROR);
 	if (line[0] && ft_n_chars_in_str(line, '1') < 2 && ft_strchr(line, '0'))
+	{
+		printf("\nhere\n");
 		return (NO_WALLS_ERROR);
+	}
 	if (ft_invalid_last_char_before_space(line) ||
 		ft_invalid_first_char_after_space(line))
 		return (NO_WALLS_ERROR);

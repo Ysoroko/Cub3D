@@ -6,12 +6,44 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:08:41 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 12:05:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 15:01:13 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_map_functions.h"
 #include "../include/libft.h"
+
+/*
+** FT_FIND_AND_ERASE_PLAYER_POSITION
+** This function will extract the player's position represented by "NSWF"
+** and stock the found position in *x and *y arguments
+** It will also erase the "NSWF" and replace it by a '0' character which
+** is needed for the wall surrounding algorhythm
+*/
+
+static void	ft_find_player_position(char **str_tab, int *x, int *y)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	j = -1;
+	while (str_tab[++i])
+	{
+		if (ft_strchrset(str_tab[i], "NSEW"))
+		{
+			*y = i;
+			while (str_tab[i][++j])
+			{
+				if (ft_strchr("NSEW", str_tab[i][j]))
+				{
+					*x = j;
+					return ;
+				}
+			}
+		}
+	}
+}
 
 /*
 ** FT_EXTRACT_MAP_FROM_LINE
@@ -83,6 +115,10 @@ static char	**ft_transform_str_tab(char **str_tab)
 
 /*
 ** FT_PROCESS_MAP_STR
+** This function takes  all the map lines and create a string tab with it
+** It then checks the result for errors
+** Returns 0 if everything goes smoothly, an int representing the related
+** error otherwise
 */
 
 int			ft_process_map_str(t_map *map)
@@ -100,7 +136,8 @@ int			ft_process_map_str(t_map *map)
 		return (MALLOC_ERROR);
 	}
 	ft_free_str_tab(&temp);
-	if ((error = ft_check_str_tab_errors(map->map_str_tab, map)) != 0)
+	if ((error = ft_check_str_tab_errors(map->map_str_tab)) != 0)
 		return (error);
+	ft_find_player_position(map->map_str_tab, &map->player_x, &map->player_y);
 	return (0);
 }
