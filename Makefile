@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/27 16:59:05 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/27 17:05:20 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ CFLAGS			=	-Wall -Wextra -Werror
 
 INCLUDE			=	-I include
 
-MAP				=	"cubs/map2.cub"
+FRAMEWORKS		=	-l mlx -framework OpenGL -framework AppKit
+
+MAP				=	"maps/map2.cub"
 
 SRC				=	get_next_line/get_next_line_utils.c \
 					get_next_line/get_next_line.c \
@@ -66,7 +68,7 @@ NAME			=	cub3D
 all: 		$(NAME)
 
 $(NAME):	
-			$(CC) $(CFLAGS) $(SRC) $(INCLUDE) -o $(NAME)
+			$(CC) $(CFLAGS) $(SRC) $(INCLUDE) $(FRAMEWORKS) -o $(NAME)
 
 clean:
 			rm -f $(NAME)
@@ -77,10 +79,10 @@ fclean:		clean
 re:			fclean all
 
 run:		
-			$(CC) $(CFLAGS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
+			$(CC) $(CFLAGS) $(SRC) $(INCLUDE) $(FRAMEWORKS) -o $(NAME) && ./$(NAME) $(MAP)
 
 frun:
-			$(CC) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
+			$(CC) $(SRC) $(INCLUDE) $(FRAMEWORKS) -o $(NAME) && ./$(NAME) $(MAP)
 
 
 .PHONY:		all clean fclean re run frun
