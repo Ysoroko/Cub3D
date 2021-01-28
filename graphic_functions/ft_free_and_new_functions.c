@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/28 14:26:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/28 15:30:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,26 @@ t_graph	*ft_free_t_graph(t_graph *graph)
 {
 	free(graph);
 	graph = 0;
+	return (0);
+}
+
+t_image	*ft_new_t_image(void)
+{
+	t_image	*ret;
+
+	ret = 0;
+	if (!(ret = malloc(sizeof(t_image))))
+		return (0);
+	ret->img = 0;
+	ret->bits_per_pixel = 0;
+	ret->line_length = 0;
+	ret->endian = 0;
+	return (ret);
+}
+
+t_image	*ft_free_t_image(t_image *image)
+{
+	free(image);
+	image = 0;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 11:11:52 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 10:59:20 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/28 16:47:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ static t_map	*ft_print_related_error_two(int n)
 		printf("Error\n %s\n", ERROR_12);
 	else if (n == 13)
 		printf("Error\n %s\n", ERROR_13);
+	else if (n == 14)
+		printf("Error\n %s\n", ERROR_14);
+	else if (n == 15)
+		printf("Error\n %s\n", ERROR_15);
 	printf(COLOR_RESET);
 	return (0);
 }

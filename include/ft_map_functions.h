@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 14:47:10 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/28 16:43:00 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ int					ft_check_str_tab_errors(char **str_tab);
 # define MULTIPLE_PLAYERS_ERROR 12
 # define NO_PLAYER_ERROR 13
 # define MAP_LIMITS_ERROR 14
+# define WRONG_RGB_ERROR 15
 
 # define ERROR_1 "[1] Couldn't open the given file. Check the name/extension"
 # define ERROR_2 "[2] Couldn't allocate heap memory/malloc failure"
@@ -145,5 +146,6 @@ int					ft_check_str_tab_errors(char **str_tab);
 # define ERROR_12 "[12] Player has multiple positions in \".cub\" file"
 # define ERROR_13 "[13] No player position found in \".cub\" file"
 # define ERROR_14 "[14] Map limits (1000x1000) exceeded. Please change the map"
+# define ERROR_15 "[15] RGB components must be between 0 and 255 included"
 
 #endif

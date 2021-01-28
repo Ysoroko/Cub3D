@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 14:54:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/28 14:51:30 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/28 16:10:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,42 @@ void	ft_print_t_map(t_map *map)
 	printf ("\n\n\n\n\n");
 }
 
-int main(int argc, char **argv)
+int	ft_main_errors(int argc, char **argv)
 {
-	t_map *map;
-
 	printf(BOLD_RED);
 	if (argc < 2)
 	{
 		printf("Error\n Not enough arguments, please provide the .cub file\n");
+		printf(COLOR_RESET);
 		return (-1);
 	} 
 	if (argc > 3)
 	{
 		printf("Error\n Too many arguments supplied\n");
+		printf(COLOR_RESET);
 		return (-1);
 	}
 	if (argv[2] && ft_strlcmp(argv[2], "--save"))
 	{
 		printf("Error\n Second argument must be \"--save\"\n");
+		printf(COLOR_RESET);
 		return (-1);
 	}
 	printf(COLOR_RESET);
+	return (0);
+}
+
+int main(int argc, char **argv)
+{
+	t_map *map;
+
+	if (ft_main_errors(argc, argv))
+		return (-1);
 	if (!(map = ft_extract_t_map(argv[1])))
 		return (-1);
 	ft_print_t_map(map);
 	ft_window_start(map);
-	ft_free_map(&map, 0, 0, 0);
+	//ft_free_map(&map, 0, 0, 0);
 	//while (1)
 	//{	
 	//}

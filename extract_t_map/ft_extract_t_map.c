@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 10:51:31 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/28 14:51:04 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/28 16:47:53 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,19 @@
 static int		ft_extract_rgb(char *str, t_map *map)
 {
 	if (str[0] == 'F')
+	{
 		ft_triple_atoi(str, &(map->f_red), &(map->f_green), &(map->f_blue));
+		if (map->f_red < 0 || map->f_red > 255 || map->f_green < 0
+		|| map->f_green > 255 || map->f_blue < 0 || map->f_blue > 255)
+			return (WRONG_RGB_ERROR);
+	}
 	else if (str[0] == 'C')
+	{
 		ft_triple_atoi(str, &(map->c_red), &(map->c_green), &(map->c_blue));
+		if (map->c_red < 0 || map->c_red > 255 || map->c_green < 0
+		|| map->c_green > 255 || map->c_blue < 0 || map->c_blue > 255)
+			return (WRONG_RGB_ERROR);
+	}
 	return (0);
 }
 
