@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 10:51:31 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 17:24:24 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/28 14:51:04 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,22 @@ static int		ft_extract_rgb(char *str, t_map *map)
 ** This function is used when the first character of the line is 'R'.
 ** It extracts the resolution and stores it in the corresponding elements
 ** of the t_map argument
+** Also checks whether the extracted resolution is bigger than the screen size
 ** Returns 0
 */
 
 static int		ft_extract_resolution(char *str, t_map *map)
 {
-	ft_triple_atoi(str, &map->res_width, &map->res_height, 0);
+	int	res_width;
+	int	res_height;
+
+	ft_triple_atoi(str, &res_width, &res_height, 0);
+	map->res_height = res_height;
+	map->res_width = res_width;
+	if (res_height > 2880)
+		map->res_height = 2880;
+	if (res_width > 5120)
+		map->res_width = 5120;
 	return (0);
 }
 

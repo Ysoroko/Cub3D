@@ -6,11 +6,13 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/27 17:05:20 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/28 14:44:00 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	gcc
+
+SWIFTC			=	swiftc
 
 CFLAGS			=	-Wall -Wextra -Werror
 
@@ -18,7 +20,23 @@ INCLUDE			=	-I include
 
 FRAMEWORKS		=	-l mlx -framework OpenGL -framework AppKit
 
+MINILIBX		=	cd minilibx && make
+
 MAP				=	"maps/map2.cub"
+
+MODULE_SRC=	minilibx/mlx_image.swift \
+			minilibx/mlx_window.swift \
+			minilibx/mlx_init.swift 
+
+MODULE_OBJ=$(MODULE_SRC:.swift=.swiftmodule)
+
+MLXSRC	=	minilibx/font.c \
+			minilibx/mlx_png.c \
+			minilibx/mlx_rgb.c \
+			minilibx/mlx_string_put.c \
+			minilibx/mlx_xpm.c 
+
+MLXOBJS			=	$(MLXSRC:.c = .o)
 
 SRC				=	get_next_line/get_next_line_utils.c \
 					get_next_line/get_next_line.c \
@@ -57,13 +75,15 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					extract_t_map/ft_free_and_new_functions.c \
 					extract_t_map/ft_check_str_tab_errors.c \
 					\
+					graphic_functions/ft_free_and_new_functions.c \
+					graphic_functions/ft_window_start.c \
+					graphic_functions/ft_rgb_to_trgb.c \
+					\
 					main.c
 
 OBJS			=	$(SRC:.c=.o)
 
 NAME			=	cub3D
-
-
 
 all: 		$(NAME)
 
@@ -74,7 +94,7 @@ clean:
 			rm -f $(NAME)
 
 fclean:		clean
-			rm -f $(NAME)
+			cd minilibx && make clean;
 
 re:			fclean all
 
@@ -82,6 +102,7 @@ run:
 			$(CC) $(CFLAGS) $(SRC) $(INCLUDE) $(FRAMEWORKS) -o $(NAME) && ./$(NAME) $(MAP)
 
 frun:
+			@ $(MINILIBX) ;
 			$(CC) $(SRC) $(INCLUDE) $(FRAMEWORKS) -o $(NAME) && ./$(NAME) $(MAP)
 
 

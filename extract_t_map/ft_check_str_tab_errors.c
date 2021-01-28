@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 18:16:33 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 16:43:11 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/28 14:47:04 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,5 @@ int			ft_check_str_tab_errors(char **str_tab)
 		return (error);
 	if ((error = ft_map_is_opened(str_tab)) != 0)
 		return (error);
-
 	return (0);
 }

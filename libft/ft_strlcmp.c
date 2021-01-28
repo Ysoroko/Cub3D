@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strlcmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 10:41:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 10:51:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/27 17:39:34 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
 /*
-** Returns 0 if both strings are the same
-** /!\ if they are the same until the length of one of the strings, returns 0
+** Returns 0 if both strings are the same, including their length
+** Returns a difference between first two different encountered chars otherwise
 */
 
 int			ft_strlcmp(char *s1, char *s2)
