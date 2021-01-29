@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/28 15:25:26 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/28 17:45:07 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INCLUDE			=	-I include
 
 FRAMEWORKS		=	-lmlx -framework OpenGL -framework AppKit
 
-MINILIBX		=	cd minilibx && make
+MINILIBX		=	@ cd minilibx && make
 
 MAP				=	"maps/map2.cub"
 
@@ -65,6 +65,8 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					graphic_functions/ft_window_start.c \
 					graphic_functions/ft_rgb_to_trgb.c \
 					graphic_functions/ft_image_functions.c \
+					graphic_functions/ft_display_geometry_forms.c \
+					graphic_functions/ft_new_geometry_forms.c \
 					\
 					main.c
 

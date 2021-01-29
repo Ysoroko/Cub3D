@@ -6,26 +6,16 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/28 16:03:20 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/28 17:43:52 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_GRAPHICS_H
 # define FT_GRAPHICS_H
 
-#include "../include/ft_map_functions.h"
+#include "ft_map_functions.h"
+#include "ft_geometry_forms.h"
 #include "../minilibx/mlx.h"
-
-typedef struct		s_graph
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
-	int		*f_ptr;
-	int		f_trgb;
-	int		c_trgb;
-	void	*param;
-}					t_graph;
 
 typedef struct  s_image {
 	void	*img;
@@ -35,10 +25,16 @@ typedef struct  s_image {
 	int		endian;
 }			t_image;
 
-typedef struct  s_point {
-	int		x;
-	int		y;
-}				t_point;
+typedef struct		s_graph
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_image	*img_ptr;
+	int		*f_ptr;
+	int		f_trgb;
+	int		c_trgb;
+	void	*param;
+}					t_graph;
 
 /*
 ** FT_FREE_AND_NEW_FUNCTIONS
@@ -67,7 +63,17 @@ int		ft_rgb_to_trgb(int t, int r, int g, int b);
 
 t_image	*ft_image(void *mlx_ptr, int width, int height);
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
-t_image	*ft_pixel_on_screen(t_graph *graph,
-							t_map *map, t_point *pnt, int trgb);
+
+/*
+** FT_DISPLAY_GEOMETRY_FORMS
+*/
+
+void	ft_draw_square(t_square *square, t_graph *graph, int trgb);
+
+/*
+** FT_NEW_GEOMETRY_FORMS
+*/
+
+t_square	*ft_new_square(int x, int y, int width, int height);
 
 #endif
