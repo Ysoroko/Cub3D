@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/28 17:43:52 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/29 12:15:58 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "ft_map_functions.h"
 #include "ft_geometry_forms.h"
 #include "../minilibx/mlx.h"
+#include <math.h>
 
 typedef struct  s_image {
 	void	*img;
@@ -69,11 +70,13 @@ void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 */
 
 void	ft_draw_square(t_square *square, t_graph *graph, int trgb);
+void	ft_draw_line(t_line *line, t_graph *graph, int trgb);
 
 /*
 ** FT_NEW_GEOMETRY_FORMS
 */
 
-t_square	*ft_new_square(int x, int y, int width, int height);
+t_square	*ft_new_square(double x, double y, double width, double height);
+t_line		*ft_new_line(double a_x, double a_y, double b_x, double b_y);
 
 #endif

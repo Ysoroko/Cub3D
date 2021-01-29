@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:15:29 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/28 17:35:28 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/29 14:34:21 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,19 @@
 #include "ft_graphics.h"
 
 typedef struct	s_square {
-	int		x;
-	int		y;
-	int		width;
-	int		height;
+	double		x;
+	double		y;
+	double		width;
+	double		height;
 }				t_square;
+
+typedef struct	s_line {
+	double		a_x;
+	double		a_y;
+	double		b_x;
+	double		b_y;
+	double		delta;
+}				t_line;
 
 typedef struct	s_circle {
 	int		x;
