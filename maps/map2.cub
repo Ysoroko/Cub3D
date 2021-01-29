@@ -7,7 +7,7 @@ EA ./path_to_the_east_texture
 S ./path_to_the_sprite_texture
 
 F 40, 100, 30
-C 255, 0, 0
+C 5, 15, 30
 
 1111111 1111111 1111111 1111111
 1000001 1000001 1000001 1000001
