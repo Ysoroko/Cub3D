@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:50:54 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/29 14:37:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/29 15:42:17 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,35 +34,56 @@ void	ft_draw_square(t_square *square, t_graph *graph, int trgb)
 
 void	ft_draw_line(t_line *line, t_graph *graph, int trgb)
 {
-	double x;
-	double y;
-
-	x = line->a_x;
-	y = line->a_y;
-	if (x < line->b_x)
+	if (line->a_x < line->b_x)
 	{
-		while (x <= line->b_x)
+		while (line->a_x++ <= line->b_x)
 		{
-			while (y != line->b_y)
+			while (line->a_y != line->b_y)
 			{
-				my_mlx_pixel_put(graph->img_ptr, x, y, trgb);
-				y += line->delta;
+				my_mlx_pixel_put(graph->img_ptr, line->a_x, line->a_y, trgb);
+				line->a_y += line->delta;
 				break ;
 			}
-			x++;
 		}
 	}
 	else
 	{
-		while (x >= line->b_x)
+		while (line->a_x-- >= line->b_x)
 		{
-			while (y != line->b_y)
+			while (line->a_y != line->b_y)
 			{
-				my_mlx_pixel_put(graph->img_ptr, x, y, trgb);
-				y -= line->delta;
+				my_mlx_pixel_put(graph->img_ptr, line->a_x, line->a_y, trgb);
+				line->a_y -= line->delta;
 				break ;
 			}
-			x--;
+		}
+	}
+}
+
+void	ft_draw_circle(t_circle *circle, t_graph *graph, int trgb)
+{
+	double	radius;
+	double	i;
+	double	j;
+	double	dist;
+	double	prox;
+
+	prox = circle->prox;
+	radius = circle->radius;
+	i = 0;
+	j = 0;
+	dist = 0;
+
+	while (i++ <= radius)
+	{
+		while (j++ <= radius)
+		{
+			dist = sqrt(((i - radius) * (i - radius))
+					+ ((j - radius) * (j - radius)));
+			if (dist > (radius - prox) && dist < (radius + prox))
+			{
+				my_mlx_pixel_put(graph->img_ptr, i, j, trgb);
+			}
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/29 14:37:38 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/29 15:28:39 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_graph	*ft_window_start(t_map *map)
 	t_square	*c_square;
 	t_line		*line;
 
-	if (!(line = ft_new_line(360, 0, 0, 360)))
+	if (!(line = ft_new_line(100, 20, 600, 500)))
 		return (0);
 	if (!(c_square = ft_new_square(0, 0, map->res_width, map->res_height / 2)))
 		return (0);

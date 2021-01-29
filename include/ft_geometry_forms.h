@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:15:29 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/29 14:34:21 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/29 15:39:20 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ typedef struct	s_line {
 	double		b_x;
 	double		b_y;
 	double		delta;
+	double		delta_x;
 }				t_line;
 
 typedef struct	s_circle {
-	int		x;
-	int		y;
-	int		radius;
+	double	x;
+	double	y;
+	double	radius;
+	double	prox;
 }				t_circle;
 
 typedef struct	s_triangle
