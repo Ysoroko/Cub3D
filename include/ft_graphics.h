@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/29 12:15:58 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/29 15:47:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,36 +41,37 @@ typedef struct		s_graph
 ** FT_FREE_AND_NEW_FUNCTIONS
 */
 
-t_graph	*ft_new_t_graph(t_map *map);
-t_graph	*ft_free_t_graph(t_graph *graph);
-t_image	*ft_new_t_image(void);
-t_image	*ft_free_t_image(t_image *image);
+t_graph		*ft_new_t_graph(t_map *map);
+t_graph		*ft_free_t_graph(t_graph *graph);
+t_image		*ft_new_t_image(void);
+t_image		*ft_free_t_image(t_image *image);
 
 /*
 ** FT_WINDOW_START
 */
 
-t_graph	*ft_window_start(t_map *map);
+t_graph		*ft_window_start(t_map *map);
 
 /*
 ** FT_RGB_TO_TRGB
 */
 
-int		ft_rgb_to_trgb(int t, int r, int g, int b);
+int			ft_rgb_to_trgb(int t, int r, int g, int b);
 
 /*
 ** FT_IMAGE_FUNCTIONS
 */
 
-t_image	*ft_image(void *mlx_ptr, int width, int height);
-void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
+t_image		*ft_image(void *mlx_ptr, int width, int height);
+void		my_mlx_pixel_put(t_image *image, int x, int y, int color);
 
 /*
 ** FT_DISPLAY_GEOMETRY_FORMS
 */
 
-void	ft_draw_square(t_square *square, t_graph *graph, int trgb);
-void	ft_draw_line(t_line *line, t_graph *graph, int trgb);
+void		ft_draw_square(t_square *square, t_graph *graph, int trgb);
+void		ft_draw_line(t_line *line, t_graph *graph, int trgb);
+void		ft_draw_circle(t_circle *circle, t_graph *graph, int trgb);
 
 /*
 ** FT_NEW_GEOMETRY_FORMS
@@ -78,5 +79,6 @@ void	ft_draw_line(t_line *line, t_graph *graph, int trgb);
 
 t_square	*ft_new_square(double x, double y, double width, double height);
 t_line		*ft_new_line(double a_x, double a_y, double b_x, double b_y);
+t_circle	*ft_new_circle(double x, double y, double radius, double prox);
 
 #endif

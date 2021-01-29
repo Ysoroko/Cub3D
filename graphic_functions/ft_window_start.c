@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/29 15:28:39 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/29 16:16:02 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_graph	*ft_window_start(t_map *map)
 	t_graph		*graph;
 	t_square	*f_square;
 	t_square	*c_square;
-	t_line		*line;
+	t_circle	*circle;
 
-	if (!(line = ft_new_line(100, 20, 600, 500)))
+	if (!(circle = ft_new_circle(960, 540, 200, 3)))
 		return (0);
 	if (!(c_square = ft_new_square(0, 0, map->res_width, map->res_height / 2)))
 		return (0);
@@ -34,7 +34,7 @@ t_graph	*ft_window_start(t_map *map)
 
 	ft_draw_square(c_square, graph, graph->c_trgb);
 	ft_draw_square(f_square, graph, graph->f_trgb);
-	ft_draw_line(line, graph, 0x00FF0000);
+	ft_draw_circle(circle, graph, 0x00FF0000);
 	mlx_put_image_to_window(graph->mlx_ptr,
 							graph->win_ptr, graph->img_ptr->img, 0, 0);
 	mlx_loop(graph->mlx_ptr);
