@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/01 16:41:10 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/01 17:47:33 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 
 # define ESCAPE_KEY 53
+# define RIGHT_ARROW_KEY 124
+# define LEFT_ARROW_KEY 123
 
 # define KEY_PRESS_EVENT 2
 # define DESTROY_EVENT 17
