@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:50:54 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/29 16:18:13 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/01 14:55:20 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	ft_draw_square(t_square *square, t_graph *graph, int trgb)
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
 
 	x = square->x;
 	y = square->y;
@@ -87,3 +87,5 @@ void	ft_draw_circle(t_circle *circle, t_graph *graph, int trgb)
 		i++;
 	}
 }
+
+

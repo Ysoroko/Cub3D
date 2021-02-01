@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/28 17:45:07 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/01 14:55:31 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,9 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					\
 					main.c
 
+BONUS_SRC		=	SRC \
+					bonus/ft_trgb_utils.c
+
 OBJS			=	$(SRC:.c=.o)
 
 NAME			=	cub3D
@@ -94,6 +97,5 @@ run:
 frun:
 			@ $(MINILIBX) ;
 			$(CC) $(SRC) $(INCLUDE) $(FRAMEWORKS) -o $(NAME) && ./$(NAME) $(MAP)
-
 
 .PHONY:		all clean fclean re run frun
