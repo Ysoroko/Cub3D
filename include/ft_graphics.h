@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/01 14:56:17 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/01 16:41:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 #include "ft_geometry_forms.h"
 #include "../minilibx/mlx.h"
 #include <math.h>
+
+
+# define ESCAPE_KEY 53
+
+# define KEY_PRESS_EVENT 2
+# define DESTROY_EVENT 17
+
+# define KEY_PRESS_MASK 1L<<0
+# define STRUCTURE_NOTIFY_MASK 1L<<17
 
 typedef struct  s_image {
 	void	*img;
@@ -81,5 +90,11 @@ t_square	*ft_new_square(double x, double y, double width, double height);
 t_line		*ft_new_line(double a_x, double a_y, double b_x, double b_y);
 t_circle	*ft_new_circle(double x, double y, double radius, double prox);
 
+/*
+** FT_HOOKS_FUNCTIONS
+*/
+
+int			ft_keys_binding(int keycode, t_graph *graph);
+int			ft_window_closed(t_graph *graph);
 
 #endif

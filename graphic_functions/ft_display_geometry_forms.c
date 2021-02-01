@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:50:54 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/01 14:55:20 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/01 15:40:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,3 @@ void	ft_draw_circle(t_circle *circle, t_graph *graph, int trgb)
 		i++;
 	}
 }
-
-
