@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/01 14:19:11 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/01 14:56:17 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,5 @@ t_square	*ft_new_square(double x, double y, double width, double height);
 t_line		*ft_new_line(double a_x, double a_y, double b_x, double b_y);
 t_circle	*ft_new_circle(double x, double y, double radius, double prox);
 
-
-///////BONUS_TO_DELETE
-int			ft_inverse_color(int trgb);
-int			get_t(int trgb);
-int			get_r(int trgb);
-int			get_g(int trgb);
-int			get_b(int trgb);
-int			ft_gradient(int *trgb_start, int trgb_end, double ratio);
 
 #endif
