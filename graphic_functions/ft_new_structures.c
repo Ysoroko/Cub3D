@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 13:29:59 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 13:52:07 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ t_graph	*ft_new_t_graph(t_map *map)
 	ret->c_trgb = ft_rgb_to_trgb(0, map->c_red, map->c_green, map->c_blue);
 	ret->circle = 0;
 	ret->circle_color = 0x00FF6900;
-	ret->x_speed = 20;
+	ret->x_speed = 25;
+	ret->res_width = map->res_width;
+	ret->res_height = map->res_height;
 	return (ret);
 }
 

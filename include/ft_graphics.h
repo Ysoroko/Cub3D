@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 12:50:12 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 13:46:55 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@ typedef struct		s_graph
 	int			c_trgb;
 	void		*param;
 	t_circle	*circle;
-	int			x_speed;
+	double		x_speed;
 	int			circle_color;
+	double		res_width;
+	double		res_height;
 }					t_graph;
 
 /*
@@ -65,7 +67,7 @@ t_image		*ft_new_t_image(void);
 */
 
 t_graph		*ft_window_start(t_map *map);
-void		ft_draw_background(t_graph *graph, t_map *map);
+void		ft_draw_background(t_graph *graph);
 
 /*
 ** FT_RGB_TO_TRGB

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 15:19:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 13:29:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 13:49:15 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static	void	ft_move_circle(t_graph *graph, char direction, double speed)
 {
-	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
 	if (direction == 'N')
 		graph->circle->y -= speed;
 	else if (direction == 'S')
@@ -23,6 +22,8 @@ static	void	ft_move_circle(t_graph *graph, char direction, double speed)
 		graph->circle->x += speed;
 	else if (direction == 'W')
 		graph->circle->x -= speed;
+	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
+	ft_draw_background(graph);
 	ft_draw_circle(graph->circle, graph, graph->circle_color);
 	mlx_put_image_to_window(graph->mlx_ptr,
 							graph->win_ptr, graph->img_ptr->img, 0, 0);

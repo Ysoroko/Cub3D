@@ -6,12 +6,16 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:50:54 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 13:29:16 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 13:43:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_graphics.h"
 #include "../include/ft_geometry_forms.h"
+
+/*
+** Draws the specified square with the specified colour
+*/
 
 void	ft_draw_square(t_square *square, t_graph *graph, int trgb)
 {
@@ -31,6 +35,10 @@ void	ft_draw_square(t_square *square, t_graph *graph, int trgb)
 		x++;
 	}
 }
+
+/*
+** Draws the specified line with the specified colour
+*/
 
 void	ft_draw_line(t_line *line, t_graph *graph, int trgb)
 {
@@ -59,6 +67,10 @@ void	ft_draw_line(t_line *line, t_graph *graph, int trgb)
 		}
 	}
 }
+
+/*
+** Draws the specified circle with the specified colour
+*/
 
 void	ft_draw_circle(t_circle *circle, t_graph *graph, int trgb)
 {
