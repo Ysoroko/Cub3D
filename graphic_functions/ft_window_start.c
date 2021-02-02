@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/01 18:28:28 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 12:24:14 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_define_hooks(t_graph *graph)
 			ft_window_closed, graph);
 }
 
-static int	ft_draw_figures(t_graph *graph, t_map *map)
+static int	ft_draw_background(t_graph *graph, t_map *map)
 {
 	t_square	*f_square;
 	t_square	*c_square;
@@ -36,6 +36,12 @@ static int	ft_draw_figures(t_graph *graph, t_map *map)
 			map->res_width, map->res_height / 2)))
 	{
 		free(c_square);
+		return (0);
+	}
+	if (!(graph->circle = ft_new_circle(960, 540, 100, 5)))
+	{
+		free(c_square);
+		free(f_square);
 		return (0);
 	}
 	ft_draw_square(c_square, graph, graph->c_trgb);
@@ -51,7 +57,7 @@ t_graph		*ft_window_start(t_map *map)
 
 	if (!(graph = ft_new_t_graph(map)))
 		return (0);
-	if (!(ft_draw_figures(graph, map)))
+	if (!(ft_draw_background(graph, map)))
 		return (0);
 	ft_define_hooks(graph);
 	mlx_loop(graph->mlx_ptr);
