@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:15:29 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/29 15:39:20 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 14:09:22 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct	s_square {
 	double		y;
 	double		width;
 	double		height;
+	int			trgb;
 }				t_square;
 
 typedef struct	s_line {
@@ -29,6 +30,7 @@ typedef struct	s_line {
 	double		b_y;
 	double		delta;
 	double		delta_x;
+	int			trgb;
 }				t_line;
 
 typedef struct	s_circle {
@@ -36,6 +38,7 @@ typedef struct	s_circle {
 	double	y;
 	double	radius;
 	double	prox;
+	int		trgb;
 }				t_circle;
 
 typedef struct	s_triangle
@@ -46,6 +49,7 @@ typedef struct	s_triangle
 	int		a_y;
 	int		b_y;
 	int		c_y;
+	int		t_rgb;
 }				t_triangle;
 
 #endif

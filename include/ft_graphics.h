@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 13:46:55 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 13:59:42 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,18 @@ t_image		*ft_image(void *mlx_ptr, int width, int height);
 void		my_mlx_pixel_put(t_image *image, int x, int y, int color);
 
 /*
-** FT_DISPLAY_GEOMETRY_FORMS
+** FT_DRAW_EMPTY_FORMS
 */
 
-void		ft_draw_square(t_square *square, t_graph *graph, int trgb);
 void		ft_draw_line(t_line *line, t_graph *graph, int trgb);
 void		ft_draw_circle(t_circle *circle, t_graph *graph, int trgb);
+
+/*
+** FT_DRAW_FILLED_IN_FORMS
+*/
+
+void		ft_draw_fsquare(t_square *square, t_graph *graph, int trgb);
+void		ft_draw_fcircle(t_circle *circle, t_graph *graph, int trgb);
 
 /*
 ** FT_NEW_GEOMETRY_FORMS
