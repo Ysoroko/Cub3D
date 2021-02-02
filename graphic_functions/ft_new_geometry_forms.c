@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:40:09 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/01 15:13:29 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 13:29:14 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_square	*ft_new_square(double x, double y, double width, double height)
 	t_square *square;
 
 	if (!(square = malloc(sizeof(t_square))))
-		return (0);
+		ft_malloc_fail();
 	square->x = x;
 	square->y = y;
 	square->width = width;
@@ -30,8 +30,8 @@ t_line		*ft_new_line(double a_x, double a_y, double b_x, double b_y)
 {
 	t_line *line;
 
-	if ((a_x == b_x && a_y == b_y) || !(line = malloc(sizeof(t_line))))
-		return (0);
+	if (!(line = malloc(sizeof(t_line))))
+		ft_malloc_fail();
 	line->a_x = a_x;
 	line->a_y = a_y;
 	line->b_x = b_x;
@@ -48,7 +48,7 @@ t_circle	*ft_new_circle(double x, double y, double radius, double prox)
 	t_circle	*circle;
 
 	if (!(circle = malloc(sizeof(t_circle))))
-		return (0);
+		ft_malloc_fail();
 	circle->x = x;
 	circle->y = y;
 	circle->radius = radius;

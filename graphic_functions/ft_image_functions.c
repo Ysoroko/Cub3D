@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 15:24:04 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/28 16:09:41 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 13:29:15 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ t_image	*ft_image(void *mlx_ptr, int width, int height)
 	t_image *image;
 
 	if (!(image = ft_new_t_image()))
-		return (0);
+		ft_malloc_fail();
 	if (!(image->img = mlx_new_image(mlx_ptr, width, height)))
-		return (ft_free_t_image(image));
+		ft_mlx_fail();
 	if (!(image->addr = mlx_get_data_addr(image->img, &image->bits_per_pixel,
 		&image->line_length, &image->endian)))
-		return (ft_free_t_image(image));
+		ft_mlx_fail();
 	return (image);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 12:24:14 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 13:30:19 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,40 +25,32 @@ static void	ft_define_hooks(t_graph *graph)
 			ft_window_closed, graph);
 }
 
-static int	ft_draw_background(t_graph *graph, t_map *map)
+/*
+** FT_DRAW_BACKGROUND
+** This function will redraw the background colors when called
+*/
+
+void		ft_draw_background(t_graph *graph, t_map *map)
 {
 	t_square	*f_square;
 	t_square	*c_square;
 
-	if (!(c_square = ft_new_square(0, 0, map->res_width, map->res_height / 2)))
-		return (0);
-	if (!(f_square = ft_new_square(0, map->res_height / 2,
-			map->res_width, map->res_height / 2)))
-	{
-		free(c_square);
-		return (0);
-	}
-	if (!(graph->circle = ft_new_circle(960, 540, 100, 5)))
-	{
-		free(c_square);
-		free(f_square);
-		return (0);
-	}
+	c_square = ft_new_square(0, 0, map->res_width, map->res_height / 2);
+	f_square = ft_new_square(0, map->res_height / 2,
+								map->res_width, map->res_height / 2);
+	graph->circle = ft_new_circle(960, 540, 100, 5);
 	ft_draw_square(c_square, graph, graph->c_trgb);
 	ft_draw_square(f_square, graph, graph->f_trgb);
 	mlx_put_image_to_window(graph->mlx_ptr,
 							graph->win_ptr, graph->img_ptr->img, 0, 0);
-	return (1);
 }
 
 t_graph		*ft_window_start(t_map *map)
 {
 	t_graph		*graph;
 
-	if (!(graph = ft_new_t_graph(map)))
-		return (0);
-	if (!(ft_draw_background(graph, map)))
-		return (0);
+	graph = ft_new_t_graph(map);
+	ft_draw_background(graph, map);
 	ft_define_hooks(graph);
 	mlx_loop(graph->mlx_ptr);
 	return (0);

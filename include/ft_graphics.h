@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 12:16:29 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 12:50:12 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,14 @@ typedef struct		s_graph
 */
 
 t_graph		*ft_new_t_graph(t_map *map);
-t_graph		*ft_free_t_graph(t_graph *graph);
 t_image		*ft_new_t_image(void);
-t_image		*ft_free_t_image(t_image *image);
 
 /*
 ** FT_WINDOW_START
 */
 
 t_graph		*ft_window_start(t_map *map);
+void		ft_draw_background(t_graph *graph, t_map *map);
 
 /*
 ** FT_RGB_TO_TRGB
@@ -103,5 +102,12 @@ t_circle	*ft_new_circle(double x, double y, double radius, double prox);
 
 int			ft_keys_binding(int keycode, t_graph *graph);
 int			ft_window_closed(t_graph *graph);
+
+/*
+** FT_ERROR_UTILS
+*/
+
+void		ft_malloc_fail(void);
+void		ft_mlx_fail(void);
 
 #endif
