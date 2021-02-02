@@ -6,13 +6,14 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 10:51:31 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/28 16:47:53 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 18:14:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_map_functions.h"
 #include "../include/libft.h"
 #include "../include/get_next_line.h"
+#include "../minilibx/mlx.h"
 
 /*
 ** FT_EXTRACT_RGB
@@ -45,22 +46,13 @@ static int		ft_extract_rgb(char *str, t_map *map)
 ** This function is used when the first character of the line is 'R'.
 ** It extracts the resolution and stores it in the corresponding elements
 ** of the t_map argument
-** Also checks whether the extracted resolution is bigger than the screen size
+** 2560x1440 = the resolution of school's iMac
 ** Returns 0
 */
 
 static int		ft_extract_resolution(char *str, t_map *map)
 {
-	int	res_width;
-	int	res_height;
-
-	ft_triple_atoi(str, &res_width, &res_height, 0);
-	map->res_height = res_height;
-	map->res_width = res_width;
-	if (res_height > 2880)
-		map->res_height = 2880;
-	if (res_width > 5120)
-		map->res_width = 5120;
+	ft_triple_atoi(str, &map->res_width, &map->res_height, 0);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/02 13:56:31 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/02 18:19:29 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INCLUDE			=	-I include
 
 FRAMEWORKS		=	-lmlx -framework OpenGL -framework AppKit
 
-MINILIBX		=	@ cd minilibx && make
+MINILIBX		=	@ cd minilibx && make ; mv libmlx.a ..
 
 MAP				=	"maps/map2.cub"
 
@@ -71,7 +71,10 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					graphic_functions/ft_hooks_functions.c \
 					graphic_functions/ft_error_utils.c \
 					\
-					main.c
+					libmlx.a \
+					\
+					main.c \
+					
 
 BONUS_SRC		=	SRC \
 					bonus/ft_trgb_utils.c
@@ -83,22 +86,25 @@ NAME			=	cub3D
 all: 		$(NAME)
 
 $(NAME):	
-			$(CC) $(CFLAGS) $(SRC) $(INCLUDE) $(FRAMEWORKS) -o $(NAME)
+			@$(MINILIBX) ;
+			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(SRC) $(INCLUDE)  -o $(NAME)
 
 clean:
+			rm -f libmlx.a;
 			rm -f $(NAME)
 
 fclean:		clean
-			cd minilibx && make clean;
+			cd minilibx && make clean
 
 re:			fclean all
 
 run:		
-			@ $(MINILIBX) ;
-			$(CC) $(CFLAGS) $(SRC) $(INCLUDE) $(FRAMEWORKS) -o $(NAME) && ./$(NAME) $(MAP)
+			@$(MINILIBX) ;
+			@$(CC) $(CFLAGS) $(SRC) $(INCLUDE) $(FRAMEWORKS) -o $(NAME) && ./$(NAME) $(MAP)
 
 frun:
-			@ $(MINILIBX) ;
-			$(CC) $(SRC) $(INCLUDE) $(FRAMEWORKS) -o $(NAME) && ./$(NAME) $(MAP)
+			@$(MINILIBX) ;
+			
+			@$(CC) $(FRAMEWORKS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
 
 .PHONY:		all clean fclean re run frun

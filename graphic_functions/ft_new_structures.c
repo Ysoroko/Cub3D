@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 13:52:07 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 18:14:24 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 t_graph	*ft_new_t_graph(t_map *map)
 {
 	t_graph	*ret;
+	int		res_width;
+	int		res_height;
 
 	ret = 0;
 	if (!(ret = malloc(sizeof(t_graph))))
@@ -33,8 +35,9 @@ t_graph	*ft_new_t_graph(t_map *map)
 	ret->circle = 0;
 	ret->circle_color = 0x00FF6900;
 	ret->x_speed = 25;
-	ret->res_width = map->res_width;
-	ret->res_height = map->res_height;
+	mlx_get_screen_size(ret->mlx_ptr, &res_width, &res_height);
+	ret->res_width = fmin(map->res_width, res_width);
+	ret->res_height = fmin(map->res_height, res_height);
 	return (ret);
 }
 

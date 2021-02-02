@@ -6,12 +6,19 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 10:53:58 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/28 16:48:02 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/02 18:18:50 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_map_functions.h"
 #include "../include/libft.h"
+
+/*
+** FT_CHECK_RESOLUTION_ERRORS
+** Checks all the errors related to a line which is supposed to give us the
+** resolution
+** The maximum possible resolution before the mlx returns an error is 16384
+*/
 
 static int	ft_check_resolution_errors(char *str, t_map *map)
 {
@@ -25,7 +32,8 @@ static int	ft_check_resolution_errors(char *str, t_map *map)
 	if (ft_n_ints_in_line(str) != 2)
 		return (WRONG_NUMBER_OF_INTS_ERROR);
 	ft_triple_atoi(str, &res_width, &res_height, 0);
-	if (res_width <= 0 || res_height <= 0)
+	if (res_width <= 0 || res_height <= 0 ||
+		res_width > 16384 || res_height > 16384)
 		return (RESOLUTION_ERROR);
 	return (0);
 }
