@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:15:29 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 14:09:22 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 11:03:24 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,11 @@ typedef struct	s_triangle
 	int		c_y;
 	int		t_rgb;
 }				t_triangle;
+
+typedef struct	s_point
+{
+	int		x;
+	int		y;
+}				t_point;
 
 #endif

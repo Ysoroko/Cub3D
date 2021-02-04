@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:40:09 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 14:14:13 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 11:04:39 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,15 @@ t_circle	*ft_new_circle(double x, double y, double radius, double prox)
 	circle->radius = radius;
 	circle->prox = prox;
 	return (circle);
+}
+
+t_point	*ft_new_point(double x, double y)
+{
+	t_point	*ret;
+
+	if (!(ret = malloc(sizeof(t_point))))
+		ft_malloc_fail();
+	ret->x = x;
+	ret->y = y;
+	return (ret);
 }

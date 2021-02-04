@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 13:59:42 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 12:47:40 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include "ft_map_functions.h"
 #include "ft_geometry_forms.h"
+#include "ft_colors.h"
+#include "libft.h"
 #include "../minilibx/mlx.h"
 #include <math.h>
 
@@ -103,6 +105,7 @@ void		ft_draw_fcircle(t_circle *circle, t_graph *graph, int trgb);
 t_square	*ft_new_square(double x, double y, double width, double height);
 t_line		*ft_new_line(double a_x, double a_y, double b_x, double b_y);
 t_circle	*ft_new_circle(double x, double y, double radius, double prox);
+t_point		*ft_new_point(double x, double y);
 
 /*
 ** FT_HOOKS_FUNCTIONS
@@ -117,5 +120,11 @@ int			ft_window_closed(t_graph *graph);
 
 void		ft_malloc_fail(void);
 void		ft_mlx_fail(void);
+
+/*
+** FT_DRAW_MINIMAP
+*/
+
+void		ft_draw_minimap(t_map *map, t_graph *graph);
 
 #endif

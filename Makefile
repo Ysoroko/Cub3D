@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/02 18:48:53 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/04 13:16:43 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					graphic_functions/ft_new_geometry_forms.c \
 					graphic_functions/ft_hooks_functions.c \
 					graphic_functions/ft_error_utils.c \
+					graphic_functions/ft_draw_minimap.c \
 					\
 					libmlx.a \
 					\
@@ -81,11 +82,11 @@ re:			fclean all
 run:		
 			@$(MINILIBX)
 			@$(LIBFT)
-			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(SRC) $(INCLUDE)  -o $(NAME) && ./$(NAME) $(MAP)
+			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
 
 frun:
-			@$(MINILIBX) ;
-			@$(LIBFT) ;
+			@$(MINILIBX)
+			@$(LIBFT)
 			@$(CC) $(FRAMEWORKS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
 
 .PHONY:		all clean fclean re run frun

@@ -6,12 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:50:54 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 14:11:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 12:45:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_graphics.h"
-#include "../include/ft_geometry_forms.h"
 
 /*
 ** FT_DRAW_LINE
@@ -44,6 +43,8 @@ void	ft_draw_line(t_line *line, t_graph *graph, int trgb)
 			}
 		}
 	}
+	mlx_put_image_to_window(graph->mlx_ptr,
+							graph->win_ptr, graph->img_ptr->img, 0, 0);
 }
 
 /*
@@ -58,26 +59,26 @@ void	ft_draw_circle(t_circle *circle, t_graph *graph, int trgb)
 	double	i;
 	double	j;
 	double	dist;
-	double	prox;
 
-	prox = circle->prox;
 	radius = circle->radius;
-	i = circle->x - circle->radius - prox;
-	j = circle->y - circle->radius - prox;
+	i = circle->x - circle->radius - circle->prox;
+	j = circle->y - circle->radius - circle->prox;
 	dist = 0;
-
-	while (i <= circle->x + radius + prox)
+	while (i <= circle->x + radius + circle->prox)
 	{
-		j = circle->y - circle->radius - prox;
-		while (j++ <= circle->y + radius + prox)
+		j = circle->y - circle->radius - circle->prox;
+		while (j++ <= circle->y + radius + circle->prox)
 		{
 			dist = sqrt(((i - circle->x) * (i - circle->x))
 					+ ((j - circle->y) * (j - circle->y)));
-			if (dist > (radius - prox) && dist < (radius + prox))
+			if (dist > (radius - circle->prox)
+				&& dist < (radius + circle->prox))
 				my_mlx_pixel_put(graph->img_ptr, i, j, trgb);
 		}
 		i++;
 	}
+	mlx_put_image_to_window(graph->mlx_ptr,
+							graph->win_ptr, graph->img_ptr->img, 0, 0);
 }
 
 /*
@@ -101,4 +102,6 @@ void	ft_draw_triangle(t_triangle *triangle, t_graph *graph, int trgb)
 	ft_draw_line(a, graph, trgb);
 	ft_draw_line(b, graph, trgb);
 	ft_draw_line(c, graph, trgb);
+	mlx_put_image_to_window(graph->mlx_ptr,
+							graph->win_ptr, graph->img_ptr->img, 0, 0);
 }
