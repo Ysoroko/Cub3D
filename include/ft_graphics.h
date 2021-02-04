@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 12:47:40 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 15:33:53 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ft_map_functions.h"
 #include "ft_geometry_forms.h"
-#include "ft_colors.h"
+#include "ft_params_and_colors.h"
 #include "libft.h"
 #include "../minilibx/mlx.h"
 #include <math.h>
@@ -41,6 +41,15 @@ typedef struct  s_image {
 	int		endian;
 }			t_image;
 
+typedef struct		s_frame
+{
+	t_square	*ceiling;
+	t_square	*floor;
+	t_square	*minimap_wall;
+	t_square	*minimap_background;
+	int			units;
+}					t_frame;
+
 typedef struct		s_graph
 {
 	void		*mlx_ptr;
@@ -51,25 +60,27 @@ typedef struct		s_graph
 	int			c_trgb;
 	void		*param;
 	t_circle	*circle;
-	double		x_speed;
-	int			circle_color;
+	t_map		*map;
 	double		res_width;
 	double		res_height;
+	t_frame		*frame;
 }					t_graph;
 
 /*
-** FT_FREE_AND_NEW_FUNCTIONS
+** FT_NEW_STRUCTURES
 */
 
 t_graph		*ft_new_t_graph(t_map *map);
 t_image		*ft_new_t_image(void);
+t_frame		*ft_new_t_frame(t_graph *graph);
 
 /*
 ** FT_WINDOW_START
 */
 
 t_graph		*ft_window_start(t_map *map);
-void		ft_draw_background(t_graph *graph);
+void		ft_draw_background(t_graph *graph, t_frame *frame);
+void		ft_next_frame(t_graph *graph);
 
 /*
 ** FT_RGB_TO_TRGB
@@ -125,6 +136,6 @@ void		ft_mlx_fail(void);
 ** FT_DRAW_MINIMAP
 */
 
-void		ft_draw_minimap(t_map *map, t_graph *graph);
+void		ft_draw_minimap(t_graph *graph);
 
 #endif

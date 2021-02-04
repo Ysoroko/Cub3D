@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:50:54 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 12:45:44 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 14:45:34 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void	ft_draw_line(t_line *line, t_graph *graph, int trgb)
 			}
 		}
 	}
-	mlx_put_image_to_window(graph->mlx_ptr,
-							graph->win_ptr, graph->img_ptr->img, 0, 0);
 }
 
 /*
@@ -77,8 +75,6 @@ void	ft_draw_circle(t_circle *circle, t_graph *graph, int trgb)
 		}
 		i++;
 	}
-	mlx_put_image_to_window(graph->mlx_ptr,
-							graph->win_ptr, graph->img_ptr->img, 0, 0);
 }
 
 /*
@@ -102,6 +98,4 @@ void	ft_draw_triangle(t_triangle *triangle, t_graph *graph, int trgb)
 	ft_draw_line(a, graph, trgb);
 	ft_draw_line(b, graph, trgb);
 	ft_draw_line(c, graph, trgb);
-	mlx_put_image_to_window(graph->mlx_ptr,
-							graph->win_ptr, graph->img_ptr->img, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 12:48:29 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 15:34:00 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,42 @@ static void	ft_define_hooks(t_graph *graph)
 ** This function will redraw the background colors when called
 */
 
-void		ft_draw_background(t_graph *graph)
+void		ft_draw_background(t_graph *graph, t_frame *frame)
 {
-	t_square	*f_square;
-	t_square	*c_square;
-
-	c_square = ft_new_square(0, 0, graph->res_width, graph->res_height / 2);
-	f_square = ft_new_square(0, graph->res_height / 2,
-								graph->res_width, graph->res_height / 2);
-	ft_draw_fsquare(c_square, graph, graph->c_trgb);
-	ft_draw_fsquare(f_square, graph, graph->f_trgb);
+	ft_draw_fsquare(frame->ceiling, graph, graph->c_trgb);
+	ft_draw_fsquare(frame->floor, graph, graph->f_trgb);
 }
+
+/*
+** FT_NEXT_FRAME
+** This function clears the screen and draws everything needed to be drawn
+** on the next frame
+** 1) Background
+** 2) Minimap
+*/
+
+void		ft_next_frame(t_graph *graph)
+{
+	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
+	ft_draw_background(graph, graph->frame);
+	ft_draw_minimap(graph);
+	ft_draw_fcircle(graph->circle, graph, PLAYER_COLOR);
+	mlx_put_image_to_window(graph->mlx_ptr,
+							graph->win_ptr, graph->img_ptr->img, 0, 0);
+}
+
+/*
+** FT_WINDOW_START
+** This is the central hub of everything which is drawn on the screen
+** This function calls all the other functions to produce the images
+*/
 
 t_graph		*ft_window_start(t_map *map)
 {
 	t_graph		*graph;
 
 	graph = ft_new_t_graph(map);
-	ft_draw_background(graph);
-	graph->circle = ft_new_circle(960, 540, 100, 5);
-	ft_draw_fcircle(graph->circle, graph, graph->circle_color);
-	ft_draw_minimap(map, graph);
+	ft_next_frame(graph);
 	ft_define_hooks(graph);
 	mlx_loop(graph->mlx_ptr);
 	return (0);

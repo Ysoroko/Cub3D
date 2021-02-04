@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 18:14:24 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 15:27:28 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_graph	*ft_new_t_graph(t_map *map)
 	if (!(ret->win_ptr = mlx_new_window(ret->mlx_ptr,
 		map->res_width, map->res_height, "cub3d")))
 		ft_mlx_fail();
+	ret->map = map;
 	ret->img_ptr = ft_image(ret->mlx_ptr,
 		map->res_width, map->res_height);
 	ret->f_ptr = 0;
@@ -33,11 +34,10 @@ t_graph	*ft_new_t_graph(t_map *map)
 	ret->f_trgb = ft_rgb_to_trgb(0, map->f_red, map->f_green, map->f_blue);
 	ret->c_trgb = ft_rgb_to_trgb(0, map->c_red, map->c_green, map->c_blue);
 	ret->circle = 0;
-	ret->circle_color = 0x00FF6900;
-	ret->x_speed = 25;
 	mlx_get_screen_size(ret->mlx_ptr, &res_width, &res_height);
 	ret->res_width = fmin(map->res_width, res_width);
 	ret->res_height = fmin(map->res_height, res_height);
+	ret->frame = ft_new_t_frame(ret);
 	return (ret);
 }
 
@@ -52,5 +52,25 @@ t_image	*ft_new_t_image(void)
 	ret->bits_per_pixel = 0;
 	ret->line_length = 0;
 	ret->endian = 0;
+	return (ret);
+}
+
+t_frame	*ft_new_t_frame(t_graph *graph)
+{
+	t_frame	*ret;
+
+	if (!(ret = malloc(sizeof(t_frame))))
+		ft_malloc_fail();
+	ret->units = fmin(graph->map->res_width, graph->map->res_height)
+						/ MAX_RATIO /
+					fmax(ft_strlen(graph->map->map_str_tab[0]),
+						ft_str_tab_len(graph->map->map_str_tab));
+	ret->ceiling = ft_new_square(0, 0, graph->res_width, graph->res_height / 2);
+	ret->floor = ft_new_square(0, graph->res_height / 2,
+								graph->res_width, graph->res_height / 2);
+	ret->minimap_background = ft_new_square(0, 0,
+		ft_strlen(graph->map->map_str_tab[0]) * ret->units,
+		ft_str_tab_len(graph->map->map_str_tab) * ret->units);
+	ret->minimap_wall = ft_new_square(0, 0, ret->units, ret->units);
 	return (ret);
 }

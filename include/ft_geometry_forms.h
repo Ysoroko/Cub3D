@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:15:29 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 11:03:24 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 15:24:14 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_GEOMETRY_FORMS_H
 
 #include "ft_graphics.h"
+#include "ft_params_and_colors.h"
 
 typedef struct	s_square {
 	double		x;
