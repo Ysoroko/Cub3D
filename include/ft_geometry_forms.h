@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:15:29 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 15:24:14 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 17:14:53 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct	s_square {
 	double		y;
 	double		width;
 	double		height;
-	int			trgb;
 }				t_square;
 
 typedef struct	s_line {

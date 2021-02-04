@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 15:34:00 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 17:16:46 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,19 @@ static void	ft_define_hooks(t_graph *graph)
 ** This function will redraw the background colors when called
 */
 
-void		ft_draw_background(t_graph *graph, t_frame *frame)
+void		ft_draw_background(t_graph *graph)
 {
-	ft_draw_fsquare(frame->ceiling, graph, graph->c_trgb);
-	ft_draw_fsquare(frame->floor, graph, graph->f_trgb);
+	double	width;
+	double	height;
+	int		c_trgb;
+	int		f_trgb;
+
+	width = graph->res_width;
+	height = graph->res_height / 2;
+	c_trgb = graph->c_trgb;
+	f_trgb = graph->f_trgb;
+	ft_draw_fsquare(&(t_square){0, 0, width, height}, graph, c_trgb);
+	ft_draw_fsquare(&(t_square){0, height, width, height}, graph, f_trgb);
 }
 
 /*
@@ -47,7 +56,7 @@ void		ft_draw_background(t_graph *graph, t_frame *frame)
 void		ft_next_frame(t_graph *graph)
 {
 	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
-	ft_draw_background(graph, graph->frame);
+	ft_draw_background(graph);
 	ft_draw_minimap(graph);
 	ft_draw_fcircle(graph->circle, graph, PLAYER_COLOR);
 	mlx_put_image_to_window(graph->mlx_ptr,

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 15:33:53 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 17:11:35 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_frame		*ft_new_t_frame(t_graph *graph);
 */
 
 t_graph		*ft_window_start(t_map *map);
-void		ft_draw_background(t_graph *graph, t_frame *frame);
+void		ft_draw_background(t_graph *graph);
 void		ft_next_frame(t_graph *graph);
 
 /*

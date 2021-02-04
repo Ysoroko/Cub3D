@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 15:52:03 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/04 17:16:39 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,19 @@
 ** This function will draw the background of the minimap as a square
 */
 
-void	ft_draw_minimap_background(t_graph *graph)
+void		ft_draw_minimap_background(t_graph *graph)
 {
-	ft_draw_fsquare(graph->frame->minimap_background,
-						graph, MAP_BACKGROUND_COLOR);
+	double x;
+	double y;
+	double width;
+	double height;
+
+	x = graph->frame->minimap_background->x;
+	y = graph->frame->minimap_background->y;
+	width = graph->frame->minimap_background->width;
+	height = graph->frame->minimap_background->height;
+	ft_draw_fsquare(&(t_square){x, y, width, height},
+					graph, MAP_BACKGROUND_COLOR);
 }
 
 /*
@@ -30,29 +39,30 @@ void	ft_draw_minimap_background(t_graph *graph)
 
 static void	ft_draw_minimap_walls(t_graph *graph)
 {
-	t_square	*wall;
-	int			i;
-	int			j;
+	double	width;
+	int		i;
+	int		j;
+	int		x;
+	int		y;
 
 	i = -1;
 	j = -1;
-	wall = graph->frame->minimap_wall;
-	wall->x = graph->frame->minimap_background->x;
-	wall->y = graph->frame->minimap_background->y - graph->frame->units;
+	width = graph->frame->minimap_wall->width;
+	x = graph->frame->minimap_background->x;
+	y = graph->frame->minimap_background->y - graph->frame->units;
 	while (graph->map->map_str_tab[++i])
 	{
 		j = -1;
-		wall->x = graph->frame->minimap_background->x;
-		wall->y += graph->frame->units;
+		x = graph->frame->minimap_background->x;
+		y += graph->frame->units;
 		while (graph->map->map_str_tab[i][++j])
 		{
 			if (graph->map->map_str_tab[i][j] == '1')
-				ft_draw_fsquare(wall, graph, WALL_COLOR);
-			wall->x += graph->frame->units;
+				ft_draw_fsquare(&(t_square){x, y, width, width},
+												graph, WALL_COLOR);
+			x += graph->frame->units;
 		}
 	}
-	graph->frame->minimap_wall->x = graph->frame->minimap_background->x;
-	graph->frame->minimap_wall->y = graph->frame->minimap_background->y;
 }
 
 /*
