@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:40:09 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 14:14:10 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 15:27:25 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_square	*ft_new_square(double x, double y, double width, double height)
 	return (square);
 }
 
-t_line		*ft_new_line(double a_x, double a_y, double b_x, double b_y)
+t_line		*ft_new_line(double a_x, double a_y, double angle, double len)
 {
 	t_line *line;
 
@@ -34,12 +34,13 @@ t_line		*ft_new_line(double a_x, double a_y, double b_x, double b_y)
 		ft_malloc_fail();
 	line->a_x = a_x;
 	line->a_y = a_y;
-	line->b_x = b_x;
-	line->b_y = b_y;
-	if (a_x < b_x)
-		line->delta = (a_y - b_y) / (a_x - b_x);
+	line->b_x = a_x + len * cos(angle);
+	line->b_y = a_y + len * sin(angle);
+	line->angle = angle;
+	if (a_x < line->b_x)
+		line->delta = (a_y - line->b_y) / (a_x - line->b_x);
 	else
-		line->delta = (b_y - a_y) / (b_x - a_x);
+		line->delta = (line->b_y - a_y) / (line->b_x - a_x);
 	return (line);
 }
 

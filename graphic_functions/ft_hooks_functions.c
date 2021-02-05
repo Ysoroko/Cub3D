@@ -6,22 +6,23 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 15:19:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 13:15:45 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 16:03:38 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_graphics.h"
 
-static	void	ft_move_circle(t_graph *graph, char direction)
+/*
+** FT_TURN
+** Turns the player in the needed direction and calls the next frame to be done
+*/
+
+static void		ft_turn(t_graph *graph, int direction)
 {
-	if (direction == 'N')
-		graph->circle->y -= WALKING_SPEED;
-	else if (direction == 'S')
-		graph->circle->y += WALKING_SPEED;
-	else if (direction == 'E')
-		graph->circle->x += WALKING_SPEED;
-	else if (direction == 'W')
-		graph->circle->x -= WALKING_SPEED;
+	if (direction == 1)
+		graph->line->angle += TURNING_SPEED;
+	else
+		graph->line->angle -= TURNING_SPEED;
 	ft_next_frame(graph);
 }
 
@@ -39,13 +40,13 @@ int				ft_keys_binding(int keycode, t_graph *graph)
 		exit(EXIT_SUCCESS);
 	}
 	if (keycode == LEFT_ARROW_KEY)
-		ft_move_circle(graph, 'W');
+		ft_turn(graph, -1);
 	if (keycode == RIGHT_ARROW_KEY)
-		ft_move_circle(graph, 'E');
+		ft_turn(graph, 1);
 	if (keycode == UP_ARROW_KEY)
-		ft_move_circle(graph, 'N');
+		ft_move_and_collide(graph, 1);
 	if (keycode == DOWN_ARROW_KEY)
-		ft_move_circle(graph, 'S');
+		ft_move_and_collide(graph, -1);
 	return (0);
 }
 

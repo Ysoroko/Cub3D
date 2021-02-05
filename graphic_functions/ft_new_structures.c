@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 13:50:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 15:16:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ t_graph	*ft_new_t_graph(t_map *map)
 	ret->map = map;
 	ret->f_ptr = 0;
 	ret->param = 0;
+	ret->move_speed = WALKING_SPEED;
 	ret->f_trgb = ft_rgb_to_trgb(0, map->f_red, map->f_green, map->f_blue);
 	ret->c_trgb = ft_rgb_to_trgb(0, map->c_red, map->c_green, map->c_blue);
 	ret->circle = 0;
+	ret->line = 0;
 	ft_set_resolution(&ret->res_width, &ret->res_height, ret->mlx_ptr, map);
 	ret->img_ptr = ft_image(ret->mlx_ptr,
 		map->res_width, map->res_height);

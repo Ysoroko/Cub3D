@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:15:29 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 14:14:01 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 15:26:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ typedef struct	s_line {
 	double		a_y;
 	double		b_x;
 	double		b_y;
+	double		angle;
+	double		len;
 	double		delta;
-	double		delta_x;
-	int			trgb;
 }				t_line;
 
 typedef struct	s_circle {

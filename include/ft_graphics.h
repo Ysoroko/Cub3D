@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 14:06:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 16:03:53 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ typedef struct		s_graph
 	int			c_trgb;
 	void		*param;
 	t_circle	*circle;
+	t_line		*line;
 	t_map		*map;
-	int		res_width;
-	int		res_height;
+	double		move_speed;
+	int			res_width;
+	int			res_height;
 	t_frame		*frame;
 }					t_graph;
 
@@ -117,7 +119,7 @@ void		ft_draw_fcircle(t_circle *circle, t_image *img, int trgb);
 */
 
 t_square	*ft_new_square(double x, double y, double width, double height);
-t_line		*ft_new_line(double a_x, double a_y, double b_x, double b_y);
+t_line		*ft_new_line(double a_x, double a_y, double angle, double len);
 t_circle	*ft_new_circle(double x, double y, double radius, double prox);
 t_point		*ft_new_point(double x, double y);
 
@@ -140,5 +142,11 @@ void		ft_mlx_fail(void);
 */
 
 void		ft_draw_minimap(t_graph *graph);
+
+/*
+** FT_MOVE_IN_MAP
+*/
+
+void		ft_move_and_collide(t_graph *graph, int direction);
 
 #endif

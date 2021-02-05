@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 14:31:48 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 15:41:00 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,31 @@ static void	ft_draw_minimap_walls(t_graph *graph, char **str_tab, double width)
 }
 
 /*
+** FT_DRAW_STARTING_PLAYER_POSITION
+** This will determine the starting player position and create a t_line
+** for it to be stored in graph
+*/
+
+static void		ft_draw_starting_player_direction(t_graph *graph)
+{
+	char	player_direction;
+	double	angle;
+	t_line	*line;
+
+	angle = 0;
+	player_direction = graph->map->map_str_tab[graph->map->player_x]
+												[graph->map->player_y];
+	if (player_direction == 'S')
+		angle = M_PI_2;
+	else if (player_direction == 'W')
+		angle = M_PI;
+	else if (player_direction == 'N')
+		angle = M_PI + M_PI_2;
+	line = ft_new_line(graph->circle->x, graph->circle->y, angle, LINE_LENGTH);
+	graph->line = line;
+}
+
+/*
 ** FT_DRAW_MINIMAP
 ** This function is the central hub of drawing the minimap
 ** and determining the needed size
@@ -86,4 +111,6 @@ void		ft_draw_minimap(t_graph *graph)
 					(graph->map->player_y * graph->frame->units)
 			+ graph->frame->units / 2, graph->frame->units / 2, 0);
 	}
+	if (!graph->line)
+		ft_draw_starting_player_direction(graph);
 }
