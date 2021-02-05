@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 15:41:00 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 16:37:22 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,23 +72,22 @@ static void	ft_draw_minimap_walls(t_graph *graph, char **str_tab, double width)
 ** for it to be stored in graph
 */
 
-static void		ft_draw_starting_player_direction(t_graph *graph)
+static void	ft_starting_player_direction(t_graph *graph)
 {
 	char	player_direction;
 	double	angle;
-	t_line	*line;
 
 	angle = 0;
-	player_direction = graph->map->map_str_tab[graph->map->player_x]
-												[graph->map->player_y];
+	player_direction = graph->map->map_str_tab[graph->map->player_y]
+												[graph->map->player_x];
 	if (player_direction == 'S')
 		angle = M_PI_2;
 	else if (player_direction == 'W')
 		angle = M_PI;
 	else if (player_direction == 'N')
 		angle = M_PI + M_PI_2;
-	line = ft_new_line(graph->circle->x, graph->circle->y, angle, LINE_LENGTH);
-	graph->line = line;
+	graph->line = ft_new_line(graph->circle->x,
+							graph->circle->y, angle, LINE_LENGTH);
 }
 
 /*
@@ -98,7 +97,7 @@ static void		ft_draw_starting_player_direction(t_graph *graph)
 ** Draws the background first as a rectangle, then the walls
 */
 
-void		ft_draw_minimap(t_graph *graph)
+void	ft_draw_minimap(t_graph *graph)
 {
 	ft_draw_minimap_background(graph);
 	ft_draw_minimap_walls(graph, graph->map->map_str_tab,
@@ -112,5 +111,7 @@ void		ft_draw_minimap(t_graph *graph)
 			+ graph->frame->units / 2, graph->frame->units / 2, 0);
 	}
 	if (!graph->line)
-		ft_draw_starting_player_direction(graph);
+		ft_starting_player_direction(graph);
+	ft_draw_fcircle(graph->circle, graph->img_ptr, PLAYER_COLOR);
+	ft_draw_line(graph->line, graph->img_ptr, DIRECTION_COLOR);
 }

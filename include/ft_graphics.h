@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 16:03:53 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 17:03:16 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,5 +148,6 @@ void		ft_draw_minimap(t_graph *graph);
 */
 
 void		ft_move_and_collide(t_graph *graph, int direction);
+void		ft_reposition_line(t_circle *circle, double angle, t_line *line);
 
 #endif

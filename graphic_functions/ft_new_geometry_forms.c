@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:40:09 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 15:27:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 16:30:31 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ t_line		*ft_new_line(double a_x, double a_y, double angle, double len)
 		ft_malloc_fail();
 	line->a_x = a_x;
 	line->a_y = a_y;
+	line->angle = angle;
 	line->b_x = a_x + len * cos(angle);
 	line->b_y = a_y + len * sin(angle);
-	line->angle = angle;
 	if (a_x < line->b_x)
 		line->delta = (a_y - line->b_y) / (a_x - line->b_x);
 	else

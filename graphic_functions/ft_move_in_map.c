@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 16:04:04 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 17:05:36 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,27 @@ void	ft_move_and_collide(t_graph *graph, int direction)
 		graph->circle->x -= graph->move_speed * cos(angle);
 		graph->circle->y -= graph->move_speed * sin(angle);
 	}
+	ft_reposition_line(graph->circle, angle, graph->line);
 	ft_next_frame(graph);
+}
+
+/*
+** FT_REPOSITION_LINE
+** This function recalculates the new position of the line every call
+** Saves the changes inside the *line structure
+*/
+
+void	ft_reposition_line(t_circle *circle, double angle, t_line *line)
+{
+	line->a_x = circle->x;
+	line->a_y = circle->y;
+	line->b_x = line->a_x + LINE_LENGTH * cos(angle);
+	line->b_y = line->a_y + LINE_LENGTH * sin(angle);
+	line->angle = angle;
+	if (line->a_x < line->b_x)
+		line->delta = (line->a_y - line->b_y) / (line->a_x - line->b_x);
+	else
+		line->delta = (line->b_y - line->a_y) / (line->b_x - line->a_x);
 }
 
 /*

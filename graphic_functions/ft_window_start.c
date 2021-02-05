@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 15:45:16 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 16:26:56 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,9 @@ void		ft_next_frame(t_graph *graph)
 	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
 	ft_draw_background(graph);
 	ft_draw_minimap(graph);
-	ft_draw_fcircle(graph->circle, graph->img_ptr, PLAYER_COLOR);
-	ft_draw_line(graph->line, graph->img_ptr, DIRECTION_COLOR);
+	printf("line b_x [%f] b_y [%f] \n", graph->line->b_x, graph->line->b_y);
+	printf("line a_x [%f] a_y [%f] \n", graph->line->a_x, graph->line->a_y);
+	printf("line angle: [%f] \n", graph->line->angle);
 	mlx_put_image_to_window(graph->mlx_ptr,
 								graph->win_ptr, graph->img_ptr->img, 0, 0);
 }
