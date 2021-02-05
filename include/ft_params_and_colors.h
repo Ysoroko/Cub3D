@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 14:33:43 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 14:41:38 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 ** Colors
 */
 
-#define MAP_BACKGROUND_COLOR 0x00606060
-#define WALL_COLOR 0x00103010
-#define PLAYER_COLOR 0x00FF6900
-#define SPRITE_COLOR 0x00A5FF00
+#define MAP_BACKGROUND_COLOR 0x00F2BC94
+#define WALL_COLOR 0x0030110D
+#define PLAYER_COLOR 0x001F8AC0
+#define SPRITE_COLOR 0x00722620
 
 /*
 ** Parameters
