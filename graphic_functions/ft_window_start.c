@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 17:16:46 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 13:54:07 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,19 @@ static void	ft_define_hooks(t_graph *graph)
 
 void		ft_draw_background(t_graph *graph)
 {
+	t_image	*img;
 	double	width;
 	double	height;
 	int		c_trgb;
 	int		f_trgb;
 
+	img = graph->img_ptr;
 	width = graph->res_width;
 	height = graph->res_height / 2;
 	c_trgb = graph->c_trgb;
 	f_trgb = graph->f_trgb;
-	ft_draw_fsquare(&(t_square){0, 0, width, height}, graph, c_trgb);
-	ft_draw_fsquare(&(t_square){0, height, width, height}, graph, f_trgb);
+	ft_draw_fsquare(&(t_square){0, 0, width, height}, img, c_trgb);
+	ft_draw_fsquare(&(t_square){0, height, width, height}, img, f_trgb);
 }
 
 /*
@@ -58,9 +60,9 @@ void		ft_next_frame(t_graph *graph)
 	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
 	ft_draw_background(graph);
 	ft_draw_minimap(graph);
-	ft_draw_fcircle(graph->circle, graph, PLAYER_COLOR);
+	ft_draw_fcircle(graph->circle, graph->img_ptr, PLAYER_COLOR);
 	mlx_put_image_to_window(graph->mlx_ptr,
-							graph->win_ptr, graph->img_ptr->img, 0, 0);
+								graph->win_ptr, graph->img_ptr->img, 0, 0);
 }
 
 /*

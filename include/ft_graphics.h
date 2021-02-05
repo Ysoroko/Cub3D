@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 17:11:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 12:36:14 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,15 @@ typedef struct		s_graph
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_image		*img_ptr;
+	t_image		*once_drawn_img;
 	int			*f_ptr;
 	int			f_trgb;
 	int			c_trgb;
 	void		*param;
 	t_circle	*circle;
 	t_map		*map;
-	double		res_width;
-	double		res_height;
+	int		res_width;
+	int		res_height;
 	t_frame		*frame;
 }					t_graph;
 
@@ -99,15 +100,15 @@ void		my_mlx_pixel_put(t_image *image, int x, int y, int color);
 ** FT_DRAW_EMPTY_FORMS
 */
 
-void		ft_draw_line(t_line *line, t_graph *graph, int trgb);
-void		ft_draw_circle(t_circle *circle, t_graph *graph, int trgb);
+void		ft_draw_line(t_line *line, t_image *img, int trgb);
+void		ft_draw_circle(t_circle *circle, t_image *img, int trgb);
 
 /*
 ** FT_DRAW_FILLED_IN_FORMS
 */
 
-void		ft_draw_fsquare(t_square *square, t_graph *graph, int trgb);
-void		ft_draw_fcircle(t_circle *circle, t_graph *graph, int trgb);
+void		ft_draw_fsquare(t_square *square, t_image *img, int trgb);
+void		ft_draw_fcircle(t_circle *circle, t_image *img, int trgb);
 
 /*
 ** FT_NEW_GEOMETRY_FORMS

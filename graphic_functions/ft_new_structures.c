@@ -6,19 +6,26 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 15:27:28 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 13:50:35 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_graphics.h"
 
+static	void	ft_set_resolution(int *res_w, int *res_h, void *mlx, t_map *m)
+{
+	int	screen_width;
+	int	screen_height;
+
+	mlx_get_screen_size(mlx, &screen_width, &screen_height);
+	*res_w = fmin(m->res_width, screen_width);
+	*res_h = fmin(m->res_height, screen_height);
+}
+
 t_graph	*ft_new_t_graph(t_map *map)
 {
 	t_graph	*ret;
-	int		res_width;
-	int		res_height;
 
-	ret = 0;
 	if (!(ret = malloc(sizeof(t_graph))))
 		ft_malloc_fail();
 	if (!(ret->mlx_ptr = mlx_init()))
@@ -27,17 +34,18 @@ t_graph	*ft_new_t_graph(t_map *map)
 		map->res_width, map->res_height, "cub3d")))
 		ft_mlx_fail();
 	ret->map = map;
-	ret->img_ptr = ft_image(ret->mlx_ptr,
-		map->res_width, map->res_height);
 	ret->f_ptr = 0;
 	ret->param = 0;
 	ret->f_trgb = ft_rgb_to_trgb(0, map->f_red, map->f_green, map->f_blue);
 	ret->c_trgb = ft_rgb_to_trgb(0, map->c_red, map->c_green, map->c_blue);
 	ret->circle = 0;
-	mlx_get_screen_size(ret->mlx_ptr, &res_width, &res_height);
-	ret->res_width = fmin(map->res_width, res_width);
-	ret->res_height = fmin(map->res_height, res_height);
+	ft_set_resolution(&ret->res_width, &ret->res_height, ret->mlx_ptr, map);
+	ret->img_ptr = ft_image(ret->mlx_ptr,
+		map->res_width, map->res_height);
 	ret->frame = ft_new_t_frame(ret);
+	ret->once_drawn_img = ft_image(ret->mlx_ptr,
+		ft_strlen(map->map_str_tab[0]) * ret->frame->units,
+		ft_str_tab_len(map->map_str_tab) * ret->frame->units);
 	return (ret);
 }
 

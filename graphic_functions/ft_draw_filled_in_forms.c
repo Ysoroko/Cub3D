@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 13:55:07 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 12:45:24 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 12:36:39 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** Draws the specified square with the specified colour
 */
 
-void	ft_draw_fsquare(t_square *square, t_graph *graph, int trgb)
+void	ft_draw_fsquare(t_square *square, t_image *img_ptr, int trgb)
 {
 	double	x;
 	double	y;
@@ -29,20 +29,18 @@ void	ft_draw_fsquare(t_square *square, t_graph *graph, int trgb)
 		y = square->y;
 		while (y < square->y + square->height)
 		{
-			my_mlx_pixel_put(graph->img_ptr, x, y, trgb);
+			my_mlx_pixel_put(img_ptr, x, y, trgb);
 			y++;
 		}
 		x++;
 	}
-	mlx_put_image_to_window(graph->mlx_ptr,
-							graph->win_ptr, graph->img_ptr->img, 0, 0);
 }
 
 /*
 ** Draws the specified circle with the specified colour
 */
 
-void	ft_draw_fcircle(t_circle *circle, t_graph *graph, int trgb)
+void	ft_draw_fcircle(t_circle *circle, t_image *img_ptr, int trgb)
 {
 	double	radius;
 	double	i;
@@ -61,10 +59,8 @@ void	ft_draw_fcircle(t_circle *circle, t_graph *graph, int trgb)
 			dist = sqrt(((i - circle->x) * (i - circle->x))
 					+ ((j - circle->y) * (j - circle->y)));
 			if (dist >= 0 && dist < (radius))
-				my_mlx_pixel_put(graph->img_ptr, i, j, trgb);
+				my_mlx_pixel_put(img_ptr, i, j, trgb);
 		}
 		i++;
 	}
-	mlx_put_image_to_window(graph->mlx_ptr,
-							graph->win_ptr, graph->img_ptr->img, 0, 0);
 }

@@ -6,14 +6,14 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/04 17:40:40 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 13:55:37 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_graphics.h"
 
 /*
-** FT_DRAW_BACKGROUND
+** FT_DRAW_MINIMAP_BACKGROUND
 ** This function will draw the background of the minimap as a square
 */
 
@@ -29,7 +29,7 @@ void		ft_draw_minimap_background(t_graph *graph)
 	width = graph->frame->minimap_background->width;
 	height = graph->frame->minimap_background->height;
 	ft_draw_fsquare(&(t_square){x, y, width, height},
-					graph, MAP_BACKGROUND_COLOR);
+					graph->img_ptr, MAP_BACKGROUND_COLOR);
 }
 
 /*
@@ -59,7 +59,7 @@ static void	ft_draw_minimap_walls(t_graph *graph, char **str_tab, double width)
 		{
 			if (str_tab[i][j] == '1')
 				ft_draw_fsquare(&(t_square){x, y, width, width},
-												graph, WALL_COLOR);
+											graph->img_ptr, WALL_COLOR);
 			x += units;
 		}
 	}
