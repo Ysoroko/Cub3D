@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 12:36:14 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/05 14:06:25 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ void		my_mlx_pixel_put(t_image *image, int x, int y, int color);
 
 void		ft_draw_line(t_line *line, t_image *img, int trgb);
 void		ft_draw_circle(t_circle *circle, t_image *img, int trgb);
+void		ft_draw_triangle(t_triangle *triangle,
+								t_image *img_ptr, int trgb);
 
 /*
 ** FT_DRAW_FILLED_IN_FORMS
