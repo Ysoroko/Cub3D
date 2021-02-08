@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/05 15:54:28 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/08 11:44:34 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					graphic_functions/ft_error_utils.c \
 					graphic_functions/ft_draw_minimap.c \
 					graphic_functions/ft_move_in_map.c \
+					graphic_functions/ft_draw_line.c \
 					\
 					libmlx.a \
 					\

@@ -6,44 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:50:54 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 16:16:03 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 11:40:35 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_graphics.h"
-
-/*
-** FT_DRAW_LINE
-** Draws the specified line with the specified colour
-*/
-
-void	ft_draw_line(t_line *line, t_image *img_ptr, int trgb)
-{
-	if (line->a_x < line->b_x)
-	{
-		while (line->a_x++ <= line->b_x)
-		{
-			while (line->a_y != line->b_y)
-			{
-				my_mlx_pixel_put(img_ptr, line->a_x, line->a_y, trgb);
-				line->a_y += line->delta;
-				break ;
-			}
-		}
-	}
-	else
-	{
-		while (line->a_x-- >= line->b_x)
-		{
-			while (line->a_y != line->b_y)
-			{
-				my_mlx_pixel_put(img_ptr, line->a_x, line->a_y, trgb);
-				line->a_y -= line->delta;
-				break ;
-			}
-		}
-	}
-}
 
 /*
 ** FT_DRAW_CIRCLE
