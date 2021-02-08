@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 15:19:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 17:05:00 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 14:42:42 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void		ft_turn(t_graph *graph, int direction)
 		angle = (graph->line->angle + TURNING_SPEED);
 	else
 		angle = (graph->line->angle - TURNING_SPEED);
-	ft_reposition_line(graph->circle, angle, graph->line);
+	ft_reposition_line(graph, graph->circle, angle, graph->line);
 	ft_next_frame(graph);
 }
 

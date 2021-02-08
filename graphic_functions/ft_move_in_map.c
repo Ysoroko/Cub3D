@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 13:52:59 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 16:24:27 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,11 @@ static void	ft_position_in_map(t_graph *graph, double *x, double *y)
 	units = graph->frame->units;
 	*x = floor(*x / units);
 	*y = floor(*y / units);
-	printf("UNITS: [%f]\n", units);
 }
+
+
 
 /*
-static void	ft_distance_to_nearest_wall(t_graph *graph, double *x, double *y)
-{
-	double angle;
-
-	angle = graph->line->angle;
-	
-}
-
 static void	ft_collide(t_graph *graph, char **map, int direction)
 {
 	double	x;
@@ -92,8 +85,8 @@ void	ft_move_and_collide(t_graph *graph, int direction)
 	x_in_map = graph->circle->x;
 	y_in_map = graph->circle->y;
 	ft_position_in_map(graph, &x_in_map, &y_in_map);
-	printf("\ni:[%f]\nj:[%f]\n", x_in_map, y_in_map);
-	ft_reposition_line(graph->circle, angle, graph->line);
+	//printf("\ni:[%f]\nj:[%f]\n", x_in_map, y_in_map);
+	ft_reposition_line(graph, graph->circle, angle, graph->line);
 	ft_next_frame(graph);
 }
 
@@ -103,13 +96,20 @@ void	ft_move_and_collide(t_graph *graph, int direction)
 ** Saves the changes inside the *line structure
 */
 
-void	ft_reposition_line(t_circle *circle, double angle, t_line *line)
+void	ft_reposition_line(t_graph *g, t_circle *cir, double a, t_line *line)
 {
-	line->a_x = circle->x;
-	line->a_y = circle->y;
-	line->b_x = line->a_x + LINE_LENGTH * cos(angle);
-	line->b_y = line->a_y + LINE_LENGTH * sin(angle);
-	line->angle = angle;
+	double	units;
+	char	**map;
+	double	distance_to_wall;
+
+	map = g->map->map_str_tab;
+	units = g->frame->units;
+	distance_to_wall = ft_dist_to_wall(g, map, units, a);
+	line->a_x = cir->x;
+	line->a_y = cir->y;
+	line->b_x = line->a_x + distance_to_wall * cos(a);
+	line->b_y = line->a_y + distance_to_wall * sin(a);
+	line->angle = a;
 	if (line->a_x < line->b_x)
 		line->delta = (line->a_y - line->b_y) / (line->a_x - line->b_x);
 	else
