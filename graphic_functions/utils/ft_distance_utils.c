@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 16:07:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 17:06:58 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 17:24:00 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_graphics.h"
+#include "../../include/ft_graphics.h"
 
 /*
 ** FT_POSITION_IN_MAP

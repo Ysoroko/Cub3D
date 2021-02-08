@@ -6,12 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:40:09 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 16:30:31 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 17:23:22 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_graphics.h"
-#include "../include/ft_geometry_forms.h"
+#include "../../include/ft_graphics.h"
 
 t_square	*ft_new_square(double x, double y, double width, double height)
 {

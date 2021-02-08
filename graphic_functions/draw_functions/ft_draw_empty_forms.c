@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:50:54 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 11:40:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 17:23:35 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_graphics.h"
+#include "../../include/ft_graphics.h"
 
 /*
 ** FT_DRAW_CIRCLE

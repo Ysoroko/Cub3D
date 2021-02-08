@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 15:24:04 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 13:29:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 17:23:59 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_graphics.h"
+#include "../../include/ft_graphics.h"
 
 /*
 ** This creates an image structure and fills it with necessary information

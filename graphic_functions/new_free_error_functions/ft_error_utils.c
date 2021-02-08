@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 12:36:51 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/02 13:29:16 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 17:23:28 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_graphics.h"
+#include "../../include/ft_graphics.h"
 
 /*
 ** FT_MALLOC_FAIL

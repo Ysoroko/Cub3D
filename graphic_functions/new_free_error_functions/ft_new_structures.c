@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 15:16:57 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 17:23:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_graphics.h"
+#include "../../include/ft_graphics.h"
 
 static	void	ft_set_resolution(int *res_w, int *res_h, void *mlx, t_map *m)
 {

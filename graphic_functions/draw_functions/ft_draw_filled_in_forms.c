@@ -6,12 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 13:55:07 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 12:36:39 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 17:23:34 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_graphics.h"
-#include "../include/ft_geometry_forms.h"
+#include "../../include/ft_graphics.h"
 
 /*
 ** Draws the specified square with the specified colour

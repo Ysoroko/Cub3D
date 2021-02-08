@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rgb_to_trgb.c                                   :+:      :+:    :+:   */
+/*   ft_raycaster.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/28 14:14:54 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 17:23:59 by ysoroko          ###   ########.fr       */
+/*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
+/*   Updated: 2021/02/08 17:58:37 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_graphics.h"
+#include "../../include/ft_raycaster.h"
 
-/*
-** This function is used to transform our rgb_values to the trgb format int
-*/
-
-int	ft_rgb_to_trgb(int t, int r, int g, int b)
+void	ft_raycaster(t_graph *graph)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	int		i;
+	t_ray	*ray;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+
+	ray = ft_new_raycaster(graph, graph->map);
+	i = -1;
+	while (++i < ray->res_w)
+	{
+		camera_x = 2 * i / (double)(ray->res_w) - 1;
+		ray_dir_x = ray->direction->x + ray->plane_x * camera_x;
+		ray_dir_y = ray->direction->y + ray->plane_y * camera_x;
+	}
+
 }
