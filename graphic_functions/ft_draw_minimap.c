@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 16:37:22 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 13:37:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ void	ft_draw_minimap(t_graph *graph)
 	{
 		graph->circle = ft_new_circle((graph->map->player_x *
 										graph->frame->units)
-								+ graph->frame->units / 2,
+								+ graph->frame->units / 3,
 					(graph->map->player_y * graph->frame->units)
-			+ graph->frame->units / 2, graph->frame->units / 2, 0);
+			+ graph->frame->units / 3, graph->frame->units / 3, 0);
 	}
 	if (!graph->line)
 		ft_starting_player_direction(graph);

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 11:24:45 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 12:01:57 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 13:40:31 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static void	ft_draw_right_line(t_line *line, t_image *img_ptr, int trgb)
 	{
 		while (line->a_y != line->b_y)
 		{
-			my_mlx_pixel_put(img_ptr, line->a_x, line->a_y, trgb);
 			line->a_y += line->delta;
 			break ;
 		}
+		my_mlx_pixel_put(img_ptr, line->a_x, line->a_y, trgb);
 	}
 }
 
@@ -45,10 +45,10 @@ static void	ft_draw_left_line(t_line *line, t_image *img_ptr, int trgb)
 	{
 		while (line->a_y != line->b_y)
 		{
-			my_mlx_pixel_put(img_ptr, line->a_x, line->a_y, trgb);
 			line->a_y -= line->delta;
 			break ;
 		}
+		my_mlx_pixel_put(img_ptr, line->a_x, line->a_y, trgb);
 	}
 }
 
@@ -66,10 +66,10 @@ static void	ft_draw_down_line(t_line *line, t_image *img_ptr, int trgb)
 	{
 		while (line->a_x != line->b_x)
 		{
-			my_mlx_pixel_put(img_ptr, line->a_x, line->a_y, trgb);
 			line->a_x -= line->delta;
 			break ;
 		}
+		my_mlx_pixel_put(img_ptr, line->a_x, line->a_y, trgb);
 	}
 }
 
@@ -86,10 +86,10 @@ static void	ft_draw_up_line(t_line *line, t_image *img_ptr, int trgb)
 	{
 		while (line->a_x != line->b_x)
 		{
-			my_mlx_pixel_put(img_ptr, line->a_x, line->a_y, trgb);
 			line->a_x += line->delta;
 			break ;
 		}
+		my_mlx_pixel_put(img_ptr, line->a_x, line->a_y, trgb);
 	}
 }
 
