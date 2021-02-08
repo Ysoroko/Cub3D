@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 11:24:45 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 13:40:31 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/08 17:12:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_graphics.h"
+#include "../../include/ft_graphics.h"
 
 /*
 ** FT_DRAW_RIGHT_LINE

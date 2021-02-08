@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/08 16:24:58 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/08 17:18:10 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,23 +40,26 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					extract_t_map/ft_free_and_new_functions.c \
 					extract_t_map/ft_check_str_tab_errors.c \
 					\
-					graphic_functions/ft_new_structures.c \
+					graphic_functions/draw_functions/ft_draw_empty_forms.c \
+					graphic_functions/draw_functions/ft_draw_filled_in_forms.c \
+					graphic_functions/draw_functions/ft_draw_line.c \
+					graphic_functions/draw_functions/ft_draw_minimap.c \
+					\
+					graphic_functions/new_free_error_functions/ft_error_utils.c \
+					graphic_functions/new_free_error_functions/ft_new_geometry_forms.c \
+					graphic_functions/new_free_error_functions/ft_new_structures.c \
+					\
+					graphic_functions/utils/ft_distance_utils.c \
+					graphic_functions/utils/ft_image_functions.c \
+					graphic_functions/utils/ft_rgb_to_trgb.c \
+					\
 					graphic_functions/ft_window_start.c \
-					graphic_functions/ft_rgb_to_trgb.c \
-					graphic_functions/ft_image_functions.c \
-					graphic_functions/ft_draw_empty_forms.c \
-					graphic_functions/ft_draw_filled_in_forms.c \
-					graphic_functions/ft_new_geometry_forms.c \
 					graphic_functions/ft_hooks_functions.c \
-					graphic_functions/ft_error_utils.c \
-					graphic_functions/ft_draw_minimap.c \
 					graphic_functions/ft_move_in_map.c \
-					graphic_functions/ft_draw_line.c \
-					graphic_functions/ft_distance_utils.c \
 					\
 					libmlx.a \
 					\
-					main.c \
+					main.c 
 					
 
 BONUS_SRC		=	SRC \
