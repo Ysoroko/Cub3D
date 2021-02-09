@@ -6,13 +6,11 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/08 17:18:10 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/09 13:50:32 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	gcc
-
-SWIFTC			=	swiftc
 
 CFLAGS			=	-Wall -Wextra -Werror
 
@@ -52,6 +50,9 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					graphic_functions/utils/ft_distance_utils.c \
 					graphic_functions/utils/ft_image_functions.c \
 					graphic_functions/utils/ft_rgb_to_trgb.c \
+					\
+					graphic_functions/raycaster/ft_raycaster.c \
+					graphic_functions/raycaster/ft_new_raycaster.c \
 					\
 					graphic_functions/ft_window_start.c \
 					graphic_functions/ft_hooks_functions.c \

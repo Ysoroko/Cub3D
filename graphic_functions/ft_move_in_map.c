@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 16:24:27 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 14:30:23 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	ft_collide(t_graph *graph, char **map, int direction)
 ** This function is responsible for the player movement and collision
 */
 
-void	ft_move_and_collide(t_graph *graph, int direction)
+void	ft_move_and_collide(t_graph *graph, int direction, t_ray *ray)
 {
 	double	angle;
 	double	x_in_map;
@@ -87,7 +87,7 @@ void	ft_move_and_collide(t_graph *graph, int direction)
 	ft_position_in_map(graph, &x_in_map, &y_in_map);
 	//printf("\ni:[%f]\nj:[%f]\n", x_in_map, y_in_map);
 	ft_reposition_line(graph, graph->circle, angle, graph->line);
-	ft_next_frame(graph);
+	ft_next_frame(graph, ray);
 }
 
 /*

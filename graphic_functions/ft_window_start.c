@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/05 16:26:56 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 14:36:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 ** This function defines all the key mappings (escape / window closing etc.)
 */
 
-static void	ft_define_hooks(t_graph *graph)
+static void	ft_define_hooks(t_ray *ray)
 {
-	mlx_hook(graph->win_ptr, KEY_PRESS_EVENT, KEY_PRESS_MASK,
-			ft_keys_binding, graph);
-	mlx_hook(graph->win_ptr, DESTROY_EVENT, STRUCTURE_NOTIFY_MASK,
-			ft_window_closed, graph);
+	mlx_hook(ray->graph->win_ptr, KEY_PRESS_EVENT, KEY_PRESS_MASK,
+			ft_keys_binding, ray);
+	mlx_hook(ray->graph->win_ptr, DESTROY_EVENT, STRUCTURE_NOTIFY_MASK,
+			ft_window_closed, ray);
 }
 
 /*
@@ -55,14 +55,18 @@ void		ft_draw_background(t_graph *graph)
 ** 2) Minimap
 */
 
-void		ft_next_frame(t_graph *graph)
+void		ft_next_frame(t_graph *graph, t_ray *ray)
 {
+	int wall_trgb;
+
+	wall_trgb = 0x00F2BC94;
 	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
 	ft_draw_background(graph);
 	ft_draw_minimap(graph);
 	printf("line b_x [%f] b_y [%f] \n", graph->line->b_x, graph->line->b_y);
 	printf("line a_x [%f] a_y [%f] \n", graph->line->a_x, graph->line->a_y);
 	printf("line angle: [%f] \n", graph->line->angle);
+	ft_raycaster(ray);
 	mlx_put_image_to_window(graph->mlx_ptr,
 								graph->win_ptr, graph->img_ptr->img, 0, 0);
 }
@@ -76,10 +80,13 @@ void		ft_next_frame(t_graph *graph)
 t_graph		*ft_window_start(t_map *map)
 {
 	t_graph		*graph;
+	t_ray		*ray;
 
 	graph = ft_new_t_graph(map);
-	ft_next_frame(graph);
-	ft_define_hooks(graph);
+	ray = ft_new_raycaster(graph, map);
+	ft_next_frame(graph, ray);
+	ft_define_hooks(ray);
+	printf("\n\nALL GOOD BEFORE RAYSTER\n\n");
 	mlx_loop(graph->mlx_ptr);
 	return (0);
 }

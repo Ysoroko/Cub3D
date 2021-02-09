@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:40:09 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 17:23:22 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 12:30:55 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_circle	*ft_new_circle(double x, double y, double radius, double prox)
 	return (circle);
 }
 
-t_point	*ft_new_point(double x, double y)
+t_point		*ft_new_point(double x, double y)
 {
 	t_point	*ret;
 

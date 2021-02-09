@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 14:42:27 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 14:36:23 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,30 @@ typedef struct		s_graph
 	t_frame		*frame;
 }					t_graph;
 
+typedef struct	s_ray
+{
+	t_graph	*graph;
+	char	**map;
+	int		map_width;
+	int		map_height;
+	int		hit;
+	int		side;
+	double	fov;
+	double	camera_x;
+	double	perp_wall_dist;
+	t_point	*pos;
+	t_point	*in_map;
+	t_point	*res;
+	t_point	*plane;
+	t_point	*direction;
+	t_point	*ray_dir;
+	t_point	*delta_dist;
+	t_point	*side_dist;
+	t_point	*step;
+	t_line	*line;
+
+}				t_ray;
+
 /*
 ** FT_NEW_STRUCTURES
 */
@@ -83,7 +107,7 @@ t_frame		*ft_new_t_frame(t_graph *graph);
 
 t_graph		*ft_window_start(t_map *map);
 void		ft_draw_background(t_graph *graph);
-void		ft_next_frame(t_graph *graph);
+void		ft_next_frame(t_graph *graph, t_ray *ray);
 
 /*
 ** FT_RGB_TO_TRGB
@@ -127,7 +151,7 @@ t_point		*ft_new_point(double x, double y);
 ** FT_HOOKS_FUNCTIONS
 */
 
-int			ft_keys_binding(int keycode, t_graph *graph);
+int			ft_keys_binding(int keycode, t_ray *ray);
 int			ft_window_closed(t_graph *graph);
 
 /*
@@ -147,10 +171,17 @@ void		ft_draw_minimap(t_graph *graph);
 ** FT_MOVE_IN_MAP
 */
 
-void		ft_move_and_collide(t_graph *graph, int direction);
+void		ft_move_and_collide(t_graph *graph, int direction, t_ray *ray);
 void		ft_reposition_line(t_graph *g, t_circle *cir, double a,
 								t_line *line);
 double		ft_dist_to_wall(t_graph *graph, char **map,
 							double units, double angle);
+
+/*
+** RAYCASTER
+*/
+
+t_ray		*ft_new_raycaster(t_graph *graph, t_map *map);
+void		ft_raycaster(t_ray *ray);
 
 #endif
