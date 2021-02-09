@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/09 14:50:11 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 17:01:58 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,10 @@ static void	ft_distance_and_line(t_ray *ray, int x)
 		ray->perp_wall_dist = fabs((ray->in_map->y - ray->pos->y +
 								(1 - ray->step->y) / 2) / ray->ray_dir->y);
 	}
-	printf("ray->in_map->x: [%f]\n ray->in_map->y: [%f]\n", ray->in_map->x, ray->in_map->y);
+	/*printf("ray->in_map->x: [%f]\n ray->in_map->y: [%f]\n", ray->in_map->x, ray->in_map->y);
 	printf("ray->pos->x: [%f]\n ray->pos->y: [%f]\n", ray->pos->x, ray->pos->y);
 	printf("ray->ray_dir->x: [%f]\n ray->ray_dir->y: [%f]\n", ray->ray_dir->x, ray->ray_dir->y);
-	printf("ray->step->x: [%f]\n ray->step->y: [%f]\n", ray->step->x, ray->step->y);
+	printf("ray->step->x: [%f]\n ray->step->y: [%f]\n", ray->step->x, ray->step->y);*/
 	printf("DIST_TO_WALL: [%f]\n", ray->perp_wall_dist);
 	ray->line->len = height / ray->perp_wall_dist;
 	ray->line->a_x = x;
@@ -129,7 +129,7 @@ static void	ft_distance_and_line(t_ray *ray, int x)
 ** related calculations each frame
 */
 
-void	ft_raycaster(t_ray *ray)
+void		ft_raycaster(t_ray *ray)
 {
 	int		i;
 	double	camera_x;
@@ -147,7 +147,7 @@ void	ft_raycaster(t_ray *ray)
 		if (ray->side == 1)
 			wall_trgb /= 2;
 		printf("\n\nHERE I AM DRAWING A LINE YO\n\n");
-		ft_draw_line(ray->line, ray->graph->img_ptr, wall_trgb);
+		ft_draw_line(ray->line, ray->graph, wall_trgb);
 		wall_trgb = 0x00F2BC94;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/09 14:36:23 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 17:16:07 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,17 +126,20 @@ void		my_mlx_pixel_put(t_image *image, int x, int y, int color);
 ** FT_DRAW_EMPTY_FORMS
 */
 
-void		ft_draw_line(t_line *line, t_image *img, int trgb);
-void		ft_draw_circle(t_circle *circle, t_image *img, int trgb);
-void		ft_draw_triangle(t_triangle *triangle,
-								t_image *img_ptr, int trgb);
+void		ft_draw_circle(t_circle *circle, t_graph *graph, int trgb);
+
+/*
+** FT_DRAW_LINE
+*/
+
+void		ft_draw_line(t_line *line, t_graph *graph, int trgb);
 
 /*
 ** FT_DRAW_FILLED_IN_FORMS
 */
 
-void		ft_draw_fsquare(t_square *square, t_image *img, int trgb);
-void		ft_draw_fcircle(t_circle *circle, t_image *img, int trgb);
+void		ft_draw_fsquare(t_square *square, t_graph *graph, int trgb);
+void		ft_draw_fcircle(t_circle *circle, t_graph *graph, int trgb);
 
 /*
 ** FT_NEW_GEOMETRY_FORMS
@@ -146,6 +149,7 @@ t_square	*ft_new_square(double x, double y, double width, double height);
 t_line		*ft_new_line(double a_x, double a_y, double angle, double len);
 t_circle	*ft_new_circle(double x, double y, double radius, double prox);
 t_point		*ft_new_point(double x, double y);
+void		ft_limit_points_within_map(double *x, double *y, t_graph *graph);
 
 /*
 ** FT_HOOKS_FUNCTIONS

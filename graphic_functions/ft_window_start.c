@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/09 14:36:30 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 17:17:15 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,17 @@ static void	ft_define_hooks(t_ray *ray)
 
 void		ft_draw_background(t_graph *graph)
 {
-	t_image	*img;
 	double	width;
 	double	height;
 	int		c_trgb;
 	int		f_trgb;
 
-	img = graph->img_ptr;
 	width = graph->res_width;
 	height = graph->res_height / 2;
 	c_trgb = graph->c_trgb;
 	f_trgb = graph->f_trgb;
-	ft_draw_fsquare(&(t_square){0, 0, width, height}, img, c_trgb);
-	ft_draw_fsquare(&(t_square){0, height, width, height}, img, f_trgb);
+	ft_draw_fsquare(&(t_square){0, 0, width, height}, graph, c_trgb);
+	ft_draw_fsquare(&(t_square){0, height, width, height}, graph, f_trgb);
 }
 
 /*
@@ -57,16 +55,13 @@ void		ft_draw_background(t_graph *graph)
 
 void		ft_next_frame(t_graph *graph, t_ray *ray)
 {
-	int wall_trgb;
-
-	wall_trgb = 0x00F2BC94;
 	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
 	ft_draw_background(graph);
+	ft_raycaster(ray);
 	ft_draw_minimap(graph);
 	printf("line b_x [%f] b_y [%f] \n", graph->line->b_x, graph->line->b_y);
 	printf("line a_x [%f] a_y [%f] \n", graph->line->a_x, graph->line->a_y);
 	printf("line angle: [%f] \n", graph->line->angle);
-	ft_raycaster(ray);
 	mlx_put_image_to_window(graph->mlx_ptr,
 								graph->win_ptr, graph->img_ptr->img, 0, 0);
 }
@@ -86,7 +81,6 @@ t_graph		*ft_window_start(t_map *map)
 	ray = ft_new_raycaster(graph, map);
 	ft_next_frame(graph, ray);
 	ft_define_hooks(ray);
-	printf("\n\nALL GOOD BEFORE RAYSTER\n\n");
 	mlx_loop(graph->mlx_ptr);
 	return (0);
 }

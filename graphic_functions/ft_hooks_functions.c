@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 15:19:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/09 14:30:13 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 16:08:31 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,36 @@
 
 static void		ft_turn(t_graph *graph, int direction, t_ray *ray)
 {
-	double angle;
+	double	angle;
+	double	old_dir_x;
+	double	old_plane_x;
 
+	old_dir_x = ray->direction->x;
+	old_plane_x = ray->plane->x;
 	if (direction == 1)
+	{
+		ray->direction->x = old_dir_x * cos(-TURNING_SPEED)
+					- ray->direction->y * sin(-TURNING_SPEED);
+		ray->direction->y = old_dir_x * sin(-TURNING_SPEED)
+					+ ray->direction->y * cos(-TURNING_SPEED);
+		ray->plane->x = old_plane_x * cos(-TURNING_SPEED)
+					- ray->plane->y * sin(-TURNING_SPEED);
+		ray->plane->y = old_plane_x * sin(-TURNING_SPEED)
+					+ ray->plane->y * cos(-TURNING_SPEED);
 		angle = (graph->line->angle + TURNING_SPEED);
+	}
 	else
+	{
+		ray->direction->x = old_dir_x * cos(TURNING_SPEED)
+					- ray->direction->y * sin(TURNING_SPEED);
+		ray->direction->y = old_dir_x * sin(TURNING_SPEED)
+					+ ray->direction->y * cos(TURNING_SPEED);
+		ray->plane->x = old_plane_x * cos(TURNING_SPEED)
+					- ray->plane->y * sin(TURNING_SPEED);
+		ray->plane->y = old_plane_x * sin(TURNING_SPEED)
+					+ ray->plane->y * cos(TURNING_SPEED);
 		angle = (graph->line->angle - TURNING_SPEED);
+	}
 	ft_reposition_line(graph, graph->circle, angle, graph->line);
 	ft_next_frame(graph, ray);
 }

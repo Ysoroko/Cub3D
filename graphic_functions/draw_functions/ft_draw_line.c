@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 11:24:45 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 17:23:33 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 17:12:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,31 +98,31 @@ static void	ft_draw_up_line(t_line *line, t_image *img_ptr, int trgb)
 ** Draws the specified line with the specified colour
 */
 
-void		ft_draw_line(t_line *line, t_image *img_ptr, int trgb)
+void		ft_draw_line(t_line *line, t_graph *graph, int trgb)
 {
-	double	delta_y;
-	double	delta_x;
+	double	delta;
 
-	delta_y = fabs(line->a_y - line->b_y);
-	delta_x = fabs(line->a_x - line->b_x);
-	my_mlx_pixel_put(img_ptr, line->a_x, line->a_y, trgb);
-	if (delta_y > delta_x)
+	delta = fabs(line->a_y - line->b_y) - fabs(line->a_x - line->b_x);
+	ft_limit_points_within_map(&line->a_x, &line->a_y, graph);
+	ft_limit_points_within_map(&line->b_x, &line->b_y, graph);
+	my_mlx_pixel_put(graph->img_ptr, line->a_x, line->a_y, trgb);
+	if (delta > 0)
 	{
 		line->delta = (line->a_x - line->b_x) / (line->a_y - line->b_y);
 		if (line->a_y < line->b_y)
-			ft_draw_up_line(line, img_ptr, trgb);
+			ft_draw_up_line(line, graph->img_ptr, trgb);
 		else
-			ft_draw_down_line(line, img_ptr, trgb);
+			ft_draw_down_line(line, graph->img_ptr, trgb);
 	}
 	else
 	{
 		if (line->a_x < line->b_x)
 		{
-			ft_draw_right_line(line, img_ptr, trgb);
+			ft_draw_right_line(line, graph->img_ptr, trgb);
 		}
 		else if (line->a_x >= line->b_x)
 		{
-			ft_draw_left_line(line, img_ptr, trgb);
+			ft_draw_left_line(line, graph->img_ptr, trgb);
 		}
 	}
 }

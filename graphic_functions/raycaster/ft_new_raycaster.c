@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:29:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/09 13:42:20 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 14:59:24 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ t_ray		*ft_new_raycaster(t_graph *graph, t_map *map)
 	ray->hit = 0;
 	ray->side = 0;
 	ray->perp_wall_dist = 0;
-	ray->fov = 2 * atan(0.66 / 1);
+	ray->fov = 2 * atan((M_PI / 3) / 1);
 	ray->direction = ft_new_point(0, 0);
 	ft_apply_direction(ray->direction, ray->map[map->player_y][map->player_x]);
-	ray->plane = ft_new_point(0, 0.66);
+	ray->plane = ft_new_point(0, M_PI / 3);
 	ray->ray_dir = ft_new_point(0, 0);
 	ray->delta_dist = ft_new_point(0, 0);
 	ray->side_dist = ft_new_point(0, 0);

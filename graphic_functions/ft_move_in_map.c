@@ -6,29 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/09 14:30:23 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 17:17:40 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_graphics.h"
-
-/*
-** FT_POSITION_IN_MAP
-** This function will modify the argument doubles to show
-** the position of the player related to the map (and not the window)
-** This can be used to find in which map[i][j] we are currently in
-*/
-
-static void	ft_position_in_map(t_graph *graph, double *x, double *y)
-{
-	double	units;
-
-	units = graph->frame->units;
-	*x = floor(*x / units);
-	*y = floor(*y / units);
-}
-
-
 
 /*
 static void	ft_collide(t_graph *graph, char **map, int direction)
@@ -60,6 +42,9 @@ static void	ft_collide(t_graph *graph, char **map, int direction)
 }
 */
 
+
+
+
 /*
 ** FT_MOVE_AND_COLLIDE
 ** This function is responsible for the player movement and collision
@@ -67,26 +52,36 @@ static void	ft_collide(t_graph *graph, char **map, int direction)
 
 void	ft_move_and_collide(t_graph *graph, int direction, t_ray *ray)
 {
-	double	angle;
-	double	x_in_map;
-	double	y_in_map;
+	double	move_speed;
+	double	r_p_x;
+	double	r_p_y;
+	double	r_d_x;
+	double	r_d_y;
 
-	angle = graph->line->angle;
+	r_d_x = ray->direction->x;
+	r_d_y = ray->direction->y;
+	r_p_x = ray->pos->x;
+	r_p_y = ray->pos->y;
+	move_speed = graph->move_speed;
 	if (direction == 1)
 	{
-		graph->circle->x += graph->move_speed * cos(angle);
-		graph->circle->y += graph->move_speed * sin(angle);
+		graph->circle->x += move_speed * cos(graph->line->angle);
+		graph->circle->y += move_speed * sin(graph->line->angle);
+		if (ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)r_p_y] == '0')
+			ray->pos->x += r_d_x * move_speed;
+		if (ray->map[(int)r_p_x][(int)(r_p_y + r_d_y * move_speed)] == '0')
+			ray->pos->y += r_d_y * move_speed;
 	}
 	else
 	{
-		graph->circle->x -= graph->move_speed * cos(angle);
-		graph->circle->y -= graph->move_speed * sin(angle);
+		graph->circle->x -= move_speed * cos(graph->line->angle);
+		graph->circle->y -= move_speed * sin(graph->line->angle);
+		if (ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)r_p_y] == '0')
+			ray->pos->x -= r_d_x * move_speed;
+		if (ray->map[(int)r_p_x][(int)(r_p_y + r_d_y * move_speed)] == '0')
+			ray->pos->y -= r_d_y * move_speed;
 	}
-	x_in_map = graph->circle->x;
-	y_in_map = graph->circle->y;
-	ft_position_in_map(graph, &x_in_map, &y_in_map);
-	//printf("\ni:[%f]\nj:[%f]\n", x_in_map, y_in_map);
-	ft_reposition_line(graph, graph->circle, angle, graph->line);
+	ft_reposition_line(graph, graph->circle, graph->line->angle, graph->line);
 	ft_next_frame(graph, ray);
 }
 

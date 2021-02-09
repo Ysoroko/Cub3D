@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 17:23:29 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 17:16:45 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		ft_draw_minimap_background(t_graph *graph)
 	width = graph->frame->minimap_background->width;
 	height = graph->frame->minimap_background->height;
 	ft_draw_fsquare(&(t_square){x, y, width, height},
-					graph->img_ptr, MAP_BACKGROUND_COLOR);
+					graph, MAP_BACKGROUND_COLOR);
 }
 
 /*
@@ -57,10 +57,10 @@ static void	ft_draw_minimap_walls(t_graph *graph, char **str_tab, double width)
 		{
 			if (str_tab[i][j] == '1')
 				ft_draw_fsquare(&(t_square){x, y, width, width},
-											graph->img_ptr, WALL_COLOR);
+											graph, WALL_COLOR);
 			else if (str_tab[i][j] == '2')
 				ft_draw_fsquare(&(t_square){x, y, width, width},
-											graph->img_ptr, SPRITE_COLOR);
+											graph, SPRITE_COLOR);
 			x += graph->frame->units;
 		}
 	}
@@ -113,6 +113,6 @@ void	ft_draw_minimap(t_graph *graph)
 	}
 	if (!graph->line)
 		ft_starting_player_direction(graph);
-	ft_draw_fcircle(graph->circle, graph->img_ptr, PLAYER_COLOR);
-	ft_draw_line(graph->line, graph->img_ptr, DIRECTION_COLOR);
+	ft_draw_fcircle(graph->circle, graph, PLAYER_COLOR);
+	ft_draw_line(graph->line, graph, DIRECTION_COLOR);
 }

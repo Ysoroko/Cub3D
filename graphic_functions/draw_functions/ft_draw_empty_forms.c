@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:50:54 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 17:23:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/09 17:14:47 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** The thickness of the line of the circle is 2*circle->prox
 */
 
-void	ft_draw_circle(t_circle *circle, t_image *img_ptr, int trgb)
+void	ft_draw_circle(t_circle *circle, t_graph *graph, int trgb)
 {
 	double	radius;
 	double	i;
@@ -38,31 +38,8 @@ void	ft_draw_circle(t_circle *circle, t_image *img_ptr, int trgb)
 					+ ((j - circle->y) * (j - circle->y)));
 			if (dist > (radius - circle->prox)
 				&& dist < (radius + circle->prox))
-				my_mlx_pixel_put(img_ptr, i, j, trgb);
+				my_mlx_pixel_put(graph->img_ptr, i, j, trgb);
 		}
 		i++;
 	}
-}
-
-/*
-** FT_DRAW_TRIANGLE
-** Draws the triangle, connecting its 3 dots by using the line function
-** Does not fill in its interior
-*/
-
-void	ft_draw_triangle(t_triangle *triangle, t_image *img_ptr, int trgb)
-{
-	t_line *a;
-	t_line *b;
-	t_line *c;
-
-	a = ft_new_line(triangle->a_x, triangle->a_y,
-					triangle->b_x, triangle->b_y);
-	b = ft_new_line(triangle->a_x, triangle->a_y,
-					triangle->c_x, triangle->c_y);
-	c = ft_new_line(triangle->b_x, triangle->b_y,
-					triangle->c_x, triangle->c_y);
-	ft_draw_line(a, img_ptr, trgb);
-	ft_draw_line(b, img_ptr, trgb);
-	ft_draw_line(c, img_ptr, trgb);
 }
