@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/09 17:17:40 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/10 12:49:46 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	ft_move_and_collide(t_graph *graph, int direction, t_ray *ray)
 		if (ray->map[(int)r_p_x][(int)(r_p_y + r_d_y * move_speed)] == '0')
 			ray->pos->y -= r_d_y * move_speed;
 	}
-	ft_reposition_line(graph, graph->circle, graph->line->angle, graph->line);
+	ft_reposition_line(ray, graph->circle, graph->line->angle, graph->line);
 	ft_next_frame(graph, ray);
 }
 
@@ -91,19 +91,19 @@ void	ft_move_and_collide(t_graph *graph, int direction, t_ray *ray)
 ** Saves the changes inside the *line structure
 */
 
-void	ft_reposition_line(t_graph *g, t_circle *cir, double a, t_line *line)
+void	ft_reposition_line(t_ray *ray, t_circle *cir, double a, t_line *line)
 {
 	double	units;
 	char	**map;
 	double	distance_to_wall;
 
-	map = g->map->map_str_tab;
-	units = g->frame->units;
-	distance_to_wall = ft_dist_to_wall(g, map, units, a);
+	map = ray->graph->map->map_str_tab;
+	units = ray->graph->frame->units;
+	distance_to_wall = ray->perp_wall_dist;
 	line->a_x = cir->x;
 	line->a_y = cir->y;
-	line->b_x = line->a_x + distance_to_wall * cos(a);
-	line->b_y = line->a_y + distance_to_wall * sin(a);
+	line->b_x = line->a_x + units * distance_to_wall * cos(a);
+	line->b_y = line->a_y + units * distance_to_wall * sin(a);
 	line->angle = a;
 	if (line->a_x < line->b_x)
 		line->delta = (line->a_y - line->b_y) / (line->a_x - line->b_x);

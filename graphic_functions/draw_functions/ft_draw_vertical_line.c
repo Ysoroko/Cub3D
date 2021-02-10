@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_distance_utils.c                                :+:      :+:    :+:   */
+/*   ft_draw_vertical_line.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/08 16:07:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/10 10:09:23 by ysoroko          ###   ########.fr       */
+/*   Created: 2021/02/10 12:22:58 by ysoroko           #+#    #+#             */
+/*   Updated: 2021/02/10 12:30:24 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_graphics.h"
 
-/*
-** FT_TWO_POINTS_DISTANCE
-** This function returns a distance between two points
-*/
-
-double	ft_two_points_distance(double a_x, double a_y, double b_x, double b_y)
+void	ft_draw_vertical_line(double x, double a_y, double b_y, t_ray *ray)
 {
-	return (sqrt(((b_x - a_x) * (b_x - a_x)) + ((b_y - a_y) * (b_y - a_y))));
+	int	i;
+	int	max;
+	int	trgb;
+
+	i = (int)fmin(a_y, b_y);
+	max = (int)fmax(a_y, b_y);
+	while (i++ < max)
+	{
+		trgb = 0x00F2BC94;
+		if (ray->side == 1)
+			trgb = trgb / 2;
+		my_mlx_pixel_put(ray->graph->img_ptr, x, i, trgb);
+	}
+	my_mlx_pixel_put(ray->graph->img_ptr, x, max, trgb);
 }

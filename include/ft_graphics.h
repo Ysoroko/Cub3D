@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/09 17:16:07 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/10 12:30:12 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ typedef struct	s_ray
 	t_point	*side_dist;
 	t_point	*step;
 	t_line	*line;
-
 }				t_ray;
 
 /*
@@ -135,6 +134,12 @@ void		ft_draw_circle(t_circle *circle, t_graph *graph, int trgb);
 void		ft_draw_line(t_line *line, t_graph *graph, int trgb);
 
 /*
+** FT_DRAW_VERTICAL_LINE
+*/
+
+void	ft_draw_vertical_line(double x, double a_y, double b_y, t_ray *ray);
+
+/*
 ** FT_DRAW_FILLED_IN_FORMS
 */
 
@@ -169,15 +174,15 @@ void		ft_mlx_fail(void);
 ** FT_DRAW_MINIMAP
 */
 
-void		ft_draw_minimap(t_graph *graph);
+void		ft_draw_minimap(t_graph *graph, t_ray *ray);
 
 /*
 ** FT_MOVE_IN_MAP
 */
 
 void		ft_move_and_collide(t_graph *graph, int direction, t_ray *ray);
-void		ft_reposition_line(t_graph *g, t_circle *cir, double a,
-								t_line *line);
+void		ft_reposition_line(t_ray *ray, t_circle *cir, double a, 
+											t_line *line);
 double		ft_dist_to_wall(t_graph *graph, char **map,
 							double units, double angle);
 

@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/09 16:13:56 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/10 12:31:59 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					graphic_functions/draw_functions/ft_draw_filled_in_forms.c \
 					graphic_functions/draw_functions/ft_draw_line.c \
 					graphic_functions/draw_functions/ft_draw_minimap.c \
+					graphic_functions/draw_functions/ft_draw_vertical_line.c \
 					\
 					graphic_functions/new_free_error_functions/ft_error_utils.c \
 					graphic_functions/new_free_error_functions/ft_new_geometry_forms.c \

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/09 17:17:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/10 12:33:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,7 @@ void		ft_next_frame(t_graph *graph, t_ray *ray)
 	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
 	ft_draw_background(graph);
 	ft_raycaster(ray);
-	ft_draw_minimap(graph);
-	printf("line b_x [%f] b_y [%f] \n", graph->line->b_x, graph->line->b_y);
-	printf("line a_x [%f] a_y [%f] \n", graph->line->a_x, graph->line->a_y);
-	printf("line angle: [%f] \n", graph->line->angle);
+	ft_draw_minimap(graph, ray);
 	mlx_put_image_to_window(graph->mlx_ptr,
 								graph->win_ptr, graph->img_ptr->img, 0, 0);
 }

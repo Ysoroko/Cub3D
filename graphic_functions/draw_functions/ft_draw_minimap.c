@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/09 17:16:45 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/10 10:15:47 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	ft_draw_minimap_walls(t_graph *graph, char **str_tab, double width)
 ** for it to be stored in graph
 */
 
-static void	ft_starting_player_direction(t_graph *graph)
+static void	ft_starting_player_direction(t_graph *graph, t_ray *ray)
 {
 	char	player_direction;
 	double	angle;
@@ -87,8 +87,7 @@ static void	ft_starting_player_direction(t_graph *graph)
 	else if (player_direction == 'N')
 		angle = M_PI + M_PI_2;
 	graph->line = ft_new_line(graph->circle->x,
-		graph->circle->y, angle, ft_dist_to_wall(graph,
-		graph->map->map_str_tab, graph->frame->units, angle));
+		graph->circle->y, angle, ray->perp_wall_dist);
 }
 
 /*
@@ -98,7 +97,7 @@ static void	ft_starting_player_direction(t_graph *graph)
 ** Draws the background first as a rectangle, then the walls
 */
 
-void	ft_draw_minimap(t_graph *graph)
+void	ft_draw_minimap(t_graph *graph, t_ray *ray)
 {
 	ft_draw_minimap_background(graph);
 	ft_draw_minimap_walls(graph, graph->map->map_str_tab,
@@ -112,7 +111,7 @@ void	ft_draw_minimap(t_graph *graph)
 			+ graph->frame->units / 3, graph->frame->units / 3, 0);
 	}
 	if (!graph->line)
-		ft_starting_player_direction(graph);
+		ft_starting_player_direction(graph, ray);
 	ft_draw_fcircle(graph->circle, graph, PLAYER_COLOR);
 	ft_draw_line(graph->line, graph, DIRECTION_COLOR);
 }

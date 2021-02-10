@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/09 17:01:58 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/10 12:31:35 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@
 ** incrementation in the main "while" loop
 */
 
-static void	ft_setup_ray(t_ray *ray, double camera_x)
+static void	ft_setup_ray(t_ray *ray, int i)
 {
-	ray->ray_dir->x = ray->direction->x + ray->plane->x * camera_x;
-	ray->ray_dir->y = ray->direction->y + ray->plane->y * camera_x;
+	ray->camera_x = 2 * i / ray->res->x - 1;
+	ray->ray_dir->x = ray->direction->x + ray->plane->x * ray->camera_x;
+	ray->ray_dir->y = ray->direction->y + ray->plane->y * ray->camera_x;
 	ray->in_map->x = (int)ray->pos->x;
 	ray->in_map->y = (int)ray->pos->y;
 	ray->delta_dist->x = fabs(1 / ray->ray_dir->x);
 	ray->delta_dist->y = fabs(1 / ray->ray_dir->y);
+	ray->hit = 0;
 }
 
 /*
@@ -74,7 +76,7 @@ static void	ft_perform_dda(t_ray *ray)
 {
 	while (ray->hit == 0)
 	{
-		if (ray->side_dist->x < ray->side_dist->x)
+		if (ray->side_dist->x < ray->side_dist->y)
 		{
 			ray->side_dist->x += ray->delta_dist->x;
 			ray->in_map->x += ray->step->x;
@@ -86,16 +88,18 @@ static void	ft_perform_dda(t_ray *ray)
 			ray->in_map->y += ray->step->y;
 			ray->side = 1;
 		}
-		if (ray->map[(int)ray->in_map->x][(int)ray->in_map->y] > 0)
+		if (ray->map[(int)ray->in_map->x][(int)ray->in_map->y] == '1')
 			ray->hit = 1;
 	}
 }
 
 static void	ft_distance_and_line(t_ray *ray, int x)
 {
-	int	height;
+	int		h;
+	double	line_height;
 
-	height = ray->graph->res_height;
+
+	h = ray->graph->res_height;
 	if (ray->side == 0)
 	{
 		ray->perp_wall_dist = (ray->in_map->x - ray->pos->x +
@@ -103,22 +107,24 @@ static void	ft_distance_and_line(t_ray *ray, int x)
 	}
 	else
 	{
-		ray->perp_wall_dist = fabs((ray->in_map->y - ray->pos->y +
-								(1 - ray->step->y) / 2) / ray->ray_dir->y);
+		ray->perp_wall_dist = (ray->in_map->y - ray->pos->y +
+								(1 - ray->step->y) / 2) / ray->ray_dir->y;
 	}
-	/*printf("ray->in_map->x: [%f]\n ray->in_map->y: [%f]\n", ray->in_map->x, ray->in_map->y);
+	printf("ray->in_map->x: [%f]\n ray->in_map->y: [%f]\n", ray->in_map->x, ray->in_map->y);
 	printf("ray->pos->x: [%f]\n ray->pos->y: [%f]\n", ray->pos->x, ray->pos->y);
 	printf("ray->ray_dir->x: [%f]\n ray->ray_dir->y: [%f]\n", ray->ray_dir->x, ray->ray_dir->y);
-	printf("ray->step->x: [%f]\n ray->step->y: [%f]\n", ray->step->x, ray->step->y);*/
+	printf("ray->step->x: [%f]\n ray->step->y: [%f]\n", ray->step->x, ray->step->y);
+	printf("ray->side: [%d]\n", ray->side);
 	printf("DIST_TO_WALL: [%f]\n", ray->perp_wall_dist);
-	ray->line->len = height / ray->perp_wall_dist;
+	line_height = (int)(h / ray->perp_wall_dist);
+	ray->line->len = line_height;
 	ray->line->a_x = x;
-	ray->line->a_y = (height / 2) - (ray->line->len / 2);
+	ray->line->a_y = -line_height / 2 + h / 2;
 	ray->line->b_x = x;
-	ray->line->b_y = (height / 2) + (ray->line->len / 2);
-	ray->line->delta = 0;
-	if (ray->line->b_y >= height)
-		ray->line->b_y = height - 1;
+	ray->line->b_y = line_height / 2 + h / 2;
+	ray->line->delta = 1;
+	if (ray->line->b_y >= h)
+		ray->line->b_y = h - 1;
 	if (ray->line->a_y <= 0)
 		ray->line->a_y = 1;
 }
@@ -131,23 +137,15 @@ static void	ft_distance_and_line(t_ray *ray, int x)
 
 void		ft_raycaster(t_ray *ray)
 {
-	int		i;
-	double	camera_x;
-	int		wall_trgb;
+	int	i;
 
-	wall_trgb = 0x00F2BC94;
-	i = 0;
+	i = -1;
 	while (++i < ray->res->x)
 	{
-		camera_x = 2 * i / (double)(ray->res->x) - 1;
-		ft_setup_ray(ray, camera_x);
+		ft_setup_ray(ray, i);
 		ft_step_and_side_dist(ray);
 		ft_perform_dda(ray);
 		ft_distance_and_line(ray, i);
-		if (ray->side == 1)
-			wall_trgb /= 2;
-		printf("\n\nHERE I AM DRAWING A LINE YO\n\n");
-		ft_draw_line(ray->line, ray->graph, wall_trgb);
-		wall_trgb = 0x00F2BC94;
+		ft_draw_vertical_line(i, ray->line->a_y, ray->line->b_y, ray);
 	}
 }
