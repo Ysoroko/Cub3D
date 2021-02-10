@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:08:41 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 15:01:13 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/10 14:36:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ static void	ft_find_player_position(char **str_tab, int *x, int *y)
 	{
 		if (ft_strchrset(str_tab[i], "NSEW"))
 		{
-			*y = i;
+			*x = i;
 			while (str_tab[i][++j])
 			{
 				if (ft_strchr("NSEW", str_tab[i][j]))
 				{
-					*x = j;
+					*y = j;
 					return ;
 				}
 			}

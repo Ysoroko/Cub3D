@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/10 14:14:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/10 15:56:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,31 +66,19 @@ void	ft_move_and_collide(t_graph *graph, int direction, t_ray *ray)
 	if (direction == 1)
 	{
 		if (ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)r_p_y] == '0')
-		{
-			graph->circle->x += graph->frame->units * move_speed * cos(graph->line->angle);
 			ray->pos->x += r_d_x * move_speed;
-		}
 		if (ray->map[(int)r_p_x][(int)(r_p_y + r_d_y * move_speed)] == '0')
-		{
 			ray->pos->y += r_d_y * move_speed;
-			graph->circle->y += graph->frame->units * move_speed * sin(graph->line->angle);
-		}
 	}
 	else
 	{
-		
-		
 		if (ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)r_p_y] == '0')
-		{
 			ray->pos->x -= r_d_x * move_speed;
-			graph->circle->x -= graph->frame->units * move_speed * cos(graph->line->angle);
-		}
 		if (ray->map[(int)r_p_x][(int)(r_p_y + r_d_y * move_speed)] == '0')
-		{
-			graph->circle->y -= graph->frame->units * move_speed * sin(graph->line->angle);
 			ray->pos->y -= r_d_y * move_speed;
-		}
 	}
+	graph->circle->x = ray->pos->y * graph->frame->units;
+	graph->circle->y = ray->pos->x * graph->frame->units;
 	ft_reposition_line(ray, graph->circle, graph->line->angle, graph->line);
 	ft_next_frame(graph, ray);
 }

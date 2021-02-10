@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/10 10:15:47 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/10 16:11:06 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ static void	ft_starting_player_direction(t_graph *graph, t_ray *ray)
 	double	angle;
 
 	angle = 0;
-	player_direction = graph->map->map_str_tab[graph->map->player_y]
-												[graph->map->player_x];
+	player_direction = graph->map->map_str_tab[graph->map->player_x]
+												[graph->map->player_y];
 	if (player_direction == 'S')
 		angle = M_PI_2;
 	else if (player_direction == 'W')
@@ -99,17 +99,20 @@ static void	ft_starting_player_direction(t_graph *graph, t_ray *ray)
 
 void	ft_draw_minimap(t_graph *graph, t_ray *ray)
 {
+	double	units;
+	double	radius;
+	double	x;
+	double	y;
+
+	units = graph->frame->units;
+	radius = units / 3;
+	x = ray->pos->y * units;
+	y = ray->pos->x * units;
 	ft_draw_minimap_background(graph);
 	ft_draw_minimap_walls(graph, graph->map->map_str_tab,
 							graph->frame->minimap_wall->width);
 	if (!graph->circle)
-	{
-		graph->circle = ft_new_circle((graph->map->player_x *
-										graph->frame->units)
-								+ graph->frame->units / 3,
-					(graph->map->player_y * graph->frame->units)
-			+ graph->frame->units / 3, graph->frame->units / 3, 0);
-	}
+		graph->circle = ft_new_circle(x, y, radius, 0);
 	if (!graph->line)
 		ft_starting_player_direction(graph, ray);
 	ft_draw_fcircle(graph->circle, graph, PLAYER_COLOR);

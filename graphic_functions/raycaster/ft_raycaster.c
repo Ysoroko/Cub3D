@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/10 12:31:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/10 15:50:20 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,14 @@ static void	ft_distance_and_line(t_ray *ray, int x)
 		ray->perp_wall_dist = (ray->in_map->y - ray->pos->y +
 								(1 - ray->step->y) / 2) / ray->ray_dir->y;
 	}
+	/*
 	printf("ray->in_map->x: [%f]\n ray->in_map->y: [%f]\n", ray->in_map->x, ray->in_map->y);
 	printf("ray->pos->x: [%f]\n ray->pos->y: [%f]\n", ray->pos->x, ray->pos->y);
 	printf("ray->ray_dir->x: [%f]\n ray->ray_dir->y: [%f]\n", ray->ray_dir->x, ray->ray_dir->y);
 	printf("ray->step->x: [%f]\n ray->step->y: [%f]\n", ray->step->x, ray->step->y);
 	printf("ray->side: [%d]\n", ray->side);
 	printf("DIST_TO_WALL: [%f]\n", ray->perp_wall_dist);
+	*/
 	line_height = (int)(h / ray->perp_wall_dist);
 	ray->line->len = line_height;
 	ray->line->a_x = x;
@@ -123,10 +125,8 @@ static void	ft_distance_and_line(t_ray *ray, int x)
 	ray->line->b_x = x;
 	ray->line->b_y = line_height / 2 + h / 2;
 	ray->line->delta = 1;
-	if (ray->line->b_y >= h)
-		ray->line->b_y = h - 1;
-	if (ray->line->a_y <= 0)
-		ray->line->a_y = 1;
+	ft_limit_points_within_map(0, &ray->line->a_y, ray->graph);
+	ft_limit_points_within_map(0, &ray->line->b_y, ray->graph);
 }
 
 /*
@@ -146,6 +146,8 @@ void		ft_raycaster(t_ray *ray)
 		ft_step_and_side_dist(ray);
 		ft_perform_dda(ray);
 		ft_distance_and_line(ray, i);
+		printf("ALL GOOD BEFORE RAYCASTER\n");
+		//printf("a_y: [%f]\n b_y: [%f]\n", ray->line->a_y, ray->line->b_y);
 		ft_draw_vertical_line(i, ray->line->a_y, ray->line->b_y, ray);
 	}
 }
