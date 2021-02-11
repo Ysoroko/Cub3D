@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/10 12:30:12 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 11:58:49 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct		s_frame
 	t_square	*minimap_wall;
 	t_square	*minimap_background;
 	int			units;
+	char		player_direction;
 }					t_frame;
 
 typedef struct		s_graph
@@ -71,25 +72,25 @@ typedef struct		s_graph
 
 typedef struct	s_ray
 {
-	t_graph	*graph;
-	char	**map;
-	int		map_width;
-	int		map_height;
-	int		hit;
-	int		side;
-	double	fov;
-	double	camera_x;
-	double	perp_wall_dist;
-	t_point	*pos;
-	t_point	*in_map;
-	t_point	*res;
-	t_point	*plane;
-	t_point	*direction;
-	t_point	*ray_dir;
-	t_point	*delta_dist;
-	t_point	*side_dist;
-	t_point	*step;
-	t_line	*line;
+	t_graph		*graph;
+	char		**map;
+	int			map_width;
+	int			map_height;
+	int			hit;
+	int			side;
+	double		fov;
+	double		camera_x;
+	double		perp_wall_dist;
+	t_point		*pos;
+	t_point		*in_map;
+	t_point		*res;
+	t_point		*plane;
+	t_point		*direction;
+	t_point		*ray_dir;
+	t_point		*delta_dist;
+	t_point		*side_dist;
+	t_point		*step;
+	t_line		*line;
 }				t_ray;
 
 /*

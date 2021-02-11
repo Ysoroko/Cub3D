@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 12:22:58 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/10 12:30:24 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 10:47:37 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_draw_vertical_line(double x, double a_y, double b_y, t_ray *ray)
 	int	max;
 	int	trgb;
 
+	ft_limit_points_within_map(&x, &a_y, ray->graph);
+	ft_limit_points_within_map(&x, &b_y, ray->graph);
 	i = (int)fmin(a_y, b_y);
 	max = (int)fmax(a_y, b_y);
 	while (i++ < max)

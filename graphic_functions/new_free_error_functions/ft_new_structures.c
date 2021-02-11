@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/08 17:23:26 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 11:58:16 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,7 @@ t_frame	*ft_new_t_frame(t_graph *graph)
 		ft_strlen(graph->map->map_str_tab[0]) * ret->units,
 		ft_str_tab_len(graph->map->map_str_tab) * ret->units);
 	ret->minimap_wall = ft_new_square(0, 0, ret->units, ret->units);
+	ret->player_direction = graph->map->map_str_tab[graph->map->player_x]
+							[graph->map->player_y];
 	return (ret);
 }

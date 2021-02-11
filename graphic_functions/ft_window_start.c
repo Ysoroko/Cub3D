@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/11 10:23:38 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 12:00:46 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ t_graph		*ft_window_start(t_map *map)
 
 	graph = ft_new_t_graph(map);
 	ray = ft_new_raycaster(graph, map);
+	map->map_str_tab[map->player_x][map->player_y] = '0';
 	ft_next_frame(graph, ray);
 	ft_define_hooks(ray);
 	mlx_loop(graph->mlx_ptr);

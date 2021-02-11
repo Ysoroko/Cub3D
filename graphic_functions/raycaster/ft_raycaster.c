@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/11 10:23:45 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 10:54:03 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	ft_setup_ray(t_ray *ray, int i)
 	ray->camera_x = 2 * i / ray->res->x - 1;
 	ray->ray_dir->x = ray->direction->x + ray->plane->x * ray->camera_x;
 	ray->ray_dir->y = ray->direction->y + ray->plane->y * ray->camera_x;
-	ray->in_map->x = (int)ray->pos->x;
-	ray->in_map->y = (int)ray->pos->y;
+	ray->in_map->x = (int)(floor(ray->pos->x));
+	ray->in_map->y = (int)(floor(ray->pos->y));
 	ray->delta_dist->x = fabs(1 / ray->ray_dir->x);
 	ray->delta_dist->y = fabs(1 / ray->ray_dir->y);
 	ray->hit = 0;
