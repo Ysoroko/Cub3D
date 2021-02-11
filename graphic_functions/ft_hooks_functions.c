@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 15:19:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/10 12:33:49 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 12:43:12 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,8 @@ int				ft_keys_binding(int keycode, t_ray *ray)
 ** This function allows to exit the program properly when its window is closed
 */
 
-int				ft_window_closed(t_graph *graph)
+int				ft_window_closed(void)
 {
-	mlx_destroy_window(graph->mlx_ptr, graph->win_ptr);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

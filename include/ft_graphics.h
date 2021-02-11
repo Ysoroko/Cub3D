@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/11 11:58:49 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 12:43:41 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ void		ft_limit_points_within_map(double *x, double *y, t_graph *graph);
 */
 
 int			ft_keys_binding(int keycode, t_ray *ray);
-int			ft_window_closed(t_graph *graph);
+int			ft_window_closed(void);
 
 /*
 ** FT_ERROR_UTILS
