@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:29:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/11 16:02:59 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 16:29:37 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,23 @@ static void	ft_apply_direction(t_ray *ray, char start_char)
 {
 	if (start_char == 'N')
 	{
-		ray->direction->x = -1;
-		ray->plane->x = 0;
+		ray->direction->x = -ray->fov;
 		ray->plane->y = ray->fov;
 	}
 	else if (start_char == 'S')
 	{
-		ray->direction->x = 1;
-		ray->plane->x = 0;
+		ray->direction->x = ray->fov;
 		ray->plane->y = -ray->fov;
 	}
 	else if (start_char == 'E')
 	{
-		ray->direction->y = 1;
+		ray->direction->y = ray->fov;
 		ray->plane->x = ray->fov;
-		ray->plane->y = 0;
 	}
 	else if (start_char == 'W')
 	{
-		ray->direction->y = -1;
+		ray->direction->y = -ray->fov;
 		ray->plane->x = -ray->fov;
-		ray->plane->y = 0;
 	}
 }
 
@@ -56,7 +52,7 @@ t_ray		*ft_new_raycaster(t_graph *graph, t_map *map)
 	ray->hit = 0;
 	ray->side = 0;
 	ray->perp_wall_dist = 0;
-	ray->fov = M_PI / 2;
+	ray->fov = M_PI / 4;
 	ray->plane = ft_new_point(0, 0);
 	ray->direction = ft_new_point(0, 0);
 	ft_apply_direction(ray, ray->map[map->player_x][map->player_y]);
