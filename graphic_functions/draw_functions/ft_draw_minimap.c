@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/11 11:59:21 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 12:22:28 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	ft_draw_minimap_walls(t_graph *graph, char **str_tab, double width)
 ** for it to be stored in graph
 */
 
-static void	ft_starting_player_direction(t_graph *graph, t_ray *ray)
+static void	ft_starting_player_direction(t_graph *graph)
 {
 	char	player_direction;
 	double	angle;
@@ -86,7 +86,7 @@ static void	ft_starting_player_direction(t_graph *graph, t_ray *ray)
 	else if (player_direction == 'N')
 		angle = M_PI + M_PI_2;
 	graph->line = ft_new_line(graph->circle->x,
-		graph->circle->y, angle, ray->perp_wall_dist);
+		graph->circle->y, angle, LINE_LENGTH);
 }
 
 /*
@@ -114,7 +114,7 @@ void	ft_draw_minimap(t_graph *graph, t_ray *ray)
 		graph->circle = ft_new_circle(x, y, radius, 0);
 	if (!graph->line)
 	{
-		ft_starting_player_direction(graph, ray);
+		ft_starting_player_direction(graph);
 		graph->map->map_str_tab[graph->map->player_x]
 							[graph->map->player_y] = '0';
 	}
