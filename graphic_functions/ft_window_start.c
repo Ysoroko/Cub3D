@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/10 15:31:44 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 10:23:38 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ void		ft_next_frame(t_graph *graph, t_ray *ray)
 {
 	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
 	ft_draw_background(graph);
+	//printf("before Raycaster\n");
 	ft_raycaster(ray);
+	//printf("after Raycaster\n");
 	ft_draw_minimap(graph, ray);
 	mlx_put_image_to_window(graph->mlx_ptr,
 								graph->win_ptr, graph->img_ptr->img, 0, 0);

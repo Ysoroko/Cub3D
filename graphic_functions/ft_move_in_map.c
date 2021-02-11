@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/10 15:56:10 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 10:28:41 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,16 @@ void	ft_move_and_collide(t_graph *graph, int direction, t_ray *ray)
 	move_speed = graph->move_speed;
 	if (direction == 1)
 	{
-		if (ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)r_p_y] == '0')
+		//if (ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)r_p_y] == '0')
 			ray->pos->x += r_d_x * move_speed;
-		if (ray->map[(int)r_p_x][(int)(r_p_y + r_d_y * move_speed)] == '0')
+		//if (ray->map[(int)r_p_x][(int)(r_p_y + r_d_y * move_speed)] == '0')
 			ray->pos->y += r_d_y * move_speed;
 	}
 	else
 	{
-		if (ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)r_p_y] == '0')
+		//if (ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)r_p_y] == '0')
 			ray->pos->x -= r_d_x * move_speed;
-		if (ray->map[(int)r_p_x][(int)(r_p_y + r_d_y * move_speed)] == '0')
+		//if (ray->map[(int)r_p_x][(int)(r_p_y + r_d_y * move_speed)] == '0')
 			ray->pos->y -= r_d_y * move_speed;
 	}
 	graph->circle->x = ray->pos->y * graph->frame->units;

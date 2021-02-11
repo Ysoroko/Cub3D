@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/10 16:11:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 10:35:17 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void		ft_draw_minimap_background(t_graph *graph)
 
 	x = graph->frame->minimap_background->x;
 	y = graph->frame->minimap_background->y;
-	width = graph->frame->minimap_background->width;
-	height = graph->frame->minimap_background->height;
+	width = graph->frame->minimap_background->width + 2 * graph->frame->units;
+	height = graph->frame->minimap_background->height + 2 * graph->frame->units;
 	ft_draw_fsquare(&(t_square){x, y, width, height},
 					graph, MAP_BACKGROUND_COLOR);
 }
@@ -46,12 +46,12 @@ static void	ft_draw_minimap_walls(t_graph *graph, char **str_tab, double width)
 
 	i = -1;
 	j = -1;
-	x = 0;
-	y = -graph->frame->units;
+	x = graph->frame->units;
+	y = 0;
 	while (str_tab[++i])
 	{
 		j = -1;
-		x = 0;
+		x = graph->frame->units;
 		y += graph->frame->units;
 		while (str_tab[i][++j])
 		{

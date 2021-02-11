@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:40:09 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/10 15:40:12 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/11 10:22:31 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,15 @@ void		ft_limit_points_within_map(double *x, double *y, t_graph *graph)
 	if (x)
 	{
 		if (*x < 0)
-			*x = 1;
+			*x = 0;
 		if (*x > graph->res_width)
-			*x = graph->res_width - 1;
+			*x = graph->res_width;
 	}
 	if (y)
 	{
 		if (*y < 0)
-			*y = 1;
+			*y = 0;
 		if (*y > graph->res_height)
-			*y = graph->res_height - 1;
+			*y = graph->res_height;
 	}
 }
