@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/11 12:22:28 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/12 16:27:38 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void	ft_starting_player_direction(t_graph *graph)
 	else if (player_direction == 'N')
 		angle = M_PI + M_PI_2;
 	graph->line = ft_new_line(graph->circle->x,
-		graph->circle->y, angle, LINE_LENGTH);
+		graph->circle->y, angle, graph->frame->units);
 }
 
 /*

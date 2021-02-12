@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/11 12:26:23 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/12 16:28:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void		ft_reposition_line(t_ray *ray, t_circle *cir, double a, t_line *l)
 	map = ray->graph->map->map_str_tab;
 	units = ray->graph->frame->units;
 	//distance_to_wall = ray->perp_wall_dist * units;
-	distance_to_wall = LINE_LENGTH;
+	distance_to_wall = ray->graph->frame->units;
 	l->a_x = cir->x;
 	l->a_y = cir->y;
 	l->b_x = l->a_x + distance_to_wall * cos(a);

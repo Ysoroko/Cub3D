@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/12 13:37:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/12 16:26:15 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ t_frame	*ft_new_t_frame(t_graph *graph)
 						/ MAX_RATIO /
 					fmax(ft_strlen(graph->map->map_str_tab[0]),
 						ft_str_tab_len(graph->map->map_str_tab));
+	if (ret->units < 1)
+		ret->units = 1;
 	ret->ceiling = ft_new_square(0, 0, graph->res_width, graph->res_height / 2);
 	ret->floor = ft_new_square(0, graph->res_height / 2,
 								graph->res_width, graph->res_height / 2);
