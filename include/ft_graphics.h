@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/11 12:43:41 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/12 14:36:51 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void		ft_draw_line(t_line *line, t_graph *graph, int trgb);
 ** FT_DRAW_VERTICAL_LINE
 */
 
-void	ft_draw_vertical_line(double x, double a_y, double b_y, t_ray *ray);
+void	ft_draw_vertical_line(int x, double a_y, double b_y, t_ray *ray);
 
 /*
 ** FT_DRAW_FILLED_IN_FORMS

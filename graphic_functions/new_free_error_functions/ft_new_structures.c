@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/11 11:58:16 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/12 13:37:06 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_image	*ft_new_t_image(void)
 	if (!(ret = malloc(sizeof(t_image))))
 		ft_malloc_fail();
 	ret->img = 0;
+	ret->addr = 0;
 	ret->bits_per_pixel = 0;
 	ret->line_length = 0;
 	ret->endian = 0;
