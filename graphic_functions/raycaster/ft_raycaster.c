@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/11 10:54:03 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/15 16:45:21 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void	ft_perform_dda(t_ray *ray)
 			ray->in_map->y += ray->step->y;
 			ray->side = 1;
 		}
-		if (ray->map[(int)ray->in_map->x][(int)ray->in_map->y] == '1')
+		if (ray->map[(int)(ray->in_map->x)][(int)(ray->in_map->y)] == '1')
 			ray->hit = 1;
 	}
 }
@@ -97,7 +97,6 @@ static void	ft_distance_and_line(t_ray *ray, int x)
 {
 	int		h;
 	double	line_height;
-
 
 	h = ray->graph->res_height;
 	if (ray->side == 0)
@@ -130,6 +129,41 @@ static void	ft_distance_and_line(t_ray *ray, int x)
 }
 
 /*
+**	static void	ft_print_ray(t_ray *ray)
+**	{
+**		//TO COMMENT OUT BEFORE PUSHING
+**		int i = 0;
+**
+**		printf ("\n\n\n\n\n");
+**		printf("------------------------------------------------\n");
+**		printf("\t		RAY				\n");
+**		printf("------------------------------------------------\n");
+**		printf("\nmap: \n\n");
+**		while (ray->map[i++] != 0)
+**		printf("map[i]: |%s|\n", ray->map[i]);
+**		printf("map_width: [%d]\n", ray->map_width);
+**		printf("map_height: [%d]\n", ray->map_height);
+**		printf("hit: [%d]\n", ray->hit);
+**		printf("side: [%d]\n", ray->side);
+**		printf("fov: [%f]\n", ray->fov);
+**		printf("camera_x: [%f]\n", ray->camera_x);
+**		printf("perp_wall_dist: [%f]\n", ray->perp_wall_dist);
+**		printf("pos: x:[%f] y: [%f]\n", ray->pos->x, ray->pos->y);
+**		printf("in_map: x:[%f] y: [%f]\n", ray->in_map->x, ray->in_map->y);
+**		printf("res: x:[%f] y: [%f]\n", ray->res->x, ray->res->y);
+**		printf("plane: x:[%f] y: [%f]\n", ray->plane->x, ray->plane->y);
+**		printf("direction: x:[%f] y: [%f]\n",
+**				ray->direction->x, ray->direction->y);
+**		printf("ray_dir: x:[%f] y: [%f]\n", ray->ray_dir->x, ray->ray_dir->y);
+**		printf("delta_dist: x:[%f] y: [%f]\n",
+**							ray->delta_dist->x, ray->delta_dist->y);
+**		printf("side_dist: x:[%f] y: [%f]\n",
+**						ray->side_dist->x, ray->side_dist->y);
+**		printf("step: x:[%f] y: [%f]\n", ray->step->x, ray->step->y);
+**	}
+*/
+
+/*
 ** FT_RAYCASTER
 ** This is the main function which is the central hub of all the raycasting
 ** related calculations each frame
@@ -151,3 +185,5 @@ void		ft_raycaster(t_ray *ray)
 		ft_draw_vertical_line(i, ray->line->a_y, ray->line->b_y, ray);
 	}
 }
+
+
