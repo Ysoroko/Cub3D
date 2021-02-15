@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/12 14:36:51 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/15 10:07:15 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,6 @@
 #include "libft.h"
 #include "../minilibx/mlx.h"
 #include <math.h>
-
-
-# define ESCAPE_KEY 53
-# define RIGHT_ARROW_KEY 124
-# define LEFT_ARROW_KEY 123
-# define UP_ARROW_KEY 126
-# define DOWN_ARROW_KEY 125
-
-# define KEY_PRESS_EVENT 2
-# define DESTROY_EVENT 17
-
-# define KEY_PRESS_MASK 1L<<0
-# define STRUCTURE_NOTIFY_MASK 1L<<17
 
 typedef struct  s_image {
 	void	*img;
@@ -186,6 +173,12 @@ void		ft_reposition_line(t_ray *ray, t_circle *cir, double a,
 											t_line *line);
 double		ft_dist_to_wall(t_graph *graph, char **map,
 							double units, double angle);
+
+/*
+** FT_TURN_IN_MAP
+*/
+
+void		ft_turn(t_graph *graph, int direction, t_ray *ray);
 
 /*
 ** RAYCASTER

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/11 16:38:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/15 10:04:25 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,45 @@
 #define TURNING_SPEED 0.20
 #define MAX_RATIO 3
 #define LINE_LENGTH 20
+
+/*
+** Keyboard keys
+*/
+
+# define ESCAPE_KEY 53
+
+# define RIGHT_ARROW_KEY 124
+# define LEFT_ARROW_KEY 123
+# define UP_ARROW_KEY 126
+# define DOWN_ARROW_KEY 125
+
+# define W_KEY 13
+# define S_KEY 1
+# define A_KEY 0
+# define D_KEY 2
+# define Q_KEY 12
+# define E_KEY 14
+
+/*
+** Directions
+*/
+
+# define WALK_FORWARD 1
+# define WALK_BACKWARD -1
+# define WALK_LEFT -2
+# define WALK_RIGHT 2
+
+# define TURN_RIGHT 1
+# define TURN_LEFT -1
+
+/*
+** Events and masks used for hook functions
+*/
+
+# define KEY_PRESS_EVENT 2
+# define DESTROY_EVENT 17
+
+# define KEY_PRESS_MASK 1L<<0
+# define STRUCTURE_NOTIFY_MASK 1L<<17
 
 #endif

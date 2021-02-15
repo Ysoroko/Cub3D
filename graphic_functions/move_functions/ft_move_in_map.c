@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/12 16:35:01 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/15 09:58:07 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	ft_collide(t_graph *graph, char **map, int direction)
 }
 */
 
-static void	ft_move(t_graph *graph, int direction, t_ray *ray)
+static void	ft_move_back_and_forward(t_graph *graph, int direction, t_ray *ray)
 {
 	double	move_speed;
 	double	r_p_x;
@@ -77,7 +77,8 @@ static void	ft_move(t_graph *graph, int direction, t_ray *ray)
 
 void		ft_move_and_collide(t_graph *graph, int direction, t_ray *ray)
 {
-	ft_move(graph, direction, ray);
+	if (direction == 1 || direction == -1)
+		ft_move_back_and_forward(graph, direction, ray);
 	graph->circle->x = ray->pos->y * graph->frame->units + graph->frame->units;
 	graph->circle->y = ray->pos->x * graph->frame->units + graph->frame->units;
 	ft_reposition_line(ray, graph->circle, graph->line->angle, graph->line);
