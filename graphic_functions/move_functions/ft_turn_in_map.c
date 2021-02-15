@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 10:06:06 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/15 10:17:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/15 10:37:40 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,7 @@ static void	ft_turn_left(t_graph *graph, t_ray *ray, double *angle)
 void		ft_turn(t_graph *graph, int direction, t_ray *ray)
 {
 	double	angle;
-	double	old_dir_x;
-	double	old_plane_x;
 
-	old_dir_x = ray->direction->x;
-	old_plane_x = ray->plane->x;
 	if (direction == TURN_RIGHT)
 		ft_turn_right(graph, ray, &angle);
 	else
