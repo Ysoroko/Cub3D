@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/15 10:07:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/16 15:33:12 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,21 @@ typedef struct	s_ray
 	t_point		*side_dist;
 	t_point		*step;
 	t_line		*line;
+	void		*north_texture;
+	void		*south_texture;
+	void		*east_texture;
+	void		*west_texture;
+	void		*sprite_texture;
+	int			texture_width;
+	int			texture_height;
+	int			sprite_width;
+	int			sprite_height;
+	double		wall_x;
+	int			tex_x;
+	int			tex_y;
+	double		tex_step;
+	double		tex_pos;
+
 }				t_ray;
 
 /*

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/15 16:45:21 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/16 15:34:34 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,26 +97,21 @@ static void	ft_distance_and_line(t_ray *ray, int x)
 {
 	int		h;
 	double	line_height;
+	double	wall_x;
 
 	h = ray->graph->res_height;
 	if (ray->side == 0)
 	{
 		ray->perp_wall_dist = (ray->in_map->x - ray->pos->x +
 								(1 - ray->step->x) / 2) / ray->ray_dir->x;
+		wall_x = ray->pos->y + ray->perp_wall_dist * ray->direction->y;
 	}
 	else
 	{
 		ray->perp_wall_dist = (ray->in_map->y - ray->pos->y +
 								(1 - ray->step->y) / 2) / ray->ray_dir->y;
+		wall_x = ray->pos->x + ray->perp_wall_dist * ray->direction->x;
 	}
-	/*
-	printf("ray->in_map->x: [%f]\n ray->in_map->y: [%f]\n", ray->in_map->x, ray->in_map->y);
-	printf("ray->pos->x: [%f]\n ray->pos->y: [%f]\n", ray->pos->x, ray->pos->y);
-	printf("ray->ray_dir->x: [%f]\n ray->ray_dir->y: [%f]\n", ray->ray_dir->x, ray->ray_dir->y);
-	printf("ray->step->x: [%f]\n ray->step->y: [%f]\n", ray->step->x, ray->step->y);
-	printf("ray->side: [%d]\n", ray->side);
-	printf("DIST_TO_WALL: [%f]\n", ray->perp_wall_dist);
-	*/
 	line_height = (int)(h / ray->perp_wall_dist);
 	ray->line->len = line_height;
 	ray->line->a_x = x;

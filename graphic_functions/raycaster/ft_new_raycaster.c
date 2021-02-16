@@ -6,16 +6,22 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:29:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/16 11:43:44 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/16 15:35:35 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_graphics.h"
 
+/*
+** FT_APPLY_DIRECTION
+** This function is used to change the starting player's direction based
+** on the related char in the map (N/S/E/W)
+*/
+
 static void	ft_apply_direction(t_ray *ray, char start_char)
 {
-	ray->plane = ft_new_point(0,0);
-	ray->direction = ft_new_point(0,0);
+	ray->plane = ft_new_point(0, 0);
+	ray->direction = ft_new_point(0, 0);
 	if (start_char == 'N')
 	{
 		ray->direction->x = -ray->fov;
@@ -38,6 +44,77 @@ static void	ft_apply_direction(t_ray *ray, char start_char)
 	}
 }
 
+/*
+** FT_INITIALIZE_RAYCASTER_POINTS
+** This function is used to malloc and initialize all of the t_point
+** structures inside of the t_ray we are initializing here
+*/
+
+static void	ft_initialize_raycaster_points(t_ray *ray, t_map *map)
+{
+	ray->res = ft_new_point(map->res_width, map->res_height);
+	ray->pos = ft_new_point(map->player_x + 0.5, map->player_y + 0.5);
+	ray->in_map = ft_new_point(0, 0);
+	ray->ray_dir = ft_new_point(0, 0);
+	ray->delta_dist = ft_new_point(0, 0);
+	ray->side_dist = ft_new_point(0, 0);
+	ray->step = ft_new_point(0, 0);
+	ray->line = ft_new_line(0, 0, 0, 0);
+	ft_apply_direction(ray, ray->map[map->player_x][map->player_y]);
+}
+
+/*
+** FT_INITIALIZE_SPRITES
+** Used to extract and initialize the sprite related part of the raycaster
+*/
+
+static void	ft_initialize_raycaster_sprites(t_ray *ray, t_map *map)
+{
+	ray->texture_width = 0;
+	ray->texture_height = 0;
+	ray->sprite_width = 0;
+	ray->sprite_height = 0;
+	if (!(ray->north_texture = mlx_xpm_file_to_image(ray->graph->mlx_ptr,
+		map->north_path, &ray->texture_height, &ray->texture_height)) ||
+		!(ray->south_texture = mlx_xpm_file_to_image(ray->graph->mlx_ptr,
+		map->south_path, &ray->texture_height, &ray->texture_height)) ||
+		!(ray->east_texture = mlx_xpm_file_to_image(ray->graph->mlx_ptr,
+		map->east_path, &ray->texture_height, &ray->texture_height)) ||
+		!(ray->west_texture = mlx_xpm_file_to_image(ray->graph->mlx_ptr,
+		map->west_path, &ray->texture_height, &ray->texture_height)) ||
+		!(ray->sprite_texture = mlx_xpm_file_to_image(ray->graph->mlx_ptr,
+		map->sprite_path, &ray->sprite_height, &ray->sprite_height)))
+		ft_malloc_fail();
+}
+
+/*
+** FT_INITIALIZE_RAYCASTER_NUMBERS
+** This function is used to initialize all of the raycaster's numbers
+*/
+
+static void	ft_initialize_raycaster_numbers(t_ray *ray)
+{
+	ray->map_height = ft_str_tab_len(ray->map);
+	ray->map_width = ft_strlen(ray->map[0]);
+	ray->hit = 0;
+	ray->side = 0;
+	ray->perp_wall_dist = 0;
+	ray->fov = M_PI / 4;
+	ray->wall_x = 0;
+	ray->tex_x = 0;
+	ray->tex_y = 0;
+	ray->step = 0;
+	ray->tex_pos = 0;
+	ray->camera_x = 0;
+}
+
+/*
+** FT_NEW_RAYCASTER
+** This function is the central hub of initializing the t_ray structure
+** used in all of the raycasting calculations
+** Several functions are used for it because of the size of the strucure
+*/
+
 t_ray		*ft_new_raycaster(t_graph *graph, t_map *map)
 {
 	t_ray	*ray;
@@ -46,22 +123,9 @@ t_ray		*ft_new_raycaster(t_graph *graph, t_map *map)
 		ft_malloc_fail();
 	ray->graph = graph;
 	ray->map = map->map_str_tab;
-	ray->map_height = ft_str_tab_len(ray->map);
-	ray->map_width = ft_strlen(ray->map[0]);
-	ray->res = ft_new_point(map->res_width, map->res_height);
-	ray->pos = ft_new_point(map->player_x + 0.5, map->player_y + 0.5);
-	ray->in_map = ft_new_point(0, 0);
-	ray->hit = 0;
-	ray->side = 0;
-	ray->perp_wall_dist = 0;
-	ray->fov = M_PI / 4;
-	ft_apply_direction(ray, ray->map[map->player_x][map->player_y]);
-	ray->ray_dir = ft_new_point(0, 0);
-	ray->delta_dist = ft_new_point(0, 0);
-	ray->side_dist = ft_new_point(0, 0);
-	ray->step = ft_new_point(0, 0);
-	ray->line = ft_new_line(0, 0, 0, 0);
-	ray->camera_x = 0;
+	ft_initialize_raycaster_numbers(ray);
+	ft_initialize_raycaster_points(ray, map);
+	ft_initialize_raycaster_sprites(ray, map);
 	map->map_str_tab[map->player_x][map->player_y] = '0';
 	return (ray);
 }
