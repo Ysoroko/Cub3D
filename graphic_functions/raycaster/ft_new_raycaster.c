@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:29:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/16 16:39:31 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/16 17:05:19 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ static void	ft_initialize_raycaster_sprites(t_ray *ray, t_map *map)
 	east_path = map->east_path;
 	west_path = map->west_path;
 	ray->north_texture = ft_image_from_file(ray->graph->mlx_ptr,
-					TEXTURE_W, TEXTURE_H, north_path);
+					map->res_width, map->res_height, north_path);
 	ray->south_texture = ft_image_from_file(ray->graph->mlx_ptr,
-					TEXTURE_W, TEXTURE_H, south_path);
+					map->res_width, map->res_height, south_path);
 	ray->east_texture = ft_image_from_file(ray->graph->mlx_ptr,
-					TEXTURE_W, TEXTURE_H, east_path);
+					map->res_width, map->res_height, east_path);
 	ray->west_texture = ft_image_from_file(ray->graph->mlx_ptr,
-					TEXTURE_W, TEXTURE_H, west_path);
+					map->res_width, map->res_height, west_path);
 }
 
 /*

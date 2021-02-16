@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 15:24:04 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/16 16:43:50 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/16 17:51:09 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,3 +62,13 @@ void	my_mlx_pixel_put(t_image *image, int x, int y, int trgb_color)
 		(y * image->line_length + x * (image->bits_per_pixel / 8));
 	*(unsigned int*)dst = trgb_color;
 }
+
+void	my_mlx_pixel_get(t_image *image, int x, int y, int *trgb_color)
+{
+	char	*dst;
+
+	dst = image->addr +
+		(y * image->line_length + x * (image->bits_per_pixel / 8));
+	*trgb_color = *(unsigned int*)dst;
+}
+

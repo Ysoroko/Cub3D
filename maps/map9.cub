@@ -1,5 +1,5 @@
 R 1920 1080
-NO ./images/brick_wall.xpm
+NO ./images/eagle.xpm
 SO ./images/colorstone.xpm
 WE ./images/greystone.xpm
 EA ./images/wood.xpm

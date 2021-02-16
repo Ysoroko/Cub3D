@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/16 16:58:30 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/16 17:56:12 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,7 @@ static void	ft_textures(t_ray *ray, int x)
 {
 	int	y;
 	int	color;
+	int	trgb;
 
 	y = (int)ray->line->a_y;
 	if (ray->side == 0)
@@ -187,8 +188,10 @@ static void	ft_textures(t_ray *ray, int x)
 		color = (int)(ray->north_texture->addr
 					[ray->texture_height * ray->tex_y + ray->tex_x]);
 		if (ray->side == 1)
-			color = (color >> 1) & 8355711;
-		my_mlx_pixel_put(ray->graph->img_ptr, x, y, color);
+			color = (int)(ray->east_texture->addr
+					[(int)(ray->texture_height * ray->tex_y + ray->tex_x)]);
+		my_mlx_pixel_get(ray->north_texture, x, y, &trgb);
+		my_mlx_pixel_put(ray->graph->img_ptr, x, y, trgb);
 	}
 }
 
