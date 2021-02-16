@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/16 15:33:12 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/16 16:35:42 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ typedef struct	s_ray
 	t_point		*side_dist;
 	t_point		*step;
 	t_line		*line;
-	void		*north_texture;
-	void		*south_texture;
-	void		*east_texture;
-	void		*west_texture;
-	void		*sprite_texture;
+	t_image		*north_texture;
+	t_image		*south_texture;
+	t_image		*east_texture;
+	t_image		*west_texture;
+	t_image		*sprite_texture;
 	int			texture_width;
 	int			texture_height;
 	int			sprite_width;
@@ -122,6 +122,8 @@ int			ft_rgb_to_trgb(int t, int r, int g, int b);
 */
 
 t_image		*ft_image(void *mlx_ptr, int width, int height);
+t_image		*ft_image_from_file(void *mlx_ptr, int width,
+								int height, char *path);
 void		my_mlx_pixel_put(t_image *image, int x, int y, int color);
 
 /*

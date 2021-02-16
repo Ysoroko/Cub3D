@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/16 13:26:58 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/16 16:31:39 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,14 @@
 
 # define KEY_PRESS_MASK 1L<<0
 # define STRUCTURE_NOTIFY_MASK 1L<<17
+
+/*
+** Textures
+*/
+
+# define TEXTURE_W 64
+# define TEXTURE_H 64
+# define SPRITE_H 64
+# define SPRITE_W 64
 
 #endif

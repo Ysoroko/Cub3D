@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/16 15:34:34 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/16 16:58:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,24 +93,28 @@ static void	ft_perform_dda(t_ray *ray)
 	}
 }
 
+/*
+** FT_DISTANCE_AND_LINE
+** This function is used to determine the perendicular distance to the wall
+** based on our line of sight and use this distance to draw the according
+** vertical line
+*/
+
 static void	ft_distance_and_line(t_ray *ray, int x)
 {
 	int		h;
 	double	line_height;
-	double	wall_x;
 
 	h = ray->graph->res_height;
 	if (ray->side == 0)
 	{
 		ray->perp_wall_dist = (ray->in_map->x - ray->pos->x +
 								(1 - ray->step->x) / 2) / ray->ray_dir->x;
-		wall_x = ray->pos->y + ray->perp_wall_dist * ray->direction->y;
 	}
 	else
 	{
 		ray->perp_wall_dist = (ray->in_map->y - ray->pos->y +
 								(1 - ray->step->y) / 2) / ray->ray_dir->y;
-		wall_x = ray->pos->x + ray->perp_wall_dist * ray->direction->x;
 	}
 	line_height = (int)(h / ray->perp_wall_dist);
 	ray->line->len = line_height;
@@ -158,6 +162,36 @@ static void	ft_distance_and_line(t_ray *ray, int x)
 **	}
 */
 
+static void	ft_textures(t_ray *ray, int x)
+{
+	int	y;
+	int	color;
+
+	y = (int)ray->line->a_y;
+	if (ray->side == 0)
+		ray->wall_x = ray->pos->y + ray->perp_wall_dist + ray->ray_dir->y;
+	else
+		ray->wall_x = ray->pos->x + ray->perp_wall_dist + ray->ray_dir->x;
+	ray->wall_x -= floor(ray->wall_x);
+	ray->tex_x = (int)(ray->wall_x * (double)(ray->texture_width));
+	if ((ray->side == 0 && ray->ray_dir->x > 0) ||
+						(ray->side == 1 && ray->ray_dir->y < 0))
+		ray->tex_x = ray->texture_width - ray->tex_x - 1;
+	ray->tex_step = ray->texture_height / ray->line->len;
+	ray->tex_pos = (ray->line->a_y - ray->graph->res_height
+									/ 2 + ray->line->len / 2) * ray->tex_step;
+	while (y++ < ray->line->b_y)
+	{
+		ray->tex_y = (int)ray->tex_pos & (ray->texture_height - 1);
+		ray->tex_pos += ray->tex_step;
+		color = (int)(ray->north_texture->addr
+					[ray->texture_height * ray->tex_y + ray->tex_x]);
+		if (ray->side == 1)
+			color = (color >> 1) & 8355711;
+		my_mlx_pixel_put(ray->graph->img_ptr, x, y, color);
+	}
+}
+
 /*
 ** FT_RAYCASTER
 ** This is the main function which is the central hub of all the raycasting
@@ -175,9 +209,10 @@ void		ft_raycaster(t_ray *ray)
 		ft_step_and_side_dist(ray);
 		ft_perform_dda(ray);
 		ft_distance_and_line(ray, i);
+		ft_textures(ray, i);
 		//printf("ALL GOOD BEFORE RAYCASTER\n");
 		//printf("a_y: [%f]\n b_y: [%f]\n", ray->line->a_y, ray->line->b_y);
-		ft_draw_vertical_line(i, ray->line->a_y, ray->line->b_y, ray);
+		//ft_draw_vertical_line(i, ray->line->a_y, ray->line->b_y, ray);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:29:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/16 15:35:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/16 16:39:31 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,23 @@ static void	ft_initialize_raycaster_points(t_ray *ray, t_map *map)
 
 static void	ft_initialize_raycaster_sprites(t_ray *ray, t_map *map)
 {
-	ray->texture_width = 0;
-	ray->texture_height = 0;
-	ray->sprite_width = 0;
-	ray->sprite_height = 0;
-	if (!(ray->north_texture = mlx_xpm_file_to_image(ray->graph->mlx_ptr,
-		map->north_path, &ray->texture_height, &ray->texture_height)) ||
-		!(ray->south_texture = mlx_xpm_file_to_image(ray->graph->mlx_ptr,
-		map->south_path, &ray->texture_height, &ray->texture_height)) ||
-		!(ray->east_texture = mlx_xpm_file_to_image(ray->graph->mlx_ptr,
-		map->east_path, &ray->texture_height, &ray->texture_height)) ||
-		!(ray->west_texture = mlx_xpm_file_to_image(ray->graph->mlx_ptr,
-		map->west_path, &ray->texture_height, &ray->texture_height)) ||
-		!(ray->sprite_texture = mlx_xpm_file_to_image(ray->graph->mlx_ptr,
-		map->sprite_path, &ray->sprite_height, &ray->sprite_height)))
-		ft_malloc_fail();
+	char *north_path;
+	char *south_path;
+	char *east_path;
+	char *west_path;
+
+	north_path = map->north_path;
+	south_path = map->south_path;
+	east_path = map->east_path;
+	west_path = map->west_path;
+	ray->north_texture = ft_image_from_file(ray->graph->mlx_ptr,
+					TEXTURE_W, TEXTURE_H, north_path);
+	ray->south_texture = ft_image_from_file(ray->graph->mlx_ptr,
+					TEXTURE_W, TEXTURE_H, south_path);
+	ray->east_texture = ft_image_from_file(ray->graph->mlx_ptr,
+					TEXTURE_W, TEXTURE_H, east_path);
+	ray->west_texture = ft_image_from_file(ray->graph->mlx_ptr,
+					TEXTURE_W, TEXTURE_H, west_path);
 }
 
 /*
@@ -103,6 +105,10 @@ static void	ft_initialize_raycaster_numbers(t_ray *ray)
 	ray->wall_x = 0;
 	ray->tex_x = 0;
 	ray->tex_y = 0;
+	ray->texture_width = TEXTURE_W;
+	ray->texture_height = TEXTURE_H;
+	ray->sprite_width = SPRITE_W;
+	ray->sprite_height = SPRITE_H;
 	ray->step = 0;
 	ray->tex_pos = 0;
 	ray->camera_x = 0;

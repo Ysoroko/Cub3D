@@ -6,14 +6,14 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 15:24:04 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/12 13:38:28 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/16 16:43:50 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_graphics.h"
 
 /*
-** This creates an image structure and fills it with necessary information
+** This creates a new image structure and fills it with necessary information
 */
 
 t_image	*ft_image(void *mlx_ptr, int width, int height)
@@ -23,6 +23,24 @@ t_image	*ft_image(void *mlx_ptr, int width, int height)
 	if (!(image = ft_new_t_image()))
 		ft_malloc_fail();
 	if (!(image->img = mlx_new_image(mlx_ptr, width, height)))
+		ft_mlx_fail();
+	if (!(image->addr = mlx_get_data_addr(image->img, &image->bits_per_pixel,
+		&image->line_length, &image->endian)))
+		ft_mlx_fail();
+	return (image);
+}
+
+/*
+** This imports an xpm file to and fills it with necessary information
+*/
+
+t_image	*ft_image_from_file(void *mlx_ptr, int width, int height, char *path)
+{
+	t_image *image;
+
+	if (!(image = ft_new_t_image()))
+		ft_malloc_fail();
+	if (!(image->img = mlx_xpm_file_to_image(mlx_ptr, path, &width, &height)))
 		ft_mlx_fail();
 	if (!(image->addr = mlx_get_data_addr(image->img, &image->bits_per_pixel,
 		&image->line_length, &image->endian)))
