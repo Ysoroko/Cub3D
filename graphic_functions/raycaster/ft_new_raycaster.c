@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:29:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/11 16:29:37 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/16 11:43:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	ft_apply_direction(t_ray *ray, char start_char)
 {
+	ray->plane = ft_new_point(0,0);
+	ray->direction = ft_new_point(0,0);
 	if (start_char == 'N')
 	{
 		ray->direction->x = -ray->fov;
@@ -53,8 +55,6 @@ t_ray		*ft_new_raycaster(t_graph *graph, t_map *map)
 	ray->side = 0;
 	ray->perp_wall_dist = 0;
 	ray->fov = M_PI / 4;
-	ray->plane = ft_new_point(0, 0);
-	ray->direction = ft_new_point(0, 0);
 	ft_apply_direction(ray, ray->map[map->player_x][map->player_y]);
 	ray->ray_dir = ft_new_point(0, 0);
 	ray->delta_dist = ft_new_point(0, 0);
