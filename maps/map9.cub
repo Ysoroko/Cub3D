@@ -1,7 +1,7 @@
 R 1920 1080
-NO ./images/eagle.xpm
+NO ./images/greystone.xpm
 SO ./images/colorstone.xpm
-WE ./images/greystone.xpm
+WE ./images/eagle.xpm
 EA ./images/wood.xpm
 
 S ./images/barrel.xpm

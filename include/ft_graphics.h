@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/17 11:45:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/17 14:41:31 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,5 +204,6 @@ void		ft_turn(t_graph *graph, int direction, t_ray *ray);
 
 t_ray		*ft_new_raycaster(t_graph *graph, t_map *map);
 void		ft_raycaster(t_ray *ray);
+void		ft_textures(t_ray *ray, int x);
 
 #endif

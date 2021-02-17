@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/17 14:09:26 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/17 14:41:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,35 +161,6 @@ static void	ft_distance_and_line(t_ray *ray, int x)
 **		printf("step: x:[%f] y: [%f]\n", ray->step->x, ray->step->y);
 **	}
 */
-
-static void	ft_textures(t_ray *ray, int x)
-{
-	int	y;
-	int	color;
-	int	buffer[(int)(ray->res->y)];
-
-	y = (int)ray->line->a_y;
-	if (ray->side == 0)
-		ray->wall_x = ray->pos->y + ray->perp_wall_dist + ray->ray_dir->y;
-	else
-		ray->wall_x = ray->pos->x + ray->perp_wall_dist + ray->ray_dir->x;
-	ray->wall_x -= floor(ray->wall_x);
-	ray->tex_x = (int)(ray->wall_x * (double)(ray->texture_width));
-	if ((ray->side == 0 && ray->ray_dir->x > 0) ||
-						(ray->side == 1 && ray->ray_dir->y < 0))
-		ray->tex_x = ray->texture_width - ray->tex_x - 1;
-	ray->tex_step = ray->texture_height / ray->line->len;
-	ray->tex_pos = (ray->line->a_y - ray->graph->res_height
-									/ 2 + ray->line->len / 2) * ray->tex_step;
-	while (y++ < (int)ray->line->b_y)
-	{
-		ray->tex_y = (int)ray->tex_pos & (ray->texture_height - 1);
-		ray->tex_pos += ray->tex_step;
-		my_mlx_pixel_get(ray->north_texture, ray->tex_x, ray->tex_y, &(color));
-		buffer[y] = color;
-		my_mlx_pixel_put(ray->graph->img_ptr, x, y, buffer[y]);
-	}
-}
 
 /*
 ** FT_RAYCASTER
