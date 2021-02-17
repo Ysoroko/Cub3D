@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/16 17:54:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/17 11:45:25 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ t_image		*ft_image(void *mlx_ptr, int width, int height);
 t_image		*ft_image_from_file(void *mlx_ptr, int width,
 								int height, char *path);
 void		my_mlx_pixel_put(t_image *image, int x, int y, int color);
-void	my_mlx_pixel_get(t_image *image, int x, int y, int *trgb_color);
+void		my_mlx_pixel_get(t_image *image, int x, int y, int *trgb_color);
 
 /*
 ** FT_DRAW_EMPTY_FORMS
@@ -143,7 +143,7 @@ void		ft_draw_line(t_line *line, t_graph *graph, int trgb);
 ** FT_DRAW_VERTICAL_LINE
 */
 
-void	ft_draw_vertical_line(int x, double a_y, double b_y, t_ray *ray);
+void	ft_draw_vertical_line(int x, double a_y, double b_y, t_ray *ray, int *text);
 
 /*
 ** FT_DRAW_FILLED_IN_FORMS

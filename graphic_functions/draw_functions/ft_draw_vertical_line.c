@@ -6,17 +6,16 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 12:22:58 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/15 15:49:43 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/17 12:34:55 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_graphics.h"
 
-void	ft_draw_vertical_line(int x, double a_y, double b_y, t_ray *ray)
+void	ft_draw_vertical_line(int x, double a_y, double b_y, t_ray *ray, int *buffer)
 {
 	int		i;
 	int		max;
-	int		trgb;
 	double	my_x;
 
 	my_x = (double)x;
@@ -26,9 +25,6 @@ void	ft_draw_vertical_line(int x, double a_y, double b_y, t_ray *ray)
 	max = (int)fmax(a_y, b_y);
 	while (i++ < max - 1)
 	{
-		trgb = 0x00F2BC94;
-		if (ray->side == 1)
-			trgb = trgb / 2;
-		my_mlx_pixel_put(ray->graph->img_ptr, my_x, i, trgb);
+		my_mlx_pixel_put(ray->graph->img_ptr, my_x, i, buffer[i]);
 	}
 }
