@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/17 12:34:26 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/17 14:09:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,14 +181,14 @@ static void	ft_textures(t_ray *ray, int x)
 	ray->tex_step = ray->texture_height / ray->line->len;
 	ray->tex_pos = (ray->line->a_y - ray->graph->res_height
 									/ 2 + ray->line->len / 2) * ray->tex_step;
-	while (y++ < ray->line->b_y)
+	while (y++ < (int)ray->line->b_y)
 	{
 		ray->tex_y = (int)ray->tex_pos & (ray->texture_height - 1);
 		ray->tex_pos += ray->tex_step;
-		my_mlx_pixel_get(ray->north_texture, x % TEXTURE_W, y % TEXTURE_H, &(color));
+		my_mlx_pixel_get(ray->north_texture, ray->tex_x, ray->tex_y, &(color));
 		buffer[y] = color;
+		my_mlx_pixel_put(ray->graph->img_ptr, x, y, buffer[y]);
 	}
-	ft_draw_vertical_line(x, ray->line->a_y, ray->line->b_y, ray, buffer);
 }
 
 /*
