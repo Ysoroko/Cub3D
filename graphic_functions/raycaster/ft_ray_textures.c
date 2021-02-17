@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:40:03 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/17 15:05:20 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/17 16:35:20 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	ft_determine_texture(t_ray *ray, t_image **text)
 {
-	if (ray->pos->x - ray->wall_x < 0 && ray->side == 0)
-		*text = ray->west_texture;
-	if (ray->pos->x - ray->wall_x > 0 && ray->side == 0)
+	if (ray->in_map->y - ray->pos->y > 0 && ray->side == 1)
 		*text = ray->east_texture;
-	if (ray->pos->x - ray->wall_x < 0 && ray->side == 1)
-		*text = ray->north_texture;
-	if (ray->pos->x - ray->wall_x > 0 && ray->side == 1)
+	else if (ray->in_map->y - ray->pos->y <= 0 && ray->side == 1)
+		*text = ray->west_texture;
+	else if (ray->in_map->x - ray->pos->x > 0 && ray->side == 0)
 		*text = ray->south_texture;
+	else if (ray->in_map->x - ray->pos->x <= 0 && ray->side == 0)
+		*text = ray->north_texture;
 }
 
 /*
@@ -29,10 +29,10 @@ static void	ft_determine_texture(t_ray *ray, t_image **text)
 ** Does all the calculations related to the textures and draws them on screen
 */
 
-void	ft_textures(t_ray *ray, int x)
+void		ft_textures(t_ray *ray, int x)
 {
-	int	y;
-	int	color;
+	int		y;
+	int		color;
 	t_image *text;
 
 	y = (int)ray->line->a_y;
