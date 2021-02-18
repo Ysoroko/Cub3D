@@ -1,13 +1,13 @@
 R 1920 1080
-NO ./images/greystone.xpm
-SO ./images/colorstone.xpm
-WE ./images/eagle.xpm
-EA ./images/wood.xpm
+SO ./images/bright_green_wall.xpm
+WE ./images/dark_green_wall.xpm
+NO ./images/sunny_green_wall.xpm
+EA ./images/shadow_green_wall.xpm
 
 S ./images/barrel.xpm
 
-F 252, 244, 163
-C 205, 240, 255
+F 156, 204, 156
+C 195, 200, 255
 
 1111111 1111111 1111111 1111111
 1200021 1200111 1020201 1101011
