@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/28 16:43:00 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 17:51:19 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,20 @@
 # include <stdio.h>
 
 /*
-** COLOR MACROS
+** TEXT COLOR MACROS USED IN PRINTF ERRORS
 */
 
 # define COLOR_RED "\x1b[31m"
 # define BOLD_RED "\033[1m\033[31m"
 # define COLOR_RESET "\x1b[0m"
+
+/*
+** BONUS
+*/
+
+# ifndef BONUS
+#  define BONUS 0
+# endif
 
 /*
 ** T_MAP

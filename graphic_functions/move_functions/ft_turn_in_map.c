@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 10:06:06 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/15 10:37:40 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 18:08:20 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void	ft_turn_right(t_graph *graph, t_ray *ray, double *angle)
 					- ray->plane->y * sin(-TURNING_SPEED);
 	ray->plane->y = old_plane_x * sin(-TURNING_SPEED)
 					+ ray->plane->y * cos(-TURNING_SPEED);
-	*angle = (graph->line->angle + TURNING_SPEED);
+	if (BONUS == 1)
+		*angle = (graph->line->angle + TURNING_SPEED);
 }
 
 static void	ft_turn_left(t_graph *graph, t_ray *ray, double *angle)
@@ -45,7 +46,8 @@ static void	ft_turn_left(t_graph *graph, t_ray *ray, double *angle)
 					- ray->plane->y * sin(TURNING_SPEED);
 	ray->plane->y = old_plane_x * sin(TURNING_SPEED)
 					+ ray->plane->y * cos(TURNING_SPEED);
-	*angle = (graph->line->angle - TURNING_SPEED);
+	if (BONUS == 1)
+		*angle = (graph->line->angle - TURNING_SPEED);
 }
 
 /*
@@ -61,6 +63,7 @@ void		ft_turn(t_graph *graph, int direction, t_ray *ray)
 		ft_turn_right(graph, ray, &angle);
 	else
 		ft_turn_left(graph, ray, &angle);
-	ft_reposition_line(ray, graph->circle, angle, graph->line);
+	if (BONUS == 1)
+		ft_reposition_line(ray, graph->circle, angle, graph->line);
 	ft_next_frame(graph, ray);
 }

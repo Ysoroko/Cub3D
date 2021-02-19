@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 15:47:36 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 18:04:03 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,8 @@ void		ft_raycaster(t_ray *ray)
 	int	i;
 
 	i = -1;
-	ft_floor_and_ceiling_raycasting(ray);
+	if (BONUS == 1)
+		ft_floor_and_ceiling_raycasting(ray);
 	while (++i < ray->res->x)
 	{
 		ft_setup_ray(ray, i);
@@ -181,8 +182,6 @@ void		ft_raycaster(t_ray *ray)
 		ft_perform_dda(ray);
 		ft_distance_and_line(ray, i);
 		ft_textures(ray, i);
-		//printf("ALL GOOD BEFORE RAYCASTER\n");
-		//printf("a_y: [%f]\n b_y: [%f]\n", ray->line->a_y, ray->line->b_y);
 	}
 }
 

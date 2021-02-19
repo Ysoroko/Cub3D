@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 17:07:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 18:03:42 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,20 @@ static void	ft_move_sideways(t_graph *graph, int direction, t_ray *ray)
 
 void		ft_move_and_collide(t_graph *graph, int direction, t_ray *ray)
 {
-	ft_play_step_sound();
+	if (BONUS == 1)
+		ft_play_step_sound();
 	if (direction == WALK_FORWARD || direction == WALK_BACKWARD)
 		ft_move_back_and_forward(graph, direction, ray);
 	else
 		ft_move_sideways(graph, direction, ray);
-	graph->circle->x = ray->pos->y * graph->frame->units + graph->frame->units;
-	graph->circle->y = ray->pos->x * graph->frame->units + graph->frame->units;
-	ft_reposition_line(ray, graph->circle, graph->line->angle, graph->line);
+	if (BONUS == 1)
+	{
+		graph->circle->x = ray->pos->y *
+			graph->frame->units + graph->frame->units;
+		graph->circle->y = ray->pos->x *
+			graph->frame->units + graph->frame->units;
+		ft_reposition_line(ray, graph->circle, graph->line->angle, graph->line);
+	}
 	ft_next_frame(graph, ray);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:40:03 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 16:13:47 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 18:06:37 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,11 @@ void		ft_textures(t_ray *ray, int x)
 		ray->tex_pos += ray->tex_step;
 		ft_determine_texture(ray, &text);
 		my_mlx_pixel_get(text, ray->tex_x, ray->tex_y, &(color));
-		if (ray->perp_wall_dist > TEXTURE_SHADOW_RANGE)
-			color = -color;
+		if (BONUS == 1)
+		{
+			if (ray->perp_wall_dist > TEXTURE_SHADOW_RANGE)
+				color = -color;
+		}
 		my_mlx_pixel_put(ray->graph->img_ptr, x, y, color);
 	}
 }

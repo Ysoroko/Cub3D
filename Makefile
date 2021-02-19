@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/19 17:33:55 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/19 18:14:59 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
 
 INCLUDE			=	-I include
+
+BONUS			= 	-D BONUS=1
 
 FRAMEWORKS		=	-lmlx -framework OpenGL -framework AppKit
 
@@ -63,12 +65,11 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					graphic_functions/ft_window_start.c \
 					graphic_functions/ft_hooks_functions.c \
 					\
+					bonus/ft_music_bonus.c \
+					\
 					libmlx.a \
 					\
 					main.c 
-					
-
-BONUS_SRC		=	bonus/ft_music.c \
 
 OBJS			=	$(SRC:.c=.o)
 
@@ -77,15 +78,22 @@ NAME			=	cub3D
 all: 		$(NAME)
 
 $(NAME):	
-			@$(MINILIBX) ;
-			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(SRC) $(INCLUDE)  -o $(NAME)
+			@$(MINILIBX)
+			@$(LIBFT)
+			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(SRC) $(INCLUDE) -o $(NAME)
+
+bonus:	
+			@$(MINILIBX)
+			@$(LIBFT)
+			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(BONUS) $(SRC) $(INCLUDE) -o $(NAME)
 
 clean:
-			@rm -f libmlx.a;
-			@rm -f $(NAME);
+			@cd libft && make clean
+			@cd minilibx && make clean
 			
 fclean:		clean
-			@cd minilibx && make clean
+			@rm libmlx.a
+			@rm cub3D
 			@cd libft && make fclean
 
 re:			fclean all
@@ -100,4 +108,4 @@ frun:
 			@$(LIBFT)
 			@$(CC) $(FRAMEWORKS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
 
-.PHONY:		all clean fclean re run frun
+.PHONY:		all bonus clean fclean re run frun
