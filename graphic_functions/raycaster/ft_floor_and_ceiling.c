@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:08:20 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 15:22:46 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 16:09:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ static void	ft_launch(t_ray *ray, int x, int y)
 	if (y > ray->res->y / 2)
 	{
 		my_mlx_pixel_get(f_texture, ray->tex->x, ray->tex->y, &(color));
+		if (y < ray->res->y / 2 + FLOOR_SHADOW_RANGE)
+			color = -color;
 		my_mlx_pixel_put(ray->graph->img_ptr, x, y, color);
 	}
 }
