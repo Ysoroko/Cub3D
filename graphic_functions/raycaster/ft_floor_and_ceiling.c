@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:08:20 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 15:05:50 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 15:22:46 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,31 @@ static void	ft_launch(t_ray *ray, int x, int y)
 		(ray->floor->y - ray->cell->y)) & (ray->texture_height - 1);
 	ray->floor->x += ray->floor_step->x;
 	ray->floor->y += ray->floor_step->y;
-	my_mlx_pixel_get(f_texture, ray->tex->x, ray->tex->y, &(color));
-	my_mlx_pixel_put(ray->graph->img_ptr, x, y, color);
-	my_mlx_pixel_get(c_texture, ray->tex->x, ray->tex->y, &(color));
-	my_mlx_pixel_put(ray->graph->img_ptr, x, ray->res->y - y - 1, color);
+	if (y > ray->res->y / 2)
+	{
+		my_mlx_pixel_get(f_texture, ray->tex->x, ray->tex->y, &(color));
+		my_mlx_pixel_put(ray->graph->img_ptr, x, y, color);
+	}
+}
+
+static void	ft_draw_skybox(t_ray *ray)
+{
+	int	x;
+	int	y;
+	int color;
+
+	x = -1;
+	y = 0;
+	while (x++ < ray->res->x)
+	{
+		y = -1;
+		while (y++ < ray->res->y / 2)
+		{
+			my_mlx_pixel_get(ray->ceiling_texture,
+				x % ray->texture_width, y % ray->texture_height, &(color));
+			my_mlx_pixel_put(ray->graph->img_ptr, x, y, color);
+		}
+	}
 }
 
 /*
@@ -74,6 +95,7 @@ void		ft_floor_and_ceiling_raycasting(t_ray *ray)
 
 	y = -1;
 	x = -1;
+	ft_draw_skybox(ray);
 	while (++y < ray->res->y)
 	{
 		ft_setup(ray, y);
