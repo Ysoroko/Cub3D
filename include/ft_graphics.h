@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 15:41:32 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 16:45:27 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,5 +216,12 @@ t_ray		*ft_new_raycaster(t_graph *graph, t_map *map);
 void		ft_raycaster(t_ray *ray);
 void		ft_textures(t_ray *ray, int x);
 void		ft_floor_and_ceiling_raycasting(t_ray *ray);
+
+/*
+** BONUS
+*/
+
+void	ft_play_step_sound(void);
+void	ft_play_background_music(void);
 
 #endif

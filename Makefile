@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/19 12:47:59 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/19 17:33:55 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,8 +68,7 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					main.c 
 					
 
-BONUS_SRC		=	SRC \
-					bonus/ft_trgb_utils.c
+BONUS_SRC		=	bonus/ft_music.c \
 
 OBJS			=	$(SRC:.c=.o)
 
@@ -94,7 +93,7 @@ re:			fclean all
 run:		
 			@$(MINILIBX)
 			@$(LIBFT)
-			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
+			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(SRC) $(BONUS_SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
 
 frun:
 			@$(MINILIBX)

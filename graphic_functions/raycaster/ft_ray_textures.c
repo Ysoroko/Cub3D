@@ -6,11 +6,17 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:40:03 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 16:09:49 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 16:13:47 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_graphics.h"
+
+/*
+** FT_DETERMINE_TEXTURE
+** This function is used to determine the texture based on the players's
+** direction
+*/
 
 static void	ft_determine_texture(t_ray *ray, t_image **text)
 {
@@ -25,17 +31,12 @@ static void	ft_determine_texture(t_ray *ray, t_image **text)
 }
 
 /*
-** FT_TEXTURES
-** Does all the calculations related to the textures and draws them on screen
+** FT_SETUP
+** All the setup needed before the "while (y) loop is done here"
 */
 
-void		ft_textures(t_ray *ray, int x)
+static void	ft_setup(t_ray *ray)
 {
-	int		y;
-	int		color;
-	t_image *text;
-
-	y = (int)ray->line->a_y;
 	if (ray->side == 0)
 		ray->wall_x = ray->pos->y + ray->perp_wall_dist * ray->ray_dir->y;
 	else
@@ -48,6 +49,21 @@ void		ft_textures(t_ray *ray, int x)
 	ray->tex_step = ray->texture_height / ray->line->len;
 	ray->tex_pos = (ray->line->a_y - ray->graph->res_height
 									/ 2 + ray->line->len / 2) * ray->tex_step;
+}
+
+/*
+** FT_TEXTURES
+** Does all the calculations related to the textures and draws them on screen
+*/
+
+void		ft_textures(t_ray *ray, int x)
+{
+	int		y;
+	int		color;
+	t_image *text;
+
+	y = (int)ray->line->a_y;
+	ft_setup(ray);
 	while (y++ < (int)ray->line->b_y)
 	{
 		ray->tex_y = (int)ray->tex_pos & (ray->texture_height - 1);

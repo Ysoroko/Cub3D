@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/16 12:16:08 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 17:07:25 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static void	ft_move_sideways(t_graph *graph, int direction, t_ray *ray)
 
 void		ft_move_and_collide(t_graph *graph, int direction, t_ray *ray)
 {
+	ft_play_step_sound();
 	if (direction == WALK_FORWARD || direction == WALK_BACKWARD)
 		ft_move_back_and_forward(graph, direction, ray);
 	else
@@ -99,7 +100,6 @@ void		ft_reposition_line(t_ray *ray, t_circle *cir, double a, t_line *l)
 
 	map = ray->graph->map->map_str_tab;
 	units = ray->graph->frame->units;
-	//distance_to_wall = ray->perp_wall_dist * units;
 	distance_to_wall = ray->graph->frame->units * 1.5;
 	l->a_x = cir->x;
 	l->a_y = cir->y;
