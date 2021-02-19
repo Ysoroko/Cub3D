@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:29:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/16 17:05:19 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 13:26:02 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ static void	ft_initialize_raycaster_points(t_ray *ray, t_map *map)
 	ray->step = ft_new_point(0, 0);
 	ray->line = ft_new_line(0, 0, 0, 0);
 	ft_apply_direction(ray, ray->map[map->player_x][map->player_y]);
+	ray->ray_dir_0 = ft_new_point(0, 0);
+	ray->ray_dir_1 = ft_new_point(0, 0);
+	ray->floor_step = ft_new_point(0, 0);
+	ray->floor = ft_new_point(0, 0);
+	ray->cell = ft_new_point(0, 0);
+	ray->tex = ft_new_point(0, 0);
 }
 
 /*
@@ -87,6 +93,10 @@ static void	ft_initialize_raycaster_sprites(t_ray *ray, t_map *map)
 					map->res_width, map->res_height, east_path);
 	ray->west_texture = ft_image_from_file(ray->graph->mlx_ptr,
 					map->res_width, map->res_height, west_path);
+	ray->floor_texture = ft_image_from_file(ray->graph->mlx_ptr,
+		map->res_width, map->res_height, "./images/greystone.xpm");
+	ray->ceiling_texture = ft_image_from_file(ray->graph->mlx_ptr,
+		map->res_width, map->res_height, "./images/wood.xpm");
 }
 
 /*
@@ -112,6 +122,9 @@ static void	ft_initialize_raycaster_numbers(t_ray *ray)
 	ray->step = 0;
 	ray->tex_pos = 0;
 	ray->camera_x = 0;
+	ray->p = 0;
+	ray->pos_z = 0;
+	ray->row_distance = 0;
 }
 
 /*

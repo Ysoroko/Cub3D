@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/17 14:41:31 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 13:55:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,17 @@ typedef struct	s_ray
 	int			tex_y;
 	double		tex_step;
 	double		tex_pos;
-
+	t_image		*floor_texture;
+	t_image		*ceiling_texture;
+	t_point		*ray_dir_0;
+	t_point		*ray_dir_1;
+	int			p;
+	double		pos_z;
+	double		row_distance;
+	t_point		*floor_step;
+	t_point		*floor;
+	t_point		*cell;
+	t_point		*tex;
 }				t_ray;
 
 /*
@@ -205,5 +215,6 @@ void		ft_turn(t_graph *graph, int direction, t_ray *ray);
 t_ray		*ft_new_raycaster(t_graph *graph, t_map *map);
 void		ft_raycaster(t_ray *ray);
 void		ft_textures(t_ray *ray, int x);
+void		ft_floor_and_ceiling_raycasting(t_ray *ray, int x);
 
 #endif

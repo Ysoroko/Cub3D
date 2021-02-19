@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/17 14:41:44 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 13:55:05 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ void		ft_raycaster(t_ray *ray)
 		ft_step_and_side_dist(ray);
 		ft_perform_dda(ray);
 		ft_distance_and_line(ray, i);
+		ft_floor_and_ceiling_raycasting(ray, i);
 		ft_textures(ray, i);
 		//printf("ALL GOOD BEFORE RAYCASTER\n");
 		//printf("a_y: [%f]\n b_y: [%f]\n", ray->line->a_y, ray->line->b_y);

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/17 15:11:04 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/19 11:28:23 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@
 # define D_KEY 2
 # define Q_KEY 12
 # define E_KEY 14
+
+# define SPACEBAR_KEY 49
+# define LCONTROL_KEY 256
 
 /*
 ** Directions

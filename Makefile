@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/17 14:41:25 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/19 12:47:59 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					graphic_functions/raycaster/ft_raycaster.c \
 					graphic_functions/raycaster/ft_new_raycaster.c \
 					graphic_functions/raycaster/ft_ray_textures.c \
+					graphic_functions/raycaster/ft_floor_and_ceiling.c \
 					\
 					graphic_functions/move_functions/ft_move_in_map.c \
 					graphic_functions/move_functions/ft_turn_in_map.c \
