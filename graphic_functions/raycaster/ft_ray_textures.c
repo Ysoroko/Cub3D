@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:40:03 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/20 12:53:28 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 13:26:15 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void		ft_textures(t_ray *ray, int x)
 
 	y = (int)ray->line->a_y;
 	ft_setup(ray);
-	while (y++ < (int)ray->line->b_y)
+	while (y++ < (int)ray->line->b_y - 1)
 	{
 		ray->tex_y = (int)ray->tex_pos & (ray->texture_height - 1);
 		ray->tex_pos += ray->tex_step;

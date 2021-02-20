@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/20 11:38:03 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 13:00:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,5 @@
 # define TEXTURE_H 64
 # define SPRITE_H 64
 # define SPRITE_W 64
-
-/*
-** Shadows
-*/
-
-# define TEXTURE_SHADOW_RANGE 5
-# define FLOOR_SHADOW_RANGE 80
 
 #endif

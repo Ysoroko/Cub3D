@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_draw_minimap.c                                  :+:      :+:    :+:   */
+/*   ft_draw_minimap_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/12 16:34:43 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 13:13:55 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,7 @@ void	ft_draw_minimap(t_graph *graph, t_ray *ray)
 	if (!graph->circle)
 		graph->circle = ft_new_circle(x, y, radius, 0);
 	if (!graph->line)
-	{
 		ft_starting_player_direction(graph);
-		graph->map->map_str_tab[graph->map->player_x]
-							[graph->map->player_y] = '0';
-	}
 	ft_draw_fcircle(graph->circle, graph, PLAYER_COLOR);
 	ft_draw_line(graph->line, graph, DIRECTION_COLOR);
 }

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 16:45:27 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 13:16:38 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct		s_graph
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_image		*img_ptr;
-	t_image		*once_drawn_img;
 	int			*f_ptr;
 	int			f_trgb;
 	int			c_trgb;

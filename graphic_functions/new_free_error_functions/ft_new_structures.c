@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/12 16:26:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 13:16:22 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static	void	ft_set_resolution(int *res_w, int *res_h, void *mlx, t_map *m)
 	int	screen_height;
 
 	mlx_get_screen_size(mlx, &screen_width, &screen_height);
-	*res_w = fmin(m->res_width, screen_width);
-	*res_h = fmin(m->res_height, screen_height);
+	*res_w = (int)fmin(m->res_width, screen_width);
+	*res_h = (int)fmin(m->res_height, screen_height);
 }
 
 t_graph	*ft_new_t_graph(t_map *map)
@@ -45,9 +45,6 @@ t_graph	*ft_new_t_graph(t_map *map)
 	ret->img_ptr = ft_image(ret->mlx_ptr,
 		map->res_width, map->res_height);
 	ret->frame = ft_new_t_frame(ret);
-	ret->once_drawn_img = ft_image(ret->mlx_ptr,
-		ft_strlen(map->map_str_tab[0]) * ret->frame->units,
-		ft_str_tab_len(map->map_str_tab) * ret->frame->units);
 	return (ret);
 }
 

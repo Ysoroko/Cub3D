@@ -1,13 +1,13 @@
-R 1920 1080
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+R 1440 810
+SO ./images/bright_green_wall.xpm
+WE ./images/dark_green_wall.xpm
+NO ./images/sunny_green_wall.xpm
+EA ./images/shadow_green_wall.xpm
 
-S ./path_to_the_sprite_texture
+S ./images/barrel.xpm
 
-F 252, 244, 163
-C 205, 240, 255
+F 156, 204, 156
+C 195, 200, 255
 
 1111
 1001
