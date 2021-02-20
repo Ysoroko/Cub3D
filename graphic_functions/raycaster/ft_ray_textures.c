@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:40:03 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 18:06:37 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 12:53:28 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,22 @@ static void	ft_setup(t_ray *ray)
 }
 
 /*
+** FT_APPLY_SHADOW_TO_TEXTURES
+** This function is responsible for the distance related shadow effect
+** It is using perp_wall_dist from our t_ray structure and starting at a
+** fixed distance, lowers the transparency of the color seen on the screen
+** if it's far away from the player
+*/
+
+static void	ft_apply_shadow_to_textures(double dist, int *color)
+{
+	int transparency;
+
+	transparency = (int)fmin(((*color >> 24) + 0.1) * (dist * 600), 255);
+	*color = (transparency << 24 | *color);
+}
+
+/*
 ** FT_TEXTURES
 ** Does all the calculations related to the textures and draws them on screen
 */
@@ -71,10 +87,7 @@ void		ft_textures(t_ray *ray, int x)
 		ft_determine_texture(ray, &text);
 		my_mlx_pixel_get(text, ray->tex_x, ray->tex_y, &(color));
 		if (BONUS == 1)
-		{
-			if (ray->perp_wall_dist > TEXTURE_SHADOW_RANGE)
-				color = -color;
-		}
+			ft_apply_shadow_to_textures(ray->perp_wall_dist, &color);
 		my_mlx_pixel_put(ray->graph->img_ptr, x, y, color);
 	}
 }

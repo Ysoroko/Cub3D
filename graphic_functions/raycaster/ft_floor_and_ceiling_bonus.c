@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_floor_and_ceiling.c                             :+:      :+:    :+:   */
+/*   ft_floor_and_ceiling_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:08:20 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 16:09:44 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 12:51:04 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,22 @@ static void	ft_setup(t_ray *ray, int y)
 }
 
 /*
+** FT_APPLY_SHADOW_TO_FLOOR
+** This function is responsible for applying the shadow effect to the floor
+** The same logic is used for the textures,
+** but different distances are used here
+*/
+
+static void	ft_apply_shadow_to_floor(double dist, int res, int *color)
+{
+	int transparency;
+
+	transparency = (int)fmin(((*color >> 24) + 1)
+		* ((res / 2 - dist) * 0.5), 255);
+	*color = (transparency << 24 | *color);
+}
+
+/*
 ** This function is used to calculate everything needed to draw the floor and
 ** the ceiling
 */
@@ -58,8 +74,7 @@ static void	ft_launch(t_ray *ray, int x, int y)
 	if (y > ray->res->y / 2)
 	{
 		my_mlx_pixel_get(f_texture, ray->tex->x, ray->tex->y, &(color));
-		if (y < ray->res->y / 2 + FLOOR_SHADOW_RANGE)
-			color = -color;
+		ft_apply_shadow_to_floor(y, ray->res->y, &color);
 		my_mlx_pixel_put(ray->graph->img_ptr, x, y, color);
 	}
 }

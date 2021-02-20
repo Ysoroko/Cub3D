@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 16:38:10 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 17:54:52 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 11:34:06 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	ft_play_step_sound(void)
 	static int	i;
 	static int	j;
 
-	if (!(i % 3) && j % 2)
+	if (!(i % 5) && j % 2)
 		system("afplay bonus/step1.mp3 &>/dev/null &");
-	else if (!(i % 3) && !(j % 2))
+	else if (!(i % 5) && !(j % 2))
 		system("afplay bonus/step2.mp3 &>/dev/null &");
 	i++;
 	j++;

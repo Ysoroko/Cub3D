@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/19 18:32:42 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/20 11:31:47 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ re:			fclean all
 run:		
 			@$(MINILIBX)
 			@$(LIBFT)
-			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(SRC) $(BONUS_SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
+			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(BONUS) $(SRC) $(BONUS_SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
 
 frun:
 			@$(MINILIBX)

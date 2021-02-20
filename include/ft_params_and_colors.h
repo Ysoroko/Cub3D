@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 16:09:37 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 11:38:03 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 ** Parameters
 */
 
-#define WALKING_SPEED 0.3
+#define WALKING_SPEED 0.2
 #define TURNING_SPEED 0.2
 #define MAX_RATIO 3
 #define LINE_LENGTH 20
@@ -89,6 +89,6 @@
 */
 
 # define TEXTURE_SHADOW_RANGE 5
-# define FLOOR_SHADOW_RANGE 50
+# define FLOOR_SHADOW_RANGE 80
 
 #endif
