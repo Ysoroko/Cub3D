@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/20 13:00:08 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 17:10:38 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@
 
 # define TEXTURE_W 64
 # define TEXTURE_H 64
+# define SKY_W 256
+# define SKY_H 256
 # define SPRITE_H 64
 # define SPRITE_W 64
 

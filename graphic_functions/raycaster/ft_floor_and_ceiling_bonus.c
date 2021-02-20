@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:08:20 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/20 13:18:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 17:17:35 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static void	ft_draw_skybox(t_ray *ray)
 		while (y++ < ray->res->y / 2)
 		{
 			my_mlx_pixel_get(ray->ceiling_texture,
-				x % ray->texture_width, y % ray->texture_height, &(color));
+				x % SKY_W, y % SKY_H, &(color));
 			my_mlx_pixel_put(ray->graph->img_ptr, x, y, color);
 		}
 	}

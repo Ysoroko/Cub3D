@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 16:38:10 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/20 11:34:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 17:29:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_play_background_music(void)
 {
-	system("afplay bonus/background.mp3 &>/dev/null &");
+	system("afplay bonus/night.mp3 &>/dev/null &");
 }
 
 /*
@@ -32,9 +32,9 @@ void	ft_play_step_sound(void)
 	static int	j;
 
 	if (!(i % 5) && j % 2)
-		system("afplay bonus/step1.mp3 &>/dev/null &");
+		system("afplay -v 0.1 bonus/step1.mp3 &>/dev/null &");
 	else if (!(i % 5) && !(j % 2))
-		system("afplay bonus/step2.mp3 &>/dev/null &");
+		system("afplay -v 0.1 bonus/step2.mp3 &>/dev/null &");
 	i++;
 	j++;
 }
