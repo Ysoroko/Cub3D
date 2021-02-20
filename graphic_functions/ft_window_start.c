@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/20 13:04:47 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/20 17:35:03 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ void		ft_next_frame(t_graph *graph, t_ray *ray)
 	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
 	if (BONUS == 0)
 		ft_draw_background(graph);
-	printf("All good before raycasting\n");
 	ft_raycaster(ray);
-	printf("All good after raycasting\n");
 	if (BONUS == 1)
 		ft_draw_minimap(graph, ray);
 	mlx_put_image_to_window(graph->mlx_ptr,
@@ -79,9 +77,7 @@ t_graph		*ft_window_start(t_map *map)
 	t_ray		*ray;
 
 	graph = ft_new_t_graph(map);
-	printf("Ray creating\n");
 	ray = ft_new_raycaster(graph, map);
-	printf("Ray created\n");
 	ft_next_frame(graph, ray);
 	ft_define_hooks(ray);
 	if (BONUS == 1)
