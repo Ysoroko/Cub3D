@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:07:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/22 17:42:33 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/22 17:58:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_sprite	**ft_sprites_from_map_to_t_list(char **map, int n_sprites)
 	int			k;
 	t_sprite	**sprite_array;
 
-	if (!(sprite_array = malloc(sizeof(t_sprite) * (n_sprites))))
+	if (!(sprite_array = malloc(sizeof(t_sprite) * (n_sprites + 1))))
 		ft_malloc_fail();
 	i = -1;
 	k = -1;
