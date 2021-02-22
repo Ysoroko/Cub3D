@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/20 13:29:19 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/22 16:44:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	ft_setup_ray(t_ray *ray, int i)
 	ray->camera_x = 2 * i / ray->res->x - 1;
 	ray->ray_dir->x = ray->direction->x + ray->plane->x * ray->camera_x;
 	ray->ray_dir->y = ray->direction->y + ray->plane->y * ray->camera_x;
-	ray->in_map->x = (int)(floor(ray->pos->x));
-	ray->in_map->y = (int)(floor(ray->pos->y));
+	ray->in_map->x = (int)(ray->pos->x);
+	ray->in_map->y = (int)(ray->pos->y);
 	ray->delta_dist->x = fabs(1 / ray->ray_dir->x);
 	ray->delta_dist->y = fabs(1 / ray->ray_dir->y);
 	ray->hit = 0;
@@ -130,7 +130,6 @@ static void	ft_distance_and_line(t_ray *ray, int x)
 /*
 **	static void	ft_print_ray(t_ray *ray)
 **	{
-**		//TO COMMENT OUT BEFORE PUSHING
 **		int i = 0;
 **
 **		printf ("\n\n\n\n\n");
@@ -182,5 +181,6 @@ void		ft_raycaster(t_ray *ray)
 		ft_perform_dda(ray);
 		ft_distance_and_line(ray, i);
 		ft_textures(ray, i);
+		ft_sprites_raycaster(ray, ray->sprite_ray, i);
 	}
 }

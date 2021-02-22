@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/20 13:16:38 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/22 16:42:42 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,32 @@ typedef struct		s_graph
 	t_frame		*frame;
 }					t_graph;
 
+typedef struct	s_sprite 
+{
+	int			x;
+	int			y;
+	int			texture_sprite;
+}				t_sprite;
+
+typedef struct	s_sprite_ray
+{
+	t_sprite	**sprite_array;
+	int			num_sprites;
+	double		*z_buffer;
+	int			*sprite_order;
+	double		*sprite_distance;
+	t_point		*spr;
+	double		inv_det;
+	t_point		*transform;
+	int			sprite_screen_x;
+	t_point		*draw_start;
+	t_point		*draw_end;
+	int			sprite_width;
+	int			sprite_height;	
+	t_point		*tex;
+	t_point		*texture_size;
+}				t_sprite_ray;
+
 typedef struct	s_ray
 {
 	t_graph		*graph;
@@ -102,7 +128,10 @@ typedef struct	s_ray
 	t_point		*floor;
 	t_point		*cell;
 	t_point		*tex;
+	t_sprite_ray	*sprite_ray;
 }				t_ray;
+
+
 
 /*
 ** FT_NEW_STRUCTURES
@@ -222,5 +251,12 @@ void		ft_floor_and_ceiling_raycasting(t_ray *ray);
 
 void	ft_play_step_sound(void);
 void	ft_play_background_music(void);
+
+/*
+** FT_NEW_SPRITE_RAY
+*/
+
+t_sprite_ray	*ft_new_sprite_ray(char **map, t_ray *ray);
+void			ft_sprites_raycaster(t_ray *ray, t_sprite_ray *s_ray, int x);
 
 #endif
