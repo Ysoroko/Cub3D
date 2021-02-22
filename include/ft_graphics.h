@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/22 16:42:42 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/22 17:42:45 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct	s_sprite
 {
 	int			x;
 	int			y;
-	int			texture_sprite;
+	char		texture_sprite;
 }				t_sprite;
 
 typedef struct	s_sprite_ray

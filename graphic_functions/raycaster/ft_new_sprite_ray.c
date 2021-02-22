@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:07:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/22 16:55:52 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/22 17:42:33 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** Used to create a new t_sprite structure
 */
 
-static t_sprite	*ft_new_sprite(int x, int y, int texture_sprite)
+static t_sprite	*ft_new_sprite(int x, int y, char texture_sprite)
 {
 	t_sprite *ret;
 
@@ -46,14 +46,14 @@ static t_sprite	**ft_sprites_from_map_to_t_list(char **map, int n_sprites)
 	if (!(sprite_array = malloc(sizeof(t_sprite) * (n_sprites))))
 		ft_malloc_fail();
 	i = -1;
-	k = 0;
+	k = -1;
 	while (map[++i])
 	{
 		j = -1;
 		while (map[i][++j])
 		{
 			if (map[i][j] == '2')
-				sprite_array[k++] = ft_new_sprite(j, i, map[i][j]);
+				sprite_array[++k] = ft_new_sprite(j, i, map[i][j]);
 		}
 	}
 	return (sprite_array);
