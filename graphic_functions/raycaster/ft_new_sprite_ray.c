@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:07:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/22 17:58:08 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 11:02:42 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_sprite_ray	*ft_new_sprite_ray(char **map, t_ray *ray)
 	t_sprite_ray	*sprite_ray;
 
 	n_sprites = ft_n_chars_in_str_tab(map, '2');
-	if (!(sprite_ray = malloc(sizeof(sprite_ray))))
+	if (!(sprite_ray = malloc(sizeof(*sprite_ray))))
 		ft_malloc_fail();
 	sprite_ray->num_sprites = n_sprites;
 	sprite_ray->sprite_array = ft_sprites_from_map_to_t_list(map, n_sprites);

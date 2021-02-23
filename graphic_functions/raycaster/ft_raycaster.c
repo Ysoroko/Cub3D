@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/22 17:57:04 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 11:03:05 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,6 @@ void		ft_raycaster(t_ray *ray)
 		ft_perform_dda(ray);
 		ft_distance_and_line(ray, i);
 		ft_textures(ray, i);
-		//ft_sprites_raycaster(ray, ray->sprite_ray, i);
+		ft_sprites_raycaster(ray, ray->sprite_ray, i);
 	}
 }
