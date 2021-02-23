@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:07:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 14:12:47 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 16:14:25 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static t_sprite	**ft_sprites_from_map_to_array(char **map, int n_sprites)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (map[i][j] == '2')
+			if (map[i][j] == '2' || map[i][j] == '3')
 				sprite_array[++k] = ft_new_sprite(i, j, map[i][j]);
 		}
 	}

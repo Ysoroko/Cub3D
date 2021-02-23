@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/22 13:28:31 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 16:00:13 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 #define WALKING_SPEED 0.2
 #define TURNING_SPEED 0.2
-#define MAX_RATIO 3
+#define MAX_RATIO 7
 #define LINE_LENGTH 20
 
 /*
@@ -85,5 +85,9 @@
 # define SKY_H 256
 # define SPRITE_H 64
 # define SPRITE_W 64
+
+# define FLOOR_XPM_PATH "./images/floor2.xpm"
+# define SKYBOX_XPM_PATH "./images/night2.xpm"
+# define SECOND_SPRITE_XPM_PATH "images/pillar.xpm"
 
 #endif

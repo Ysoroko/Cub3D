@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:29:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 12:08:36 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 16:00:53 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,11 @@ static void	ft_initialize_raycaster_sprites(t_ray *ray, t_map *map)
 	if (BONUS == 1)
 	{
 		ray->floor_texture = ft_image_from_file(ray->graph->mlx_ptr,
-			map->res_width, map->res_height, "./images/floor2.xpm");
+			map->res_width, map->res_height, FLOOR_XPM_PATH);
 		ray->ceiling_texture = ft_image_from_file(ray->graph->mlx_ptr,
-			map->res_width, map->res_height, "./images/night2.xpm");
+			map->res_width, map->res_height, SKYBOX_XPM_PATH);
+		ray->sprite_two_texture = ft_image_from_file(ray->graph->mlx_ptr,
+			map->res_width, map->res_height, SECOND_SPRITE_XPM_PATH);
 	}
 }
 

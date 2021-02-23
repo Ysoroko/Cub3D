@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:34:55 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 14:27:26 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 16:21:53 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,17 @@ static void	ft_pixel_get_and_draw(t_ray *ray, int spr, int i, int j)
 {
 	int				trgb;
 	t_sprite_ray	*s_r;
+	t_image			*texture;
+	char			sprite_number;
+	int				order;
 
+	order = ray->sprite_ray->sprite_order[spr];
+	sprite_number = ray->sprite_ray->sprite_array[order]->texture_sprite;
+	texture = ray->sprite_texture;
+	if (BONUS == 1 && sprite_number == '3')
+		texture = ray->sprite_two_texture;
 	s_r = ray->sprite_ray;
-	my_mlx_pixel_get(ray->sprite_texture, s_r->tex->x, s_r->tex->y, &trgb);
+	my_mlx_pixel_get(texture, s_r->tex->x, s_r->tex->y, &trgb);
 	if ((trgb & 0x00FFFFFF) != 0)
 	{
 		if (BONUS == 1)

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/20 14:01:30 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 15:31:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ t_frame	*ft_new_t_frame(t_graph *graph)
 
 	if (!(ret = malloc(sizeof(t_frame))))
 		ft_malloc_fail();
-	ret->units = fmin(graph->map->res_width, graph->map->res_height)
+	ret->units = fmax(graph->map->res_width, graph->map->res_height)
 						/ MAX_RATIO /
-					fmax(ft_strlen(graph->map->map_str_tab[0]),
+					fmin(ft_strlen(graph->map->map_str_tab[0]),
 						ft_str_tab_len(graph->map->map_str_tab));
 	if (ret->units < 1 || ret->units >= (fmin)(graph->map->res_width,
 							graph->map->res_height))

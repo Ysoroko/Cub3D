@@ -6,14 +6,12 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 18:16:33 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/28 14:47:04 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 15:52:34 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_map_functions.h"
 #include "../include/libft.h"
-
-
 
 /*
 ** FT_CHECK_ZERO_SURROUNDINGS
@@ -50,7 +48,7 @@ static int	ft_not_surrounded_by_walls(char **str_tab)
 		j = -1;
 		while (str_tab[i][++j])
 		{
-			if (ft_strchr("0NSEW2", str_tab[i][j]))
+			if (ft_strchr("0NSEW", str_tab[i][j]))
 			{
 				if (ft_check_surroundings(str_tab, i, j))
 					return (1);

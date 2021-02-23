@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 14:18:59 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 16:00:41 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef struct	s_ray
 	double		tex_pos;
 	t_image		*floor_texture;
 	t_image		*ceiling_texture;
+	t_image		*sprite_two_texture;
 	t_point		*ray_dir_0;
 	t_point		*ray_dir_1;
 	int			p;

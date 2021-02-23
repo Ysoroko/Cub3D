@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/22 15:31:50 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 15:45:06 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ void		ft_draw_background(t_graph *graph)
 
 void		ft_next_frame(t_graph *graph, t_ray *ray)
 {
+	int	mouse_x;
+	int	mouse_y;
+
+	mouse_x = 0;
+	mouse_y = 0;
 	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
 	if (BONUS == 0)
 		ft_draw_background(graph);

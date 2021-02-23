@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:53:13 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 14:56:24 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 15:49:04 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_invalid_last_char_before_space(char *line)
 	{
 		while (line[i] && line[i] != ' ')
 			i++;
-		if (ft_strchr("02NSEW", line[i - 1]))
+		if (ft_strchr("0NSEW", line[i - 1]))
 			return (1);
 		if (line[i])
 			i++;
@@ -57,13 +57,13 @@ static int	ft_invalid_first_char_after_space(char *line)
 	i = 0;
 	if (!line[0])
 		return (0);
-	if (ft_strchr("02NSEW", line[0]))
+	if (ft_strchr("0NSEW", line[0]))
 		return (1);
 	while (line[i])
 	{
 		while (line[i] && line[i] == ' ')
 			i++;
-		if (line[i - 1] && line[i - 1] == ' ' && ft_strchr("02NSEW", line[i]))
+		if (line[i - 1] && line[i - 1] == ' ' && ft_strchr("0NSEW", line[i]))
 			return (1);
 		if (line[i])
 			i++;
@@ -115,13 +115,18 @@ int			ft_check_map_line_for_errors(char *line, t_map *map)
 		return (0);
 	if ((!line[0] || !ft_strchr(line, '1')) && map->map_str)
 		return (MAP_LINE_ERROR);
-	if (ft_has_other_chars(line, "NSEW 012"))
-		return (FORBIDDEN_CHARS_ERROR);
-	if (line[0] && ft_n_chars_in_str(line, '1') < 2 && ft_strchr(line, '0'))
+	if (BONUS == 0)
 	{
-		printf("\nhere\n");
-		return (NO_WALLS_ERROR);
+		if (ft_has_other_chars(line, "NSEW 012"))
+			return (FORBIDDEN_CHARS_ERROR);
 	}
+	else if (BONUS == 1)
+	{
+		if (ft_has_other_chars(line, "NSEW 0123"))
+			return (FORBIDDEN_CHARS_ERROR);
+	}
+	if (line[0] && ft_n_chars_in_str(line, '1') < 2 && ft_strchr(line, '0'))
+		return (NO_WALLS_ERROR);
 	if (ft_invalid_last_char_before_space(line) ||
 		ft_invalid_first_char_after_space(line))
 		return (NO_WALLS_ERROR);
