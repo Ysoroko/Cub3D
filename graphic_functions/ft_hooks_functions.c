@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 15:19:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/19 18:02:33 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 11:13:15 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int				ft_keys_binding(int keycode, t_ray *ray)
 	{
 		mlx_destroy_window(ray->graph->mlx_ptr, ray->graph->win_ptr);
 		if (BONUS == 1)
-			system("killall afplay");
+			ft_stop_all_afplay_sounds();
 		exit(EXIT_SUCCESS);
 	}
 	if (keycode == LEFT_ARROW_KEY || keycode == Q_KEY)
@@ -50,7 +50,7 @@ int				ft_keys_binding(int keycode, t_ray *ray)
 int				ft_window_closed(void)
 {
 	if (BONUS == 1)
-		system("killall afplay");
+		ft_stop_all_afplay_sounds();
 	exit(EXIT_SUCCESS);
 	return (0);
 }

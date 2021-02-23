@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/22 17:42:45 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 11:12:52 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,6 +251,7 @@ void		ft_floor_and_ceiling_raycasting(t_ray *ray);
 
 void	ft_play_step_sound(void);
 void	ft_play_background_music(void);
+void	ft_stop_all_afplay_sounds(void);
 
 /*
 ** FT_NEW_SPRITE_RAY

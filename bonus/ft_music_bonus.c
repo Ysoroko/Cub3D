@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 16:38:10 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/22 13:51:39 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 11:14:12 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,15 @@ void	ft_play_step_sound(void)
 		system("afplay -v 0.1 bonus/step2.mp3 &>/dev/null &");
 	i++;
 	j++;
+}
+
+/*
+** FT_STOP_ALL_AFPLAY_SOUNDS
+** This function is used to stop all the playing afplay sounds
+** It is called when we close the cub3D window
+*/
+
+void	ft_stop_all_afplay_sounds(void)
+{
+	system("killall afplay");
 }

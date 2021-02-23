@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:29:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 11:02:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 11:11:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,6 @@ t_ray		*ft_new_raycaster(t_graph *graph, t_map *map)
 	ft_initialize_raycaster_points(ray, map);
 	ft_initialize_raycaster_sprites(ray, map);
 	map->map_str_tab[map->player_x][map->player_y] = '0';
-	//FT_NEW_SPRITE_RAY SEGFAULTS!!!
 	ray->sprite_ray = ft_new_sprite_ray(ray->map, ray);
 	return (ray);
 }
