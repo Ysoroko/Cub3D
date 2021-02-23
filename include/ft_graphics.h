@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 16:00:41 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 17:39:54 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,6 +255,7 @@ void	ft_play_background_music(void);
 void	ft_stop_all_afplay_sounds(void);
 void	ft_apply_shadow_to_floor(double dist, int res, int *color);
 void	ft_apply_shadow_to_textures(double dist, int *color);
+void		ft_move_bonus(t_graph *graph, int direction, t_ray *ray);
 
 /*
 ** FT_NEW_SPRITE_RAY
@@ -262,6 +263,7 @@ void	ft_apply_shadow_to_textures(double dist, int *color);
 
 t_sprite_ray	*ft_new_sprite_ray(char **map, t_ray *ray);
 void			ft_sprites_raycaster(t_ray *ray, t_sprite_ray *s_ray);
-void		ft_sort_sprites_tab(int *spr_order, double *spr_dist, int n_spr);
+void			ft_sort_sprites_tab(int *spr_order,
+								double *spr_dist, int n_spr);
 
 #endif

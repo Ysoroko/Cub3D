@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/23 14:50:15 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/23 17:40:31 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					\
 					graphic_functions/move_functions/ft_move_in_map.c \
 					graphic_functions/move_functions/ft_turn_in_map.c \
+					graphic_functions/move_functions/ft_move_bonus.c \
 					\
 					graphic_functions/ft_window_start.c \
 					graphic_functions/ft_hooks_functions.c \

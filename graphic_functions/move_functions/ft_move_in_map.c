@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 16:47:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 17:41:20 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,61 +40,7 @@ static void	ft_move_back_and_forward(t_graph *graph, int direction, t_ray *ray)
 		ray->pos->y -= r_d_y * move_speed;
 }
 
-static void	ft_move_straight_bonus(t_graph *graph, int direction, t_ray *ray)
-{
-	double	move_speed;
-	double	r_p_x;
-	double	r_p_y;
-	double	r_d_x;
-	double	r_d_y;
 
-	r_d_x = ray->direction->x;
-	r_d_y = ray->direction->y;
-	r_p_x = ray->pos->x;
-	r_p_y = ray->pos->y;
-	move_speed = graph->move_speed;
-
-	if (direction == WALK_FORWARD)
-	{
-		if (ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)(r_p_y)] == '4')
-			ray->pos->x += r_d_x * move_speed;
-		if (ray->map[(int)(r_p_x)][(int)(r_p_y + r_d_y * move_speed)] == '4')
-			ray->pos->y += r_d_y * move_speed;
-		return ;
-	}
-	if (ray->map[(int)(r_p_x - r_d_x * move_speed)][(int)r_p_y] == '4')
-		ray->pos->x -= r_d_x * move_speed;
-	if (ray->map[(int)r_p_x][(int)(r_p_y - r_d_y * move_speed)] == '4')
-		ray->pos->y -= r_d_y * move_speed;
-}
-
-static void	ft_move_side_bonus(t_graph *graph, int direction, t_ray *ray)
-{
-	double	move_speed;
-	double	r_p_x;
-	double	r_p_y;
-	double	r_d_x;
-	double	r_d_y;
-
-	r_d_x = ray->direction->x;
-	r_d_y = ray->direction->y;
-	r_p_x = ray->pos->x;
-	r_p_y = ray->pos->y;
-	move_speed = graph->move_speed;
-
-	if (direction == WALK_RIGHT)
-	{
-		if (ray->map[(int)(r_p_x + r_d_y * move_speed)][(int)(r_p_y)] == '4')
-			ray->pos->x += r_d_y * move_speed;
-		if (ray->map[(int)(r_p_x)][(int)(r_p_y - r_d_x * move_speed)] == '4')
-			ray->pos->y -= r_d_x * move_speed;
-		return ;
-	}
-	if (ray->map[(int)(r_p_x - r_d_y * move_speed)][(int)r_p_y] == '4')
-		ray->pos->x -= r_d_y * move_speed;
-	if (ray->map[(int)r_p_x][(int)(r_p_y + r_d_x * move_speed)] == '4')
-		ray->pos->y += r_d_x * move_speed;
-}
 
 static void	ft_move_sideways(t_graph *graph, int direction, t_ray *ray)
 {
@@ -131,16 +77,17 @@ static void	ft_move_sideways(t_graph *graph, int direction, t_ray *ray)
 
 void		ft_move_and_collide(t_graph *graph, int direction, t_ray *ray)
 {
-	if (direction == WALK_FORWARD || direction == WALK_BACKWARD)
-		ft_move_back_and_forward(graph, direction, ray);
-	else
-		ft_move_sideways(graph, direction, ray);
-	if (BONUS == 1)
+	if (BONUS == 0)
 	{
-		if (direction == WALK_FORWARD || direction == WALK_BACKWARD)
-			ft_move_straight_bonus(graph, direction, ray);
+		if ((direction == WALK_FORWARD ||
+				direction == WALK_BACKWARD) && BONUS == 0)
+			ft_move_back_and_forward(graph, direction, ray);
 		else
-			ft_move_side_bonus(graph, direction, ray);
+			ft_move_sideways(graph, direction, ray);
+	}
+	else if (BONUS == 1)
+	{
+		ft_move_bonus(graph, direction, ray);
 		ft_reposition_line(ray, graph->circle, graph->line->angle,
 														graph->line);
 		ft_play_step_sound();
