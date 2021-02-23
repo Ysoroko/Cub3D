@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:34:55 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 11:26:38 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 11:53:59 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,21 @@ static void	ft_calculate(t_ray *ray, t_sprite_ray *s_ray, int i)
 	s_ray->inv_det = 1 / (ray->plane->x * ray->direction->y -
 							ray->plane->y * ray->direction->x);
 	s_ray->transform->x = s_ray->inv_det * (ray->direction->y *
-			s_ray->spr->x - ray->direction->x * s_ray->spr->x);
+			s_ray->spr->x - ray->direction->x * s_ray->spr->y);
 	s_ray->transform->y = s_ray->inv_det * (-ray->plane->y *
 			s_ray->spr->x + ray->plane->x * s_ray->spr->y);
 	s_ray->sprite_screen_x = (int)((ray->res->x / 2) *
 						(1 + s_ray->transform->x / s_ray->transform->y));
-	s_ray->sprite_height = abs((int)(ray->res->y / s_ray->transform->x));
+	s_ray->sprite_height = abs((int)(ray->res->y / s_ray->transform->y));
 	s_ray->draw_start->y = -s_ray->sprite_height / 2 + ray->res->y / 2;
 	s_ray->draw_end->y = s_ray->sprite_height / 2 + ray->res->y / 2;
+	s_ray->sprite_width = abs((int)(ray->res->y / s_ray->transform->y));
 	s_ray->draw_start->x = -s_ray->sprite_width / 2 + s_ray->sprite_screen_x;
 	s_ray->draw_end->x = s_ray->sprite_width / 2 + s_ray->sprite_screen_x;
 	ft_limit_points_within_map(&(s_ray->draw_start->x),
 						&(s_ray->draw_start->y), ray->graph);
 	ft_limit_points_within_map(&(s_ray->draw_end->x),
 						&(s_ray->draw_end->y), ray->graph);
-	printf("going to draw now \n");
 }
 
 static void	ft_draw(t_sprite_ray *s_ray, t_ray *ray)
@@ -129,7 +129,6 @@ static void	ft_draw(t_sprite_ray *s_ray, t_ray *ray)
 				if ((trgb & 0x00FFFFFF) != 0)
 					my_mlx_pixel_put(ray->graph->img_ptr, j, i, trgb);
 			}
-			printf("here\n");
 		}
 	}
 }
@@ -175,14 +174,13 @@ static void	ft_draw(t_sprite_ray *s_ray, t_ray *ray)
 ** }
 */
 
-void		ft_sprites_raycaster(t_ray *ray, t_sprite_ray *s_ray, int x)
+void		ft_sprites_raycaster(t_ray *ray, t_sprite_ray *s_ray)
 {
 	int	i;
 
 	i = -1;
-	s_ray->z_buffer[x] = ray->perp_wall_dist;
 	ft_setup_order_and_distance(ray, s_ray);
-	while (++i < s_ray->num_sprites)
+	while (++i < s_ray->num_sprites - 1)
 	{
 		ft_calculate(ray, s_ray, i);
 		ft_draw(s_ray, ray);

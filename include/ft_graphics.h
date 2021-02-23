@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 11:12:52 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 11:41:37 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,6 +258,6 @@ void	ft_stop_all_afplay_sounds(void);
 */
 
 t_sprite_ray	*ft_new_sprite_ray(char **map, t_ray *ray);
-void			ft_sprites_raycaster(t_ray *ray, t_sprite_ray *s_ray, int x);
+void			ft_sprites_raycaster(t_ray *ray, t_sprite_ray *s_ray);
 
 #endif

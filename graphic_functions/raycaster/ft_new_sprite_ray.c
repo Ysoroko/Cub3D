@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:07:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 11:02:42 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 11:37:24 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ static t_sprite	*ft_new_sprite(int x, int y, char texture_sprite)
 }
 
 /*
-** FT_SPRITES_FROM_MAP_TO_T_LIST
+** FT_SPRITES_FROM_MAP_TO_ARRAY
 ** This function checks the map and stores sprites' positions
 ** and related sprites in an array
 ** Returns the created array
 */
 
-static t_sprite	**ft_sprites_from_map_to_t_list(char **map, int n_sprites)
+static t_sprite	**ft_sprites_from_map_to_array(char **map, int n_sprites)
 {
 	int			i;
 	int			j;
@@ -73,7 +73,7 @@ t_sprite_ray	*ft_new_sprite_ray(char **map, t_ray *ray)
 	if (!(sprite_ray = malloc(sizeof(*sprite_ray))))
 		ft_malloc_fail();
 	sprite_ray->num_sprites = n_sprites;
-	sprite_ray->sprite_array = ft_sprites_from_map_to_t_list(map, n_sprites);
+	sprite_ray->sprite_array = ft_sprites_from_map_to_array(map, n_sprites);
 	if (!(sprite_ray->z_buffer = malloc(sizeof(double) * ray->res->x)))
 		ft_malloc_fail();
 	if (!(sprite_ray->sprite_order = malloc(sizeof(int) * n_sprites)))
