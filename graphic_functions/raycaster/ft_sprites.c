@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:34:55 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 11:53:59 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 12:30:51 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,25 +112,32 @@ static void	ft_draw(t_sprite_ray *s_ray, t_ray *ray)
 	i = s_ray->draw_start->x - 1;
 	while (++i < s_ray->draw_end->x)
 	{
+		//printf("finished drawing i: [%d]\n", i);
 		s_ray->tex->x = (int)(256 * (i - (-s_ray->sprite_width / 2
-				+ s_ray->sprite_screen_x)) * s_ray->tex->x /
+				+ s_ray->sprite_screen_x)) * s_ray->texture_size->x /
 				s_ray->sprite_width) / 256;
-		if (s_ray->transform->y > 0 && i > 0 && i < ray->res->x
-							&& s_ray->transform->y < s_ray->z_buffer[i])
+		if (s_ray->transform->y > 0 && i > 0 && i < ray->res->x)
+						/*&& s_ray->transform->y < s_ray->z_buffer[i])*/
 		{
 			j = s_ray->draw_start->y - 1;
+			//printf("j: [%d]\n s_ray->draw_end->y: [%d]", j, s_ray->draw_end->y);
 			while (++j < s_ray->draw_end->y)
 			{
+				//printf("finished drawing j: [%d]\n", j);
 				d = j * 256 - ray->res->y * 128 + s_ray->sprite_height * 128;
 				s_ray->tex->y = ((d * s_ray->texture_size->y) /
 												s_ray->sprite_height) / 256;
 				my_mlx_pixel_get(ray->sprite_texture,
 									s_ray->tex->x, s_ray->tex->y, &trgb);
 				if ((trgb & 0x00FFFFFF) != 0)
-					my_mlx_pixel_put(ray->graph->img_ptr, j, i, trgb);
+				{
+					//printf("yeps\n");
+					my_mlx_pixel_put(ray->graph->img_ptr, i, j, trgb);
+				}
 			}
 		}
 	}
+	//printf("finished drawing \n");
 }
 
 /*
@@ -180,7 +187,7 @@ void		ft_sprites_raycaster(t_ray *ray, t_sprite_ray *s_ray)
 
 	i = -1;
 	ft_setup_order_and_distance(ray, s_ray);
-	while (++i < s_ray->num_sprites - 1)
+	while (++i < s_ray->num_sprites)
 	{
 		ft_calculate(ray, s_ray, i);
 		ft_draw(s_ray, ray);

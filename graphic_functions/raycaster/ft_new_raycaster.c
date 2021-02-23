@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:29:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 11:11:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 12:08:36 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,23 +76,16 @@ static void	ft_initialize_raycaster_points(t_ray *ray, t_map *map)
 
 static void	ft_initialize_raycaster_sprites(t_ray *ray, t_map *map)
 {
-	char *north_path;
-	char *south_path;
-	char *east_path;
-	char *west_path;
-
-	north_path = map->north_path;
-	south_path = map->south_path;
-	east_path = map->east_path;
-	west_path = map->west_path;
 	ray->north_texture = ft_image_from_file(ray->graph->mlx_ptr,
-					map->res_width, map->res_height, north_path);
+					map->res_width, map->res_height, map->north_path);
 	ray->south_texture = ft_image_from_file(ray->graph->mlx_ptr,
-					map->res_width, map->res_height, south_path);
+					map->res_width, map->res_height, map->south_path);
 	ray->east_texture = ft_image_from_file(ray->graph->mlx_ptr,
-					map->res_width, map->res_height, east_path);
+					map->res_width, map->res_height, map->east_path);
 	ray->west_texture = ft_image_from_file(ray->graph->mlx_ptr,
-					map->res_width, map->res_height, west_path);
+					map->res_width, map->res_height, map->west_path);
+	ray->sprite_texture = ft_image_from_file(ray->graph->mlx_ptr,
+					map->res_width, map->res_height, map->sprite_path);
 	if (BONUS == 1)
 	{
 		ray->floor_texture = ft_image_from_file(ray->graph->mlx_ptr,
