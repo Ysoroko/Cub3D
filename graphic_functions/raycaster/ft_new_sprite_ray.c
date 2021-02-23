@@ -6,11 +6,45 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:07:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 13:53:48 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 14:12:47 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_graphics.h"
+
+/*
+** FT_SORT_SPRITES_TAB
+** This function is used to sort the seen sprites based on the distance
+** The furthest sprites are put first so that they are drawn first
+** The array component of t_sprite_ray which is sorted is sprite_order
+*/
+
+void			ft_sort_sprites_tab(int *spr_order,
+											double *spr_dist, int n_spr)
+{
+	int		i;
+	int		j;
+	double	d_temp;
+	int		i_temp;
+
+	i = -1;
+	while (++i < n_spr)
+	{
+		j = -1;
+		while (++j < (n_spr - 1))
+		{
+			if (spr_dist[j] < spr_dist[j + 1])
+			{
+				d_temp = spr_dist[j];
+				spr_dist[j] = spr_dist[j + 1];
+				spr_dist[j + 1] = d_temp;
+				i_temp = spr_order[j];
+				spr_order[j] = spr_order[j + 1];
+				spr_order[j + 1] = i_temp;
+			}
+		}
+	}
+}
 
 /*
 ** FT_NEW_SPRITE

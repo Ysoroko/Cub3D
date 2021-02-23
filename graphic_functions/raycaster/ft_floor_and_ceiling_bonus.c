@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:08:20 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/20 17:17:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 14:19:21 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,6 @@ static void	ft_setup(t_ray *ray, int y)
 				(ray->ray_dir_1->y - ray->ray_dir_0->y) / ray->res->x;
 	ray->floor->x = ray->pos->x + ray->row_distance * ray->ray_dir_0->x;
 	ray->floor->y = ray->pos->y + ray->row_distance * ray->ray_dir_0->y;
-}
-
-/*
-** FT_APPLY_SHADOW_TO_FLOOR
-** This function is responsible for applying the shadow effect to the floor
-** The same logic is used for the textures,
-** but different distances are used here
-*/
-
-static void	ft_apply_shadow_to_floor(double dist, int res, int *color)
-{
-	int transparency;
-
-	transparency = (int)fmin(((*color >> 24) + 1)
-		* ((res / 2 - dist) * 0.5), 255);
-	*color = (transparency << 24 | *color);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:40:03 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/20 13:26:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 14:19:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,6 @@ static void	ft_setup(t_ray *ray)
 	ray->tex_step = ray->texture_height / ray->line->len;
 	ray->tex_pos = (ray->line->a_y - ray->graph->res_height
 									/ 2 + ray->line->len / 2) * ray->tex_step;
-}
-
-/*
-** FT_APPLY_SHADOW_TO_TEXTURES
-** This function is responsible for the distance related shadow effect
-** It is using perp_wall_dist from our t_ray structure and starting at a
-** fixed distance, lowers the transparency of the color seen on the screen
-** if it's far away from the player
-*/
-
-static void	ft_apply_shadow_to_textures(double dist, int *color)
-{
-	int transparency;
-
-	transparency = (int)fmin(((*color >> 24) + 0.1) * (dist * 600), 255);
-	*color = (transparency << 24 | *color);
 }
 
 /*

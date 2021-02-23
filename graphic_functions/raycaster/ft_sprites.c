@@ -6,44 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:34:55 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 13:45:13 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 14:27:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_graphics.h"
-
-/*
-** FT_SORT
-** This function is used to sort the seen sprites based on the distance
-** The furthest sprites are put first so that they are drawn first
-** The array component of t_sprite_ray which is sorted is sprite_order
-*/
-
-static void	ft_sort(int *spr_order, double *spr_dist, int n_spr)
-{
-	int		i;
-	int		j;
-	double	d_temp;
-	int		i_temp;
-
-	i = -1;
-	while (++i < n_spr)
-	{
-		j = -1;
-		while (++j < (n_spr - 1))
-		{
-			if (spr_dist[j] < spr_dist[j + 1])
-			{
-				d_temp = spr_dist[j];
-				spr_dist[j] = spr_dist[j + 1];
-				spr_dist[j + 1] = d_temp;
-				i_temp = spr_order[j];
-				spr_order[j] = spr_order[j + 1];
-				spr_order[j + 1] = i_temp;
-			}
-		}
-	}
-}
 
 /*
 ** FT_SETUP_ORDER_AND_DISTANCE
@@ -65,7 +32,8 @@ static void	ft_setup_order_and_distance(t_ray *ray, t_sprite_ray *s_ray)
 				(ray->pos->y - s_ray->sprite_array[i]->y)
 				* (ray->pos->y - s_ray->sprite_array[i]->y);
 	}
-	ft_sort(s_ray->sprite_order, s_ray->sprite_distance, s_ray->num_sprites);
+	ft_sort_sprites_tab(s_ray->sprite_order, s_ray->sprite_distance,
+													s_ray->num_sprites);
 }
 
 /*
@@ -102,12 +70,43 @@ static void	ft_calculate(t_ray *ray, t_sprite_ray *s_ray, int i)
 						&(s_ray->draw_end->y), ray->graph);
 }
 
-static void	ft_draw(t_sprite_ray *s_ray, t_ray *ray)
+/*
+** FT_PIXEL_GET_AND_DRAW
+** This litle function gets the corresponding pixel from the sprite texture
+** and draws it on the image
+*/
+
+static void	ft_pixel_get_and_draw(t_ray *ray, int spr, int i, int j)
+{
+	int				trgb;
+	t_sprite_ray	*s_r;
+
+	s_r = ray->sprite_ray;
+	my_mlx_pixel_get(ray->sprite_texture, s_r->tex->x, s_r->tex->y, &trgb);
+	if ((trgb & 0x00FFFFFF) != 0)
+	{
+		if (BONUS == 1)
+			ft_apply_shadow_to_textures(s_r->sprite_distance[spr], &trgb);
+		my_mlx_pixel_put(ray->graph->img_ptr, i, j, trgb);
+	}
+}
+
+/*
+** FT_DRAW
+** This function is responsible for the drawing of the previously
+** calculated variable values related to the sprites
+** The 256/128 values are used to avoid float values
+** The condition for the sprite to be drawn is:
+** 1) It's in front of the camera plane (not behind us)
+** 2) It's on the screen, either left or right to us
+** 3) If perp_wall_dist < transform_y, we draw the wall first
+*/
+
+static void	ft_draw(t_sprite_ray *s_ray, t_ray *ray, int spr)
 {
 	int	i;
 	int	j;
 	int	d;
-	int	trgb;
 
 	i = s_ray->draw_start->x - 1;
 	while (++i < s_ray->draw_end->x)
@@ -124,10 +123,7 @@ static void	ft_draw(t_sprite_ray *s_ray, t_ray *ray)
 				d = j * 256 - ray->res->y * 128 + s_ray->sprite_height * 128;
 				s_ray->tex->y = ((d * s_ray->texture_size->y) /
 												s_ray->sprite_height) / 256;
-				my_mlx_pixel_get(ray->sprite_texture,
-									s_ray->tex->x, s_ray->tex->y, &trgb);
-				if ((trgb & 0x00FFFFFF) != 0)
-					my_mlx_pixel_put(ray->graph->img_ptr, i, j, trgb);
+				ft_pixel_get_and_draw(ray, spr, i, j);
 			}
 		}
 	}
@@ -183,6 +179,6 @@ void		ft_sprites_raycaster(t_ray *ray, t_sprite_ray *s_ray)
 	while (++i < s_ray->num_sprites)
 	{
 		ft_calculate(ray, s_ray, i);
-		ft_draw(s_ray, ray);
+		ft_draw(s_ray, ray, i);
 	}
 }
