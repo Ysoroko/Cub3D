@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:17:50 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 14:23:56 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 14:31:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_apply_shadow_to_floor(double dist, int res, int *color)
 	int transparency;
 
 	transparency = (int)fmin(((*color >> 24) + 1)
-		* ((res / 2 - dist) * 0.5), 255);
+		* ((res / 2 - dist) * 0.35), 255);
 	*color = (transparency << 24 | *color);
 }
 
