@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/23 17:40:31 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/23 18:13:43 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,8 +71,10 @@ SRC				=	get_next_line/get_next_line_utils.c \
 
 BONUS_SRC		=	bonus/ft_music_bonus.c \
 					bonus/ft_shadows.c \
+					bonus/ft_hud.c \
 					graphic_functions/raycaster/ft_floor_and_ceiling_bonus.c \
 					graphic_functions/draw_functions/ft_draw_minimap_bonus.c \
+
 
 OBJS			=	$(SRC:.c=.o)
 

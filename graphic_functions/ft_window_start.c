@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 15:45:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 18:21:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ void		ft_next_frame(t_graph *graph, t_ray *ray)
 		ft_draw_background(graph);
 	ft_raycaster(ray);
 	if (BONUS == 1)
+	{
 		ft_draw_minimap(graph, ray);
+		ft_draw_hud(ray);
+	}
 	mlx_put_image_to_window(graph->mlx_ptr,
 								graph->win_ptr, graph->img_ptr->img, 0, 0);
 }

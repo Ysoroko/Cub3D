@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 17:09:19 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 18:27:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,12 @@
 # define SPRITE_H 64
 # define SPRITE_W 64
 # define SPRITE_2_H 16
+# define HEART_WIDTH 8
+# define HEART_HEIGHT 8
 
 # define FLOOR_XPM_PATH "./images/floor2.xpm"
 # define SKYBOX_XPM_PATH "./images/night2.xpm"
 # define SECOND_SPRITE_XPM_PATH "images/spikes.xpm"
+# define HEART_XPM_PATH "images/heart.xpm"
 
 #endif

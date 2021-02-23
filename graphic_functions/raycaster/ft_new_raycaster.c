@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:29:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 16:00:53 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 18:34:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ static void	ft_initialize_raycaster_sprites(t_ray *ray, t_map *map)
 			map->res_width, map->res_height, SKYBOX_XPM_PATH);
 		ray->sprite_two_texture = ft_image_from_file(ray->graph->mlx_ptr,
 			map->res_width, map->res_height, SECOND_SPRITE_XPM_PATH);
+		ray->heart_texture = ft_image_from_file(ray->graph->mlx_ptr,
+			map->res_width, map->res_height, HEART_XPM_PATH);
 	}
 }
 
@@ -123,6 +125,7 @@ static void	ft_initialize_raycaster_numbers(t_ray *ray)
 	ray->p = 0;
 	ray->pos_z = 0;
 	ray->row_distance = 0;
+	ray->health = 3;
 }
 
 /*

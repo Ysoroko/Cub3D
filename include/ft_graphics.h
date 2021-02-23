@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 17:39:54 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 18:34:55 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct	s_ray
 	int			map_height;
 	int			hit;
 	int			side;
+	int			health;
 	double		fov;
 	double		camera_x;
 	double		perp_wall_dist;
@@ -120,6 +121,7 @@ typedef struct	s_ray
 	t_image		*floor_texture;
 	t_image		*ceiling_texture;
 	t_image		*sprite_two_texture;
+	t_image		*heart_texture;
 	t_point		*ray_dir_0;
 	t_point		*ray_dir_1;
 	int			p;
@@ -255,7 +257,8 @@ void	ft_play_background_music(void);
 void	ft_stop_all_afplay_sounds(void);
 void	ft_apply_shadow_to_floor(double dist, int res, int *color);
 void	ft_apply_shadow_to_textures(double dist, int *color);
-void		ft_move_bonus(t_graph *graph, int direction, t_ray *ray);
+void	ft_move_bonus(t_graph *graph, int direction, t_ray *ray);
+void	ft_draw_hud(t_ray *ray);
 
 /*
 ** FT_NEW_SPRITE_RAY
