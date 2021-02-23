@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:07:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 13:01:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 13:53:48 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static t_sprite	*ft_new_sprite(int x, int y, char texture_sprite)
 
 	if (!(ret = malloc(sizeof(t_sprite))))
 		ft_malloc_fail();
-	ret->x = x + 0.5;
-	ret->y = y + 0.5;
+	ret->x = (double)x + 0.5;
+	ret->y = (double)y + 0.5;
 	ret->texture_sprite = texture_sprite;
 	return (ret);
 }

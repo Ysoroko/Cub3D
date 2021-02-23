@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 11:41:37 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 13:54:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct		s_graph
 
 typedef struct	s_sprite 
 {
-	int			x;
-	int			y;
+	double			x;
+	double			y;
 	char		texture_sprite;
 }				t_sprite;
 
