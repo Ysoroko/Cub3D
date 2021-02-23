@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:07:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 11:37:24 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 13:01:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static t_sprite	*ft_new_sprite(int x, int y, char texture_sprite)
 
 	if (!(ret = malloc(sizeof(t_sprite))))
 		ft_malloc_fail();
-	ret->x = x;
-	ret->y = y;
+	ret->x = x + 0.5;
+	ret->y = y + 0.5;
 	ret->texture_sprite = texture_sprite;
 	return (ret);
 }
@@ -43,7 +43,7 @@ static t_sprite	**ft_sprites_from_map_to_array(char **map, int n_sprites)
 	int			k;
 	t_sprite	**sprite_array;
 
-	if (!(sprite_array = malloc(sizeof(t_sprite) * (n_sprites + 1))))
+	if (!(sprite_array = malloc(sizeof(t_sprite) * (n_sprites))))
 		ft_malloc_fail();
 	i = -1;
 	k = -1;
@@ -53,7 +53,7 @@ static t_sprite	**ft_sprites_from_map_to_array(char **map, int n_sprites)
 		while (map[i][++j])
 		{
 			if (map[i][j] == '2')
-				sprite_array[++k] = ft_new_sprite(j, i, map[i][j]);
+				sprite_array[++k] = ft_new_sprite(i, j, map[i][j]);
 		}
 	}
 	return (sprite_array);

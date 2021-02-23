@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:34:55 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 12:30:51 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 12:48:45 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ static void	ft_draw(t_sprite_ray *s_ray, t_ray *ray)
 		s_ray->tex->x = (int)(256 * (i - (-s_ray->sprite_width / 2
 				+ s_ray->sprite_screen_x)) * s_ray->texture_size->x /
 				s_ray->sprite_width) / 256;
-		if (s_ray->transform->y > 0 && i > 0 && i < ray->res->x)
-						/*&& s_ray->transform->y < s_ray->z_buffer[i])*/
+		if (s_ray->transform->y > 0 && i > 0 && i < ray->res->x
+						&& s_ray->transform->y < s_ray->z_buffer[i])
 		{
 			j = s_ray->draw_start->y - 1;
 			//printf("j: [%d]\n s_ray->draw_end->y: [%d]", j, s_ray->draw_end->y);
