@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:53:13 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 15:49:04 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 16:26:49 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int			ft_check_map_line_for_errors(char *line, t_map *map)
 	}
 	else if (BONUS == 1)
 	{
-		if (ft_has_other_chars(line, "NSEW 0123"))
+		if (ft_has_other_chars(line, "NSEW 01234"))
 			return (FORBIDDEN_CHARS_ERROR);
 	}
 	if (line[0] && ft_n_chars_in_str(line, '1') < 2 && ft_strchr(line, '0'))

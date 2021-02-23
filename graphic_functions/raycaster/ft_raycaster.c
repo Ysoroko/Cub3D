@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:20:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 13:37:14 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/23 16:47:53 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ static void	ft_perform_dda(t_ray *ray)
 		}
 		if (ray->map[(int)(ray->in_map->x)][(int)(ray->in_map->y)] == '1')
 			ray->hit = 1;
+		if (BONUS == 1)
+			if (ray->map[(int)(ray->in_map->x)][(int)(ray->in_map->y)] == '4')
+				ray->hit = 1;
 	}
 }
 
