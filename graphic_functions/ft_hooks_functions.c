@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 15:19:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 11:13:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 18:00:32 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int				ft_keys_binding(int keycode, t_ray *ray)
 /*
 ** FT_WINDOW_CLOSED
 ** This function allows to exit the program properly when its window is closed
+** be pressing the red cross button
 */
 
 int				ft_window_closed(void)

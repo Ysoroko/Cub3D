@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:29:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 16:39:29 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 17:47:00 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ static void	ft_init_bmp(t_bmp_h *bfh, t_bmp_i *bih, t_graph *graph)
 	bih->biclrimportant = 0;
 }
 
+static void	ft_write_header(int fd, t_bmp_h *bfh, t_bmp_i *bih)
+{
+	ft_putstr_fd("0x4d42", fd);
+	ft_putnbr_fd(bfh->bfreserved1, fd);
+	ft_putnbr_fd(bih->biplanes, fd);
+}
+
 static int	ft_setup(t_graph *graph)
 {
 	t_bmp_h	*bfh;
@@ -48,14 +55,12 @@ static int	ft_setup(t_graph *graph)
 	if ((fd = open("save.bmp", O_WRONLY)) == -1)
 		ft_open_fail();
 	ft_init_bmp(bfh, bih, graph);
-	write(fd, "0x4d42", 6);
+	ft_write_header(fd, bfh, bih);
 	return (fd);
 }
 
 void		ft_save_to_bmp(t_graph *graph)
 {
-	int		trgb;
-	int		fd;
 
 	ft_setup(graph);
 }

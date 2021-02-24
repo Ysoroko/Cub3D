@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 14:25:37 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 14:32:30 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 18:04:06 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,17 @@ void	ft_recieve_damage(t_ray *ray)
 
 void	ft_game_over(t_ray *ray, t_graph *graph)
 {
-	ft_stop_all_afplay_sounds();
-	ft_play_game_over_sound();
-	ft_draw_fsquare(&(t_square){0, 0, ray->res->x, ray->res->y}, graph, 0);
-	mlx_put_image_to_window(graph->mlx_ptr,
-								graph->win_ptr, graph->img_ptr->img, 0, 0);
+	static int	already_done;
+
+	if (already_done == 0)
+	{
+		ft_stop_all_afplay_sounds();
+		ft_play_game_over_sound();
+		ft_draw_fsquare(&(t_square){0, 0, ray->res->x, ray->res->y}, graph, 0);
+		mlx_put_image_to_window(graph->mlx_ptr,
+									graph->win_ptr, graph->img_ptr->img, 0, 0);
+		already_done = 1;
+	}
 	mlx_string_put(graph->mlx_ptr, graph->win_ptr,
-				ray->res->x / 2, ray->res->y / 2, 0x00FF0000, "YOU DIED");
+					ray->res->x / 2, ray->res->y / 2, 0x00FF0000, "YOU DIED");
 }
