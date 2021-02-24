@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 17:41:20 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 16:03:27 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ void		ft_move_and_collide(t_graph *graph, int direction, t_ray *ray)
 {
 	if (BONUS == 0)
 	{
-		if ((direction == WALK_FORWARD ||
-				direction == WALK_BACKWARD) && BONUS == 0)
+		if (direction == WALK_FORWARD || direction == WALK_BACKWARD)
 			ft_move_back_and_forward(graph, direction, ray);
 		else
 			ft_move_sideways(graph, direction, ray);

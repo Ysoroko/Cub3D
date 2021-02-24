@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 14:32:44 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 16:25:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,144 +134,154 @@ typedef struct	s_ray
 	t_sprite_ray	*sprite_ray;
 }				t_ray;
 
-
-
 /*
 ** FT_NEW_STRUCTURES
 */
 
-t_graph		*ft_new_t_graph(t_map *map);
-t_image		*ft_new_t_image(void);
-t_frame		*ft_new_t_frame(t_graph *graph);
+t_graph			*ft_new_t_graph(t_map *map);
+t_image			*ft_new_t_image(void);
+t_frame			*ft_new_t_frame(t_graph *graph);
 
 /*
 ** FT_WINDOW_START
 */
 
-t_graph		*ft_window_start(t_map *map);
-void		ft_draw_background(t_graph *graph);
-void		ft_next_frame(t_graph *graph, t_ray *ray);
+t_graph			*ft_window_start(t_map *map, int save);
+void			ft_draw_background(t_graph *graph);
+void			ft_next_frame(t_graph *graph, t_ray *ray);
 
 /*
 ** FT_RGB_TO_TRGB
 */
 
-int			ft_rgb_to_trgb(int t, int r, int g, int b);
+int				ft_rgb_to_trgb(int t, int r, int g, int b);
 
 /*
 ** FT_IMAGE_FUNCTIONS
 */
 
-t_image		*ft_image(void *mlx_ptr, int width, int height);
-t_image		*ft_image_from_file(void *mlx_ptr, int width,
+t_image			*ft_image(void *mlx_ptr, int width, int height);
+t_image			*ft_image_from_file(void *mlx_ptr, int width,
 								int height, char *path);
-void		my_mlx_pixel_put(t_image *image, int x, int y, int color);
-void		my_mlx_pixel_get(t_image *image, int x, int y, int *trgb_color);
+void			my_mlx_pixel_put(t_image *image, int x, int y, int color);
+void			my_mlx_pixel_get(t_image *image, int x, int y, int *trgb_color);
 
 /*
 ** FT_DRAW_EMPTY_FORMS
 */
 
-void		ft_draw_circle(t_circle *circle, t_graph *graph, int trgb);
+void			ft_draw_circle(t_circle *circle, t_graph *graph, int trgb);
 
 /*
 ** FT_DRAW_LINE
 */
 
-void		ft_draw_line(t_line *line, t_graph *graph, int trgb);
+void			ft_draw_line(t_line *line, t_graph *graph, int trgb);
 
 /*
 ** FT_DRAW_VERTICAL_LINE
 */
 
-void	ft_draw_vertical_line(int x, double a_y, double b_y, t_ray *ray, int *text);
+void			ft_draw_vertical_line(int x, double a_y,
+										double b_y, t_ray *ray, int *text);
 
 /*
 ** FT_DRAW_FILLED_IN_FORMS
 */
 
-void		ft_draw_fsquare(t_square *square, t_graph *graph, int trgb);
-void		ft_draw_fcircle(t_circle *circle, t_graph *graph, int trgb);
+void			ft_draw_fsquare(t_square *square, t_graph *graph, int trgb);
+void			ft_draw_fcircle(t_circle *circle, t_graph *graph, int trgb);
 
 /*
 ** FT_NEW_GEOMETRY_FORMS
 */
 
-t_square	*ft_new_square(double x, double y, double width, double height);
-t_line		*ft_new_line(double a_x, double a_y, double angle, double len);
-t_circle	*ft_new_circle(double x, double y, double radius, double prox);
-t_point		*ft_new_point(double x, double y);
-void		ft_limit_points_within_map(double *x, double *y, t_graph *graph);
+t_square		*ft_new_square(double x, double y, double width, double height);
+t_line			*ft_new_line(double a_x, double a_y, double angle, double len);
+t_circle		*ft_new_circle(double x, double y, double radius, double prox);
+t_point			*ft_new_point(double x, double y);
+void			ft_limit_points_within_map(double *x, double *y, t_graph *graph);
 
 /*
 ** FT_HOOKS_FUNCTIONS
 */
 
-int			ft_keys_binding(int keycode, t_ray *ray);
-int			ft_window_closed(void);
+int				ft_keys_binding(int keycode, t_ray *ray);
+int				ft_window_closed(void);
 
 /*
 ** FT_ERROR_UTILS
 */
 
-void		ft_malloc_fail(void);
-void		ft_mlx_fail(void);
+void			ft_malloc_fail(void);
+void			ft_mlx_fail(void);
+void			ft_create_fail(void);
+void			ft_open_fail(void);
 
 /*
 ** FT_DRAW_MINIMAP
 */
 
-void		ft_draw_minimap(t_graph *graph, t_ray *ray);
+void			ft_draw_minimap(t_graph *graph, t_ray *ray);
 
 /*
 ** FT_MOVE_IN_MAP
 */
 
-void		ft_move_and_collide(t_graph *graph, int direction, t_ray *ray);
-void		ft_reposition_line(t_ray *ray, t_circle *cir, double a, 
-											t_line *line);
-double		ft_dist_to_wall(t_graph *graph, char **map,
+void			ft_move_and_collide(t_graph *graph, int direction, t_ray *ray);
+void			ft_reposition_line(t_ray *ray, t_circle *cir, double a, 
+												t_line *line);
+double			ft_dist_to_wall(t_graph *graph, char **map,
 							double units, double angle);
 
 /*
 ** FT_TURN_IN_MAP
 */
 
-void		ft_turn(t_graph *graph, int direction, t_ray *ray);
+void			ft_turn(t_graph *graph, int direction, t_ray *ray);
 
 /*
 ** RAYCASTER
 */
 
-t_ray		*ft_new_raycaster(t_graph *graph, t_map *map);
-void		ft_raycaster(t_ray *ray);
-void		ft_textures(t_ray *ray, int x);
-void		ft_floor_and_ceiling_raycasting(t_ray *ray);
+t_ray			*ft_new_raycaster(t_graph *graph, t_map *map);
+void			ft_raycaster(t_ray *ray);
+void			ft_textures(t_ray *ray, int x);
+void			ft_floor_and_ceiling_raycasting(t_ray *ray);
 
 /*
 ** BONUS
 */
 
-void	ft_play_step_sound(void);
-void	ft_play_background_music(void);
-void	ft_play_hurt_sound(void);
-void	ft_play_game_over_sound(void);
-void	ft_stop_all_afplay_sounds(void);
-void	ft_apply_shadow_to_floor(double dist, int res, int *color);
-void	ft_apply_shadow_to_textures(double dist, int *color);
-void	ft_apply_shadow_to_sprites(double dist, int *color);
-void	ft_move_bonus(t_graph *graph, int direction, t_ray *ray);
-void	ft_draw_hud(t_ray *ray);
-void	ft_recieve_damage(t_ray *ray);
-void	ft_game_over(t_ray *ray, t_graph *graph);
+void			ft_play_step_sound(void);
+void			ft_play_background_music(void);
+void			ft_play_hurt_sound(void);
+void			ft_play_game_over_sound(void);
+void			ft_stop_all_afplay_sounds(void);
+void			ft_apply_shadow_to_floor(double dist, int res, int *color);
+void			ft_apply_shadow_to_textures(double dist, int *color);
+void			ft_apply_shadow_to_sprites(double dist, int *color);
+void			ft_move_bonus(t_graph *graph, int direction, t_ray *ray);
+void			ft_draw_hud(t_ray *ray);
+void			ft_recieve_damage(t_ray *ray);
+void			ft_game_over(t_ray *ray, t_graph *graph);
 
 /*
-** FT_NEW_SPRITE_RAY
+** SPRITES RAYCASTER
 */
 
 t_sprite_ray	*ft_new_sprite_ray(char **map, t_ray *ray);
 void			ft_sprites_raycaster(t_ray *ray, t_sprite_ray *s_ray);
 void			ft_sort_sprites_tab(int *spr_order,
 								double *spr_dist, int n_spr);
+
+/*
+** SAVE
+*/
+
+int				get_r(int trgb);
+int				get_g(int trgb);
+int				get_b(int trgb);
+void			ft_save_to_bmp(t_graph *graph);
 
 #endif

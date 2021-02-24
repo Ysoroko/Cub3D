@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/24 14:23:08 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/24 16:09:59 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ CFLAGS			=	-Wall -Wextra -Werror
 
 INCLUDE			=	-I include
 
-BONUS			= 	-D BONUS=1
+BONUS			=	-D BONUS=1
+
+SAVE			=	--save
 
 FRAMEWORKS		=	-lmlx -framework OpenGL -framework AppKit
 
@@ -60,11 +62,12 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					\
 					graphic_functions/move_functions/ft_move_in_map.c \
 					graphic_functions/move_functions/ft_turn_in_map.c \
-					graphic_functions/move_functions/ft_move_bonus.c \
 					\
 					graphic_functions/ft_window_start.c \
 					graphic_functions/ft_hooks_functions.c \
 					\
+					save/ft_extract_rgb.c \
+					save/ft_save_to_bmp.c \
 					libmlx.a \
 					\
 					main.c
@@ -75,6 +78,7 @@ BONUS_SRC		=	bonus/ft_music_bonus.c \
 					bonus/ft_damage.c \
 					graphic_functions/raycaster/ft_floor_and_ceiling_bonus.c \
 					graphic_functions/draw_functions/ft_draw_minimap_bonus.c \
+					graphic_functions/move_functions/ft_move_bonus.c \
 
 
 OBJS			=	$(SRC:.c=.o)
@@ -100,6 +104,7 @@ clean:
 fclean:		clean 
 			@rm libmlx.a 
 			@rm cub3D 
+			@rm save.bmp
 			@cd libft && make fclean 
 
 re:			fclean all
@@ -114,4 +119,9 @@ frun:
 			@$(LIBFT)
 			@$(CC) $(FRAMEWORKS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
 
-.PHONY:		all bonus clean fclean re run frun
+save:
+			@$(MINILIBX)
+			@$(LIBFT)
+			@$(CC) $(FRAMEWORKS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP) $(SAVE)
+
+.PHONY:		all bonus clean fclean re run frun save

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 14:29:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 15:55:23 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void		ft_next_frame(t_graph *graph, t_ray *ray)
 ** This function calls all the other functions to produce the images
 */
 
-t_graph		*ft_window_start(t_map *map)
+t_graph		*ft_window_start(t_map *map, int save)
 {
 	t_graph		*graph;
 	t_ray		*ray;
@@ -92,6 +92,8 @@ t_graph		*ft_window_start(t_map *map)
 	graph = ft_new_t_graph(map);
 	ray = ft_new_raycaster(graph, map);
 	ft_next_frame(graph, ray);
+	if (save)
+		ft_save_to_bmp(graph);
 	ft_define_hooks(ray);
 	if (BONUS == 1)
 		ft_play_background_music();
