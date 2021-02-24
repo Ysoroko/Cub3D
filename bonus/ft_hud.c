@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 18:01:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 18:45:00 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 11:01:21 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 static int	ft_check_limits(t_ray *ray, int x, int y)
 {
-	if (ray->res->x < x || ray->res->y < y ||
-		ray->res->x < 8 * HEART_WIDTH || ray->res->y < 8 * HEART_HEIGHT)
+	if (ray->res->x < HEART_WIDTH || ray->res->y < HEART_HEIGHT)
 		return (1);
+	if (x > HEART_WIDTH || y > HEART_HEIGHT)
+		return (0);
 	return (0);
 }
 
-static void	ft_draw_heart(t_ray *ray, int hp, int units)
+static void	ft_draw_heart(t_ray *ray, int hp)
 {
 	int	trgb;
 	int	i;
@@ -29,18 +30,18 @@ static void	ft_draw_heart(t_ray *ray, int hp, int units)
 	int	y;
 
 	i = -1;
-	x = ray->res->x - (hp * 8 * units);
-	y = 3 * units;
-	if (ft_check_limits(ray, x, y))
+	x = ray->res->x - (hp * (ray->res->x / 14));
+	y = ray->res->y / 34;
+	if (ft_check_limits(ray, x, y) == 1)
 		return ;
-	while (++i < 8 * (HEART_WIDTH))
+	while (++i < (ray->res->x / 180) * (HEART_WIDTH))
 	{
 		j = -1;
-		x++;
-		y = 3 * units;
-		while (++j < 8 * (HEART_HEIGHT))
+		x += 1;
+		y = ray->res->y / 34;
+		while (++j < (ray->res->y / 101) * (HEART_HEIGHT))
 		{
-			my_mlx_pixel_get(ray->heart_texture, i / 8, j / 8, &trgb);
+			my_mlx_pixel_get(ray->heart_texture, i / (ray->res->x / 180), j / (ray->res->y / 101), &trgb);
 			if ((trgb & 0x00FFFFFF) != 0)
 				my_mlx_pixel_put(ray->graph->img_ptr, x, y, trgb);
 			y++;
@@ -55,6 +56,6 @@ void		ft_draw_hud(t_ray *ray)
 	hp = ray->health + 1;
 	while (--hp > 0)
 	{
-		ft_draw_heart(ray, hp, ray->graph->frame->units);
+		ft_draw_heart(ray, hp);
 	}
 }
