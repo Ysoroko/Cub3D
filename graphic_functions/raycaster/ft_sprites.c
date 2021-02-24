@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:34:55 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 17:11:43 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 12:00:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void	ft_pixel_get_and_draw(t_ray *ray, int spr, int i, int j)
 	if ((trgb & 0x00FFFFFF) != 0)
 	{
 		if (BONUS == 1)
-			ft_apply_shadow_to_textures(s_r->sprite_distance[spr], &trgb);
+			ft_apply_shadow_to_sprites(s_r->sprite_distance[spr], &trgb);
 		my_mlx_pixel_put(ray->graph->img_ptr, i, j, trgb);
 	}
 }

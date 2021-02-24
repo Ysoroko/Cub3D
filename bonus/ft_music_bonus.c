@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 16:38:10 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 11:14:12 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 14:32:36 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,14 @@ void	ft_play_step_sound(void)
 void	ft_stop_all_afplay_sounds(void)
 {
 	system("killall afplay");
+}
+
+void	ft_play_hurt_sound(void)
+{
+	system("afplay bonus/arrow.mp3 &>/dev/null &");
+}
+
+void	ft_play_game_over_sound(void)
+{
+	system("afplay bonus/game_over.mp3 &>/dev/null &");
 }

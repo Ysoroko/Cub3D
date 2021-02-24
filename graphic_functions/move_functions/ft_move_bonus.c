@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 17:29:02 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 18:50:57 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 14:27:15 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,96 +15,109 @@
 static void	ft_move_forward_bonus(t_graph *graph, t_ray *ray)
 {
 	double	move_speed;
-	double	r_p_x;
-	double	r_p_y;
-	double	r_d_x;
-	double	r_d_y;
+	char	next_pos_x;
+	char	next_pos_y;
 
-	r_d_x = ray->direction->x;
-	r_d_y = ray->direction->y;
-	r_p_x = ray->pos->x;
-	r_p_y = ray->pos->y;
 	move_speed = graph->move_speed;
-	if (ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)(r_p_y)] == '4'
-		|| ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)(r_p_y)] == '3'
-		|| ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)(r_p_y)] == '0')
-		ray->pos->x += r_d_x * move_speed;
-	if (ray->map[(int)(r_p_x)][(int)(r_p_y + r_d_y * move_speed)] == '4'
-		|| ray->map[(int)(r_p_x)][(int)(r_p_y + r_d_y * move_speed)] == '3'
-		|| ray->map[(int)(r_p_x)][(int)(r_p_y + r_d_y * move_speed)] == '0')
-		ray->pos->y += r_d_y * move_speed;
+	next_pos_x = ray->map[(int)(ray->pos->x + ray->direction->x * move_speed)]
+							[(int)ray->pos->y];
+	next_pos_y = ray->map[(int)(ray->pos->x)]
+						[(int)(ray->pos->y + ray->direction->y * move_speed)];
+	if (ft_strchr("034", next_pos_x))
+	{
+		if (next_pos_x == '3' && ray->map[(int)ray->pos->x]
+											[(int)ray->pos->y] != '3')
+			ft_recieve_damage(ray);
+		ray->pos->x += ray->direction->x * move_speed;
+	}
+	if (ft_strchr("034", next_pos_y))
+	{
+		if (next_pos_y == '3' && ray->map[(int)ray->pos->x]
+											[(int)ray->pos->y] != '3')
+			ft_recieve_damage(ray);
+		ray->pos->y += ray->direction->y * move_speed;
+	}
 }
 
 static void	ft_move_backward_bonus(t_graph *graph, t_ray *ray)
 {
 	double	move_speed;
-	double	r_p_x;
-	double	r_p_y;
-	double	r_d_x;
-	double	r_d_y;
+	char	next_pos_x;
+	char	next_pos_y;
 
-	r_d_x = ray->direction->x;
-	r_d_y = ray->direction->y;
-	r_p_x = ray->pos->x;
-	r_p_y = ray->pos->y;
 	move_speed = graph->move_speed;
-	if (ray->map[(int)(r_p_x - r_d_x * move_speed)][(int)r_p_y] == '4'
-		|| ray->map[(int)(r_p_x - r_d_x * move_speed)][(int)r_p_y] == '3'
-		|| ray->map[(int)(r_p_x - r_d_x * move_speed)][(int)r_p_y] == '0')
-		ray->pos->x -= r_d_x * move_speed;
-	if (ray->map[(int)r_p_x][(int)(r_p_y - r_d_y * move_speed)] == '4'
-		|| ray->map[(int)r_p_x][(int)(r_p_y - r_d_y * move_speed)] == '3'
-		|| ray->map[(int)r_p_x][(int)(r_p_y - r_d_y * move_speed)] == '0')
-		ray->pos->y -= r_d_y * move_speed;
+	next_pos_x = ray->map[(int)(ray->pos->x - ray->direction->x * move_speed)]
+							[(int)ray->pos->y];
+	next_pos_y = ray->map[(int)(ray->pos->x)]
+						[(int)(ray->pos->y - ray->direction->y * move_speed)];
+	if (ft_strchr("034", next_pos_x))
+	{
+		if (next_pos_x == '3' && ray->map[(int)ray->pos->x]
+											[(int)ray->pos->y] != '3')
+			ft_recieve_damage(ray);
+		ray->pos->x -= ray->direction->x * move_speed;
+	}
+	if (ft_strchr("034", next_pos_y))
+	{
+		if (next_pos_y == '3' && ray->map[(int)ray->pos->x]
+											[(int)ray->pos->y] != '3')
+			ft_recieve_damage(ray);
+		ray->pos->y -= ray->direction->y * move_speed;
+	}
 }
-
 
 static void	ft_move_right_bonus(t_graph *graph, t_ray *ray)
 {
 	double	move_speed;
-	double	r_p_x;
-	double	r_p_y;
-	double	r_d_x;
-	double	r_d_y;
+	char	next_pos_x;
+	char	next_pos_y;
 
-	r_d_x = ray->direction->x;
-	r_d_y = ray->direction->y;
-	r_p_x = ray->pos->x;
-	r_p_y = ray->pos->y;
 	move_speed = graph->move_speed;
-
-	if (ray->map[(int)(r_p_x + r_d_y * move_speed)][(int)(r_p_y)] == '4'
-		|| ray->map[(int)(r_p_x + r_d_y * move_speed)][(int)(r_p_y)] == '3'
-		|| ray->map[(int)(r_p_x + r_d_y * move_speed)][(int)(r_p_y)] == '0')
-		ray->pos->x += r_d_y * move_speed;
-	if (ray->map[(int)(r_p_x)][(int)(r_p_y - r_d_x * move_speed)] == '4'
-		|| ray->map[(int)(r_p_x)][(int)(r_p_y - r_d_x * move_speed)] == '0'
-		|| ray->map[(int)(r_p_x)][(int)(r_p_y - r_d_x * move_speed)] == '3')
-		ray->pos->y -= r_d_x * move_speed;
+	next_pos_x = ray->map[(int)(ray->pos->x + ray->direction->y * move_speed)]
+							[(int)ray->pos->y];
+	next_pos_y = ray->map[(int)(ray->pos->x)]
+						[(int)(ray->pos->y - ray->direction->x * move_speed)];
+	if (ft_strchr("034", next_pos_x))
+	{
+		if (next_pos_x == '3' && ray->map[(int)ray->pos->x]
+											[(int)ray->pos->y] != '3')
+			ft_recieve_damage(ray);
+		ray->pos->x += ray->direction->y * move_speed;
+	}
+	if (ft_strchr("034", next_pos_y))
+	{
+		if (next_pos_y == '3' && ray->map[(int)ray->pos->x]
+											[(int)ray->pos->y] != '3')
+			ft_recieve_damage(ray);
+		ray->pos->y -= ray->direction->x * move_speed;
+	}
 }
 
 static void	ft_move_left_bonus(t_graph *graph, t_ray *ray)
 {
 	double	move_speed;
-	double	r_p_x;
-	double	r_p_y;
-	double	r_d_x;
-	double	r_d_y;
+	char	next_pos_x;
+	char	next_pos_y;
 
-	r_d_x = ray->direction->x;
-	r_d_y = ray->direction->y;
-	r_p_x = ray->pos->x;
-	r_p_y = ray->pos->y;
 	move_speed = graph->move_speed;
-
-	if (ray->map[(int)(r_p_x - r_d_y * move_speed)][(int)r_p_y] == '4'
-		|| ray->map[(int)(r_p_x - r_d_y * move_speed)][(int)r_p_y] == '0'
-		|| ray->map[(int)(r_p_x - r_d_y * move_speed)][(int)r_p_y] == '3')
-		ray->pos->x -= r_d_y * move_speed;
-	if (ray->map[(int)r_p_x][(int)(r_p_y + r_d_x * move_speed)] == '4'
-		|| ray->map[(int)r_p_x][(int)(r_p_y + r_d_x * move_speed)] == '0'
-		|| ray->map[(int)r_p_x][(int)(r_p_y + r_d_x * move_speed)] == '3')
-		ray->pos->y += r_d_x * move_speed;
+	next_pos_x = ray->map[(int)(ray->pos->x - ray->direction->y * move_speed)]
+							[(int)ray->pos->y];
+	next_pos_y = ray->map[(int)(ray->pos->x)]
+						[(int)(ray->pos->y + ray->direction->x * move_speed)];
+	if (ft_strchr("034", next_pos_x))
+	{
+		if (next_pos_x == '3' && ray->map[(int)ray->pos->x]
+											[(int)ray->pos->y] != '3')
+			ft_recieve_damage(ray);
+		ray->pos->x -= ray->direction->y * move_speed;
+	}
+	if (ft_strchr("034", next_pos_y))
+	{
+		if (next_pos_y == '3' && ray->map[(int)ray->pos->x]
+											[(int)ray->pos->y] != '3')
+			ft_recieve_damage(ray);
+		ray->pos->y += ray->direction->x * move_speed;
+	}
 }
 
 void		ft_move_bonus(t_graph *graph, int direction, t_ray *ray)

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 18:27:30 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 12:09:43 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 #define WALKING_SPEED 0.2
 #define TURNING_SPEED 0.2
-#define MAX_RATIO 7
+#define MAX_RATIO 2.5
 #define LINE_LENGTH 20
 
 /*

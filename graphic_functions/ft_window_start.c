@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 11:51:51 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 14:29:06 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ void		ft_next_frame(t_graph *graph, t_ray *ray)
 	mlx_clear_window(graph->mlx_ptr, graph->win_ptr);
 	if (BONUS == 0)
 		ft_draw_background(graph);
+	if (BONUS == 1 && ray->health <= 0)
+	{
+		ft_game_over(ray, graph);
+		return ;
+	}
 	ft_raycaster(ray);
 	if (BONUS == 1)
 	{

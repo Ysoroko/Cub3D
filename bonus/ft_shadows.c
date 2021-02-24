@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:17:50 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 14:34:45 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 12:06:13 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,22 @@ void	ft_apply_shadow_to_textures(double dist, int *color)
 	int transparency;
 
 	transparency = (int)fmin(((*color >> 24) + 0.1) * (dist * 600), 255);
+	*color = (transparency << 24 | *color);
+}
+
+/*
+** FT_APPLY_SHADOW_TO_SPRITES
+** This function is responsible for the distance related shadow effect
+** It is using the distance to the specific sprite we're facing and
+** lowers the transparency of the color seen on the screen
+** if it's far away from the player
+*/
+
+void	ft_apply_shadow_to_sprites(double dist, int *color)
+{
+	int transparency;
+
+	transparency = (int)fmin(((*color >> 24) + 0.1) * (dist * 300), 255);
 	*color = (transparency << 24 | *color);
 }
 

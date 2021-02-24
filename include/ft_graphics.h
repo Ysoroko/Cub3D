@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 18:34:55 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 14:32:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,11 +254,16 @@ void		ft_floor_and_ceiling_raycasting(t_ray *ray);
 
 void	ft_play_step_sound(void);
 void	ft_play_background_music(void);
+void	ft_play_hurt_sound(void);
+void	ft_play_game_over_sound(void);
 void	ft_stop_all_afplay_sounds(void);
 void	ft_apply_shadow_to_floor(double dist, int res, int *color);
 void	ft_apply_shadow_to_textures(double dist, int *color);
+void	ft_apply_shadow_to_sprites(double dist, int *color);
 void	ft_move_bonus(t_graph *graph, int direction, t_ray *ray);
 void	ft_draw_hud(t_ray *ray);
+void	ft_recieve_damage(t_ray *ray);
+void	ft_game_over(t_ray *ray, t_graph *graph);
 
 /*
 ** FT_NEW_SPRITE_RAY

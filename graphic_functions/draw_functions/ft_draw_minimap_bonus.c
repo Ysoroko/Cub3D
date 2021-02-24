@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 11:45:20 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/24 12:10:37 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	ft_draw_minimap_walls(t_graph *graph, char **str_tab, double width)
 			if (str_tab[i][j] == '1')
 				ft_draw_fsquare(&(t_square){x, y, width, width},
 											graph, WALL_COLOR);
-			else if (str_tab[i][j] == '2' || str_tab[i][j] == '3')
+			else if (str_tab[i][j] == '2')
 				ft_draw_fsquare(&(t_square){x, y, width, width},
 											graph, SPRITE_COLOR);
 			x += graph->frame->units;
