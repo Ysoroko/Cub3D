@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/25 12:31:08 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/25 16:45:38 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct	s_ray
 	t_image		*ceiling_texture;
 	t_image		*sprite_two_texture;
 	t_image		*heart_texture;
+	t_image		*gun_texture[2];
 	t_point		*ray_dir_0;
 	t_point		*ray_dir_1;
 	int			p;
@@ -263,6 +264,8 @@ void			ft_apply_shadow_to_textures(double dist, int *color);
 void			ft_apply_shadow_to_sprites(double dist, int *color);
 void			ft_move_bonus(t_graph *graph, int direction, t_ray *ray);
 void			ft_draw_hud(t_ray *ray);
+void			ft_display_gun(t_ray *ray, t_image *texture);
+void			ft_fire_gun(t_ray *ray);
 void			ft_recieve_damage(t_ray *ray);
 void			ft_game_over(t_ray *ray, t_graph *graph);
 

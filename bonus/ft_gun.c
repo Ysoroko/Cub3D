@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hud.c                                           :+:      :+:    :+:   */
+/*   ft_gun.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 18:01:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/25 15:59:10 by ysoroko          ###   ########.fr       */
+/*   Created: 2021/02/25 15:25:08 by ysoroko           #+#    #+#             */
+/*   Updated: 2021/02/25 18:01:52 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_graphics.h"
 
-static void	ft_draw_heart(t_ray *ray, int hp)
+void	ft_display_gun(t_ray *ray, t_image *texture)
 {
 	int	trgb;
 	int	i;
@@ -21,19 +21,18 @@ static void	ft_draw_heart(t_ray *ray, int hp)
 	int	y;
 
 	i = -1;
-	x = ray->res->x - (hp * (ray->res->x / 14));
-	y = ray->res->y / 34;
-	if (ray->res->x < HEART_WIDTH || ray->res->y < HEART_HEIGHT)
+	x = ray->res->x / 2 - GUN_W / 2;
+	y = ray->res->y - GUN_H;
+	if (ray->res->x < SPRITE_W || ray->res->y < SPRITE_H)
 		return ;
-	while (++i < (ray->res->x / 180) * (HEART_WIDTH))
+	while (++i < (GUN_W))
 	{
 		j = -1;
 		x += 1;
-		y = ray->res->y / 34;
-		while (++j < (ray->res->y / 101) * (HEART_HEIGHT))
+		y = ray->res->y - GUN_H;
+		while (++j < (GUN_H))
 		{
-			my_mlx_pixel_get(ray->heart_texture, i / (ray->res->x / 180),
-								j / (ray->res->y / 101), &trgb);
+			my_mlx_pixel_get(texture, i, j, &trgb);
 			if ((trgb & 0x00FFFFFF) != 0)
 				my_mlx_pixel_put(ray->graph->img_ptr, x, y, trgb);
 			y++;
@@ -41,13 +40,18 @@ static void	ft_draw_heart(t_ray *ray, int hp)
 	}
 }
 
-void		ft_draw_hud(t_ray *ray)
+void	ft_fire_gun(t_ray *ray)
 {
-	int	hp;
+	static int	count;
+	t_image		*temp;
 
-	hp = ray->health + 1;
-	while (--hp > 0)
-	{
-		ft_draw_heart(ray, hp);
-	}
+	temp = ray->gun_texture[0];
+	ray->gun_texture[0] = ray->gun_texture[1];
+	ray->gun_texture[1] = temp;
+	if (count % 2)
+		system("afplay bonus/knife_on.mp3 &>/dev/null &");
+	else
+		system("afplay bonus/knife_off.mp3 &>/dev/null &");
+	count++;
+	ft_next_frame(ray->graph, ray);
 }

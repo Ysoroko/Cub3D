@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/24 16:09:59 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/25 18:05:34 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ BONUS_SRC		=	bonus/ft_music_bonus.c \
 					bonus/ft_shadows.c \
 					bonus/ft_hud.c \
 					bonus/ft_damage.c \
+					bonus/ft_gun.c \
 					graphic_functions/raycaster/ft_floor_and_ceiling_bonus.c \
 					graphic_functions/draw_functions/ft_draw_minimap_bonus.c \
 					graphic_functions/move_functions/ft_move_bonus.c \
@@ -102,9 +103,9 @@ clean:
 			@cd minilibx && make clean
 			
 fclean:		clean 
-			@rm libmlx.a 
-			@rm cub3D 
-			@rm save.bmp
+			@rm -rf libmlx.a 
+			@rm -rf cub3D 
+			@rm -rf save.bmp
 			@cd libft && make fclean 
 
 re:			fclean all

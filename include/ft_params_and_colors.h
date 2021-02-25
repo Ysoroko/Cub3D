@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 12:09:43 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/25 18:05:58 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,14 @@
 # define SPRITE_2_H 16
 # define HEART_WIDTH 8
 # define HEART_HEIGHT 8
+# define GUN_W 512
+# define GUN_H 512
 
 # define FLOOR_XPM_PATH "./images/floor2.xpm"
 # define SKYBOX_XPM_PATH "./images/night2.xpm"
 # define SECOND_SPRITE_XPM_PATH "images/spikes.xpm"
 # define HEART_XPM_PATH "images/heart.xpm"
+# define GUN1_XPM_PATH "images/pistol2.xpm"
+# define GUN2_XPM_PATH "images/pistol1.xpm"
 
 #endif

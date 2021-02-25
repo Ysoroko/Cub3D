@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 15:19:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 18:00:32 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/25 16:45:19 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int				ft_keys_binding(int keycode, t_ray *ray)
 		ft_move_and_collide(ray->graph, WALK_LEFT, ray);
 	if (keycode == D_KEY)
 		ft_move_and_collide(ray->graph, WALK_RIGHT, ray);
+	if (BONUS == 1 && keycode == SPACEBAR_KEY)
+		ft_fire_gun(ray);
 	return (0);
 }
 
