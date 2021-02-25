@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 16:25:10 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/25 12:31:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,7 @@ int				ft_window_closed(void);
 void			ft_malloc_fail(void);
 void			ft_mlx_fail(void);
 void			ft_create_fail(void);
-void			ft_open_fail(void);
+void			ft_close_fail(void);
 
 /*
 ** FT_DRAW_MINIMAP
@@ -279,9 +279,9 @@ void			ft_sort_sprites_tab(int *spr_order,
 ** SAVE
 */
 
-int				get_r(int trgb);
-int				get_g(int trgb);
-int				get_b(int trgb);
+int				ft_get_r(int trgb);
+int				ft_get_g(int trgb);
+int				ft_get_b(int trgb);
 void			ft_save_to_bmp(t_graph *graph);
 
 #endif

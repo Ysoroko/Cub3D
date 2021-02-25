@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 12:36:51 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 16:24:49 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/25 12:57:46 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ void	ft_mlx_fail(void)
 
 void	ft_create_fail(void)
 {
-	perror("Error\n Couldn't create \"save.bmp\" file\n");
+	perror("Error\n Couldn't create / open \"save.bmp\" file\n");
 	exit(EXIT_FAILURE);
 }
 
 /*
-** FT_OPEN_FAIL
-** This one is called when we couldn't open the "save.bmp" file
+** FT_CLOSE_FAIL
+** This one is called when we couldn't close the "save.bmp" file
 */
 
-void	ft_open_fail(void)
+void	ft_close_fail(void)
 {
-	perror("Error\n Couldn't open \"save.bmp\" file\n");
+	perror("Error\n Couldn't close \"save.bmp\" file\n");
 	exit(EXIT_FAILURE);
 }
