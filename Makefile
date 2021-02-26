@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/26 11:40:47 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/26 13:06:50 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ MINILIBX		=	@ cd minilibx && make ; mv libmlx.a ..
 
 LIBFT			=	@ cd libft && make ;
 
-MAP				=	"maps/map9.cub"
+MAP				=	"maps/ultimate_bonus_map.cub"
 
 SRC				=	get_next_line/get_next_line_utils.c \
 					get_next_line/get_next_line.c \

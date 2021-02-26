@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 14:25:37 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 11:23:50 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 13:36:50 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_recieve_damage(t_ray *ray)
 	if (ray->health)
 		ft_play_hurt_sound();
 	if (ray->health <= 0)
-		ft_next_frame(ray->graph, ray);
+		ft_game_over(ray, ray->graph);
 }
 
 void	ft_game_over(t_ray *ray, t_graph *graph)

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 10:48:13 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 11:05:41 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 11:58:45 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	ft_initialize_bonus_sprites(t_ray *ray, t_map *map)
 		map->res_width, map->res_height, GUN2_XPM_PATH);
 	ray->ceiling_texture = ft_image_from_file(ray->graph->mlx_ptr,
 		map->res_width, map->res_height, SKYBOX_ONE_XPM_PATH);
-
+	ray->enemy_texture = ft_image_from_file(ray->graph->mlx_ptr,
+		map->res_width, map->res_height, ENEMY_SPRITE_XPM_PATH);
 }

@@ -6,13 +6,13 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:25:08 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 11:40:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 13:41:53 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_graphics.h"
 
-void	ft_display_knife(t_ray *ray, t_image *texture)
+void		ft_display_knife(t_ray *ray, t_image *texture)
 {
 	int	trgb;
 	int	i;
@@ -40,7 +40,7 @@ void	ft_display_knife(t_ray *ray, t_image *texture)
 	}
 }
 
-int	ft_key_release(int keycode, t_ray *ray)
+int			ft_key_release(int keycode, t_ray *ray)
 {
 	t_image *temp;
 
@@ -64,25 +64,27 @@ static void	ft_kill_enemy(t_ray *ray)
 	char	next_pos_y;
 
 	move_speed = ray->graph->move_speed;
-	next_pos_x = ray->map[(int)(ray->pos->x + ray->direction->x * move_speed)]
-							[(int)ray->pos->y];
+	next_pos_x = ray->map[(int)(ray->pos->x + ray->direction->x *
+						move_speed)][(int)ray->pos->y];
 	next_pos_y = ray->map[(int)(ray->pos->x)]
-						[(int)(ray->pos->y + ray->direction->y * move_speed)];
-	if (next_pos_x == '2')
+				[(int)(ray->pos->y + ray->direction->y * move_speed)];
+	if (next_pos_x == '5')
 	{
+		system("afplay -v 0.1 bonus/ghost_death.mp3 &>/dev/null &");
 		ray->map[(int)(ray->pos->x + ray->direction->x * move_speed)]
 							[(int)ray->pos->y] = '0';
 	}
-	else if (next_pos_y == '2')
+	if (next_pos_y == '5')
 	{
+		system("afplay -v 0.1 bonus/ghost_death.mp3 &>/dev/null &");
 		ray->map[(int)(ray->pos->x)]
 			[(int)(ray->pos->y + ray->direction->y * move_speed)] = '0';
-		ft_free_sprite_ray(ray->sprite_ray);
-		ray->sprite_ray = ft_new_sprite_ray(ray->map, ray);
 	}
+	ft_free_sprite_ray(ray->sprite_ray);
+	ray->sprite_ray = ft_new_sprite_ray(ray->map, ray);
 }
 
-void	ft_attack(t_ray *ray)
+void		ft_attack(t_ray *ray)
 {
 	t_image			*temp;
 	static	t_image	*first;

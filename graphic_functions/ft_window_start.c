@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 11:25:39 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 13:09:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ t_graph		*ft_window_start(t_map *map, int save)
 	ft_define_hooks(ray);
 	if (BONUS == 1)
 		ft_play_background_music();
+	mlx_do_key_autorepeaton(graph->mlx_ptr);
 	mlx_loop(graph->mlx_ptr);
 	return (0);
 }

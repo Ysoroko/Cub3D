@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 11:40:05 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 11:56:21 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct	s_ray
 	t_image		*sprite_two_texture;
 	t_image		*heart_texture;
 	t_image		*gun_texture[2];
+	t_image		*enemy_texture;
 	t_point		*ray_dir_0;
 	t_point		*ray_dir_1;
 	int			p;

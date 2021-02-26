@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:07:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 16:14:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 13:51:06 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,24 @@ static t_sprite	**ft_sprites_from_map_to_array(char **map, int n_sprites)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (map[i][j] == '2' || map[i][j] == '3')
+			if (map[i][j] == '2' || map[i][j] == '3' || map[i][j] == '5')
 				sprite_array[++k] = ft_new_sprite(i, j, map[i][j]);
 		}
 	}
 	return (sprite_array);
+}
+
+static int		ft_n_sprites(char **map)
+{
+	int n_sprites;
+
+	n_sprites = ft_n_chars_in_str_tab(map, '2');
+	if (BONUS == 1)
+	{
+		n_sprites += ft_n_chars_in_str_tab(map, '3');
+		n_sprites += ft_n_chars_in_str_tab(map, '5');
+	}
+	return (n_sprites);
 }
 
 /*
@@ -103,7 +116,7 @@ t_sprite_ray	*ft_new_sprite_ray(char **map, t_ray *ray)
 	int				n_sprites;
 	t_sprite_ray	*sprite_ray;
 
-	n_sprites = ft_n_chars_in_str_tab(map, '2');
+	n_sprites = ft_n_sprites(map);
 	if (!(sprite_ray = malloc(sizeof(*sprite_ray))))
 		ft_malloc_fail();
 	sprite_ray->num_sprites = n_sprites;

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:34:55 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 12:00:30 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 12:03:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ static void	ft_pixel_get_and_draw(t_ray *ray, int spr, int i, int j)
 	texture = ray->sprite_texture;
 	if (BONUS == 1 && sprite_number == '3')
 		texture = ray->sprite_two_texture;
+	if (BONUS == 1 && sprite_number == '5')
+		texture = ray->enemy_texture;
 	s_r = ray->sprite_ray;
 	my_mlx_pixel_get(texture, s_r->tex->x, s_r->tex->y, &trgb);
 	if ((trgb & 0x00FFFFFF) != 0)

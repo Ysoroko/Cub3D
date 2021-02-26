@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 11:26:01 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 12:43:42 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #define WALL_COLOR 0x0030110D
 #define PLAYER_COLOR 0x001F8AC0
 #define SPRITE_COLOR 0x00722620
+#define ENEMY_COLOR 0x0099A3A6
 #define DIRECTION_COLOR 0x00FF2400
 
 /*
@@ -101,6 +102,7 @@
 # define SKYBOX_THREE_XPM_PATH "./images/skybox3.xpm"
 # define SKYBOX_FOUR_XPM_PATH "./images/skybox4.xpm"
 # define SECOND_SPRITE_XPM_PATH "images/spikes.xpm"
+# define ENEMY_SPRITE_XPM_PATH "images/ghost.xpm"
 # define HEART_XPM_PATH "images/heart.xpm"
 # define GUN1_XPM_PATH "images/pistol1.xpm"
 # define GUN2_XPM_PATH "images/pistol2.xpm"

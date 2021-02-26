@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 18:16:33 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 12:47:47 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 12:01:04 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	ft_not_surrounded_by_walls(char **str_tab)
 				if (ft_check_surroundings(str_tab, i, j))
 					return (1);
 			}
-			if (BONUS == 1 && ft_strchr("34", str_tab[i][j]))
+			if (BONUS == 1 && ft_strchr("345", str_tab[i][j]))
 			{
 				if (ft_check_surroundings(str_tab, i, j))
 					return (1);
