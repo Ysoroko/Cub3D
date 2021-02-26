@@ -6,14 +6,13 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 10:51:31 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 11:29:54 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 16:29:53 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_map_functions.h"
 #include "../include/libft.h"
 #include "../include/get_next_line.h"
-#include "../minilibx/mlx.h"
 
 /*
 ** FT_EXTRACT_RGB
@@ -71,7 +70,6 @@ static int		ft_store_info_in_t_map(char *str, t_map *map)
 	int after_params;
 
 	after_params = ft_after_params(map);
-
 	if (!after_params)
 	{
 		if ((error = ft_check_line_for_errors(str, map)) != 0)
@@ -82,6 +80,9 @@ static int		ft_store_info_in_t_map(char *str, t_map *map)
 			return (ft_extract_path(str, map));
 		if (str[0] == 'F' || str[0] == 'C')
 			return (ft_extract_rgb(str, map));
+		if (str[0] && str[0] != 'R' && str[0] != 'F' &&
+				str[0] != 'C' && !ft_path_line(str))
+			return (FORBIDDEN_CHARS_ERROR);
 	}
 	else if (after_params)
 	{

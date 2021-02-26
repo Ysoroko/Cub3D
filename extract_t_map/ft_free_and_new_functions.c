@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:40:01 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 12:01:43 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:32:51 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_map	*ft_new_t_map(void)
 ** This function is used to free a string and set its address to 0
 */
 
-void		ft_free_str(char **str)
+void	ft_free_str(char **str)
 {
 	if (str)
 	{

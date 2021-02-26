@@ -6,29 +6,29 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 14:47:47 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:59:13 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_GRAPHICS_H
 # define FT_GRAPHICS_H
 
-#include "ft_map_functions.h"
-#include "ft_geometry_forms.h"
-#include "ft_params_and_colors.h"
-#include "libft.h"
-#include "../minilibx/mlx.h"
-#include <math.h>
+# include "ft_geometry_forms.h"
+# include "ft_map_functions.h"
+# include "ft_params_and_colors.h"
+# include "libft.h"
+# include <mlx.h>
+# include <math.h>
 
-typedef struct  s_image {
+typedef struct	s_image {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}			t_image;
+}				t_image;
 
-typedef struct		s_frame
+typedef struct	s_frame
 {
 	t_square	*ceiling;
 	t_square	*floor;
@@ -36,9 +36,9 @@ typedef struct		s_frame
 	t_square	*minimap_background;
 	int			units;
 	char		player_direction;
-}					t_frame;
+}				t_frame;
 
-typedef struct		s_graph
+typedef struct	s_graph
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -54,12 +54,12 @@ typedef struct		s_graph
 	int			res_width;
 	int			res_height;
 	t_frame		*frame;
-}					t_graph;
+}				t_graph;
 
-typedef struct	s_sprite 
+typedef struct	s_sprite
 {
-	double			x;
-	double			y;
+	double		x;
+	double		y;
 	char		texture_sprite;
 }				t_sprite;
 
@@ -77,62 +77,62 @@ typedef struct	s_sprite_ray
 	t_point		*draw_start;
 	t_point		*draw_end;
 	int			sprite_width;
-	int			sprite_height;	
+	int			sprite_height;
 	t_point		*tex;
 	t_point		*texture_size;
 }				t_sprite_ray;
 
 typedef struct	s_ray
 {
-	t_graph		*graph;
-	char		**map;
-	int			map_width;
-	int			map_height;
-	int			hit;
-	int			side;
-	int			health;
-	double		fov;
-	double		camera_x;
-	double		perp_wall_dist;
-	t_point		*pos;
-	t_point		*in_map;
-	t_point		*res;
-	t_point		*plane;
-	t_point		*direction;
-	t_point		*ray_dir;
-	t_point		*delta_dist;
-	t_point		*side_dist;
-	t_point		*step;
-	t_line		*line;
-	t_image		*north_texture;
-	t_image		*south_texture;
-	t_image		*east_texture;
-	t_image		*west_texture;
-	t_image		*sprite_texture;
-	int			texture_width;
-	int			texture_height;
-	int			sprite_width;
-	int			sprite_height;
-	double		wall_x;
-	int			tex_x;
-	int			tex_y;
-	double		tex_step;
-	double		tex_pos;
-	t_image		*floor_texture;
-	t_image		*ceiling_texture;
-	t_image		*sprite_two_texture;
-	t_image		*heart_texture;
-	t_image		*gun_texture[2];
-	t_image		*enemy_texture;
-	t_point		*ray_dir_0;
-	t_point		*ray_dir_1;
-	int			p;
-	double		pos_z;
-	double		row_distance;
-	t_point		*floor_step;
-	t_point		*floor;
-	t_point		*cell;
-	t_point		*tex;
+	t_graph			*graph;
+	char			**map;
+	int				map_width;
+	int				map_height;
+	int				hit;
+	int				side;
+	int				health;
+	double			fov;
+	double			camera_x;
+	double			perp_wall_dist;
+	t_point			*pos;
+	t_point			*in_map;
+	t_point			*res;
+	t_point			*plane;
+	t_point			*direction;
+	t_point			*ray_dir;
+	t_point			*delta_dist;
+	t_point			*side_dist;
+	t_point			*step;
+	t_line			*line;
+	t_image			*north_texture;
+	t_image			*south_texture;
+	t_image			*east_texture;
+	t_image			*west_texture;
+	t_image			*sprite_texture;
+	int				texture_width;
+	int				texture_height;
+	int				sprite_width;
+	int				sprite_height;
+	double			wall_x;
+	int				tex_x;
+	int				tex_y;
+	double			tex_step;
+	double			tex_pos;
+	t_image			*floor_texture;
+	t_image			*ceiling_texture;
+	t_image			*sprite_two_texture;
+	t_image			*heart_texture;
+	t_image			*gun_texture[2];
+	t_image			*enemy_texture;
+	t_point			*ray_dir_0;
+	t_point			*ray_dir_1;
+	int				p;
+	double			pos_z;
+	double			row_distance;
+	t_point			*floor_step;
+	t_point			*floor;
+	t_point			*cell;
+	t_point			*tex;
 	t_sprite_ray	*sprite_ray;
 }				t_ray;
 
@@ -175,13 +175,6 @@ void			my_mlx_pixel_get(t_image *image, int x, int y, int *trgb_color);
 void			ft_draw_line(t_line *line, t_graph *graph, int trgb);
 
 /*
-** FT_DRAW_VERTICAL_LINE
-*/
-
-void			ft_draw_vertical_line(int x, double a_y,
-										double b_y, t_ray *ray, int *text);
-
-/*
 ** FT_DRAW_FILLED_IN_FORMS
 */
 
@@ -197,7 +190,8 @@ t_square		*ft_new_square(double x, double y, double width, double height);
 t_line			*ft_new_line(double a_x, double a_y, double angle, double len);
 t_circle		*ft_new_circle(double x, double y, double radius, double prox);
 t_point			*ft_new_point(double x, double y);
-void			ft_limit_points_within_map(double *x, double *y, t_graph *graph);
+void			ft_limit_points_within_map(double *x,
+											double *y, t_graph *graph);
 
 /*
 ** FT_HOOKS_FUNCTIONS
@@ -227,7 +221,7 @@ void			ft_draw_minimap(t_graph *graph, t_ray *ray);
 */
 
 void			ft_move_and_collide(t_graph *graph, int direction, t_ray *ray);
-void			ft_reposition_line(t_ray *ray, t_circle *cir, double a, 
+void			ft_reposition_line(t_ray *ray, t_circle *cir, double a,
 												t_line *line);
 double			ft_dist_to_wall(t_graph *graph, char **map,
 							double units, double angle);

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:20:43 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 14:40:41 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 16:01:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 
 static void	ft_define_hooks(t_ray *ray)
 {
-	mlx_hook(ray->graph->win_ptr, KEY_PRESS_EVENT, KEY_PRESS_MASK,
+	mlx_hook(ray->graph->win_ptr, KEY_PRESS_EVENT, 1L << 0,
 			ft_keys_binding, ray);
-	mlx_hook(ray->graph->win_ptr, DESTROY_EVENT, STRUCTURE_NOTIFY_MASK,
+	mlx_hook(ray->graph->win_ptr, DESTROY_EVENT, 1L << 17,
 			ft_window_closed, ray);
 	if (BONUS == 1)
-		mlx_hook(ray->graph->win_ptr, KEY_RELEASE_EVENT, KEY_RELEASE_MASK,
+		mlx_hook(ray->graph->win_ptr, KEY_RELEASE_EVENT, 1L << 1,
 				ft_key_release, ray);
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hud.c                                           :+:      :+:    :+:   */
+/*   ft_hud_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 18:01:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/25 15:59:10 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:27:15 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,34 @@ void		ft_draw_hud(t_ray *ray)
 	{
 		ft_draw_heart(ray, hp);
 	}
+}
+
+/*
+** FT_REPOSITION_LINE
+** This function recalculates the new position of the line every call
+** Saves the changes inside the *line structure
+*/
+
+void		ft_reposition_line(t_ray *ray, t_circle *cir, double a, t_line *l)
+{
+	double	units;
+	char	**map;
+	double	distance_to_wall;
+
+	map = ray->graph->map->map_str_tab;
+	units = ray->graph->frame->units;
+	distance_to_wall = ray->graph->frame->units * 1.5;
+	ray->graph->circle->x = ray->pos->y *
+		ray->graph->frame->units + ray->graph->frame->units;
+	ray->graph->circle->y = ray->pos->x *
+		ray->graph->frame->units + ray->graph->frame->units;
+	l->a_x = cir->x;
+	l->a_y = cir->y;
+	l->b_x = l->a_x + distance_to_wall * cos(a);
+	l->b_y = l->a_y + distance_to_wall * sin(a);
+	l->angle = a;
+	if (l->a_x < l->b_x)
+		l->delta = (l->a_y - l->b_y) / (l->a_x - l->b_x);
+	else
+		l->delta = (l->b_y - l->a_y) / (l->b_x - l->a_x);
 }

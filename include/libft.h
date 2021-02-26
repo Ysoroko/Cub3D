@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 15:32:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/27 11:55:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:42:17 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ char				*ft_strtrim(char const *str, char const *except);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
-int					ft_wrong_extension(char *file_name, char *expected_extension);
+int					ft_wrong_extension(char *file_name,
+											char *expected_extension);
 
 #endif

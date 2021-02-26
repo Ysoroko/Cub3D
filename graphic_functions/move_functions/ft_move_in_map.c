@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 14:54:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/25 14:53:54 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:35:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	ft_move_back_and_forward(t_graph *graph, int direction, t_ray *ray)
 	r_p_x = ray->pos->x;
 	r_p_y = ray->pos->y;
 	move_speed = graph->move_speed;
-
 	if (direction == WALK_FORWARD)
 	{
 		if (ray->map[(int)(r_p_x + r_d_x * move_speed)][(int)(r_p_y)] == '0')
@@ -53,7 +52,6 @@ static void	ft_move_sideways(t_graph *graph, int direction, t_ray *ray)
 	r_p_x = ray->pos->x;
 	r_p_y = ray->pos->y;
 	move_speed = graph->move_speed;
-
 	if (direction == WALK_RIGHT)
 	{
 		if (ray->map[(int)(r_p_x + r_d_y * move_speed)][(int)(r_p_y)] == '0')

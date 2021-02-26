@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:25:08 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 13:41:53 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:29:11 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int			ft_key_release(int keycode, t_ray *ray)
 		temp = ray->gun_texture[0];
 		ray->gun_texture[0] = ray->gun_texture[1];
 		ray->gun_texture[1] = temp;
-		system("afplay bonus/knife_on.mp3 &>/dev/null &");
+		system("afplay bonus/sounds/knife_on.mp3 &>/dev/null &");
 		ft_reposition_line(ray, ray->graph->circle,
 			ray->graph->line->angle, ray->graph->line);
 		ft_next_frame(ray->graph, ray);
@@ -70,18 +70,20 @@ static void	ft_kill_enemy(t_ray *ray)
 				[(int)(ray->pos->y + ray->direction->y * move_speed)];
 	if (next_pos_x == '5')
 	{
-		system("afplay -v 0.1 bonus/ghost_death.mp3 &>/dev/null &");
+		system("afplay -v 0.1 bonus/sounds/ghost_death.mp3 &>/dev/null &");
 		ray->map[(int)(ray->pos->x + ray->direction->x * move_speed)]
 							[(int)ray->pos->y] = '0';
+		ft_free_sprite_ray(ray->sprite_ray);
+		ray->sprite_ray = ft_new_sprite_ray(ray->map, ray);
 	}
 	if (next_pos_y == '5')
 	{
-		system("afplay -v 0.1 bonus/ghost_death.mp3 &>/dev/null &");
+		system("afplay -v 0.1 bonus/sounds/ghost_death.mp3 &>/dev/null &");
 		ray->map[(int)(ray->pos->x)]
 			[(int)(ray->pos->y + ray->direction->y * move_speed)] = '0';
+		ft_free_sprite_ray(ray->sprite_ray);
+		ray->sprite_ray = ft_new_sprite_ray(ray->map, ray);
 	}
-	ft_free_sprite_ray(ray->sprite_ray);
-	ray->sprite_ray = ft_new_sprite_ray(ray->map, ray);
 }
 
 void		ft_attack(t_ray *ray)
@@ -95,7 +97,7 @@ void		ft_attack(t_ray *ray)
 	{
 		ray->gun_texture[0] = ray->gun_texture[1];
 		ray->gun_texture[1] = temp;
-		system("afplay bonus/knife_off.mp3 &>/dev/null &");
+		system("afplay bonus/sounds/knife_off.mp3 &>/dev/null &");
 	}
 	ft_reposition_line(ray, ray->graph->circle,
 		ray->graph->line->angle, ray->graph->line);

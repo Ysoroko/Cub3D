@@ -6,13 +6,13 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:32:57 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 11:50:46 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 16:01:53 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_graphics.h"
 
-static	void	ft_set_resolution(int *res_w, int *res_h, void *mlx, t_map *m)
+static void	ft_set_resolution(int *res_w, int *res_h, void *mlx, t_map *m)
 {
 	int	screen_width;
 	int	screen_height;
@@ -22,7 +22,7 @@ static	void	ft_set_resolution(int *res_w, int *res_h, void *mlx, t_map *m)
 	*res_h = (int)fmin((int)m->res_height, (int)screen_height);
 }
 
-t_graph	*ft_new_t_graph(t_map *map)
+t_graph		*ft_new_t_graph(t_map *map)
 {
 	t_graph	*ret;
 
@@ -50,7 +50,7 @@ t_graph	*ft_new_t_graph(t_map *map)
 	return (ret);
 }
 
-t_image	*ft_new_t_image(void)
+t_image		*ft_new_t_image(void)
 {
 	t_image	*ret;
 
@@ -65,7 +65,7 @@ t_image	*ft_new_t_image(void)
 	return (ret);
 }
 
-t_frame	*ft_new_t_frame(t_graph *graph)
+t_frame		*ft_new_t_frame(t_graph *graph)
 {
 	t_frame	*ret;
 

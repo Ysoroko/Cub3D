@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 15:19:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:40:54 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
 ** Colors
 */
 
-#define MAP_BACKGROUND_COLOR 0x00F2BC94
-#define WALL_COLOR 0x0030110D
-#define PLAYER_COLOR 0x001F8AC0
-#define SPRITE_COLOR 0x00722620
-#define ENEMY_COLOR 0x0099A3A6
-#define DIRECTION_COLOR 0x00FF2400
+# define MAP_BACKGROUND_COLOR 0x00F2BC94
+# define WALL_COLOR 0x0030110D
+# define PLAYER_COLOR 0x001F8AC0
+# define SPRITE_COLOR 0x00722620
+# define ENEMY_COLOR 0x0099A3A6
+# define DIRECTION_COLOR 0x00FF2400
 
 /*
 ** Parameters
 */
 
-#define WALKING_SPEED 0.2
-#define TURNING_SPEED 0.2
-#define MAX_RATIO 2.5
-#define LINE_LENGTH 20
+# define WALKING_SPEED 0.2
+# define TURNING_SPEED 0.2
+# define MAX_RATIO 2.5
+# define LINE_LENGTH 20
 
 /*
 ** Keyboard keys
@@ -74,11 +74,6 @@
 # define KEY_RELEASE_EVENT 3
 # define DESTROY_EVENT 17
 # define BUTTON_PRESS_EVENT 4
-
-# define KEY_PRESS_MASK 1L<<0
-# define KEY_RELEASE_MASK 1L<<1
-# define STRUCTURE_NOTIFY_MASK 1L<<17
-# define BUTTON_PRESS_MASK 1L<<2
 
 /*
 ** Textures

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 12:43:59 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:30:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,28 @@ void		ft_draw_minimap_background(t_graph *graph)
 					graph, MAP_BACKGROUND_COLOR);
 }
 
+static void	ft_draw_corresponding_square(char c, int x, int y, t_graph *graph)
+{
+	double	width;
+
+	width = graph->frame->minimap_wall->width;
+	if (c == '1')
+		ft_draw_fsquare(&(t_square){x, y, width, width},
+							graph, WALL_COLOR);
+	else if (c == '2')
+		ft_draw_fsquare(&(t_square){x, y, width, width},
+											graph, SPRITE_COLOR);
+	else if (c == '5')
+		ft_draw_fsquare(&(t_square){x, y, width, width},
+											graph, ENEMY_COLOR);
+}
+
 /*
 ** FT_DRAW_WALLS
 ** This function is used to draw the walls of the minimap
 */
 
-static void	ft_draw_minimap_walls(t_graph *graph, char **str_tab, double width)
+static void	ft_draw_minimap_walls(t_graph *graph, char **str_tab)
 {
 	int		i;
 	int		j;
@@ -55,15 +71,7 @@ static void	ft_draw_minimap_walls(t_graph *graph, char **str_tab, double width)
 		y += graph->frame->units;
 		while (str_tab[i][++j])
 		{
-			if (str_tab[i][j] == '1')
-				ft_draw_fsquare(&(t_square){x, y, width, width},
-											graph, WALL_COLOR);
-			else if (str_tab[i][j] == '2')
-				ft_draw_fsquare(&(t_square){x, y, width, width},
-											graph, SPRITE_COLOR);
-			else if (str_tab[i][j] == '5')
-				ft_draw_fsquare(&(t_square){x, y, width, width},
-											graph, ENEMY_COLOR);
+			ft_draw_corresponding_square(str_tab[i][j], x, y, graph);
 			x += graph->frame->units;
 		}
 	}
@@ -93,43 +101,13 @@ static void	ft_starting_player_direction(t_graph *graph)
 }
 
 /*
-** FT_REPOSITION_LINE
-** This function recalculates the new position of the line every call
-** Saves the changes inside the *line structure
-*/
-
-void		ft_reposition_line(t_ray *ray, t_circle *cir, double a, t_line *l)
-{
-	double	units;
-	char	**map;
-	double	distance_to_wall;
-
-	map = ray->graph->map->map_str_tab;
-	units = ray->graph->frame->units;
-	distance_to_wall = ray->graph->frame->units * 1.5;
-	ray->graph->circle->x = ray->pos->y *
-		ray->graph->frame->units + ray->graph->frame->units;
-	ray->graph->circle->y = ray->pos->x *
-		ray->graph->frame->units + ray->graph->frame->units;
-	l->a_x = cir->x;
-	l->a_y = cir->y;
-	l->b_x = l->a_x + distance_to_wall * cos(a);
-	l->b_y = l->a_y + distance_to_wall * sin(a);
-	l->angle = a;
-	if (l->a_x < l->b_x)
-		l->delta = (l->a_y - l->b_y) / (l->a_x - l->b_x);
-	else
-		l->delta = (l->b_y - l->a_y) / (l->b_x - l->a_x);
-}
-
-/*
 ** FT_DRAW_MINIMAP
 ** This function is the central hub of drawing the minimap
 ** and determining the needed size
 ** Draws the background first as a rectangle, then the walls
 */
 
-void	ft_draw_minimap(t_graph *graph, t_ray *ray)
+void		ft_draw_minimap(t_graph *graph, t_ray *ray)
 {
 	double	units;
 	double	radius;
@@ -141,8 +119,7 @@ void	ft_draw_minimap(t_graph *graph, t_ray *ray)
 	x = ray->pos->y * units + units;
 	y = ray->pos->x * units + units;
 	ft_draw_minimap_background(graph);
-	ft_draw_minimap_walls(graph, graph->map->map_str_tab,
-							graph->frame->minimap_wall->width);
+	ft_draw_minimap_walls(graph, graph->map->map_str_tab);
 	if (!graph->circle)
 		graph->circle = ft_new_circle(x, y, radius, 0);
 	if (!graph->line)

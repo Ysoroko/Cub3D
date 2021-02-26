@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:04:05 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 15:25:01 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:41:51 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ int					ft_after_params(t_map *map);
 
 int					ft_check_map_line_for_errors(char *str, t_map *map);
 
-
 /*
 ** FT_MAP_TO_LIST.C
 */
@@ -115,7 +114,6 @@ char				**ft_free_str_tab(char ***str_tab);
 */
 
 int					ft_check_str_tab_errors(char **str_tab);
-
 
 /*
 ** ERROR MACROS

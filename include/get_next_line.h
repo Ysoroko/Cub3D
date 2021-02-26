@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 12:55:38 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/21 16:41:00 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:22:45 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 32
 # endif
+
 char		*ft_strcpy(char *line);
 int			get_next_line(int fd, char **line);
 int			ft_save_to_line(char **line, char *str_buff, size_t line_size);

@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/26 13:06:50 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/26 16:14:13 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ MINILIBX		=	@ cd minilibx && make ; mv libmlx.a ..
 
 LIBFT			=	@ cd libft && make ;
 
-MAP				=	"maps/ultimate_bonus_map.cub"
+BONUS_MAP		=	"maps/ultimate_bonus_map.cub"
+
+STANDARD_MAP	=	"maps/map9.cub"
 
 SRC				=	get_next_line/get_next_line_utils.c \
 					get_next_line/get_next_line.c \
@@ -43,7 +45,6 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					extract_t_map/ft_check_str_tab_errors.c \
 					\
 					graphic_functions/draw_functions/ft_draw_filled_in_forms.c \
-					graphic_functions/draw_functions/ft_draw_vertical_line.c \
 					\
 					graphic_functions/new_free_error_functions/ft_error_utils.c \
 					graphic_functions/new_free_error_functions/ft_new_geometry_forms.c \
@@ -67,6 +68,7 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					\
 					save/ft_extract_rgb.c \
 					save/ft_save_to_bmp.c \
+					\
 					libmlx.a \
 					\
 					main.c
@@ -91,40 +93,37 @@ NAME			=	cub3D
 all: 		$(NAME)
 
 $(NAME):	
-			@$(MINILIBX)
 			@$(LIBFT)
 			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(SRC) $(INCLUDE) -o $(NAME)
 
 bonus:	
-			@$(MINILIBX)
 			@$(LIBFT)
 			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(BONUS) $(SRC) $(BONUS_SRC) $(INCLUDE) -o $(NAME)
 
 clean:
 			@cd libft && make clean
-			@cd minilibx && make clean
 			
 fclean:		clean 
-			@rm -rf libmlx.a 
 			@rm -rf cub3D 
 			@rm -rf save.bmp
 			@cd libft && make fclean 
 
 re:			fclean all
 
-run:		
-			@$(MINILIBX)
+run:
 			@$(LIBFT)
-			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(BONUS) $(SRC) $(BONUS_SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
+			@$(CC) $(FRAMEWORKS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(STANDARD_MAP)
+			
+brun:		
+			@$(LIBFT)
+			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(BONUS) $(SRC) $(BONUS_SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(BONUS_MAP)
 
 frun:
-			@$(MINILIBX)
 			@$(LIBFT)
-			@$(CC) $(FRAMEWORKS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP)
+			@$(CC) $(FRAMEWORKS) $(BONUS) $(SRC) $(BONUS_SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(BONUS_MAP)
 
 save:
-			@$(MINILIBX)
 			@$(LIBFT)
 			@$(CC) $(FRAMEWORKS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP) $(SAVE)
 
-.PHONY:		all bonus clean fclean re run frun save
+.PHONY:		all bonus clean fclean re run brun frun save

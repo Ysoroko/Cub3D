@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 16:38:10 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 12:34:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:27:58 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_play_background_music(void)
 {
-	system("afplay bonus/night.mp3 &>/dev/null &");
+	system("afplay bonus/sounds/night.mp3 &>/dev/null &");
 }
 
 /*
@@ -32,9 +32,9 @@ void	ft_play_step_sound(void)
 	static int	j;
 
 	if (!(i % 5) && j % 2)
-		system("afplay -v 0.1 bonus/step1.mp3 &>/dev/null &");
+		system("afplay -v 0.1 bonus/sounds/step1.mp3 &>/dev/null &");
 	else if (!(i % 5) && !(j % 2))
-		system("afplay -v 0.1 bonus/step2.mp3 &>/dev/null &");
+		system("afplay -v 0.1 bonus/sounds/step2.mp3 &>/dev/null &");
 	i++;
 	j++;
 }
@@ -52,10 +52,10 @@ void	ft_stop_all_afplay_sounds(void)
 
 void	ft_play_hurt_sound(void)
 {
-	system("afplay bonus/arrow.mp3 &>/dev/null &");
+	system("afplay bonus/sounds/arrow.mp3 &>/dev/null &");
 }
 
 void	ft_play_game_over_sound(void)
 {
-	system("afplay bonus/game_over_whispers.mp3 &>/dev/null &");
+	system("afplay bonus/sounds/game_over_whispers.mp3 &>/dev/null &");
 }
