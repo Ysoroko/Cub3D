@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 11:56:21 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 14:47:47 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,6 +282,7 @@ void			ft_sort_sprites_tab(int *spr_order,
 ** SAVE
 */
 
+int				ft_get_t(int trgb);
 int				ft_get_r(int trgb);
 int				ft_get_g(int trgb);
 int				ft_get_b(int trgb);

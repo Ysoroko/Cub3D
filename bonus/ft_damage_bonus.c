@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 14:25:37 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 13:36:50 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:05:22 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ void	ft_game_over(t_ray *ray, t_graph *graph)
 		already_done = 1;
 	}
 	if (!(map = ft_extract_t_map("maps/game_over_map_bonus.cub")))
-		return ;
+	{
+		perror("Error: \n Couldn't extract map");
+		exit(EXIT_FAILURE);
+	}
 	ft_window_start(map, 0);
 	exit(EXIT_SUCCESS);
 }
