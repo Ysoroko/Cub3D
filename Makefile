@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/26 16:14:13 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/26 16:38:41 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,6 +124,6 @@ frun:
 
 save:
 			@$(LIBFT)
-			@$(CC) $(FRAMEWORKS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(MAP) $(SAVE)
+			@$(CC) $(FRAMEWORKS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(STANDARD_MAP) $(SAVE)
 
 .PHONY:		all bonus clean fclean re run brun frun save
