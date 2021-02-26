@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/26 11:25:27 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/26 11:40:47 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ BONUS_SRC		=	bonus/ft_music_bonus.c \
 					bonus/ft_move_bonus.c \
 					bonus/ft_new_raycaster_bonus.c \
 					bonus/ft_draw_line_bonus.c \
+					bonus/ft_free_sprite_ray_bonus.c 
 
 
 OBJS			=	$(SRC:.c=.o)

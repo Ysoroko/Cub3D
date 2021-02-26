@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 11:25:13 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 11:40:05 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,6 +266,7 @@ void			ft_recieve_damage(t_ray *ray);
 void			ft_game_over(t_ray *ray, t_graph *graph);
 void			ft_initialize_bonus_sprites(t_ray *ray, t_map *map);
 int				ft_key_release(int keycode, t_ray *ray);
+void			ft_free_sprite_ray(t_sprite_ray *sprite_ray);
 
 /*
 ** SPRITES RAYCASTER

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:25:08 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 11:24:30 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 11:40:25 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,31 @@ int	ft_key_release(int keycode, t_ray *ray)
 	return (0);
 }
 
+static void	ft_kill_enemy(t_ray *ray)
+{
+	double	move_speed;
+	char	next_pos_x;
+	char	next_pos_y;
+
+	move_speed = ray->graph->move_speed;
+	next_pos_x = ray->map[(int)(ray->pos->x + ray->direction->x * move_speed)]
+							[(int)ray->pos->y];
+	next_pos_y = ray->map[(int)(ray->pos->x)]
+						[(int)(ray->pos->y + ray->direction->y * move_speed)];
+	if (next_pos_x == '2')
+	{
+		ray->map[(int)(ray->pos->x + ray->direction->x * move_speed)]
+							[(int)ray->pos->y] = '0';
+	}
+	else if (next_pos_y == '2')
+	{
+		ray->map[(int)(ray->pos->x)]
+			[(int)(ray->pos->y + ray->direction->y * move_speed)] = '0';
+		ft_free_sprite_ray(ray->sprite_ray);
+		ray->sprite_ray = ft_new_sprite_ray(ray->map, ray);
+	}
+}
+
 void	ft_attack(t_ray *ray)
 {
 	t_image			*temp;
@@ -72,5 +97,6 @@ void	ft_attack(t_ray *ray)
 	}
 	ft_reposition_line(ray, ray->graph->circle,
 		ray->graph->line->angle, ray->graph->line);
+	ft_kill_enemy(ray);
 	ft_next_frame(ray->graph, ray);
 }
