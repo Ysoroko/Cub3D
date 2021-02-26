@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/25 18:05:34 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/02/26 11:25:27 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,6 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					\
 					graphic_functions/draw_functions/ft_draw_filled_in_forms.c \
 					graphic_functions/draw_functions/ft_draw_vertical_line.c \
-					graphic_functions/draw_functions/ft_draw_line.c \
 					\
 					graphic_functions/new_free_error_functions/ft_error_utils.c \
 					graphic_functions/new_free_error_functions/ft_new_geometry_forms.c \
@@ -73,13 +72,15 @@ SRC				=	get_next_line/get_next_line_utils.c \
 					main.c
 
 BONUS_SRC		=	bonus/ft_music_bonus.c \
-					bonus/ft_shadows.c \
-					bonus/ft_hud.c \
-					bonus/ft_damage.c \
-					bonus/ft_gun.c \
-					graphic_functions/raycaster/ft_floor_and_ceiling_bonus.c \
-					graphic_functions/draw_functions/ft_draw_minimap_bonus.c \
-					graphic_functions/move_functions/ft_move_bonus.c \
+					bonus/ft_shadows_bonus.c \
+					bonus/ft_hud_bonus.c \
+					bonus/ft_damage_bonus.c \
+					bonus/ft_knife_bonus.c \
+					bonus/ft_floor_and_ceiling_bonus.c \
+					bonus/ft_draw_minimap_bonus.c \
+					bonus/ft_move_bonus.c \
+					bonus/ft_new_raycaster_bonus.c \
+					bonus/ft_draw_line_bonus.c \
 
 
 OBJS			=	$(SRC:.c=.o)

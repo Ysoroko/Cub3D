@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_damage.c                                        :+:      :+:    :+:   */
+/*   ft_damage_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 14:25:37 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 18:04:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 11:23:50 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_recieve_damage(t_ray *ray)
 void	ft_game_over(t_ray *ray, t_graph *graph)
 {
 	static int	already_done;
+	t_map		*map;
 
 	if (already_done == 0)
 	{
@@ -34,6 +35,8 @@ void	ft_game_over(t_ray *ray, t_graph *graph)
 									graph->win_ptr, graph->img_ptr->img, 0, 0);
 		already_done = 1;
 	}
-	mlx_string_put(graph->mlx_ptr, graph->win_ptr,
-					ray->res->x / 2, ray->res->y / 2, 0x00FF0000, "YOU DIED");
+	if (!(map = ft_extract_t_map("maps/game_over_map_bonus.cub")))
+		return ;
+	ft_window_start(map, 0);
+	exit(EXIT_SUCCESS);
 }

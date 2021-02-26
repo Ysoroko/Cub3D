@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 13:49:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/25 18:05:58 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 11:26:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,14 @@
 */
 
 # define KEY_PRESS_EVENT 2
+# define KEY_RELEASE_EVENT 3
 # define DESTROY_EVENT 17
+# define BUTTON_PRESS_EVENT 4
 
 # define KEY_PRESS_MASK 1L<<0
+# define KEY_RELEASE_MASK 1L<<1
 # define STRUCTURE_NOTIFY_MASK 1L<<17
+# define BUTTON_PRESS_MASK 1L<<2
 
 /*
 ** Textures
@@ -92,10 +96,13 @@
 # define GUN_H 512
 
 # define FLOOR_XPM_PATH "./images/floor2.xpm"
-# define SKYBOX_XPM_PATH "./images/night2.xpm"
+# define SKYBOX_ONE_XPM_PATH "./images/skybox1.xpm"
+# define SKYBOX_TWO_XPM_PATH "./images/skybox2.xpm"
+# define SKYBOX_THREE_XPM_PATH "./images/skybox3.xpm"
+# define SKYBOX_FOUR_XPM_PATH "./images/skybox4.xpm"
 # define SECOND_SPRITE_XPM_PATH "images/spikes.xpm"
 # define HEART_XPM_PATH "images/heart.xpm"
-# define GUN1_XPM_PATH "images/pistol2.xpm"
-# define GUN2_XPM_PATH "images/pistol1.xpm"
+# define GUN1_XPM_PATH "images/pistol1.xpm"
+# define GUN2_XPM_PATH "images/pistol2.xpm"
 
 #endif

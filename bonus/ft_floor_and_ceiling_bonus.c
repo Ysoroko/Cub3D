@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:08:20 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/23 14:19:21 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 11:06:51 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_graphics.h"
+#include "../include/ft_graphics.h"
 
 /*
 ** This function is used to setup all the variables to start drawing
@@ -65,18 +65,19 @@ static void	ft_launch(t_ray *ray, int x, int y)
 
 static void	ft_draw_skybox(t_ray *ray)
 {
-	int	x;
-	int	y;
-	int color;
+	int		x;
+	int		y;
+	int		color;
+	t_image *texture;
 
 	x = -1;
-	y = 0;
+	texture = ray->ceiling_texture;
 	while (x++ < ray->res->x)
 	{
 		y = -1;
 		while (y++ < ray->res->y / 2)
 		{
-			my_mlx_pixel_get(ray->ceiling_texture,
+			my_mlx_pixel_get(texture,
 				x % SKY_W, y % SKY_H, &(color));
 			my_mlx_pixel_put(ray->graph->img_ptr, x, y, color);
 		}

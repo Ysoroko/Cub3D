@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 11:22:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/25 16:45:38 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 11:25:13 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,12 +168,6 @@ void			my_mlx_pixel_put(t_image *image, int x, int y, int color);
 void			my_mlx_pixel_get(t_image *image, int x, int y, int *trgb_color);
 
 /*
-** FT_DRAW_EMPTY_FORMS
-*/
-
-void			ft_draw_circle(t_circle *circle, t_graph *graph, int trgb);
-
-/*
 ** FT_DRAW_LINE
 */
 
@@ -192,6 +186,7 @@ void			ft_draw_vertical_line(int x, double a_y,
 
 void			ft_draw_fsquare(t_square *square, t_graph *graph, int trgb);
 void			ft_draw_fcircle(t_circle *circle, t_graph *graph, int trgb);
+void			ft_draw_circle(t_circle *circle, t_graph *graph, int trgb);
 
 /*
 ** FT_NEW_GEOMETRY_FORMS
@@ -208,6 +203,7 @@ void			ft_limit_points_within_map(double *x, double *y, t_graph *graph);
 */
 
 int				ft_keys_binding(int keycode, t_ray *ray);
+int				ft_mouse_hooks(int keycode, t_ray *ray);
 int				ft_window_closed(void);
 
 /*
@@ -264,10 +260,12 @@ void			ft_apply_shadow_to_textures(double dist, int *color);
 void			ft_apply_shadow_to_sprites(double dist, int *color);
 void			ft_move_bonus(t_graph *graph, int direction, t_ray *ray);
 void			ft_draw_hud(t_ray *ray);
-void			ft_display_gun(t_ray *ray, t_image *texture);
-void			ft_fire_gun(t_ray *ray);
+void			ft_display_knife(t_ray *ray, t_image *texture);
+void			ft_attack(t_ray *ray);
 void			ft_recieve_damage(t_ray *ray);
 void			ft_game_over(t_ray *ray, t_graph *graph);
+void			ft_initialize_bonus_sprites(t_ray *ray, t_map *map);
+int				ft_key_release(int keycode, t_ray *ray);
 
 /*
 ** SPRITES RAYCASTER

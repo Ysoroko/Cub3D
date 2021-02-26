@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 17:29:02 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 14:27:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 10:55:23 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_graphics.h"
+#include "../include/ft_graphics.h"
 
 static void	ft_move_forward_bonus(t_graph *graph, t_ray *ray)
 {

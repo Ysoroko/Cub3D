@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gun.c                                           :+:      :+:    :+:   */
+/*   ft_knife_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:25:08 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/25 18:01:52 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 11:24:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_graphics.h"
 
-void	ft_display_gun(t_ray *ray, t_image *texture)
+void	ft_display_knife(t_ray *ray, t_image *texture)
 {
 	int	trgb;
 	int	i;
@@ -40,18 +40,37 @@ void	ft_display_gun(t_ray *ray, t_image *texture)
 	}
 }
 
-void	ft_fire_gun(t_ray *ray)
+int	ft_key_release(int keycode, t_ray *ray)
 {
-	static int	count;
-	t_image		*temp;
+	t_image *temp;
 
-	temp = ray->gun_texture[0];
-	ray->gun_texture[0] = ray->gun_texture[1];
-	ray->gun_texture[1] = temp;
-	if (count % 2)
+	if (keycode == SPACEBAR_KEY)
+	{
+		temp = ray->gun_texture[0];
+		ray->gun_texture[0] = ray->gun_texture[1];
+		ray->gun_texture[1] = temp;
 		system("afplay bonus/knife_on.mp3 &>/dev/null &");
-	else
+		ft_reposition_line(ray, ray->graph->circle,
+			ray->graph->line->angle, ray->graph->line);
+		ft_next_frame(ray->graph, ray);
+	}
+	return (0);
+}
+
+void	ft_attack(t_ray *ray)
+{
+	t_image			*temp;
+	static	t_image	*first;
+
+	if (!first)
+		first = ray->gun_texture[0];
+	if ((temp = ray->gun_texture[0]) == first)
+	{
+		ray->gun_texture[0] = ray->gun_texture[1];
+		ray->gun_texture[1] = temp;
 		system("afplay bonus/knife_off.mp3 &>/dev/null &");
-	count++;
+	}
+	ft_reposition_line(ray, ray->graph->circle,
+		ray->graph->line->angle, ray->graph->line);
 	ft_next_frame(ray->graph, ray);
 }

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:29:18 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/25 15:22:07 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 11:06:40 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,20 +87,7 @@ static void	ft_initialize_raycaster_sprites(t_ray *ray, t_map *map)
 	ray->sprite_texture = ft_image_from_file(ray->graph->mlx_ptr,
 					map->res_width, map->res_height, map->sprite_path);
 	if (BONUS == 1)
-	{
-		ray->floor_texture = ft_image_from_file(ray->graph->mlx_ptr,
-			map->res_width, map->res_height, FLOOR_XPM_PATH);
-		ray->ceiling_texture = ft_image_from_file(ray->graph->mlx_ptr,
-			map->res_width, map->res_height, SKYBOX_XPM_PATH);
-		ray->sprite_two_texture = ft_image_from_file(ray->graph->mlx_ptr,
-			map->res_width, map->res_height, SECOND_SPRITE_XPM_PATH);
-		ray->heart_texture = ft_image_from_file(ray->graph->mlx_ptr,
-			map->res_width, map->res_height, HEART_XPM_PATH);
-		ray->gun_texture[0] = ft_image_from_file(ray->graph->mlx_ptr,
-			map->res_width, map->res_height, GUN1_XPM_PATH);
-		ray->gun_texture[1] = ft_image_from_file(ray->graph->mlx_ptr,
-			map->res_width, map->res_height, GUN2_XPM_PATH);
-	}
+		ft_initialize_bonus_sprites(ray, map);
 }
 
 /*

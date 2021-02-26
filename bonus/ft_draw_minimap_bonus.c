@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/24 12:10:37 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/02/26 10:55:27 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_graphics.h"
+#include "../include/ft_graphics.h"
 
 /*
 ** FT_DRAW_MINIMAP_BACKGROUND
