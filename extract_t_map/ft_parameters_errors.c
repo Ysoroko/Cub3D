@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 10:53:58 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 16:28:59 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/03/01 11:52:59 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ static int	ft_check_rgb_errors(char *str, t_map *map)
 
 static int	ft_check_path_errors(char *str, t_map *map)
 {
+	if (str[1] == 'O' && str[1] == 'A' && str[1] == 'E' && str[1] != ' ')
+		return (FORBIDDEN_CHARS_ERROR);
+	if ((str[1] == 'O' || str[1] == 'A' || str[1] == 'E') && str[2] != ' ')
+		return (FORBIDDEN_CHARS_ERROR);
 	if (str[0] == 'N' && str[1] == 'O')
 		return (ft_defined(map->north_path, -1, -1, -1));
 	if (str[0] == 'S' && str[1] == 'O')
@@ -69,7 +73,7 @@ static int	ft_check_path_errors(char *str, t_map *map)
 		return (ft_defined(map->east_path, -1, -1, -1));
 	if (str[0] == 'W' && str[1] == 'E')
 		return (ft_defined(map->west_path, -1, -1, -1));
-	if (str[0] == 'S' && str[1] != 'O')
+	if (str[0] == 'S' && str[1] == ' ')
 		return (ft_defined(map->sprite_path, -1, -1, -1));
 	return (0);
 }

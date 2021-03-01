@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/03/01 11:24:55 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/03/01 11:45:24 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBFT			=	@ cd libft && make ;
 
 BONUS_MAP		=	"maps/ultimate_bonus_map.cub"
 
-STANDARD_MAP	=	"maps/map8.cub"
+STANDARD_MAP	=	"maps/map9.cub"
 
 SRC				=	get_next_line/get_next_line_utils.c \
 					get_next_line/get_next_line.c \

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 13:03:16 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/26 15:41:02 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/03/01 11:54:02 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int		ft_path_line(char *str)
 		return (1);
 	if (str[0] == 'W' && str[1] == 'E')
 		return (1);
-	if (str[0] == 'S' && str[1] != 'O')
+	if (str[0] == 'S' && str[1] == ' ')
 		return (1);
 	return (0);
 }

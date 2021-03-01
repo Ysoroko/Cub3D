@@ -4,7 +4,7 @@ WE ./images/dark_green_wall.xpm
 NO ./images/sunny_green_wall.xpm
 EA ./images/shadow_green_wall.xpm
 
-S ./images/tree.xpm
+S ./images/tree.xpm 
 
 F 156, 204, 156
 C 195, 200, 255
