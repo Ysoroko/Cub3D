@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/03/01 11:00:37 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/03/01 11:24:55 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBFT			=	@ cd libft && make ;
 
 BONUS_MAP		=	"maps/ultimate_bonus_map.cub"
 
-STANDARD_MAP	=	"maps/map9.cub"
+STANDARD_MAP	=	"maps/map8.cub"
 
 SRC				=	get_next_line/get_next_line_utils.c \
 					get_next_line/get_next_line.c \
@@ -116,12 +116,8 @@ brun:
 			@$(LIBFT)
 			@$(CC) $(FRAMEWORKS) $(CFLAGS) $(BONUS) $(SRC) $(BONUS_SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(BONUS_MAP)
 
-frun:
-			@$(LIBFT)
-			@$(CC) $(FRAMEWORKS) $(BONUS) $(SRC) $(BONUS_SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(BONUS_MAP)
-
 save:
 			@$(LIBFT)
 			@$(CC) $(FRAMEWORKS) $(SRC) $(INCLUDE) -o $(NAME) && ./$(NAME) $(STANDARD_MAP) $(SAVE)
 
-.PHONY:		all bonus clean fclean re run brun frun save
+.PHONY:		all bonus clean fclean re run brun save
