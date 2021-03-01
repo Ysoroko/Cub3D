@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 18:01:53 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 15:27:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/03/01 10:51:28 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ static void	ft_draw_heart(t_ray *ray, int hp)
 
 	i = -1;
 	x = ray->res->x - (hp * (ray->res->x / 14));
-	y = ray->res->y / 34;
-	if (ray->res->x < HEART_WIDTH || ray->res->y < HEART_HEIGHT)
+	if (ray->res->x <= HEART_WIDTH || ray->res->y <= HEART_HEIGHT)
 		return ;
 	while (++i < (ray->res->x / 180) * (HEART_WIDTH))
 	{

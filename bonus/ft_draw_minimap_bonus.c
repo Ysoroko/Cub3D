@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:57:30 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 15:30:30 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/03/01 11:02:34 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void		ft_draw_minimap_background(t_graph *graph)
 	double width;
 	double height;
 
+	if (!graph->frame->units)
+		return ;
 	x = graph->frame->minimap_background->x;
 	y = graph->frame->minimap_background->y;
 	width = graph->frame->minimap_background->width + 2 * graph->frame->units;
@@ -36,6 +38,8 @@ static void	ft_draw_corresponding_square(char c, int x, int y, t_graph *graph)
 {
 	double	width;
 
+	if (!graph->frame->units)
+		return ;
 	width = graph->frame->minimap_wall->width;
 	if (c == '1')
 		ft_draw_fsquare(&(t_square){x, y, width, width},
@@ -60,6 +64,8 @@ static void	ft_draw_minimap_walls(t_graph *graph, char **str_tab)
 	int		x;
 	int		y;
 
+	if (!graph->frame->units)
+		return ;
 	i = -1;
 	j = -1;
 	x = graph->frame->units;
@@ -124,6 +130,8 @@ void		ft_draw_minimap(t_graph *graph, t_ray *ray)
 		graph->circle = ft_new_circle(x, y, radius, 0);
 	if (!graph->line)
 		ft_starting_player_direction(graph);
+	if (!graph->frame->units)
+		return ;
 	ft_draw_fcircle(graph->circle, graph, PLAYER_COLOR);
 	ft_draw_line(graph->line, graph, DIRECTION_COLOR);
 }

@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/21 15:58:16 by ysoroko           #+#    #+#              #
-#    Updated: 2021/02/26 16:38:41 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/03/01 11:00:37 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,6 @@ BONUS			=	-D BONUS=1
 SAVE			=	--save
 
 FRAMEWORKS		=	-lmlx -framework OpenGL -framework AppKit
-
-MINILIBX		=	@ cd minilibx && make ; mv libmlx.a ..
 
 LIBFT			=	@ cd libft && make ;
 

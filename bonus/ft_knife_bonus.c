@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:25:08 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/02/26 15:29:11 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/03/01 10:57:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void		ft_display_knife(t_ray *ray, t_image *texture)
 	int	y;
 
 	i = -1;
-	x = ray->res->x / 2 - GUN_W / 2;
-	y = ray->res->y - GUN_H;
-	if (ray->res->x < SPRITE_W || ray->res->y < SPRITE_H)
+	x = ray->res->x / 2 - (GUN_W / 2);
+	y = (ray->res->y - GUN_H);
+	if (ray->res->x <= GUN_W || ray->res->y <= GUN_H)
 		return ;
 	while (++i < (GUN_W))
 	{
