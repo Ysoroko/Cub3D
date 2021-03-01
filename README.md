@@ -40,6 +40,7 @@ If you wish to try it nonetheless, here are the Makefile commands you need to us
 - `make brun` will launch the project with the bonuses
 - `make save` will launch the project and save the first image on screen in a "bmp" format, then it will close the project window
 - WASD or Up/Down arrow keys to move, QE or Left/Right arrow keys to look left/right, SPACEBAR to attack using the weapon
+- Escape key to quit the game
 
 ### Licensing Notes:
 - All music and sounds were free ressourses downloaded from [**zapsplat.com**](https://www.zapsplat.com/)
