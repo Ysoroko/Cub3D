@@ -20,6 +20,7 @@ This is one of the projects created for s19 coding school.
 - Distant related shadow effect
 - Secret corridors
 - The skybox and a floor texture
+- Collisions with walls and some objects 
 - Background music and sounds
 - A game over level
 
