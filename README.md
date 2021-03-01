@@ -16,8 +16,8 @@ This is one of the projects created for s19 coding school.
 
 - A HUD containing a minimap
 - Healthbar and traps
-- Enemies and an animated weapon
-- Distant related shadow effect
+- Enemies and a (poorly) animated weapon
+- Distance related shadow effect
 - Secret corridors
 - The skybox and a floor texture
 - Collisions with walls and some objects 
