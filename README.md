@@ -41,6 +41,6 @@ If you wish to try it nonetheless, here are the Makefile commands you need to us
 - `make save` will launch the project and save the first image on screen in a "bmp" format, then it will close the project window
 
 ### Licensing Notes:
-- All music and sounds were free ressourses downloaded from zapsplat.com
+- All music and sounds were free ressourses downloaded from [**zapsplat.com**](https://www.zapsplat.com/)
 - The hand with the knife is a modified image from the Wolfenstein 3D, all rights belong to id Software
 - The rest of the used sprites and textures were drawn by myself
