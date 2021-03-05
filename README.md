@@ -29,6 +29,8 @@ This is one of the projects created for s19 coding school.
 - [**A walkthrough tutorial for the minilibx graphic library**](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
 - [**BMP format in detail**](https://web.archive.org/web/20080912171714/http://www.fortunecity.com/skyscraper/windows/364/bmpffrmt.html)
 - [**BMP format C code example**](https://stackoverflow.com/questions/2654480/writing-bmp-image-in-pure-c-c-without-other-libraries)
+- [**A great free online tool to draw pixel art sprites**](https://www.piskelapp.com)
+- [**PNG to XPM online converter**](https://convertio.co/fr/png-xpm/)
 
 ### Try it:
 ❗ This project was optimized for a local use and may not work properly in other environments.
