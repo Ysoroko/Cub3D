@@ -31,6 +31,7 @@ This is one of the projects created for s19 coding school.
 - [**BMP format C code example**](https://stackoverflow.com/questions/2654480/writing-bmp-image-in-pure-c-c-without-other-libraries)
 - [**A great free online tool to draw pixel art sprites**](https://www.piskelapp.com)
 - [**PNG to XPM online converter (❗ has a daily limit of conversions)**](https://convertio.co/fr/png-xpm/)
+- [**Free music and sound effects website**](https://www.zapsplat.com)
 
 ### Try it:
 ❗ This project was optimized for a local use and may not work properly in other environments.
