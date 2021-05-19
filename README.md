@@ -1,5 +1,5 @@
 # Cub3D
-A raycasting game engine reprogrammed in C from scratch, inspired by the world's first 3D game.
+A raycasting game engine programmed in C from scratch, inspired by the world's first 3D game.
 
 ![](images/record.gif)
 
