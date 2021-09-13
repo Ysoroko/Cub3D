@@ -36,7 +36,7 @@ This is one of the projects created for s19 coding school.
 ### Try it:
 ❗ This project was optimized for a local use and may not work properly in other environments.
 
-If you wish to try it nonetheless, here are the Makefile commands you need to use in the terminal while in project's repo directory:
+If you wish to try it, here are the Makefile commands you need to use in the terminal while in project's repo directory:
 - `make` will compile the basic project (without the enemies / shadows etc.) and create the "cub3D" executable
 - `make bonus` will do the same but will include the bonus part
 - With "cub3D" executable created, you can launch the game with any of the .cub map files in "maps" folder. 
