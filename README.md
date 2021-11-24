@@ -3,17 +3,12 @@ A raycasting game engine programmed in C from scratch, inspired by the world's f
 
 ![](images/record.gif)
 
-This is one of the projects created for s19 coding school.
-
-### The basics of the project cover:
+### The project covers:
 
 - The parsing of a map file
 - The use of a basic graphic library
 - Coding a program which allows us to save a screen shot of the image on screen in a "bmp" format
 - The raycasting physics engine allowing us to see 2D calculations as a 3D world around us
-
-### My project adds:
-
 - A HUD containing a minimap
 - Healthbar and traps
 - Enemies and an animated weapon
